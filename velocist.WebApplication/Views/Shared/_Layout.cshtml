@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <partial name="~/Views/Shared/_Analytics.cshtml" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Web de genealogia" />
+    <meta name="author" content="Cristina Caballero" />
+    <meta name="robots" content="noindex" />
+
+    <title>@ViewData["Title"] - @SharedTranslations["Genealogy"]</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+    @if (IsSectionDefined("Styles")) {@RenderSection("Styles", required: false)}
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <partial name="~/Views/Shared/_Nav.cshtml" />
+    </header>
+    <!-- CONTENT -->
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @if (ViewData.TryGetValue("ManageNav", out var parentLayout)) {
+                <partial name="_ManageNav" />
+            }
+            @RenderBody()
+        </main>
+    </div>
+    <!-- FOOTER -->
+    <partial name="~/Views/Shared/_Footer.cshtml" />
+
+    <!-- SCRIPTS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="~/lib/slimScroll/jquery.slimscroll.js"></script>
+    <script type="text/javascript" src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

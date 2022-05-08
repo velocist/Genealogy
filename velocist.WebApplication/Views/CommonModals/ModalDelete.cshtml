@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "";
+}
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-lg modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">@ViewBag.TitleModal</h5>
+                <button type="button" class="close" onclick="CloseModal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">@SharedTranslations["Cerrar"]</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="Delete" asp-action="Delete">
+                    <input id="Id" name="Id" value="@ViewBag.Id" hidden />
+                    <p>¿Estas seguro de eliminar el registro?</p>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="col-sm-offset-2">
+                    <button type="button" class="btn btn-sm btn-secondary" onclick="CloseModal()">@SharedTranslations["No"]</button>
+                    <input type="button" onclick="Submit('@ViewBag.ControllerName','@ViewBag.Action')" value="@SharedTranslations["Si"]" class="btn btn-sm  btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

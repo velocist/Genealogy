@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="BaseModel.cs" />
+    <Compile Remove="Models\ArchivoModel.cs" />
+    <Compile Remove="Models\ArchivosDocumentalesModel.cs" />
+    <Compile Remove="Models\ArchivosIndexacionesModel.cs" />
+    <Compile Remove="Models\ArchivosModel.cs" />
+    <Compile Remove="Models\FileViewerModel.cs" />
+    <Compile Remove="Models\InvestigacionesViewModel.cs" />
+    <Compile Remove="Models\RecursosModel.cs" />
+    <Compile Remove="Models\VistaPadronesModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\velocist\velocist.DataAccess\velocist.DataAccess.csproj" />
+    <ProjectReference Include="..\..\velocist\velocist.LogService\velocist.LogService.csproj" />
+    <ProjectReference Include="..\..\velocist\velocist.Services\velocist.Services.csproj" />
+    <ProjectReference Include="..\velocist.AccesService\velocist.AccesService.csproj" />
+    <ProjectReference Include="..\velocist.Objects\velocist.Objects.csproj" />
+  </ItemGroup>
+
+</Project>

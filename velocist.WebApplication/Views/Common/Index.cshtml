@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = ViewBag.Title;
+    ViewData["ViewDataControllerName"] = ViewBag.ControllerName;
+    bool UploadFile = ViewBag.UploadFile;
+    string partialNameScript = ViewBag.PartialNameScript;
+    string partialName = ViewBag.PartialName;
+}
+<!-- Modal -->
+<div id="modalDiv"></div>
+
+<div class="form-row">
+    <partial name="~/Views/Shared/_AlertError.cshtml" />
+    <div class="col-12">
+        <partial name="@partialName" />
+    </div>
+</div>
+@if (User.Identity.IsAuthenticated) {
+    @if (UploadFile) {
+        <input type="file" class="custom-file-input" id="file" name="file" hidden />
+        await Html.RenderPartialAsync("~/Views/Shared/Scripts/_UploadFileScriptsPartial.cshtml");
+        <script type="text/javascript">
+            var buttons = true;
+            var uploadFile = true;
+        </script>
+    } else {
+        <script type="text/javascript">
+            var buttons = true;
+            var buttons = false;
+        </script>
+    }
+} else {
+    <script type="text/javascript">
+        var buttons = false;
+        var uploadFile = false;
+    </script>
+}
+
+@section Styles {
+    @{await Html.RenderPartialAsync("~/Views/Shared/Scripts/_TableStylesPartial.cshtml");}
+}
+@section Scripts{
+    @{await Html.RenderPartialAsync("~/Views/Shared/Scripts/_TableScriptsPartial.cshtml");}
+    @{await Html.RenderPartialAsync(partialNameScript);}
+    @{await Html.RenderPartialAsync("~/Views/Shared/Scripts/_ModalScriptsPartial.cshtml");}
+}

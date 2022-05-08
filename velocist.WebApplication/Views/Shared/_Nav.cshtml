@@ -1,0 +1,29 @@
+﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+    <div class="container">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-house-fill" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Inicio"></i></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                @*<li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="ArchivosDocumentales" asp-action="Index">@SharedTranslations["Archivos Doc."]</a>
+                    </li>*@
+                @*<li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Recursos" asp-action="Index">@SharedTranslations["Utilidades"]</a>
+                    </li>*@
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Indices" asp-action="Index">@SharedTranslations["Indices FS"]</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Recursos" asp-action="Index">@SharedTranslations["Recursos"]</a>
+                </li>
+                @*<li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Search">@SharedTranslations["Buscador"]</a>
+                    </li>*@
+                <partial name="_LoginPartial" />
+            </ul>
+        </div>
+    </div>
+</nav>

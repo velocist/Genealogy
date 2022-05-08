@@ -1,0 +1,201 @@
+﻿@*<!--Table Styles All -->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.3/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/b-print-2.0.1/cr-1.5.5/fc-4.0.1/fh-3.2.0/r-2.2.9/rg-1.1.4/rr-1.2.8/sc-2.0.5/sl-1.3.3/datatables.min.js"></script>*@
+
+<!--Table Styles All Without Responsive-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.11.3/af-2.3.7/b-2.1.1/b-colvis-2.1.1/b-html5-2.1.1/b-print-2.1.1/cr-1.5.5/date-1.1.1/fc-4.0.1/fh-3.2.0/kt-2.6.4/rg-1.1.4/rr-1.2.8/sc-2.0.5/sb-1.3.0/sp-1.4.0/sl-1.3.4/sr-1.0.1/datatables.min.js"></script>
+
+@if (User.Identity.IsAuthenticated) {
+    if (User.IsInRole(Constants.Roles.SuperAdmin.ToString())) {
+        <script type="text/javascript">
+            var buttons = true;
+        </script>
+    } else {
+        <script type="text/javascript">
+            var buttons = false;
+        </script>
+    }
+} else {
+    <script type="text/javascript">
+        var buttons = false;
+    </script>
+}
+
+<script type="text/javascript" id="TableDefaultsScripts">
+    "use strict";
+    $(document).ready(function () {
+        $.fn.dataTable.Buttons.defaults.dom.button.className = 'btn btn-sm btn-primary';
+        $.extend($.fn.dataTable.defaults, {
+            stateSave: true,
+            //processing: true,
+            scrollCollapse: true,
+            scrollX: true,
+            //scrollY: true,
+            //scroller: {
+            //    loadingIndicator: true
+            //},
+            paging: true,
+            lengthMenu: [
+                [10, 15, 20, 25, 50, 100, -1],
+                [10, 15, 20, 25, 50, 100, "All"]
+            ],
+            pageLength: 10,
+            fixedColumns: {
+                left: 2
+            },
+            fixedHeader: {
+                header: true,
+                footer: false
+            },
+            dom:
+                /*'l<"html5buttons"B>Tfgitp',*/
+                ////"<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-8'<'float-md-right ml-2'B>f>>" +
+                //"<'row'<'col-sm-12 col-md-8'l><'col-sm-12 col-md-12'<'float-md-right ml-2'B>f>>" +
+                "<'row'<'col-sm-12 col-md-12'<'float-md-left'l><f><'float-md-right ml-2 mt-2'B>>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json'
+            },
+            select: {
+                info: false,
+                style: 'single'
+            },
+            order: [[1, 'asc']],
+            ajax: {
+                url: '@ViewData["TableAjaxAction"]',
+                type: 'GET',
+                dataSrc: '',
+                error: function (settings, json, xhr) {
+                    json.data = [];
+                    $('#@ViewData["ViewDataControllerName"] tbody td').text(json);
+                    $('#@ViewData["ViewDataControllerName"] tbody td').css('color', 'red');
+                }
+            },
+            initComplete: function (settings, json) {
+                var api = this.api();
+                if (buttons) {
+                    api.button('Details:name').enable();
+                    api.button('Edit:name').enable();
+                    api.button('Delete:name').enable();
+                    api.button('Copy:name').enable();
+                    api.button('Export:name').enable();
+                    if (uploadFile) {
+                        api.button('Import:name').enable()
+                    }
+                } else {
+                    api.button('Details:name').remove();
+                    api.button('Edit:name').remove();
+                    api.button('Delete:name').remove();
+                    api.button('Copy:name').remove();
+                    api.button('Export:name').remove();
+                    api.button('Import:name').remove()
+                }
+            },
+            buttons: [
+                {
+                    extend: 'colvis',
+                    text: function (dt, button, config) {
+                        return '<i class="bi bi-eye" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Visibilidad"]"></i> @SharedTranslations["Visibilidad"]';
+                    },
+                    columns: 'th:nth-child(n+3)'
+                },
+                {
+                    text: '<i class="bi bi-plus-square" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Nuevo"]"></i> @SharedTranslations["Nuevo"]',
+                    action: function (e, dt, button, config) {
+                            GetModal('@ViewData["ViewDataControllerName"]', 'Create', null);
+                    },
+                    enabled: true,
+                    name: 'Create'
+                },
+                {
+                    text: '<i class="bi bi-card-text aria-hidden="true" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Detalle"]"></i> @SharedTranslations["Detalle"]',
+                    action: function (e, dt, button, config) {
+                        GetModal('@ViewData["ViewDataControllerName"]', 'Details', dt.rows({ selected: true }).data()[0].id);
+                    },
+                    enabled: false,
+                    name: 'Details'
+                },
+                {
+                    text: '<i class="bi bi-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Editar"]"></i> @SharedTranslations["Editar"]',
+                    action: function (e, dt, button, config) {
+                        GetModal('@ViewData["ViewDataControllerName"]', 'Edit', dt.rows({ selected: true }).data()[0].id);
+                    },
+                    enabled: false,
+                    name: 'Edit'
+                },
+                {
+                    text: '<i class="bi bi-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Eliminar"]"></i> @SharedTranslations["Eliminar"]',
+                    action: function (e, dt, button, config) {
+                        GetModalPost('@ViewData["ViewDataControllerName"]', 'Delete', dt.rows({ selected: true }).data()[0].id);
+                    },
+                    enabled: false,
+                    name: 'Delete'
+                },
+                {
+                    text: '<i class="bi bi-clipboard" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Copiar"]"></i> @SharedTranslations["Copiar"]',
+                    action: function (e, dt, button, config) {
+                        GetModal('@ViewData["ViewDataControllerName"]', 'Copy', dt.rows({ selected: true }).data()[0].id);
+                    },
+                    enabled: false,
+                    name: 'Copy'
+                },
+                {
+                    text: '<i class="bi bi-upload" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Importar"]"></i> @SharedTranslations["Importar"]',
+                    action: function (e, dt, button, config) {
+                        $('#file').click()
+                    },
+                    enabled: false,
+                    name: 'Import'
+                },
+                {
+                    name: 'Export',
+                    extend: 'collection',
+                    text: function (e, dt, row, a) {
+                        var data = '<i class="bi bi-download" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Exportar"]"></i> @SharedTranslations["Exportar"]';
+                        return data;
+                    },
+                    buttons: [
+                        { extend: 'copy' },
+                        { extend: 'csv' },
+                        { extend: 'excel', title: '@ViewData["Title"]' + '_Export' },
+                        { extend: 'pdf', title: '@ViewData["Title"]' + '_Export'},
+                        {
+                            extend: 'print',
+                            customize: function (win) {
+                                $(win.document.body).addClass('white-bg');
+                                $(win.document.body).css('font-size', '10px');
+
+                                $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                            }
+                        }
+                    ],
+                    enable: false,
+                },
+            ],
+        });
+    });
+
+    function ChangeColumn(column) {
+        column.visible(!column.visible());
+        if (column.visible()) {
+            $('#column_' + column.index()).removeClass('bi-eye-slash');
+            $('#column_' + column.index()).addClass('bi-eye');
+        } else {
+            $('#column_' + column.index()).removeClass('bi-eye');
+            $('#column_' + column.index()).addClass('bi-eye-slash');
+        }
+    }
+
+    function ConfColumn(column) {
+        var title = $(column.header()).html();
+        if (column.visible()) {
+            return '<span><i id="column_' + column.index() + '" class="bi bi-eye"></i>&nbsp;' + title + '</span>';
+        } else {
+            return '<span><i id="column_' + column.index() + '" class="bi bi-eye-slash"></i>&nbsp;' + title + '</span>';
+        }
+    }
+</script>

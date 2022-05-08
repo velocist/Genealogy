@@ -1,0 +1,70 @@
+﻿<script type="text/javascript">
+    "use strict";
+    var tableRecurso;
+    $(document).ready(function () {
+        tableRecurso = $('#@ViewData["ViewDataControllerName"]').DataTable({
+            columns: [
+                {
+                    orderable: false,
+                    data: null,
+                    className: 'text-center',
+                    render: function (data, type, row, meta) {
+                        data = '<span class="avatar" data-id="' + data.id + '"><i class="bi bi-card-text"></i></span>';
+                        return data;
+                    }
+                },
+                {
+                    data: "nombre",
+                    render: function (data, type, row, meta) {
+                        return '<a href="' + row.url + '" target="_blank">' + row.nombre + '</a>';
+                    }
+                },
+                { data: "descripcion" },
+                { data: "pueblo" },
+                { data: "provincia" },
+                { data: "pais" },
+                { data: "notas" },
+                { data: "url" },
+                { data: "tipo_id", visible: false, orderable:false},
+            ],
+            ajax: {
+                url: '@ViewData["TableAjaxAction"]',
+                type: 'POST',
+                //dataSrc: '',
+                data: //{ "tipo_id": $('.nav-link.active').attr("data-id")},
+                function (e, settings, json, xhr) {
+                    return { "tipo_id": tipoRecurso };
+                },
+                error: function (settings, json, xhr) {
+                    //json.data = [];
+                    $('#@ViewData["ViewDataControllerName"] tbody td').text(json);
+                    $('#@ViewData["ViewDataControllerName"] tbody td').css('color', 'red');
+                }
+            },
+        }).on('select', function (e, dt, type, indexes) {
+            if (buttons) {
+                if (type === 'row') {
+                    dt.button('Details:name').enable(
+                        dt.rows({ selected: true }).indexes().length === 0 ? false : true
+                    );
+                    dt.button('Edit:name').enable(
+                        dt.rows({ selected: true }).indexes().length === 0 ? false : true
+                    );
+                    dt.button('Delete:name').enable(
+                        dt.rows({ selected: true }).indexes().length === 0 ? false : true
+                    );
+                    dt.button('Copy:name').enable(
+                        dt.rows({ selected: true }).indexes().length === 0 ? false : true
+                    );
+                }
+            }
+        }).on('deselect', function (e, dt, type, indexes) {
+            if (buttons) {
+                dt.button('Details:name').disable();
+                dt.button('Edit:name').disable();
+                dt.button('Delete:name').disable();
+                dt.button('Copy:name').disable();
+            }
+        });
+    });
+</script>

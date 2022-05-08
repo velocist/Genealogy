@@ -1,0 +1,71 @@
+﻿<script type="text/javascript">
+    var tableIndices;
+    $(document).ready(function () {
+        tableIndices = $('#@ViewData["ViewDataControllerName"]').DataTable({
+            columns: [
+                {
+                    orderable: false,
+                    data: null,
+                    className: 'text-center',
+                    render: function (data, type, row, meta) {
+                        data = '<span class="avatar" data-id="' + data.id + '"><i class="bi bi-card-text"></i></span>';
+                        return data;
+                    }
+                },
+                {
+                    data: 'pueblo', //13
+                    render: function (data, type, row, meta) {
+                        if (row.pueblo != '' && row.url != '') {
+                            return '<a href="' + row.url + '" target="_blank">' + row.pueblo + '</a>';
+                        } else if (row.url != '') {
+                            return '<a href="' + row.url + '" target="_blank">Acceder</a>';
+                        } else if (row.pueblo != '' && row.url_registro_catalogo != '') {
+                            return '<a href="' + row.url_registro_catalogo + '" target="_blank">Catalogo</a>';
+                        }
+                        return data;
+                    }
+                },
+                { data: 'partido_judicial' }, //12
+                { data: 'provincia' }, //11
+                { data: 'año' }, //9
+                {
+                    data: null,
+                    render: function (data, type, row, meta) {
+                        var renderColumn = '';
+                        if (row.observaciones != '') {
+                            renderColumn += '<label class="btn btn-sm btn-white"><i class="bi bi-eye" data-toggle="tooltip" data-placement="top" title="Observaciones"></i></label>';
+                        }
+                        if (row.url_registro_catalogo != '') {
+                            renderColumn += '<label class="btn btn-sm btn-white"><i class="bi bi-book" data-toggle="tooltip" data-placement="top" title="Reg. catálogo"></i></label>';
+                        }
+                        return renderColumn;
+                    }
+                }
+            ]
+        }).on('select', function (e, dt, type, indexes) {
+            if (buttons) {
+                if (type === 'row') {
+                    dt.button('Details:name').enable(
+                        dt.rows({ selected: true }).indexes().length === 0 ? false : true
+                    );
+                    dt.button('Edit:name').enable(
+                        dt.rows({ selected: true }).indexes().length === 0 ? false : true
+                    );
+                    dt.button('Delete:name').enable(
+                        dt.rows({ selected: true }).indexes().length === 0 ? false : true
+                    );
+                    dt.button('Copy:name').enable(
+                        dt.rows({ selected: true }).indexes().length === 0 ? false : true
+                    );
+                }
+            }
+        }).on('deselect', function (e, dt, type, indexes) {
+            if (buttons) {
+                dt.button('Details:name').disable();
+                dt.button('Edit:name').disable();
+                dt.button('Delete:name').disable();
+                dt.button('Copy:name').disable();
+            }
+        });
+    });
+</script>

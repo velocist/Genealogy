@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Entities\ArchivosDocumentalesRepository.cs" />
+		<Compile Remove="Entities\ArchivosIndexacionesRepository.cs" />
+		<Compile Remove="Entities\ArchivosRepository.cs" />
+		<Compile Remove="Entities\ImportFilesRepository.cs" />
+		<Compile Remove="Entities\IndicesRepository.cs" />
+		<Compile Remove="Entities\RecursosRepository.cs" />
+		<Compile Remove="Interfaces\IArchivosDocumentalesRepository.cs" />
+		<Compile Remove="Interfaces\IVistaPadronesRepository.cs" />
+		<Compile Remove="Entities\InvestigacionRepository.cs" />
+		<Compile Remove="Entities\VistaPadronesRepository.cs" />
+		<Compile Remove="Entities\WebsRepository.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Interfaces\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\velocist\velocist.DataAccess\velocist.DataAccess.csproj" />
+		<ProjectReference Include="..\velocist.Objects\velocist.Objects.csproj" />
+	</ItemGroup>
+
+</Project>

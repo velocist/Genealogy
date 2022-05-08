@@ -1,0 +1,38 @@
+﻿<script type="text/javascript" src="~/lib/bs-custom-file/bs-custom-file-input.min.js"></script>
+<script type="text/javascript" id="UploadFileScript">
+    $(document).ready(function () {
+        $(".custom-file-input").on("change", function () {
+            UploadFile('@ViewData["ViewDataControllerName"]', 'Import');
+        });
+    });
+
+    //Upload file
+    function UploadFile(controller, action) {
+        //var fileName = $(this).val().split("\\").pop();
+        //$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+
+        var formData = new FormData();
+        formData.append('file', $('#file')[0].files[0]);
+
+        $.ajax({
+            url: '/' + controller + '/' + action + '/',
+            type: 'POST',
+            data: formData,
+            processData: false,  // tell jQuery not to process the data
+            contentType: false,  // tell jQuery not to set contentType
+            beforeSend: function () {
+                document.body.style.cursor = 'wait';
+            },
+            success: function (data, textStatus) {
+                window.location.reload();
+            },
+            error: function (xhr, textStatus) {
+                $('.custom-file-input').val('');
+                ShowModal(xhr.responseJSON);
+            },
+            complete: function (xhr, textStatus) {
+                document.body.style.cursor = 'auto';
+            }
+        });
+    };
+</script>

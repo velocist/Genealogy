@@ -1,0 +1,134 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="form-row">
+    <div class="col-12 text-center mb-3">
+        <h1 class="display-4">¡Bienvenido!</h1>
+        @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+    </div>
+</div>
+<div class="form-row">
+    <div class="col-xs-12 col-md-3 col-lg-3 mb-3">
+        <div class="card border-info text-center">
+            <h5 class="card-header">@SharedTranslations["Grupos de facebook"]</h5>
+            <div class="card-body text-info">
+                <div class="row">
+                    <ul class="list-group list-group-flush text-center">
+                        <li class="list-group-item">
+                            <a href="https://www.facebook.com/groups/527553194275688" target="_blank" class="">
+                                @SharedTranslations["Genealogía Granada"]
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="https://www.facebook.com/groups/1620830498156805" target="_blank" class="">
+                                @SharedTranslations["Genealogía en Cáceres"]
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="https://www.facebook.com/groups/1832965443384269" target="_blank" class="">
+                                @SharedTranslations["Genealogía de Badajoz y provincia"]
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="https://www.facebook.com/groups/GenSevilla" target="_blank" class="">
+                                @SharedTranslations["GenSevilla"]
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="https://www.facebook.com/groups/scghsvn" target="_blank" class="">
+                                @SharedTranslations["Amics de la Societat Catalana de Genealogia (SCGHSVN)"]
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+@*    <div class="col-xs-12 col-md-3 col-lg-3 mb-3">
+        <partial name="_PaginasGenealogia" />
+    </div>
+    <div class="col-md-12 col-lg-4 mb-3">
+        <partial name="_Webs" />
+    </div>*@
+    <div class="col-md-12 col-lg-4 mb-3">
+        <div class="card border-success text-center">
+            <h5 class="card-header">@SharedTranslations["Obtencion de certificados del registro civil y solicitudes a FS"]</h5>
+            <div class="card-body text-success">
+                <div class="row">
+                    <div class="col-12">
+                        <a href="https://sede.mjusticia.gob.es/es/tramites/certificado-nacimiento" target="_blank" class="">
+                            @SharedTranslations["Solicitud de certificado electrónico de Nacimiento."]
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <a href="https://sede.mjusticia.gob.es/es/tramites/certificado-matrimonio" target="_blank" class="">
+                            @SharedTranslations["Solicitud de certificado electrónico de Matrimonio."]
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <a href="https://sede.mjusticia.gob.es/es/tramites/certificado-defuncion" target="_blank" class="">
+                            @SharedTranslations["Solicitud de certificado electrónico de Defuncion."]
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=s-7mYddfqkquPGHo3rCbeXDgy5vNu0pJhOnXB8jRDZtUNzlIR1VFVkhEWFNSVVFQNDRTUjdGRzRFVy4u&fbclid=IwAR0eJI9jC08ndDKA8F6wjhIoVixBTvXqQBzWKmKGLdmYCSq_6Vsl78j7fAE" target="_blank" class="">
+                            @SharedTranslations["Solicitudes a Family Search"]
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-lg-4 mb-3">
+        <div class="card border-dark text-center">
+            <h5 class="card-header">@SharedTranslations["Buscadores"]</h5>
+            <div class="card-body text-dark">
+                <div class="row">
+                    <div class="col-12">
+                        <a href="https://www.idcrawl.com/" target="_blank" class="">
+                            @SharedTranslations["IDCrawl"]
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <a href="https://webmii.com/" target="_blank" class="">
+                            @SharedTranslations["Webmii"]
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-lg-4 mb-3">
+        <div class="card border-dark text-center">
+            <h5 class="card-header">@SharedTranslations["Censo guias"]</h5>
+            <div class="card-body text-dark">
+                <div class="row">
+                    <div class="col-12">
+                        <a href="http://censoarchivos.mcu.es/CensoGuia/enlaces.htm" target="_blank" class="">
+                            @SharedTranslations["Censo-Guia de Archivos de España e Iberoamérica"]
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@section Styles {
+    }
+    @section Scripts{
+        @{await Html.RenderPartialAsync("_ModalScriptsPartial");}
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+            });
+        </script>
+    }*@

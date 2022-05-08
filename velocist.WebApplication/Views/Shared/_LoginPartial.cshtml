@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@*<ul class="navbar-nav">*@
+@if (SignInManager.IsSignedIn(User)) {
+    <li class="nav-item">
+        <a class="nav-link" asp-area="" asp-controller="Investigacion" asp-action="Index">@SharedTranslations["Investigación"]</a>
+    </li>
+    <!--<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+            @SharedTranslations["Archivos"]
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+            @*<a class="dropdown-item" asp-area="" asp-controller="Archivos" asp-action="Index">@SharedTranslations["Archivos"]</a>*@
+            @*<a class="dropdown-item" asp-area="" asp-controller="ArchivosIndexaciones" asp-action="Index">@SharedTranslations["Indexaciones"]</a>*@
+            @*<a class="dropdown-item" asp-area="" asp-controller="FileViewer" asp-action="Index">@SharedTranslations["FileViewer"]</a>*@
+            @*<a class="dropdown-item" asp-area="" asp-controller="Tickets" asp-action="Index">@SharedTranslations["Tickets"]</a>*@
+            @*<div class="dropdown-divider"></div>*@
+        <!--</div>
+    </li>-->
+    @if (User.IsInRole(Constants.Roles.SuperAdmin.ToString())) {
+        <li class="nav-item">
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                @SharedTranslations["Admin"]
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" asp-area="Identity" asp-page="/Admin/Roles/Index" title="@SharedTranslations["Roles"]">@SharedTranslations["Roles"]</a>
+                <a class="dropdown-item" asp-area="Identity" asp-page="/Admin/Users/Index" title="@SharedTranslations["Usuarios"]">@SharedTranslations["Usuarios"]</a>
+                @*<div class="dropdown-divider"></div>*@
+            </div>
+        </li>
+    }
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+            @SharedTranslations["Cuenta"]
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@SharedTranslations["Perfil"]</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Tickets/Index" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">@SharedTranslations["Tickets"]</a>
+            <div class="dropdown-divider"></div>
+            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button id="logout" type="submit" class="nav-link btn btn-link text-dark">@SharedTranslations["Salir"]</button>
+            </form>
+        </div>
+    </li>
+} else {
+    @*<li class="nav-item">
+            <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>*@
+    <li class="nav-item">
+        <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">@SharedTranslations["Entrar"]</a>
+    </li>
+}
+@*</ul>*@

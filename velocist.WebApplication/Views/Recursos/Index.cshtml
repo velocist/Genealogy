@@ -1,0 +1,78 @@
+﻿@model IEnumerable<RecursosViewModel>
+@{
+    ViewData["Title"] = ViewBag.Title;
+    ViewData["ViewDataControllerName"] = ViewBag.ControllerName;
+    bool UploadFile = ViewBag.UploadFile;
+    string partialNameScript = ViewBag.PartialNameScript;
+    string partialName = ViewBag.PartialName;
+    bool first = true;
+}
+<!-- Modal -->
+<div id="modalDiv"></div>
+
+<div class="form-row">
+    <partial name="~/Views/Shared/_AlertError.cshtml" />
+    <div class="col">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" id="navTable">
+            <a class="navbar-brand" href="#">Recurso</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                   @* @foreach (TipoModel item in ViewBag.Tipos) {
+                        if (first) {
+                            <a class="nav-link active" href="#" data-id="@item.Id">@item.Nombre<span class="sr-only">(current)</span></a>
+                            first = false;
+                        } else {
+                            <a class="nav-link" href="#" data-id="@item.Id">@item.Nombre</a>
+                        }
+                    }*@
+                </div>
+            </div>
+        </nav>
+        <partial name="@partialName" />
+    </div>
+</div>
+@if (User.Identity.IsAuthenticated) {
+    @if (UploadFile) {
+        <input type="file" class="custom-file-input" id="file" name="file" hidden />
+        await Html.RenderPartialAsync("~/Views/Shared/Scripts/_UploadFileScriptsPartial.cshtml");
+        <script type="text/javascript">
+            var buttons = true;
+            var uploadFile = true;
+        </script>
+    } else {
+        <script type="text/javascript">
+            var buttons = true;
+            var buttons = false;
+        </script>
+    }
+} else {
+    <script type="text/javascript">
+        var buttons = false;
+        var uploadFile = false;
+    </script>
+}
+
+@section Styles {
+    @{await Html.RenderPartialAsync("~/Views/Shared/Scripts/_TableStylesPartial.cshtml");}
+}
+@section Scripts{
+    @{await Html.RenderPartialAsync("~/Views/Shared/Scripts/_TableScriptsPartial.cshtml");}
+    @{await Html.RenderPartialAsync(partialNameScript);}
+    @{await Html.RenderPartialAsync("~/Views/Shared/Scripts/_ModalScriptsPartial.cshtml");}
+    <script type="text/javascript">
+        'use strict';
+        var tipoRecurso = 1;
+        $('.nav-link').click(function () {
+            tipoRecurso = $(this).attr('data-id');
+            $('.nav-link.active').removeClass('active');
+            $(this).addClass("active");
+            tableRecurso.ajax.reload();
+            if ($('.navbar-toggler').is(':visible')) {
+                $('#navbarNavAltMarkup').collapse('toggle');
+            }
+        });
+    </script>
+}
