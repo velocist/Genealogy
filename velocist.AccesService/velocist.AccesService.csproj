@@ -1,18 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Autofac" Version="6.3.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.16" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\velocist\velocist.DataAccess\velocist.DataAccess.csproj" />
-    <ProjectReference Include="..\..\velocist\velocist.LogService\velocist.LogService.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\velocist\velocist.DataAccess\velocist.DataAccess.csproj" />
+		<ProjectReference Include="..\..\velocist\velocist.LogService\velocist.LogService.csproj" />
+		<ProjectReference Include="..\velocist.Objects\velocist.Objects.csproj" />
+	</ItemGroup>
 
 </Project>
