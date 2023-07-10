@@ -1,9 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 using velocist.IdentityService.Entities;
 
 namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
@@ -11,6 +8,11 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
         private readonly UserManager<User> _userManager;
         private readonly ILogger<Disable2faModel> _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Disable2faModel"/> class.
+        /// </summary>
+        /// <param name="userManager">The user manager.</param>
+        /// <param name="logger">The logger.</param>
         public Disable2faModel(
             UserManager<User> userManager,
             ILogger<Disable2faModel> logger) {
@@ -18,9 +20,20 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
             _logger = logger;
         }
 
+        /// <summary>
+        /// Gets or sets the status message.
+        /// </summary>
+        /// <value>
+        /// The status message.
+        /// </value>
         [TempData]
         public string StatusMessage { get; set; }
 
+        /// <summary>
+        /// Called when [get].
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="System.InvalidOperationException">Cannot disable 2FA for user with ID '{_userManager.GetUserId(User)}' as it's not currently enabled.</exception>
         public async Task<IActionResult> OnGet() {
             var user = await _userManager.GetUserAsync(User);
             if (user == null) {
@@ -34,6 +47,11 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
             return Page();
         }
 
+        /// <summary>
+        /// Called when [post asynchronous].
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="System.InvalidOperationException">Unexpected error occurred disabling 2FA for user with ID '{_userManager.GetUserId(User)}'.</exception>
         public async Task<IActionResult> OnPostAsync() {
             var user = await _userManager.GetUserAsync(User);
             if (user == null) {

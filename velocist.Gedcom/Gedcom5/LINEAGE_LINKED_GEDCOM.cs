@@ -19,6 +19,7 @@ namespace velocist.Gedcom.Gedcom5 {
         [Tag(StringTags.HEADER)]
         public HEADER HEAD { get; set; }
 
+
         public SUBMISSION_RECORD SUBMISSION_RECORD { get; set; }
 
         [Required]
@@ -28,7 +29,10 @@ namespace velocist.Gedcom.Gedcom5 {
         public TRLR TRLR { get; set; }
 
         public LINEAGE_LINKED_GEDCOM() {
+            HEAD = new HEADER();
+            SUBMISSION_RECORD = new SUBMISSION_RECORD();
             RECORDS = new List<IRECORD>();
+            TRLR = new TRLR();
         }
     }
 }

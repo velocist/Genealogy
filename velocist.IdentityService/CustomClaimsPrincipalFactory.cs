@@ -9,7 +9,7 @@ namespace velocist.IdentityService {
     /// <summary>
     /// The custom claims factory for identity login
     /// </summary>
-    /// <seealso cref="Microsoft.AspNetCore.Identity.UserClaimsPrincipalFactory&lt;User, Microsoft.AspNetCore.Identity.IdentityRole&gt;" />
+    /// <seealso cref="Microsoft.AspNetCore.Identity.UserClaimsPrincipalFactory{TUser, TRole}" />
     public class CustomClaimsPrincipalFactory : UserClaimsPrincipalFactory<User, IdentityRole> {
 
         /// <summary>

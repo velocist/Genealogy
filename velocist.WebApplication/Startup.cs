@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -11,11 +8,12 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using velocist.AccessService;
 using velocist.IdentityService;
 using velocist.IdentityService.Entities;
 using velocist.Objects.Entities;
-using velocist.AccessService;
 using velocist.Services;
+using velocist.Services.Log;
 using velocist.Web;
 using velocist.WebApplication.Core;
 
@@ -39,11 +37,11 @@ namespace velocist.WebApplication {
         /// </summary>
         public IConfiguration Configuration { get; set; }
 
-        ///// <summary>
-        ///// Method for registry services tot eh container
-        ///// This method gets called by the runtime. Use this method to add services to the container.
-        ///// </summary>
-        ///// <param name="services"></param>
+        /// <summary>
+        /// Method for registry services tot eh container
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services) {
             /* HSTS (HTTP Strict Transport Security)
              * Forces the web server to communicate over an HTTPS connection */
@@ -81,13 +79,14 @@ namespace velocist.WebApplication {
             services.AddServicesIdentityDbContext<AuthContext>(authConnectionString, AccessServiceSettings.AuthContextMigration, requireConfirmedAccount: false);
 
             //var adminAssembly = Assembly.Load(new AssemblyName(AccesConfiguration.AuthContextMigration));
+            services.AddGrpcClient<velocist.GenealogyGrpcService.Greeter.GreeterClient>();
 
             services.AddControllersWithViews()
                 .AddRazorPagesOptions(options => {
                     //options.AllowAreas = true;
                     options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
                     options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
-                }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                })
                 .AddRazorRuntimeCompilation()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .AddDataAnnotationsLocalization();
@@ -99,15 +98,15 @@ namespace velocist.WebApplication {
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
             });
 
-        }
+		}
 
-        /// <summary>
-        /// Method fo configure the HTTP request pipeline.
-        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        /// </summary>
-        /// <param name="app"></param>
-        /// <param name="env"></param>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
+		/// <summary>
+		/// Method fo configure the HTTP request pipeline.
+		/// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		/// </summary>
+		/// <param name="app"></param>
+		/// <param name="env"></param>
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             } else {

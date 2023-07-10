@@ -1,8 +1,6 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 using velocist.IdentityService.Entities;
 
 namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
@@ -10,6 +8,11 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
         private readonly UserManager<User> _userManager;
         private readonly ILogger<PersonalDataModel> _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PersonalDataModel"/> class.
+        /// </summary>
+        /// <param name="userManager">The user manager.</param>
+        /// <param name="logger">The logger.</param>
         public PersonalDataModel(
             UserManager<User> userManager,
             ILogger<PersonalDataModel> logger) {
@@ -17,6 +20,10 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
             _logger = logger;
         }
 
+        /// <summary>
+        /// Called when [get].
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnGet() {
             var user = await _userManager.GetUserAsync(User);
             if (user == null) {

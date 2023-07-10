@@ -21,6 +21,7 @@
         public const string BIRTH = "BIRT";
         public const string BLESSING = "BLES";
         public const string BURI = "BURIAL";
+        public const string BOTH = "BOTH"; //TODO
         public const string CALL_NUMBER = "CALN";
         public const string CASTE = "CAST";
         public const string CAUSE = "CAUS";

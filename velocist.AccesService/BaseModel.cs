@@ -9,7 +9,7 @@ namespace velocist.AccessService {
     /// </summary>
     /// <typeparam name="TEntity">The type of the entity.</typeparam>
     /// <typeparam name="TContext">The type of the context.</typeparam>
-    public abstract class BaseModel<TEntity, TContext>: IBaseModel where TEntity : class where TContext : DbContext {
+    public abstract class BaseModel<TEntity, TContext> : IBaseModel where TEntity : class where TContext : DbContext {
 
         /// <summary>
         /// The unit of work of context

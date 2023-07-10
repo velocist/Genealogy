@@ -128,10 +128,14 @@
             // 
             // treeView
             // 
+            this.treeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.treeView.Location = new System.Drawing.Point(629, 111);
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(263, 431);
+            this.treeView.Size = new System.Drawing.Size(320, 431);
             this.treeView.TabIndex = 18;
+            this.treeView.DoubleClick += new System.EventHandler(this.treeView_DoubleClick);
             // 
             // FrmGedcom
             // 

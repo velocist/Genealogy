@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
     public static class ManageNavPages {

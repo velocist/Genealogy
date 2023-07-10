@@ -1,5 +1,4 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using velocist.AccessService;
 using velocist.IdentityService.Entities;
 using velocist.Services.Formats;

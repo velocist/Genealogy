@@ -1,12 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
+using velocist.Business.Models;
 using velocist.Objects;
 using velocist.WinForms;
 
 namespace velocist.WinFormsApp.Forms {
 
     public partial class FrmIndices : Form {
+
+        private readonly ILogger<FrmIndices> _logger;
+
         public FrmIndices() {
             InitializeComponent();
         }
@@ -34,11 +35,23 @@ namespace velocist.WinFormsApp.Forms {
 
         private void LoadTable(DataGridView dataGridView, int employeeId = 0) {
             try {
-                //var list = new IndicesViewModel().List().ToList();
-                //if (list != null)
-                //    dataGridView.LoadTable<IndiceModel>(list);
+                var list = new IndicesViewModel().List().ToList();
+                if (list != null)
+                    dataGridView.LoadTable(list);
             } catch (Exception ex) {
                 throw new Exception(ex.Message);
+            }
+        }
+
+        private void BtnExport_Click(object sender, EventArgs e) {
+            try {
+                //if (!this.CheckOpenForms<ModalSearch<RecursosMo>>()) {
+                //ModalSearch<IndiceModel> frm = new((List<IndiceModel>)DgvData.DataSource);
+                //frm.ShowDialog();
+                //}
+            } catch (Exception ex) {
+                _logger.LogError(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
     }

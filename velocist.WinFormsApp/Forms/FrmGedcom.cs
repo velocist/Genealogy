@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Windows.Forms;
-using Microsoft.Extensions.Logging;
-using velocist.Gedcom.Core;
+﻿using velocist.Gedcom.Core;
 using velocist.WinForms;
 
 namespace velocist.WinFormsApp.Forms {
@@ -36,72 +30,34 @@ namespace velocist.WinFormsApp.Forms {
                     TxtOutputFileName.Text = OfdFilePath.FileName;
                 }
             } catch (Exception ex) {
-                _logger.LogError(ex.Message);
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private int line = 0;
-        private int root = 0;
-
-        private void BtnLoadResults_Click(object sender, EventArgs e) {
-            try {
-                List<string> list = GedComFileManager.Read(TxtOutputFileName.Text).ToList();
-                if (list != null)
-                    DgvData.LoadTable(list);
-
-                GedComFileManager.SetGedcomObject(list);
-
-                TreeNode mainNode = new TreeNode {
-                    Text = new FileInfo(TxtOutputFileName.Text).Name,
-                    Tag = "file"
-                };
-
-                for (line = 0; line < list.Count; line++) {
-
-                    TreeNode subNode = new TreeNode();
-                    if (line != list.Count && list[line].StartsWith("0")) {
-                        root = 0;
-                        subNode.Text = list[line];
-                        subNode.Tag = "node" + line.ToString();
-                        var node = mainNode.Nodes.Add(list[line]);
-                        line++;
-
-                        TreeNode subNode2 = new TreeNode();
-                        if (line != list.Count && !list[line].StartsWith((root).ToString())) {
-                            subNode2.Text = list[line];
-                            subNode2.Tag = "node" + line.ToString();
-                            node.Nodes.Add(subNode2);
-                            root++;
-                            line++;
-
-                            bool continued = true;
-                            while (continued) {
-                                continued = GetNode(list, subNode2);
-                            }
-                        }
-                    }
-                }
-                treeView.Nodes.Add(mainNode);
-            } catch (Exception ex) {
                 //_logger.LogError(ex.Message);
                 MessageBox.Show(ex.Message);
             }
         }
 
-        private bool GetNode(List<string> list, TreeNode subNode) {
-            if (line != list.Count && list[line].StartsWith((root + 1).ToString())) {
-                TreeNode subNode2 = new TreeNode {
-                    Text = list[line],
-                    Tag = "node" + line.ToString()
+        private void BtnLoadResults_Click(object sender, EventArgs e) {
+            try {
+                List<string> list = GedcomFileManager.Read(TxtOutputFileName.Text).ToList();
+                if (list != null)
+                    DgvData.LoadTable(list);
+
+                TreeNode mainNode = new() {
+                    Name = "root",
+                    Text = new FileInfo(TxtOutputFileName.Text).Name,
+                    Tag = "file"
                 };
-                subNode.Nodes.Add(subNode2);
-                line++;
-                return true;
-            } else {
-                return false;
+
+                GetNode(list, mainNode);
+                treeView.Nodes.Add(mainNode);
+                treeView.Refresh();
+
+                Gedcom.Core.GedcomConvertHelper.SetGedcomObject(list);
+            } catch (Exception ex) {
+                _logger.LogError(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
+
 
         private void FrmGedcom_Load(object sender, EventArgs e) =>
             //InitTable(DgvData);
@@ -115,6 +71,54 @@ namespace velocist.WinFormsApp.Forms {
             } catch (Exception ex) {
                 //_logger.LogError(ex.Message);
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void treeView_DoubleClick(object sender, EventArgs e) {
+            try {
+                if (treeView.SelectedNode.IsSelected) {
+                    //var data = EnumHelpers.ParseByDescription<ADOPTED_BY_WHICH_PARENT, TagAttribute>(StringTags.HUSBAND, false);
+                    //GedComFileManager.SetGedcomObject(list);
+                    //_logger.LogDebug("Data");
+                }
+            } catch (Exception ex) {
+                //_logger.LogError(ex.Message);
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void GetNode(List<string> list, TreeNode rootNode) {
+
+            int previousLevel = 0;
+
+            TreeNode actualNode;
+            TreeNode previousNode = rootNode;
+
+            for (int line = 0; line < list.Count; line++) {
+                int actualLevel = int.Parse(list[line].Split(" ")[0]);
+
+                actualNode = new TreeNode {
+                    Name = "Line" + line.ToString(),
+                    Text = list[line],
+                    Tag = actualLevel.ToString(),
+                };
+
+                if (actualLevel == 0) {
+                    rootNode.Nodes.Add(actualNode);
+                } else if (actualLevel > previousLevel) {
+                    previousNode.Nodes.Add(actualNode);
+                } else if (actualLevel < previousLevel) {
+                    int levels = previousLevel - actualLevel;
+                    for (int i = 0; i <= levels; i++) {
+                        previousNode = previousNode.Parent;
+                    }
+                    previousNode.Nodes.Add(actualNode);
+                } else if (actualLevel == previousLevel) {
+                    previousNode.Parent.Nodes.Add(actualNode);
+                }
+
+                previousLevel = actualLevel;
+                previousNode = actualNode;
             }
         }
     }

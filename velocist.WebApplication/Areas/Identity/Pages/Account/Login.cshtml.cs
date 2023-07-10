@@ -1,13 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 using velocist.IdentityService.Entities;
 
 namespace velocist.WebApplication.Areas.Identity.Pages.Account {
@@ -17,6 +13,12 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoginModel"/> class.
+        /// </summary>
+        /// <param name="signInManager">The sign in manager.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="userManager">The user manager.</param>
         public LoginModel(SignInManager<User> signInManager,
             ILogger<LoginModel> logger,
             UserManager<User> userManager) {
@@ -25,13 +27,37 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
             _logger = logger;
         }
 
+        /// <summary>
+        /// Gets or sets the input.
+        /// </summary>
+        /// <value>
+        /// The input.
+        /// </value>
         [BindProperty]
         public InputModel Input { get; set; }
 
+        /// <summary>
+        /// Gets or sets the external logins.
+        /// </summary>
+        /// <value>
+        /// The external logins.
+        /// </value>
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
+        /// <summary>
+        /// Gets or sets the return URL.
+        /// </summary>
+        /// <value>
+        /// The return URL.
+        /// </value>
         public string ReturnUrl { get; set; }
 
+        /// <summary>
+        /// Gets or sets the error message.
+        /// </summary>
+        /// <value>
+        /// The error message.
+        /// </value>
         [TempData]
         public string ErrorMessage { get; set; }
 
@@ -48,6 +74,10 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
             public bool RememberMe { get; set; }
         }
 
+        /// <summary>
+        /// Called when [get asynchronous].
+        /// </summary>
+        /// <param name="returnUrl">The return URL.</param>
         public async Task OnGetAsync(string returnUrl = null) {
             if (!string.IsNullOrEmpty(ErrorMessage)) {
                 ModelState.AddModelError(string.Empty, ErrorMessage);
@@ -63,6 +93,11 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
             ReturnUrl = returnUrl;
         }
 
+        /// <summary>
+        /// Called when [post asynchronous].
+        /// </summary>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns></returns>
         public async Task<IActionResult> OnPostAsync(string returnUrl = null) {
             returnUrl ??= Url.Content("~/");
 
@@ -77,7 +112,7 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor) {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
+                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, Input.RememberMe });
                 }
                 if (result.IsLockedOut) {
                     _logger.LogWarning("User account locked out.");

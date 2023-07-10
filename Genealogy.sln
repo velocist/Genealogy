@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "velocist.AccesService", "ve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "velocist.LogService", "..\velocist\velocist.LogService\velocist.LogService.csproj", "{9F507419-FE58-4EA2-AE8D-110FC20B5F22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "velocist.GenealogyGrpcService", "velocist.GenealogyGrpcService\velocist.GenealogyGrpcService.csproj", "{7FFE18B6-96F2-4579-86AB-807AFCAC8176}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{9F507419-FE58-4EA2-AE8D-110FC20B5F22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F507419-FE58-4EA2-AE8D-110FC20B5F22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F507419-FE58-4EA2-AE8D-110FC20B5F22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FFE18B6-96F2-4579-86AB-807AFCAC8176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FFE18B6-96F2-4579-86AB-807AFCAC8176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FFE18B6-96F2-4579-86AB-807AFCAC8176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FFE18B6-96F2-4579-86AB-807AFCAC8176}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

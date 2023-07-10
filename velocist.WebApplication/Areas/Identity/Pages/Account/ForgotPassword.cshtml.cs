@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Text;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -16,11 +14,22 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
         private readonly UserManager<User> _userManager;
         private readonly IEmailSender _emailSender;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ForgotPasswordModel"/> class.
+        /// </summary>
+        /// <param name="userManager">The user manager.</param>
+        /// <param name="emailSender">The email sender.</param>
         public ForgotPasswordModel(UserManager<User> userManager, IEmailSender emailSender) {
             _userManager = userManager;
             _emailSender = emailSender;
         }
 
+        /// <summary>
+        /// Gets or sets the input.
+        /// </summary>
+        /// <value>
+        /// The input.
+        /// </value>
         [BindProperty]
         public InputModel Input { get; set; }
 
@@ -30,6 +39,10 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
             public string Email { get; set; }
         }
 
+        /// <summary>
+        /// Called when [post asynchronous].
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPostAsync() {
             if (ModelState.IsValid) {
                 var user = await _userManager.FindByEmailAsync(Input.Email);

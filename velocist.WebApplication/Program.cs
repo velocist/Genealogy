@@ -1,4 +1,3 @@
-using System.Text;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
@@ -27,7 +26,7 @@ namespace velocist.WebApplication {
 .ConfigureAppConfiguration((hostingContext, config) => {
     AccessService.AccessServiceConfiguration.GetConfiguration();
 }).ConfigureLogging(logging => {
-    LogService.LogServiceConfiguration.GetConfiguration();
+    LogService.LogServiceContainer.GetConfiguration();
 }).ConfigureWebHostDefaults(webBuilder => {
     webBuilder.UseStartup<Startup>();
 });

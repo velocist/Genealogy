@@ -20,11 +20,20 @@ namespace velocist.AccessService {
           options.UseSqlServer(connectionString, x => x.MigrationsAssembly(migrationAssembly))
           .EnableSensitiveDataLogging(enableSensitiveDataLogging));
 
+        /// <summary>
+        /// Adds the service SQL server.
+        /// </summary>
+        /// <param name="services">The services.</param>
         public static void AddServiceSqlServer(this IServiceCollection services) {
             services.AddScoped(typeof(DataAccess.SqlServer.Interfaces.IUnitOfWork<>), typeof(DataAccess.SqlServer.UnitOfWork<>));
             services.AddScoped(typeof(DataAccess.SqlServer.Interfaces.IGenericRepository<,>), typeof(DataAccess.SqlServer.GenericRepository<,>));
         }
 
+        /// <summary>
+        /// Adds the services my SQL.
+        /// </summary>
+        /// <param name="services">The services.</param>
+        /// <param name="connectionString">The connection string.</param>
         public static void AddServicesMySql(this IServiceCollection services, string connectionString) {
             services.AddScoped(typeof(DataAccess.MySql.Interfaces.IUnitOfWork), typeof(DataAccess.MySql.UnitOfWork));
             services.AddSingleton<DataAccess.MySql.Interfaces.IConnector>(new DataAccess.MySql.MySqlConnector(connectionString));

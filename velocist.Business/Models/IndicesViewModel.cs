@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Logging;
+using velocist.AccessService;
 using velocist.Business.Models.App;
 using velocist.Objects.Entities;
-using velocist.AccessService;
 using velocist.Services.Json;
 
 #nullable disable
@@ -14,7 +14,7 @@ namespace velocist.Business.Models {
     /// <summary>
     /// The Indices view model class
     /// </summary>
-    /// <seealso cref="velocist.Business.BaseModel&lt;Models.IndicesViewModel, Objects.Entities.AppEntitiesContext&gt;" />
+    /// <seealso cref="BaseModel{TEntity, TContext}" />
     public class IndicesViewModel : BaseModel<IndicesViewModel, AppEntitiesContext> {
 
         /// <summary>

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Localization;
-using Microsoft.Extensions.Logging;
 using velocist.Business;
 using velocist.Business.Models;
 using velocist.Business.Models.App;
@@ -15,6 +11,11 @@ using velocist.WebApplication.Controllers;
 using velocist.WebApplication.Core;
 
 namespace Genealogy.Controllers {
+
+    /// <summary>
+    /// Resources controller
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     public class RecursosController : Controller {
 
         #region DEPENDENCE INJECTIONS
@@ -25,6 +26,12 @@ namespace Genealogy.Controllers {
         private readonly IViewRender _renderView;
         #endregion
 
+        /// <summary>
+        /// Gets the modal configuration.
+        /// </summary>
+        /// <value>
+        /// The modal configuration.
+        /// </value>
         public ModalConfiguration<RecursosViewModel> ModalConfiguration { get; }
 
         /// <summary>
@@ -48,6 +55,11 @@ namespace Genealogy.Controllers {
             };
         }
 
+        /// <summary>
+        /// Initializes the view.
+        /// </summary>
+        /// <param name="action">The action.</param>
+        /// <param name="isModal">if set to <c>true</c> [is modal].</param>
         private void InitView(Constants.Action action, bool isModal = true) {
             ViewBag.BreadcumbTitle = _sharedTranslations[ModalConfiguration.Title];
             ViewBag.BreadcumbController = _sharedTranslations[ModalConfiguration.Title];
@@ -91,6 +103,10 @@ namespace Genealogy.Controllers {
             }
         }
 
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> Index() {
             try {
@@ -104,7 +120,11 @@ namespace Genealogy.Controllers {
             }
         }
 
-        //[Authorize(Roles = "SuperAdmin")]
+        /// <summary>
+        /// Creates this instance.
+        /// </summary>
+        /// <returns></returns>
+        //[Authorize(Roles = "SuperAdmin")]        
         [HttpGet]
         public async Task<IActionResult> Create() {
             try {
@@ -117,7 +137,12 @@ namespace Genealogy.Controllers {
             }
         }
 
-        //[Authorize(Roles = "SuperAdmin")]
+        /// <summary>
+        /// Creates the specified model.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
+        //[Authorize(Roles = "SuperAdmin")]        
         [HttpPost]
         public async Task<IActionResult> Create(RecursosViewModel model) {
             string strRenderView;
@@ -143,7 +168,12 @@ namespace Genealogy.Controllers {
             }
         }
 
-        //[Authorize(Roles = "SuperAdmin")]
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
+        //[Authorize(Roles = "SuperAdmin")]        
         [HttpGet]
         public async Task<IActionResult> Edit(string id) {
             string strRenderView;
@@ -171,7 +201,12 @@ namespace Genealogy.Controllers {
             }
         }
 
-        //[Authorize(Roles = "SuperAdmin")]
+        /// <summary>
+        /// Edits the specified model.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
+        //[Authorize(Roles = "SuperAdmin")]        
         [HttpPost]
         public async Task<IActionResult> Edit(RecursosViewModel model) {
             string strRenderView;
@@ -197,8 +232,14 @@ namespace Genealogy.Controllers {
             }
         }
 
-        //[Authorize(Roles = "SuperAdmin")]
+
+        /// <summary>
+        /// Lists the specified tipo identifier.
+        /// </summary>
+        /// <param name="tipo_id">The tipo identifier.</param>
+        /// <returns></returns>
         [HttpPost]
+        //[Authorize(Roles = "SuperAdmin")]        
         public async Task<IActionResult> List(int tipo_id) {
             try {
                 IEnumerable<RecursoModel> model = new RecursosViewModel().List(/*tipo_id*/);

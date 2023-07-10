@@ -9,11 +9,30 @@
         /// The error save
         /// </summary>
         public const string ERROR_SAVE = "Error al guardar";
+
+        /// <summary>
+        /// The error server
+        /// </summary>
         public const string ERROR_SERVER = "Error de servidor";
 
+        /// <summary>
+        /// The error bad request
+        /// </summary>
         public const string ERROR_BAD_REQUEST = "Error 404";
-        public const string WARN = "Error 404";
-        public const string SUCCESS = "Error 404";
+
+        /// <summary>
+        /// The warn
+        /// </summary>
+        public const string WARN = "Warning";
+
+        /// <summary>
+        /// The success
+        /// </summary>
+        public const string SUCCESS = "Success";
+
+        /// <summary>
+        /// The error
+        /// </summary>
         public const string ERROR = "Error";
 
         /// <summary>

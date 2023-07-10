@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using velocist.Gedcom.Core;
 using velocist.Gedcom.Gedcom5.Types;
 
 namespace velocist.Gedcom.Gedcom5.SubStructures {

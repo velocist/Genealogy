@@ -4,11 +4,12 @@ using velocist.Gedcom.Gedcom5.Enums;
 using velocist.Gedcom.Gedcom5.Tags;
 
 namespace velocist.Gedcom.Gedcom5.Types {
+
     /// <summary>
     /// The name of the city used in the address. Isolated for sorting or indexing.
     /// </summary>
     [Tag(StringTags.CITY)]
-    public class ADDRESS_CITY : ITYPE {
+    public class ADDRESS_CITY : PrimitiveType {
         [MinLength(1), MaxLength(60)]
         public string Value { get; set; }
 
@@ -18,7 +19,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// The name of the country that pertains to the associated address. Isolated by some systems for sorting or indexing.
     /// Used in most cases to facilitate automatic sorting of mail.
     /// </summary>
-    public class ADDRESS_COUNTRY : ITYPE {
+    public class ADDRESS_COUNTRY : PrimitiveType {
         [MinLength(1), MaxLength(60)]
         public string Value { get; set; }
     }
@@ -26,7 +27,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// An electronic address that can be used for contact such as an email address
     /// </summary>
-    public class ADDRESS_EMAIL : ITYPE {
+    public class ADDRESS_EMAIL : PrimitiveType {
 
         [MinLength(5), MaxLength(120)]
         public string Value { get; set; }
@@ -35,7 +36,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// A FAX telephone number appropriate for sending data facsimiles.
     /// </summary>
-    public class ADDRESS_FAX : ITYPE {
+    public class ADDRESS_FAX : PrimitiveType {
 
         [MinLength(1), MaxLength(60)]
         public string Value { get; set; }
@@ -46,7 +47,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// When it is used subordinate to an event tag it is the address of the place where the event took place.
     /// The address lines usually contain the addressee’s name and other street and city information so that it forms an address that meets mailing requirements.
     /// </summary>
-    public class ADDRESS_LINE : ITYPE {
+    public class ADDRESS_LINE : PrimitiveType {
         [MinLength(1), MaxLength(60)]
         public string Value { get; set; }
     }
@@ -55,7 +56,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// The first line of the address used for indexing. 
     /// This is the value of the line corresponding to the ADDR tag line in the address structure.
     /// </summary>
-    public class ADDRESS_LINE1 : ITYPE {
+    public class ADDRESS_LINE1 : PrimitiveType {
         [MinLength(1), MaxLength(60)]
         public string Value { get; set; }
     }
@@ -64,7 +65,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// The second line of the address used for indexing. 
     /// This is the value of the first CONT line subordinate to the ADDR tag in the address structure. 
     /// </summary>
-    public class ADDRESS_LINE2 : ITYPE {
+    public class ADDRESS_LINE2 : PrimitiveType {
         [MinLength(1), MaxLength(60)]
         public string Value { get; set; }
     }
@@ -73,7 +74,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// The third line of the address used for indexing. 
     /// This is the value of the second CONT line subordinate to the ADDR tag in the address structure.
     /// </summary>
-    public class ADDRESS_LINE3 : ITYPE {
+    public class ADDRESS_LINE3 : PrimitiveType {
         [MinLength(1), MaxLength(60)]
         public string Value { get; set; }
     }
@@ -81,7 +82,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// The ZIP or postal code used by the various localities in handling of mail. Isolated for sorting or indexing.
     /// </summary>
-    public class ADDRESS_POSTAL_CODE : ITYPE {
+    public class ADDRESS_POSTAL_CODE : PrimitiveType {
         [MinLength(1), MaxLength(10)]
         public string Value { get; set; }
     }
@@ -89,7 +90,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// The name of the state used in the address. Isolated for sorting or indexing.
     /// </summary>
-    public class ADDRESS_STATE : ITYPE {
+    public class ADDRESS_STATE : PrimitiveType {
         [MinLength(1), MaxLength(60)]
         public string Value { get; set; }
     }
@@ -97,7 +98,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// The world wide web page address.
     /// </summary>
-    public class ADDRESS_WEB_PAGE : ITYPE {
+    public class ADDRESS_WEB_PAGE : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -105,7 +106,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// A code which shows which parent in the associated family record adopted this person.
     /// </summary>
-    public class ADOPTED_BY_WHICH_PARENT : ITYPE {
+    public class ADOPTED_BY_WHICH_PARENT : PrimitiveType {
         [MinLength(1), MaxLength(4)]
         public Enums.ADOPTED_BY_WHICH_PARENT Value { get; set; }
     }
@@ -113,7 +114,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// A number that indicates the age in years, months, and days that the principal was at the time of the associated event. Any labels must come after their corresponding number, for example; 4y 8m 10d.
     /// </summary>
-    public class AGE_AT_EVENT : ITYPE {
+    public class AGE_AT_EVENT : PrimitiveType {
         [MinLength(1), MaxLength(4)]
         public Enums.AGE_AT_EVENT Value { get; set; }
     }
@@ -122,7 +123,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// A unique permanent record number of an individual record contained in the Family History Department's Ancestral File.
     /// </summary>
     [Tag(StringTags.ANCESTRAL_FILE_NUMBER)]
-    public class ANCESTRAL_FILE_NUMBER : ITYPE {
+    public class ANCESTRAL_FILE_NUMBER : PrimitiveType {
         [MinLength(1), MaxLength(12)]
         public string Value { get; set; }
     }
@@ -132,7 +133,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// This name must be unique from any other product.Spaces within the name must be substituted 
     /// with a 0x5F (underscore _) so as to create one word.
     /// </summary>
-    public class APPROVED_SYSTEM_ID : ITYPE {
+    public class APPROVED_SYSTEM_ID : PrimitiveType {
         [MinLength(1), MaxLength(20)]
         public string Value { get; set; }
     }
@@ -145,7 +146,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// 1 FACT Woodworking
     ///     2 TYPE Skills
     /// </summary>
-    public class ATTRIBUTE_DESCRIPTOR : ITYPE {
+    public class ATTRIBUTE_DESCRIPTOR : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -166,7 +167,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// etween two interfacing systems.
     /// </summary>
     [Tag(StringTags.REC_ID_NUMBER)]
-    public class AUTOMATED_RECORD_ID : ITYPE {
+    public class AUTOMATED_RECORD_ID : PrimitiveType {
         [MinLength(1), MaxLength(12)]
         public string Value { get; set; }
     }
@@ -175,7 +176,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// A name assigned to a particular group that this person was associated with, such as a particular racial
     /// group, religious group, or a group with an inherited status.
     /// </summary>
-    public class CASTE_NAME : ITYPE {
+    public class CASTE_NAME : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -184,7 +185,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// Used in special cases to record the reasons which precipitated an event. Normally this will be used
     /// subordinate to a death event to show cause of death, such as might be listed on a death certificate.
     /// </summary>
-    public class CAUSE_OF_EVENT : ITYPE {
+    public class CAUSE_OF_EVENT : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -195,7 +196,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// conflicting opinions for display of most likely information first. It is not intended to eliminate the
     /// receiver's need to evaluate the evidence for themselves.
     /// </summary>
-    public class CERTAINTY_ASSESSMENT : ITYPE {
+    public class CERTAINTY_ASSESSMENT : PrimitiveType {
         [MinLength(1), MaxLength(1)]
         public Enums.CERTAINTY_ASSESSMENT Value { get; set; }
     }
@@ -203,7 +204,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// The date that this data was changed.
     /// </summary>
-    public class CHANGE_DATE : ITYPE {
+    public class CHANGE_DATE : PrimitiveType {
         [MinLength(10), MaxLength(11)]
         public string Value { get; set; }
     }
@@ -218,7 +219,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// Note:The IBMPC character set is not allowed.This character set cannot be interpreted properly
     /// without knowing which code page the sender was using.
     /// </summary>
-    public class CHARACTER_SET : ITYPE {
+    public class CHARACTER_SET : PrimitiveType {
         [MinLength(1), MaxLength(8)]
         public Enums.CHARACTER_SET Value { get; set; }
         public VERSION_NUMBER VERSION { get; set; }
@@ -235,7 +236,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// proven = There has been a claim by some that this child does not belongs to this family, but the
     ///         linkage has been proven
     /// </summary>
-    public class CHILD_LINKAGE_STATUS : ITYPE {
+    public class CHILD_LINKAGE_STATUS : PrimitiveType {
         [MinLength(1), MaxLength(8)]
         public Enums.CHILD_LINKAGE_STATUS Value { get; set; }
     }
@@ -243,7 +244,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// A copyright statement needed to protect the copyrights of the submitter of this GEDCOM file
     /// </summary>
-    public class COPYRIGHT_GEDCOM_FILE : ITYPE {
+    public class COPYRIGHT_GEDCOM_FILE : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -254,7 +255,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// opyright statement to indicate that the data came from a copyrighted source.
     /// </summary>
     [Tag(StringTags.COPYRIGHT)]
-    public class COPYRIGHT_SOURCE_DATA : ITYPE {
+    public class COPYRIGHT_SOURCE_DATA : PrimitiveType {
         [MinLength(1), MaxLength(3)]
         public string Value { get; set; }
     }
@@ -266,7 +267,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// children listed in a family structure.
     /// </summary>
     [Tag(StringTags.CHILDREN_COUNT)]
-    public class COUNT_OF_CHILDREN : ITYPE {
+    public class COUNT_OF_CHILDREN : PrimitiveType {
         [MinLength(1), MaxLength(3)]
         public string Value { get; set; }
     }
@@ -275,12 +276,12 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// The number of different families that this person was known to have been a member of as a spouse or
     /// parent, regardless of whether the associated families are represented in the GEDCOM file
     /// </summary>
-    public class COUNT_OF_MARRIAGES : ITYPE {
+    public class COUNT_OF_MARRIAGES : PrimitiveType {
         [MinLength(1), MaxLength(3)]
         public string Value { get; set; }
     }
 
-    public class DATE : ITYPE {
+    public class DATE : PrimitiveType {
         [MinLength(4), MaxLength(35)]
         public string Value { get; set; }
     }
@@ -292,7 +293,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// CAL = Calculated mathematically, for example, from an event date and age.
     /// EST = Estimated based on an algorithm using some other event date.
     /// </summary>
-    public class DATE_APPROXIMATED : ITYPE {
+    public class DATE_APPROXIMATED : PrimitiveType {
         [MinLength(4), MaxLength(35)]
         public string Value { get; set; }
     }
@@ -314,7 +315,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// @#DROMAN@ for future definition
     /// @#DUNKNOWN@ calendar not known
     /// </summary>
-    public class DATE_CALENDAR : ITYPE {
+    public class DATE_CALENDAR : PrimitiveType {
         [MinLength(4), MaxLength(35)]
         public string Value { get; set; }
     }
@@ -324,12 +325,12 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// The date escape determines the date interpretation by signifying which<DATE_CALENDAR> to use.
     /// The default calendar is the Gregorian calendar.
     /// </summary>
-    public class DATE_CALENDAR_ESCAPE : ITYPE {
+    public class DATE_CALENDAR_ESCAPE : PrimitiveType {
         [MinLength(4), MaxLength(15)]
         public string Value { get; set; }
     }
 
-    public class DATE_EXACT : ITYPE {
+    public class DATE_EXACT : PrimitiveType {
         [MinLength(10), MaxLength(11)]
         public string Value { get; set; }
     }
@@ -338,7 +339,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// [ <YEAR>[B.C.] | <MONTH_FREN> <YEAR> | <DAY> <MONTH_FREN> <YEAR> ]
     /// See<MONTH_FREN>
     /// </summary>
-    public class DATE_FREN : ITYPE {
+    public class DATE_FREN : PrimitiveType {
         [MinLength(4), MaxLength(35)]
         public string Value { get; set; }
     }
@@ -348,7 +349,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <DAY> <MONTH> <YEAR_GREG> ]
     /// See<YEAR_GREG>
     /// </summary>
-    public class DATE_GREG : ITYPE {
+    public class DATE_GREG : PrimitiveType {
         [MinLength(4), MaxLength(35)]
         public string Value { get; set; }
     }
@@ -357,7 +358,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// [ <YEAR>[B.C.] | <MONTH_HEBR> <YEAR> | <DAY> <MONTH_HEBR> <YEAR> ]
     /// See<MONTH_HEBR>
     /// </summary>
-    public class DATE_HEBR : ITYPE {
+    public class DATE_HEBR : PrimitiveType {
         [MinLength(4), MaxLength(35)]
         public string Value { get; set; }
     }
@@ -365,7 +366,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// [ <YEAR>[B.C.] | <MONTH> <YEAR> | <DAY> <MONTH> <YEAR> ]
     /// </summary>
-    public class DATE_JULN : ITYPE {
+    public class DATE_JULN : PrimitiveType {
         [MinLength(4), MaxLength(35)]
         public string Value { get; set; }
     }
@@ -378,7 +379,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// ordinance date and temple code is not required, such as when BIC is used. (See
     /// LDS_(ordinance) _DATE_STATUS definitions
     /// </summary>
-    public class DATE_LDS_ORD : ITYPE {
+    public class DATE_LDS_ORD : PrimitiveType {
         [MinLength(4), MaxLength(35)]
         public string Value { get; set; }
     }
@@ -397,7 +398,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// TO 1915
     /// = The state ended in 1915 but the begin date is unknown.
     /// </summary>
-    public class DATE_PERIOD : ITYPE {
+    public class DATE_PERIOD : PrimitiveType {
         [MinLength(7), MaxLength(35)]
         public string Value { get; set; }
 
@@ -407,7 +408,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// Any statement offered as a date when the year is not recognizable to a date parser, but which gives
     /// information about when an event occurred.
     /// </summary>
-    public class DATE_PHRASE : ITYPE {
+    public class DATE_PHRASE : PrimitiveType {
         [MinLength(1), MaxLength(35)]
         public string Value { get; set; }
     }
@@ -430,7 +431,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// 1852 BET JAN 1852 AND DEC 1852
     /// JAN 1920 BET 1 JAN 1920 AND 31 JAN 1920
     /// </summary>
-    public class DATE_RANGE : ITYPE {
+    public class DATE_RANGE : PrimitiveType {
         [MinLength(8), MaxLength(35)]
         public string Value { get; set; }
     }
@@ -440,7 +441,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// The DATE_VALUE represents the date of an activity, attribute, or event where:
     /// INT = Interpreted from knowledge about the associated date phrase included in parentheses. 
     /// </summary>
-    public class DATE_VALUE : ITYPE {
+    public class DATE_VALUE : PrimitiveType {
         [MinLength(1), MaxLength(35)]
         public string Value { get; set; }
     }
@@ -449,7 +450,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// Day of the month, where dd is a numeric digit whose value is within the valid range of the days for the        associated calendar month.
     /// dd
     /// </summary>
-    public class DAY : ITYPE {
+    public class DAY : PrimitiveType {
         [MinLength(1), MaxLength(2)]
         public string Value { get; set; }
     }
@@ -457,7 +458,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// The title of a work, record, item, or object.
     /// </summary>
-    public class DESCRIPTIVE_TITLE : ITYPE {
+    public class DESCRIPTIVE_TITLE : PrimitiveType {
         [MinLength(1), MaxLength(248)]
         public string Value { get; set; }
     }
@@ -466,6 +467,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// A single digit (0-9).
     /// </summary>
     public class DIGIT : PrimitiveType {
+
         [MinLength(1), MaxLength(1)]
         public string Value { get; set; }
     }
@@ -473,7 +475,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// The date that this event data was entered into the original source document.
     /// </summary>
-    public class ENTRY_RECORDING_DATE : ITYPE {
+    public class ENTRY_RECORDING_DATE : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public DATE_VALUE Value { get; set; }
     }
@@ -484,7 +486,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// is expected and will be generally classified in the category of other.
     /// [ <EVENT_TYPE_INDIVIDUAL> | <EVENT_TYPE_FAMILY> | <ATTRIBUTE_TYPE> ]
     /// </summary>
-    public class EVENT_ATTRIBUTE_TYPE : ITYPE { //TODO
+    public class EVENT_ATTRIBUTE_TYPE : PrimitiveType { //TODO
         [MinLength(1), MaxLength(15)]
         public IEVENT_ATTRIBUTE_TYPE Value { get; set; }
     }
@@ -500,7 +502,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// 2 PLAC Cove, Cache, Utah
     /// 2 AGNC Cove City Redevelopment
     /// </summary>
-    public class EVENT_DESCRIPTOR : ITYPE {
+    public class EVENT_DESCRIPTOR : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -521,7 +523,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// 1 MARR
     /// 2 TYPE Common Law
     /// </summary>
-    public class EVENT_OR_FACT_CLASSIFICATION : ITYPE {
+    public class EVENT_OR_FACT_CLASSIFICATION : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -534,7 +536,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// allow a prioritized best view choice and a determination of the certainty associated with the source
     /// used in asserting the cited fact.
     /// </summary>
-    public class EVENT_TYPE_CITED_FROM : ITYPE { //TODO
+    public class EVENT_TYPE_CITED_FROM : PrimitiveType { //TODO
         [MinLength(1), MaxLength(15)]
         public string Value { get; set; }
     }
@@ -565,7 +567,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// enumeration is separated by a comma. Such as a parish register of births, deaths, and marriages would
     /// be BIRT, DEAT, MARR.
     /// </summary>
-    public class EVENTS_RECORDED : ITYPE {
+    public class EVENTS_RECORDED : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -574,7 +576,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// The name of the GEDCOM transmission file. If the file name includes a file extension it must be
     /// shown in the form(filename.ext).
     /// </summary>
-    public class FILE_NAME : ITYPE {
+    public class FILE_NAME : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -584,7 +586,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// descendants of" so that the person receiving the data knows what genealogical information the
     /// transmission contains.
     /// </summary>
-    public class GEDCOM_CONTENT_DESCRIPTION : ITYPE {
+    public class GEDCOM_CONTENT_DESCRIPTION : PrimitiveType {
         [MinLength(1), MaxLength(248)]
         public string Value { get; set; }
     }
@@ -596,7 +598,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// specifications.
     /// </summary>
     [Tag(StringTags.FORMAT)]
-    public class GEDCOM_FORM : ITYPE {
+    public class GEDCOM_FORM : PrimitiveType {
         [MinLength(14), MaxLength(20)]
         public Enums.GEDCOM_FORM Value { get; set; }
     }
@@ -606,13 +608,13 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// when FamilySearch programs build a GEDCOM file for a patron requesting a download of ancestors.
     /// </summary>
     [Tag(StringTags.ANCESTORS)]
-    public class GENERATIONS_OF_ANCESTORS : ITYPE {
+    public class GENERATIONS_OF_ANCESTORS : PrimitiveType {
         [MinLength(1), MaxLength(4)]
         public string Value { get; set; }
     }
 
     [Tag(StringTags.DESCENDANTS)]
-    public class GENERATIONS_OF_DESCENDANTS : ITYPE {
+    public class GENERATIONS_OF_DESCENDANTS : PrimitiveType {
         [MinLength(1), MaxLength(4)]
         public string Value { get; set; }
     }
@@ -620,7 +622,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// A table of valid latin language identification codes.
     /// </summary>
-    public class LANGUAGE_ID : ITYPE {
+    public class LANGUAGE_ID : PrimitiveType {
         [MinLength(1), MaxLength(15)]
         public Enums.LANGUAGE_ID Value { get; set; }
     }
@@ -631,7 +633,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     ///primarily by programs to select language-specific sorting sequences and phonetic name matching
     ///algorithms.
     /// </summary>
-    public class LANGUAGE_OF_TEXT : ITYPE {
+    public class LANGUAGE_OF_TEXT : PrimitiveType {
         [MinLength(1), MaxLength(15)]
         public LANGUAGE_ID Value { get; set; }
     }
@@ -642,7 +644,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// using multiple occurrences in order of priority.
     /// </summary>
     [Tag(StringTags.LANGUAGE)]
-    public class LANGUAGE_PREFERENCE : ITYPE {
+    public class LANGUAGE_PREFERENCE : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public LANGUAGE_ID Value { get; set; }
     }
@@ -661,7 +663,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// SUBMITTED = Ordinance was previously submitted.
     /// UNCLEARED = Data for clearing ordinance request was insufficient.
     /// </summary>
-    public class LDS_BAPTISM_DATE_STATUS : ITYPE {
+    public class LDS_BAPTISM_DATE_STATUS : PrimitiveType {
         [MinLength(5), MaxLength(10)]
         public Enums.LDS_BAPTISM_DATE_STATUS Value { get; set; }
     }
@@ -679,7 +681,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// SUBMITTED = Ordinance was previously submitted.
     /// UNCLEARED = Data for clearing ordinance request was insufficient.
     /// </summary>
-    public class LDS_ENDOWMENT_DATE_STATUS : ITYPE {
+    public class LDS_ENDOWMENT_DATE_STATUS : PrimitiveType {
         [MinLength(5), MaxLength(10)]
         public Enums.LDS_ENDOWMENT_DATE_STATUS Value { get; set; }
     }
@@ -692,22 +694,22 @@ namespace velocist.Gedcom.Gedcom5.Types {
     ///         PRE-1970 = (See pre-1970 under LDS_BAPTISM_DATE_STATUS on page 51.)
     /// STILLBORN = Stillborn, not required.
     /// </summary>
-    public class LDS_CHILD_SEALING_DATE_STATUS : ITYPE {
+    public class LDS_CHILD_SEALING_DATE_STATUS : PrimitiveType {
         [MinLength(3), MaxLength(10)]
         public Enums.LDS_CHILD_SEALING_DATE_STATUS Value { get; set; }
     }
 
-    public class MONTH : ITYPE {
+    public class MONTH : PrimitiveType {
         [MaxLength(3)]
         public Enums.MONTH Value { get; set; }
     }
 
-    public class MONTH_FREN : ITYPE {
+    public class MONTH_FREN : PrimitiveType {
         [MaxLength(4)]
         public Enums.MONTH_FREN Value { get; set; }
     }
 
-    public class MONTH_HEBR : ITYPE {
+    public class MONTH_HEBR : PrimitiveType {
         [MaxLength(3)]
         public Enums.MONTH_HEBR Value { get; set; }
     }
@@ -716,7 +718,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// A complete local or remote file reference to the auxiliary data to be linked to the GEDCOM context.
     /// Remote reference would include a network address where the multimedia data may be obtained.
     /// </summary>
-    public class MULTIMEDIA_FILE_REFERENCE : ITYPE {
+    public class MULTIMEDIA_FILE_REFERENCE : PrimitiveType {
         [MinLength(1), MaxLength(30)]
         public string Value { get; set; }
     }
@@ -727,7 +729,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// allows processors to determine whether they can process the data object. Any linked files should
     /// contain the data required, in the indicated format, to process the file data.
     /// </summary>
-    public class MULTIMEDIA_FORMAT : ITYPE {
+    public class MULTIMEDIA_FORMAT : PrimitiveType {
         [MinLength(3), MaxLength(4)]
         public Enums.MULTIMEDIA_FORMAT Value { get; set; }
     }
@@ -735,7 +737,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// Name of the business, corporation, or person that produced or commissioned the product.
     /// </summary>
-    public class NAME_OF_BUSINESS : ITYPE {
+    public class NAME_OF_BUSINESS : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -744,7 +746,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// Name under which family names for ordinances are stored in the temple's family file.
     /// </summary>
     [Tag(StringTags.FAMILY_FILE)]
-    public class NAME_OF_FAMILY_FILE : ITYPE {
+    public class NAME_OF_FAMILY_FILE : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -752,7 +754,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// The name of the software product that produced this transmission.
     /// </summary>
-    public class NAME_OF_PRODUCT : ITYPE {
+    public class NAME_OF_PRODUCT : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -761,7 +763,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// The official name of the archive in which the stated source material is stored.
     /// </summary>
     [Tag(StringTags.NAME)]
-    public class NAME_OF_REPOSITORY : ITYPE {
+    public class NAME_OF_REPOSITORY : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -771,7 +773,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// example, the data may have been obtained from a CD-ROM disc that was named "U.S. 1880
     /// CENSUS CD-ROM vol. 13."
     /// </summary>
-    public class NAME_OF_SOURCE_DATA : ITYPE {
+    public class NAME_OF_SOURCE_DATA : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -795,7 +797,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// William /Lee/ Parry(surname imbedded in the name string)
     /// William Lee /Pa.../
     /// </summary>
-    public class NAME_PERSONAL : ITYPE {
+    public class NAME_PERSONAL : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -806,7 +808,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     ///subordinate<PHONETIC_TYPE> value, for example if hiragana was used to provide a reading of a
     ///name written in kanji, then the<PHONETIC_TYPE> value would indicate ‘kana’
     /// </summary>
-    public class NAME_PHONETIC_VARIATION : ITYPE {
+    public class NAME_PHONETIC_VARIATION : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -814,7 +816,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// The piece of the name pertaining to the name part of interest. The surname part, the given name part, the name prefix part, or the name suffix part.
     /// </summary>
-    public class NAME_PIECE : ITYPE {
+    public class NAME_PIECE : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -823,7 +825,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// [ <NAME_PIECE> | <NAME_PIECE_GIVEN>, <NAME_PIECE> ]
     /// Given name or earned name.Different given names are separated by a comma.
     /// </summary>
-    public class NAME_PIECE_GIVEN : ITYPE {
+    public class NAME_PIECE_GIVEN : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -832,7 +834,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// [ <NAME_PIECE> | <NAME_PIECE_NICKNAME>, <NAME_PIECE> ]
     /// A descriptive or familiar name used in connection with one's proper name.
     /// </summary>
-    public class NAME_PIECE_NICKNAME : ITYPE {
+    public class NAME_PIECE_NICKNAME : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -845,7 +847,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// Lt.Cmndr.Joseph /Allen/ jr.
     /// In this example Lt. Cmndr. is considered as the name prefix portion.
     /// </summary>
-    public class NAME_PIECE_PREFIX : ITYPE {
+    public class NAME_PIECE_PREFIX : PrimitiveType {
         [MinLength(1), MaxLength(30)]
         public string Value { get; set; }
     }
@@ -858,7 +860,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// Lt.Cmndr.Joseph /Allen/ jr.
     ///         In this example jr. is considered as the name suffix portion.
     /// </summary>
-    public class NAME_PIECE_SUFFIX : ITYPE {
+    public class NAME_PIECE_SUFFIX : PrimitiveType {
         [MinLength(1), MaxLength(30)]
         public string Value { get; set; }
     }
@@ -867,7 +869,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// [ <NAME_PIECE> | <NAME_PIECE_SURNAME>, <NAME_PIECE> ]
     /// Surname or family name.Different surnames are separated by a comma.
     /// </summary>
-    public class NAME_PIECE_SURNAME : ITYPE {
+    public class NAME_PIECE_SURNAME : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -877,7 +879,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// Surname prefix or article used in a family name.Different surname articles are separated by a comma,
     /// for example in the name "de la Cruz", this value would be "de, la".
     /// </summary>
-    public class NAME_PIECE_SURNAME_PREFIX : ITYPE {
+    public class NAME_PIECE_SURNAME_PREFIX : PrimitiveType {
         [MinLength(1), MaxLength(30)]
         public string Value { get; set; }
     }
@@ -890,7 +892,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// reading of a name written in kanji, then the ROMANIZED_TYPE subordinate to the ROMN tag
     /// would indicate romaji.
     /// </summary>
-    public class NAME_ROMANIZED_VARIATION : ITYPE {
+    public class NAME_ROMANIZED_VARIATION : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -898,7 +900,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// <TEXT> excluding commas, numbers, special characters not considered diacritics. 
     /// </summary>
-    public class NAME_TEXT : ITYPE {
+    public class NAME_TEXT : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -913,7 +915,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// married = name was persons previous married name.
     ///         user_defined= other text name that defines the name type.
     /// </summary>
-    public class NAME_TYPE : ITYPE {
+    public class NAME_TYPE : PrimitiveType {
         [MinLength(5), MaxLength(30)]
         public Enums.NAME_TYPE Value { get; set; }
     }
@@ -926,7 +928,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     ///n IDNO 43-456-1899
     ///+1 TYPE Canadian Health Registration
     /// </summary>
-    public class NATIONAL_ID_NUMBER : ITYPE {
+    public class NATIONAL_ID_NUMBER : PrimitiveType {
         [MinLength(1), MaxLength(30)]
         public string Value { get; set; }
     }
@@ -936,7 +938,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     ///         Examples: Irish, Swede, Egyptian Coptic, Sioux Dakota Rosebud, Apache Chiricawa, Navajo Bitter
     /// Water, Eastern Cherokee Taliwa Wolf, and so forth.
     /// </summary>
-    public class NATIONAL_OR_TRIBAL_ORIGIN : ITYPE {
+    public class NATIONAL_OR_TRIBAL_ORIGIN : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -944,7 +946,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// A user-defined tag that is contained in the GEDCOM current transmission. This tag must begin with an underscore(_) and should only be interpreted in the context of the sending system.
     /// </summary>
-    public class NEW_TAG : ITYPE {
+    public class NEW_TAG : PrimitiveType {
         [MinLength(1), MaxLength(15)]
         public string Value { get; set; }
     }
@@ -961,7 +963,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// A convention that indicates the absence of any 8-bit ASCII character in the value including the null
     /// character(0x00) which is prohibited.
     /// </summary>
-    public class NULL : ITYPE {
+    public class NULL : PrimitiveType {
         [MinLength(0), MaxLength(0)]
         public string Value { get; set; }
     }
@@ -969,7 +971,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// [<DIGIT> | <NUMBER>+<DIGIT>]
     /// </summary>
-    public class NUMBER : ITYPE {
+    public class NUMBER : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -977,7 +979,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// The kind of activity that an individual does for a job, profession, or principal activity.
     /// </summary>
-    public class OCCUPATION : ITYPE {
+    public class OCCUPATION : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -987,7 +989,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// A flag that indicates whether submission should be processed for clearing temple ordinances.
     /// </summary>
     [Tag(StringTags.ORDINANCE)]
-    public class ORDINANCE_PROCESS_FLAG : ITYPE {
+    public class ORDINANCE_PROCESS_FLAG : PrimitiveType {
         [MinLength(2), MaxLength(3)]
         public Enums.ORDINANCE_PROCESS_FLAG Value { get; set; }
     }
@@ -1001,7 +1003,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// foster = indicates child was included in a foster or guardian family.
     /// sealing = indicates child was sealed to parents other than birth parents.
     /// </summary>
-    public class PEDIGREE_LINKAGE_TYPE : ITYPE {
+    public class PEDIGREE_LINKAGE_TYPE : PrimitiveType {
         [MinLength(5), MaxLength(7)]
         public Enums.PEDIGREE_LINKAGE_TYPE Value { get; set; }
     }
@@ -1017,7 +1019,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// network is a future implementation.
     /// </summary>
     [Tag(StringTags.REC_FILE_NUMBER)]
-    public class PERMANENT_RECORD_FILE_NUMBER : ITYPE {
+    public class PERMANENT_RECORD_FILE_NUMBER : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -1025,7 +1027,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// A phone number.
     /// </summary>
-    public class PHONE_NUMBER : ITYPE {
+    public class PHONE_NUMBER : PrimitiveType {
         [MinLength(1), MaxLength(25)]
         public string Value { get; set; }
     }
@@ -1038,7 +1040,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// kana Hiragana and/or Katakana characters were used in sounding the Kanji character used by
     /// japanese
     /// </summary>
-    public class PHONETIC_TYPE : ITYPE {
+    public class PHONETIC_TYPE : PrimitiveType {
         [MinLength(5), MaxLength(30)]
         public string Value { get; set; }
     }
@@ -1050,7 +1052,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     ///1 DSCR Hair Brown, Eyes Brown, Height 5 ft 8 in
     ///        2 DATE 23 JUL 1935
     /// </summary>
-    public class PHYSICAL_DESCRIPTION : ITYPE {
+    public class PHYSICAL_DESCRIPTION : PrimitiveType {
         [MinLength(1), MaxLength(248)]
         public string Value { get; set; }
     }
@@ -1065,7 +1067,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// structure stated in the HEADER. This usage is not common and, therefore, not encouraged. It should
     /// only be used when a system has over-structured its place-names.
     /// </summary>
-    public class PLACE_HIERARCHY : ITYPE {
+    public class PLACE_HIERARCHY : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -1078,7 +1080,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// value by 3600 and adding the results together.This sum becomes the fractional part of the degree’s
     /// value.
     /// </summary>
-    public class PLACE_LATITUDE : ITYPE {
+    public class PLACE_LATITUDE : PrimitiveType {
         [MinLength(5), MaxLength(8)]
         public string Value { get; set; }
     }
@@ -1087,7 +1089,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// The locality of the place where a living LDS ordinance took place. Typically, a living LDS baptism
     /// place would be recorded in this field.
     /// </summary>
-    public class PLACE_LIVING_ORDINANCE : ITYPE {
+    public class PLACE_LIVING_ORDINANCE : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public PLACE_NAME Value { get; set; }
     }
@@ -1098,7 +1100,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     // 168 degrees, 9 minutes, and 3.4 seconds East would be formatted as E168.150944. 
     //         
     /// </summary>
-    public class PLACE_LONGITUDE : ITYPE {
+    public class PLACE_LONGITUDE : PrimitiveType {
         [MinLength(5), MaxLength(8)]
         public string Value { get; set; }
     }
@@ -1110,7 +1112,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// have been identified, they can be shown using a PLAC.FORM structure either in the HEADER or in
     /// the event structure. (See <PLACE_HIERARCHY>
     /// </summary>
-    public class PLACE_NAME : ITYPE {
+    public class PLACE_NAME : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -1122,7 +1124,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// name written in kanji, then the<PHONETIC_TYPE> value would indicate kana. (See
     /// <PHONETIC_TYPE>
     /// </summary>
-    public class PLACE_PHONETIC_VARIATION : ITYPE {
+    public class PLACE_PHONETIC_VARIATION : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -1134,7 +1136,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// provide a reading of a place name written in kanji, then the <ROMANIZED_TYPE> subordinate to
     /// the ROMN tag would indicate ‘romaji’. (See<ROMANIZED_TYPE>
     /// </summary>
-    public class PLACE_ROMANIZED_VARIATION : ITYPE {
+    public class PLACE_ROMANIZED_VARIATION : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -1142,7 +1144,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// <TEXT> excluding the comma(s).
     /// </summary>
-    public class PLACE_TEXT : ITYPE {
+    public class PLACE_TEXT : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -1150,7 +1152,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// A list of possessions (real estate or other property) belonging to this individual.
     /// </summary>
-    public class POSSESSIONS : ITYPE {
+    public class POSSESSIONS : PrimitiveType {
         [MinLength(1), MaxLength(248)]
         public string Value { get; set; }
     }
@@ -1160,7 +1162,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// The date this source was published or created.
     /// </summary>
     [Tag(StringTags.DATE)]
-    public class PUBLICATION_DATE : ITYPE {
+    public class PUBLICATION_DATE : PrimitiveType {
         [MinLength(10), MaxLength(11)]
         public DATE_EXACT Value { get; set; }
     }
@@ -1172,7 +1174,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// ! "ANSTFILE" when submitting to Ancestral File.
     /// ! "TempleReady" when submitting for temple ordinance clearance.
     /// </summary>
-    public class RECEIVING_SYSTEM_NAME : ITYPE {
+    public class RECEIVING_SYSTEM_NAME : PrimitiveType {
         [MinLength(1), MaxLength(20)]
         public string Value { get; set; }
     }
@@ -1184,7 +1186,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// If the RECORD_IDENTIFIER is not preceded by a colon, it is a reference to a
     /// record within the current GEDCOM transmission.
     /// </summary>
-    public class RECORD_IDENTIFIER : ITYPE {
+    public class RECORD_IDENTIFIER : PrimitiveType {
         [MinLength(1), MaxLength(18)]
         public string Value { get; set; }
     }
@@ -1192,7 +1194,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// This is an identifier assigned to a resource database that is available through access to a network. This is for future GEDCOM releases
     /// </summary>
-    public class REGISTERED_RESOURCE_IDENTIFIER : ITYPE {
+    public class REGISTERED_RESOURCE_IDENTIFIER : PrimitiveType {
         [MinLength(1), MaxLength(25)]
         public string Value { get; set; }
     }
@@ -1206,7 +1208,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// 1 ASSO @<XREF:SUBM>@
     /// 2 RELA great grandson
     /// </summary>
-    public class RELATION_IS_DESCRIPTOR : ITYPE {
+    public class RELATION_IS_DESCRIPTOR : PrimitiveType {
         [MinLength(1), MaxLength(25)]
         public string Value { get; set; }
     }
@@ -1214,7 +1216,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// A name of the religion with which this person, event, or record was affiliated.
     /// </summary>
-    public class RELIGIOUS_AFFILIATION : ITYPE {
+    public class RELIGIOUS_AFFILIATION : PrimitiveType {
         [MinLength(1), MaxLength(90)]
         public string Value { get; set; }
     }
@@ -1224,7 +1226,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// associated context.For example, an employer of a person of an associated occupation, or a church
     /// that administered rites or events, or an organization responsible for creating and/or archiving records.
     /// </summary>
-    public class RESPONSIBLE_AGENCY : ITYPE {
+    public class RESPONSIBLE_AGENCY : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -1252,7 +1254,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     ///        individual acting in the role of HUSB or WIFE is assumed living.
     /// </summary>
     [Tag(StringTags.RESTRICTION)]
-    public class RESTRICTION_NOTICE : ITYPE {
+    public class RESTRICTION_NOTICE : PrimitiveType {
         [MinLength(6), MaxLength(7)]
         public Enums.RESTRICTION_NOTICE Value { get; set; }
     }
@@ -1262,7 +1264,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     ///        word or phrase, and in the same language, that the recorder used to define the role in the actual
     /// record.
     /// </summary>
-    public class ROLE_DESCRIPTOR : ITYPE {
+    public class ROLE_DESCRIPTOR : PrimitiveType {
         [MinLength(1), MaxLength(25)]
         public string Value { get; set; }
     }
@@ -1274,7 +1276,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     ///        you describe the groom of a marriage, the role is "HUSB." If the role is something different than one
     /// of the six relationship role tags listed above then enclose the role name within matching parentheses.
     /// </summary>
-    public class ROLE_IN_EVENT : ITYPE {
+    public class ROLE_IN_EVENT : PrimitiveType {
         [MinLength(1), MaxLength(15)]
         public Enums.ROLE_IN_EVENT Value { get; set; }
     }
@@ -1283,7 +1285,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     ///  [<user defined> | pinyin | romaji | wadegiles]
     /// Indicates the method used in transforming the text to a romanized variation.
     /// </summary>
-    public class ROMANIZED_TYPE : ITYPE {
+    public class ROMANIZED_TYPE : PrimitiveType {
         [MinLength(5), MaxLength(30)]
         public string Value { get; set; }
     }
@@ -1291,7 +1293,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// A description of a scholastic or educational achievement or pursuit.
     /// </summary>
-    public class SCHOLASTIC_ACHIEVEMENT : ITYPE {
+    public class SCHOLASTIC_ACHIEVEMENT : PrimitiveType {
         [MinLength(1), MaxLength(248)]
         public string Value { get; set; }
     }
@@ -1303,7 +1305,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// U = Undetermined from available records and quite sure that it can’t be.
     /// </summary>
     [Tag(StringTags.SEX)]
-    public class SEX_VALUE : ITYPE {
+    public class SEX_VALUE : PrimitiveType {
         [MinLength(1), MaxLength(7)]
         public Enums.SEX_VALUE Value { get; set; }
     }
@@ -1311,7 +1313,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// A number assigned to a person in the United States for identification purposes.
     /// </summary>
-    public class SOCIAL_SECURITY_NUMBER : ITYPE {
+    public class SOCIAL_SECURITY_NUMBER : PrimitiveType {
         [MinLength(9), MaxLength(11)]
         public string Value { get; set; }
     }
@@ -1320,7 +1322,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// An identification or reference description used to file and retrieve items from the holdings of a
     /// repository.
     /// </summary>
-    public class SOURCE_CALL_NUMBER : ITYPE {
+    public class SOURCE_CALL_NUMBER : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public string Value { get; set; }
     }
@@ -1333,7 +1335,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// bibliographic reference. Developers are encouraged to support the SOURCE_RECORD method of
     /// reporting bibliographic reference descriptions. 
     /// </summary>
-    public class SOURCE_DESCRIPTION : ITYPE {
+    public class SOURCE_DESCRIPTION : PrimitiveType {
         [MinLength(1), MaxLength(248)]
         public string Value { get; set; }
     }
@@ -1348,7 +1350,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     ///         ! A personal interview would cite the informant and interviewer.
     /// </summary>
     [Tag(StringTags.TITLE)]
-    public class SOURCE_DESCRIPTIVE_TITLE : ITYPE {
+    public class SOURCE_DESCRIPTIVE_TITLE : PrimitiveType {
         [MinLength(1), MaxLength(248)]
         public string Value { get; set; }
     }
@@ -1357,7 +1359,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// This entry is to provide a short title used for sorting, filing, and retrieving source records.
     /// </summary>
     [Tag(StringTags.ABBREVIATION)]
-    public class SOURCE_FILED_BY_ENTRY : ITYPE {
+    public class SOURCE_FILED_BY_ENTRY : PrimitiveType {
         [MinLength(1), MaxLength(60)]
         public string Value { get; set; }
     }
@@ -1369,7 +1371,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// various towns within Oneida County. "Idaho" would be the source jurisdiction place if the events
     /// recorded took place in other counties as well as Oneida County.
     /// </summary>
-    public class SOURCE_JURISDICTION_PLACE : ITYPE {
+    public class SOURCE_JURISDICTION_PLACE : PrimitiveType {
         [MinLength(1), MaxLength(120)]
         public PLACE_NAME Value { get; set; }
     }
@@ -1379,7 +1381,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// A code, selected from one of the media classifications choices above, that indicates the type of
     /// material in which the referenced source is stored.
     /// </summary>
-    public class SOURCE_MEDIA_TYPE : ITYPE {
+    public class SOURCE_MEDIA_TYPE : PrimitiveType {
         [MinLength(1), MaxLength(15)]
         public Enums.SOURCE_MEDIA_TYPE Value { get; set; }
     }
@@ -1390,7 +1392,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// government agency, church organization, or private organization, etc.
     /// </summary>
     [Tag(StringTags.AUTHOR)]
-    public class SOURCE_ORIGINATOR : ITYPE {
+    public class SOURCE_ORIGINATOR : PrimitiveType {
         [MinLength(1), MaxLength(248)]
         public string Value { get; set; }
     }
@@ -1402,7 +1404,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// or the city and state of residence of the writer of a letter.
     /// </summary>
     [Tag(StringTags.PUBLICATION)]
-    public class SOURCE_PUBLICATION_FACTS : ITYPE {
+    public class SOURCE_PUBLICATION_FACTS : PrimitiveType {
         [MinLength(1), MaxLength(248)]
         public string Value { get; set; }
     }
@@ -1411,7 +1413,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// The name of the submitter formatted for display and address generation.
     /// </summary>
     [Tag(StringTags.NAME)]
-    public class SUBMITTER_NAME : ITYPE {
+    public class SUBMITTER_NAME : PrimitiveType {
         [MinLength(1), MaxLength(60)]
         public string Value { get; set; }
     }
@@ -1420,7 +1422,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// A registered number of a submitter of Ancestral File data. This number is used in subsequent
     /// submissions or inquiries by the submitter for identification purposes.
     /// </summary>
-    public class SUBMITTER_REGISTERED_RFN : ITYPE {
+    public class SUBMITTER_REGISTERED_RFN : PrimitiveType {
         [MinLength(1), MaxLength(248)]
         public string Value { get; set; }
     }
@@ -1428,7 +1430,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// Comments or opinions from the submitter.
     /// </summary>
-    public class SUBMITTER_TEXT : ITYPE {
+    public class SUBMITTER_TEXT : PrimitiveType {
         [MinLength(1), MaxLength(248)]
         public string Value { get; set; }
     }
@@ -1437,7 +1439,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// An abbreviation of the temple in which LDS temple ordinances were performed.
     /// </summary>
     [Tag(StringTags.TEMPLE)]
-    public class TEMPLE_CODE : ITYPE {
+    public class TEMPLE_CODE : PrimitiveType {
         [MinLength(4), MaxLength(5)]
         public string Value { get; set; }
     }
@@ -1445,7 +1447,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// A string composed of any valid character from the GEDCOM character set.
     /// </summary>
-    public class TEXT : ITYPE {
+    public class TEXT : PrimitiveType {
         [MinLength(1), MaxLength(248)]
         public string Value { get; set; }
     }
@@ -1458,7 +1460,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// source record including labels.
     /// </summary>
     [Tag(StringTags.TEXT)]
-    public class TEXT_FROM_SOURCE : ITYPE {
+    public class TEXT_FROM_SOURCE : PrimitiveType {
         [MinLength(1), MaxLength(248)]
         public TEXT Value { get; set; }
     }
@@ -1471,7 +1473,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     ///         ss = seconds (optional)
     ///         fs = decimal fraction of a second(optional)
     /// </summary>
-    public class TIME_VALUE : ITYPE {
+    public class TIME_VALUE : PrimitiveType {
         [MinLength(1), MaxLength(12)]
         public string Value { get; set; }
     }
@@ -1480,7 +1482,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <DATE_EXACT>
     /// The date that this transmission was created
     /// </summary>
-    public class TRANSMISSION_DATE : ITYPE {
+    public class TRANSMISSION_DATE : PrimitiveType {
         [MinLength(10), MaxLength(11)]
         public DATE_EXACT Value { get; set; }
     }
@@ -1491,7 +1493,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// number on a pedigree chart
     /// </summary>
     [Tag(StringTags.REFERENCE)]
-    public class USER_REFERENCE_NUMBER : ITYPE {
+    public class USER_REFERENCE_NUMBER : PrimitiveType {
         [MinLength(1), MaxLength(20)]
         public string Value { get; set; }
     }
@@ -1499,7 +1501,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// A user-defined definition of the USER_REFERENCE_NUMBER.
     /// </summary>
-    public class USER_REFERENCE_TYPE : ITYPE {
+    public class USER_REFERENCE_TYPE : PrimitiveType {
         [MinLength(1), MaxLength(40)]
         public string Value { get; set; }
     }
@@ -1510,7 +1512,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// changed by the creators of the product.
     /// </summary>
     [Tag(StringTags.VERSION)]
-    public class VERSION_NUMBER : ITYPE {
+    public class VERSION_NUMBER : PrimitiveType {
         [MinLength(1), MaxLength(15)]
         public string Value { get; set; }
     }
@@ -1525,7 +1527,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// as Label1: value, Label2: value, with each pair being separated by a comma. For example, Film:
     /// 1234567, Frame: 344, Line: 28.
     /// </summary>
-    public class WHERE_WITHIN_SOURCE : ITYPE {
+    public class WHERE_WITHIN_SOURCE : PrimitiveType {
         [MinLength(1), MaxLength(248)]
         public string Value { get; set; }
     }
@@ -1542,7 +1544,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// and the use of an exclamation(!) is reserved for intra-record pointers. 
     /// Uniqueness of the cross-reference identifier is required within the transmission file.
     /// </summary>
-    public class XREF : ITYPE {
+    public class XREF : PrimitiveType {
 
         [MinLength(1), MaxLength(22)]
         public string Values { get; set; }
@@ -1552,7 +1554,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// <summary>
     /// A numeric representation of the calendar year in which an event occurred.
     /// </summary>
-    public class YEAR : ITYPE {
+    public class YEAR : PrimitiveType {
         [MinLength(3), MaxLength(4)]
         public string Value { get; set; }
     }
@@ -1562,7 +1564,7 @@ namespace velocist.Gedcom.Gedcom5.Types {
     /// calendar change of 1752, for example, 15 APR 1699/00. A(B.C.) appended to the<YEAR> indicates
     /// a date before the birth of Christ.
     /// </summary>
-    public class YEAR_GREG : ITYPE {
+    public class YEAR_GREG : PrimitiveType {
         [MinLength(3), MaxLength(7)]
         public string Value { get; set; }
     }

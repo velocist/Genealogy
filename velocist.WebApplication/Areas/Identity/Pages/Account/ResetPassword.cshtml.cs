@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +11,20 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
     public class ResetPasswordModel : PageModel {
         private readonly UserManager<User> _userManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ResetPasswordModel"/> class.
+        /// </summary>
+        /// <param name="userManager">The user manager.</param>
         public ResetPasswordModel(UserManager<User> userManager) {
             _userManager = userManager;
         }
 
+        /// <summary>
+        /// Gets or sets the input.
+        /// </summary>
+        /// <value>
+        /// The input.
+        /// </value>
         [BindProperty]
         public InputModel Input { get; set; }
 
@@ -38,6 +46,11 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
             public string Code { get; set; }
         }
 
+        /// <summary>
+        /// Called when [get].
+        /// </summary>
+        /// <param name="code">The code.</param>
+        /// <returns></returns>
         public IActionResult OnGet(string code = null) {
             if (code == null) {
                 return BadRequest("A code must be supplied for password reset.");
@@ -49,6 +62,10 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
             }
         }
 
+        /// <summary>
+        /// Called when [post asynchronous].
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPostAsync() {
             if (!ModelState.IsValid) {
                 return Page();

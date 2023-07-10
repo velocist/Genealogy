@@ -1,32 +1,46 @@
-﻿using System;
-using System.Windows.Forms;
-using Microsoft.Extensions.Logging;
-using velocist.WinForms;
-using velocist.WinFormsApp.Forms.Login;
+﻿using velocist.WinForms;
 
 namespace velocist.WinFormsApp.Forms {
     public partial class MDIParent : Form {
 
         private int childFormNumber = 0;
 
+
+        //private readonly UserManager<User> _userManager;
+        //private readonly SignInManager<User> _signInManager;
         private readonly ILogger<MDIParent> _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MDIParent"/> class.
+        /// </summary>
         public MDIParent() {
             InitializeComponent();
-            this.ConfigureForm("Genealogia");
+            //_userManager = (UserManager<User>)serviceProvider.GetService(typeof(UserManager<User>));
+            //_signInManager = (SignInManager<User>)serviceProvider.GetService(typeof(SignInManager<User>)); ;
             _logger = LogService.LogServiceContainer.GetLog<MDIParent>();
+            this.ConfigureForm("Genealogia");
         }
 
+        /// <summary>
+        /// Shows the new form.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ShowNewForm(object sender, EventArgs e) {
-            Form childForm = new Form {
+            Form childForm = new() {
                 MdiParent = this,
                 Text = "Ventana " + childFormNumber++
             };
             childForm.Show();
         }
 
+        /// <summary>
+        /// Opens the file.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void OpenFile(object sender, EventArgs e) {
-            OpenFileDialog openFileDialog = new OpenFileDialog {
+            OpenFileDialog openFileDialog = new() {
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal),
                 Filter = "Archivos de texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*"
             };
@@ -35,8 +49,13 @@ namespace velocist.WinFormsApp.Forms {
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the SaveAsToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e) {
-            SaveFileDialog saveFileDialog = new SaveFileDialog {
+            SaveFileDialog saveFileDialog = new() {
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal),
                 Filter = "Archivos de texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*"
             };
@@ -77,8 +96,9 @@ namespace velocist.WinFormsApp.Forms {
         private void frmIndices_Click(object sender, EventArgs e) {
             try {
                 if (!this.CheckOpenForms<FrmIndices>()) {
-                    FrmIndices frm = new();
-                    frm.MdiParent = this;
+                    FrmIndices frm = new() {
+                        MdiParent = this
+                    };
                     frm.Show();
                 }
             } catch (Exception ex) {
@@ -90,23 +110,11 @@ namespace velocist.WinFormsApp.Forms {
         private void FrmRecursos_Click(object sender, EventArgs e) {
             try {
                 if (!this.CheckOpenForms<FrmRecursos>()) {
-                    FrmRecursos frm = new();
-                    frm.MdiParent = this;
+                    FrmRecursos frm = new() {
+                        MdiParent = this
+                    };
                     frm.Show();
                 }
-            } catch (Exception ex) {
-                _logger.LogError(ex.Message);
-                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void exportarToolStripMenuItem_Click_1(object sender, EventArgs e) {
-            try {
-                //if (!this.CheckOpenForms<FrmExport>()) {
-                //    FrmExport frm = new();
-                //    frm.MdiParent = this;
-                //    frm.Show();
-                //}
             } catch (Exception ex) {
                 _logger.LogError(ex.Message);
                 MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -116,8 +124,9 @@ namespace velocist.WinFormsApp.Forms {
         private void gedcomToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
                 if (!this.CheckOpenForms<FrmGedcom>()) {
-                    FrmGedcom frm = new();
-                    frm.MdiParent = this;
+                    FrmGedcom frm = new() {
+                        MdiParent = this
+                    };
                     frm.Show();
                 }
             } catch (Exception ex) {
@@ -128,11 +137,11 @@ namespace velocist.WinFormsApp.Forms {
 
         private void SignInToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                if (!this.CheckOpenForms<FrmLogin>()) {
-                    FrmLogin frm = new();
-                    frm.MdiParent = this;
-                    frm.Show();
-                }
+                //if (!this.CheckOpenForms<FrmLogin>()) {
+                //    FrmLogin frm = new(_signInManager,_userManager);
+                //    frm.MdiParent = this;
+                //    frm.Show();
+                //}
             } catch (Exception ex) {
                 _logger.LogError(ex.Message);
                 MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);

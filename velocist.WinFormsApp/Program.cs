@@ -1,14 +1,11 @@
-using System;
-using System.Text;
-using System.Windows.Forms;
 using Microsoft.Extensions.Hosting;
-using velocist.Objects.Entities;
 using velocist.AccessService;
-using velocist.WinFormsApp.Forms;
-using velocist.LogService;
 using velocist.IdentityService;
 using velocist.IdentityService.Entities;
+using velocist.LogService;
+using velocist.Objects.Entities;
 using velocist.Services;
+using velocist.WinFormsApp.Forms;
 
 namespace velocist.WinFormsApp {
 
@@ -34,7 +31,7 @@ namespace velocist.WinFormsApp {
             host.ConfigureAppConfiguration((hostingContext, config) => {
                 AccessServiceConfiguration.GetConfiguration();
             }).ConfigureLogging(logging => {
-                LogServiceConfiguration.GetConfiguration();
+                LogServiceContainer.GetConfiguration();
             }).ConfigureServices((context, services) => {
                 services.AddServicesHttpContextAccessor();
                 services.AddServicesDbContextApp<AppEntitiesContext>(AccessServiceConfiguration.GetConnectionString(AccessServiceSettings.AppContextConnection), AccessServiceSettings.AppContextMigrationWinForms);

@@ -27,13 +27,16 @@ namespace velocist.WinFormsApp.Forms {
         private void InitializeComponent() {
             this.DgvData = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CmbSurname = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.DtpDateTo = new System.Windows.Forms.DateTimePicker();
             this.LblFrom = new System.Windows.Forms.Label();
             this.DtpDateFrom = new System.Windows.Forms.DateTimePicker();
-            this.CmbSurname = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BtnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvData)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // DgvData
@@ -58,6 +61,19 @@ namespace velocist.WinFormsApp.Forms {
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros";
+            // 
+            // CmbSurname
+            // 
+            this.CmbSurname.FormattingEnabled = true;
+            this.CmbSurname.Items.AddRange(new object[] {
+            "CSV",
+            "XSL",
+            "XSLS",
+            "TXT"});
+            this.CmbSurname.Location = new System.Drawing.Point(51, 53);
+            this.CmbSurname.Name = "CmbSurname";
+            this.CmbSurname.Size = new System.Drawing.Size(247, 23);
+            this.CmbSurname.TabIndex = 4;
             // 
             // label1
             // 
@@ -91,24 +107,32 @@ namespace velocist.WinFormsApp.Forms {
             this.DtpDateFrom.Size = new System.Drawing.Size(247, 23);
             this.DtpDateFrom.TabIndex = 0;
             // 
-            // CmbSurname
+            // groupBox2
             // 
-            this.CmbSurname.FormattingEnabled = true;
-            this.CmbSurname.Items.AddRange(new object[] {
-            "CSV",
-            "XSL",
-            "XSLS",
-            "TXT"});
-            this.CmbSurname.Location = new System.Drawing.Point(51, 53);
-            this.CmbSurname.Name = "CmbSurname";
-            this.CmbSurname.Size = new System.Drawing.Size(247, 23);
-            this.CmbSurname.TabIndex = 4;
+            this.groupBox2.Controls.Add(this.BtnExport);
+            this.groupBox2.Location = new System.Drawing.Point(12, 444);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(777, 62);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
+            // BtnExport
+            // 
+            this.BtnExport.Location = new System.Drawing.Point(681, 22);
+            this.BtnExport.Name = "BtnExport";
+            this.BtnExport.Size = new System.Drawing.Size(90, 30);
+            this.BtnExport.TabIndex = 0;
+            this.BtnExport.Text = "Exportar";
+            this.BtnExport.UseVisualStyleBackColor = true;
+            this.BtnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
             // FrmIndices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 518);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.DgvData);
             this.Name = "FrmIndices";
@@ -117,6 +141,7 @@ namespace velocist.WinFormsApp.Forms {
             ((System.ComponentModel.ISupportInitialize)(this.DgvData)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -130,5 +155,7 @@ namespace velocist.WinFormsApp.Forms {
         private Label LblFrom;
         private DateTimePicker DtpDateFrom;
         private ComboBox CmbSurname;
+        private GroupBox groupBox2;
+        private Button BtnExport;
     }
 }

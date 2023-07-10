@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Localization;
-using Microsoft.Extensions.Logging;
 using velocist.Business;
 using velocist.Business.Models;
 using velocist.Business.Models.App;
@@ -39,13 +35,12 @@ namespace velocist.WebApplication.Controllers {
         public ModalConfiguration<IndicesViewModel> ModalConfiguration { get; }
 
         /// <summary>
-        /// Constructor of the controller
+        /// Initializes a new instance of the <see cref="IndicesController"/> class.
         /// </summary>
-        /// <param name="unitOfWork">Unit of work</param>
-        /// <param name="sharedTranslations">Shared Translations</param>
-        /// <param name="viewTranslates">View translations</param>
-        /// <param name="date">Datetime</param>
-        /// <param name="renderView">Render view</param>
+        /// <param name="sharedTranslations">The shared translations.</param>
+        /// <param name="viewTranslates">The view translates.</param>
+        /// <param name="date">The date.</param>
+        /// <param name="renderView">The render view.</param>
         public IndicesController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView) {
             _logger = LogService.LogServiceContainer.GetLog<IndicesController>();
             _sharedTranslations = sharedTranslations;

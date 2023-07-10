@@ -1,11 +1,8 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 using velocist.IdentityService.Entities;
 
 namespace velocist.WebApplication.Areas.Identity.Pages.Account {
@@ -14,17 +11,41 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger<LoginWith2faModel> _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoginWith2faModel"/> class.
+        /// </summary>
+        /// <param name="signInManager">The sign in manager.</param>
+        /// <param name="logger">The logger.</param>
         public LoginWith2faModel(SignInManager<User> signInManager, ILogger<LoginWith2faModel> logger) {
             _signInManager = signInManager;
             _logger = logger;
         }
 
+        /// <summary>
+        /// Gets or sets the input.
+        /// </summary>
+        /// <value>
+        /// The input.
+        /// </value>
         [BindProperty]
         public InputModel Input { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [remember me].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [remember me]; otherwise, <c>false</c>.
+        /// </value>
         public bool RememberMe { get; set; }
 
+        /// <summary>
+        /// Gets or sets the return URL.
+        /// </summary>
+        /// <value>
+        /// The return URL.
+        /// </value>
         public string ReturnUrl { get; set; }
+
 
         public class InputModel {
             [Required]
@@ -37,26 +58,40 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
             public bool RememberMachine { get; set; }
         }
 
+        /// <summary>
+        /// Called when [get asynchronous].
+        /// </summary>
+        /// <param name="rememberMe">if set to <c>true</c> [remember me].</param>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns></returns>
+        /// <exception cref="System.InvalidOperationException">Unable to load two-factor authentication user.</exception>
         public async Task<IActionResult> OnGetAsync(bool rememberMe, string returnUrl = null) {
-            // Ensure the user has gone through the username & password screen first
-            var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
+			// Ensure the user has gone through the username & password screen first
+			var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
 
-            if (user == null) {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
-            }
+			if (user != null) {
+				ReturnUrl = returnUrl;
+				RememberMe = rememberMe;
 
-            ReturnUrl = returnUrl;
-            RememberMe = rememberMe;
+				return Page();
+			}
 
-            return Page();
-        }
+			throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+		}
 
-        public async Task<IActionResult> OnPostAsync(bool rememberMe, string returnUrl = null) {
+		/// <summary>
+		/// Called when [post asynchronous].
+		/// </summary>
+		/// <param name="rememberMe">if set to <c>true</c> [remember me].</param>
+		/// <param name="returnUrl">The return URL.</param>
+		/// <returns></returns>
+		/// <exception cref="System.InvalidOperationException">Unable to load two-factor authentication user.</exception>
+		public async Task<IActionResult> OnPostAsync(bool rememberMe, string returnUrl = null) {
             if (!ModelState.IsValid) {
                 return Page();
             }
 
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl ??= Url.Content("~/");
 
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null) {

@@ -67,8 +67,8 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.frmIndices = new System.Windows.Forms.ToolStripMenuItem();
             this.FrmRecursos = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gedcomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SignInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -82,7 +82,6 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.ofdFile = new System.Windows.Forms.OpenFileDialog();
-            this.SignInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -94,13 +93,12 @@
             this.fileMenu,
             this.editMenu,
             this.viewMenu,
+            this.frmIndices,
+            this.FrmRecursos,
+            this.gedcomToolStripMenuItem,
             this.toolsMenu,
             this.windowsMenu,
             this.helpMenu,
-            this.frmIndices,
-            this.FrmRecursos,
-            this.exportarToolStripMenuItem,
-            this.gedcomToolStripMenuItem,
             this.SignInToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
@@ -448,19 +446,19 @@
             this.FrmRecursos.Text = "Recursos";
             this.FrmRecursos.Click += new System.EventHandler(this.FrmRecursos_Click);
             // 
-            // exportarToolStripMenuItem
-            // 
-            this.exportarToolStripMenuItem.Name = "exportarToolStripMenuItem";
-            this.exportarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.exportarToolStripMenuItem.Text = "Exportar";
-            this.exportarToolStripMenuItem.Click += new System.EventHandler(this.exportarToolStripMenuItem_Click_1);
-            // 
             // gedcomToolStripMenuItem
             // 
             this.gedcomToolStripMenuItem.Name = "gedcomToolStripMenuItem";
             this.gedcomToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.gedcomToolStripMenuItem.Text = "Gedcom";
             this.gedcomToolStripMenuItem.Click += new System.EventHandler(this.gedcomToolStripMenuItem_Click);
+            // 
+            // SignInToolStripMenuItem
+            // 
+            this.SignInToolStripMenuItem.Name = "SignInToolStripMenuItem";
+            this.SignInToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
+            this.SignInToolStripMenuItem.Text = "Iniciar sesión";
+            this.SignInToolStripMenuItem.Click += new System.EventHandler(this.SignInToolStripMenuItem_Click);
             // 
             // toolStrip
             // 
@@ -561,13 +559,6 @@
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(42, 17);
             this.toolStripStatusLabel.Text = "Estado";
-            // 
-            // SignInToolStripMenuItem
-            // 
-            this.SignInToolStripMenuItem.Name = "SignInToolStripMenuItem";
-            this.SignInToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
-            this.SignInToolStripMenuItem.Text = "Iniciar sesión";
-            this.SignInToolStripMenuItem.Click += new System.EventHandler(this.SignInToolStripMenuItem_Click);
             // 
             // MDIParent
             // 

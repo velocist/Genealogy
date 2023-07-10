@@ -1,7 +1,6 @@
-﻿using System;
-using Autofac;
-using velocist.IdentityService.Entities;
+﻿using Autofac;
 using velocist.AccessService;
+using velocist.IdentityService.Entities;
 using velocist.Services.Formats;
 using velocist.Services.Formats.Interfaces;
 

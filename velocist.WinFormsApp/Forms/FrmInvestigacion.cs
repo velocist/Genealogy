@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using velocist.Objects;
+﻿using velocist.Objects;
 using velocist.WinForms;
 
 namespace velocist.WinFormsApp.Forms {

@@ -1,15 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
-using System.Text;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Logging;
 using velocist.IdentityService.Entities;
 
 namespace velocist.WebApplication.Areas.Identity.Pages.Account {
@@ -20,6 +17,13 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
         private readonly IEmailSender _emailSender;
         private readonly ILogger<ExternalLoginModel> _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ExternalLoginModel"/> class.
+        /// </summary>
+        /// <param name="signInManager">The sign in manager.</param>
+        /// <param name="userManager">The user manager.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="emailSender">The email sender.</param>
         public ExternalLoginModel(
             SignInManager<User> signInManager,
             UserManager<User> userManager,
@@ -31,24 +35,61 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
             _emailSender = emailSender;
         }
 
+        /// <summary>
+        /// Gets or sets the input.
+        /// </summary>
+        /// <value>
+        /// The input.
+        /// </value>
         [BindProperty]
         public InputModel Input { get; set; }
 
+        /// <summary>
+        /// Gets or sets the display name of the provider.
+        /// </summary>
+        /// <value>
+        /// The display name of the provider.
+        /// </value>
         public string ProviderDisplayName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the return URL.
+        /// </summary>
+        /// <value>
+        /// The return URL.
+        /// </value>
         public string ReturnUrl { get; set; }
 
+        /// <summary>
+        /// Gets or sets the error message.
+        /// </summary>
+        /// <value>
+        /// The error message.
+        /// </value>
         [TempData]
         public string ErrorMessage { get; set; }
 
+        /// <summary>
+        /// Input model
+        /// </summary>
         public class InputModel {
             [Required]
             [EmailAddress]
             public string Email { get; set; }
         }
 
+        /// <summary>
+        /// Called when [get asynchronous].
+        /// </summary>
+        /// <returns></returns>
         public IActionResult OnGetAsync() => RedirectToPage("./Login");
 
+        /// <summary>
+        /// Called when [post].
+        /// </summary>
+        /// <param name="provider">The provider.</param>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns></returns>
         public IActionResult OnPost(string provider, string returnUrl = null) {
             // Request a redirect to the external login provider.
             var redirectUrl = Url.Page("./ExternalLogin", pageHandler: "Callback", values: new { returnUrl });
@@ -56,8 +97,14 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
             return new ChallengeResult(provider, properties);
         }
 
+        /// <summary>
+        /// Called when [get callback asynchronous].
+        /// </summary>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <param name="remoteError">The remote error.</param>
+        /// <returns></returns>
         public async Task<IActionResult> OnGetCallbackAsync(string returnUrl = null, string remoteError = null) {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl ??= Url.Content("~/");
             if (remoteError != null) {
                 ErrorMessage = $"Error from external provider: {remoteError}";
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
@@ -89,8 +136,13 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
             }
         }
 
+        /// <summary>
+        /// Called when [post confirmation asynchronous].
+        /// </summary>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns></returns>
         public async Task<IActionResult> OnPostConfirmationAsync(string returnUrl = null) {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl ??= Url.Content("~/");
             // Get the information about the user from the external login provider
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null) {
@@ -113,7 +165,7 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
                         var callbackUrl = Url.Page(
                             "/Account/ConfirmEmail",
                             pageHandler: null,
-                            values: new { area = "Identity", userId = userId, code = code },
+                            values: new { area = "Identity", userId, code },
                             protocol: Request.Scheme);
 
                         await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
@@ -121,7 +173,7 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
 
                         // If account confirmation is required, we need to show the link if we don't have a real email sender
                         if (_userManager.Options.SignIn.RequireConfirmedAccount) {
-                            return RedirectToPage("./RegisterConfirmation", new { Email = Input.Email });
+                            return RedirectToPage("./RegisterConfirmation", new { Input.Email });
                         }
 
                         await _signInManager.SignInAsync(user, isPersistent: false, info.LoginProvider);

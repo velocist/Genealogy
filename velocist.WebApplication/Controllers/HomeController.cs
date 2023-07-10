@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using velocist.Business.Models;
 
 namespace velocist.WebApplication.Controllers {

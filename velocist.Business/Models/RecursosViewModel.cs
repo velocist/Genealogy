@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Logging;
+using velocist.AccessService;
 using velocist.Business.Models.App;
 using velocist.Objects.Entities;
-using velocist.AccessService;
 using velocist.Services.Json;
 
 namespace velocist.Business.Models {
@@ -12,7 +12,7 @@ namespace velocist.Business.Models {
     /// <summary>
     /// The model for the view
     /// </summary>
-    /// <seealso cref="velocist.Business.BaseModel&lt;velocist.Business.Models.RecursosViewModel, velocist.Objects.Entities.AppEntitiesContext&gt;" />
+    /// <seealso cref="BaseModel{TEntity, TContext}" />
     public class RecursosViewModel : BaseModel<RecursosViewModel, Objects.Entities.AppEntitiesContext> {
 
         /// <summary>

@@ -9,7 +9,7 @@ namespace velocist.WebApplication.Core {
     /// <summary>
     /// The factory Entities context
     /// </summary>
-    /// <seealso cref="Microsoft.EntityFrameworkCore.Design.IDesignTimeDbContextFactory&lt;velocist.Objects.Entities.AppEntitiesContext&gt;" />
+    /// <seealso cref="IDesignTimeDbContextFactory{TContext}" />
     public class AppContextFactory : IDesignTimeDbContextFactory<AppEntitiesContext> {
 
         /// <summary>

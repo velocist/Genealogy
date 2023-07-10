@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Text;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +13,12 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
         private readonly SignInManager<User> _signInManager;
         private readonly IEmailSender _emailSender;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmailModel"/> class.
+        /// </summary>
+        /// <param name="userManager">The user manager.</param>
+        /// <param name="signInManager">The sign in manager.</param>
+        /// <param name="emailSender">The email sender.</param>
         public EmailModel(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
@@ -24,18 +28,51 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
             _emailSender = emailSender;
         }
 
+        /// <summary>
+        /// Gets or sets the username.
+        /// </summary>
+        /// <value>
+        /// The username.
+        /// </value>
         public string Username { get; set; }
 
+        /// <summary>
+        /// Gets or sets the email.
+        /// </summary>
+        /// <value>
+        /// The email.
+        /// </value>
         public string Email { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is email confirmed.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is email confirmed; otherwise, <c>false</c>.
+        /// </value>
         public bool IsEmailConfirmed { get; set; }
 
+        /// <summary>
+        /// Gets or sets the status message.
+        /// </summary>
+        /// <value>
+        /// The status message.
+        /// </value>
         [TempData]
         public string StatusMessage { get; set; }
 
+        /// <summary>
+        /// Gets or sets the input.
+        /// </summary>
+        /// <value>
+        /// The input.
+        /// </value>
         [BindProperty]
         public InputModel Input { get; set; }
 
+        /// <summary>
+        /// Input model
+        /// </summary>
         public class InputModel {
             [Required]
             [EmailAddress]
@@ -43,6 +80,10 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
             public string NewEmail { get; set; }
         }
 
+        /// <summary>
+        /// Loads the asynchronous.
+        /// </summary>
+        /// <param name="user">The user.</param>
         private async Task LoadAsync(User user) {
             var email = await _userManager.GetEmailAsync(user);
             Email = email;
@@ -54,6 +95,10 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
         }
 
+        /// <summary>
+        /// Called when [get asynchronous].
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnGetAsync() {
             var user = await _userManager.GetUserAsync(User);
             if (user == null) {
@@ -64,6 +109,10 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
             return Page();
         }
 
+        /// <summary>
+        /// Called when [post change email asynchronous].
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPostChangeEmailAsync() {
             var user = await _userManager.GetUserAsync(User);
             if (user == null) {
@@ -83,7 +132,7 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
                 var callbackUrl = Url.Page(
                     "/Account/ConfirmEmailChange",
                     pageHandler: null,
-                    values: new { userId = userId, email = Input.NewEmail, code = code },
+                    values: new { userId, email = Input.NewEmail, code },
                     protocol: Request.Scheme);
                 await _emailSender.SendEmailAsync(
                     Input.NewEmail,
@@ -98,6 +147,10 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
             return RedirectToPage();
         }
 
+        /// <summary>
+        /// Called when [post send verification email asynchronous].
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPostSendVerificationEmailAsync() {
             var user = await _userManager.GetUserAsync(User);
             if (user == null) {
@@ -116,7 +169,7 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
             var callbackUrl = Url.Page(
                 "/Account/ConfirmEmail",
                 pageHandler: null,
-                values: new { area = "Identity", userId = userId, code = code },
+                values: new { area = "Identity", userId, code },
                 protocol: Request.Scheme);
             await _emailSender.SendEmailAsync(
                 email,
