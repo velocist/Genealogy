@@ -19,7 +19,7 @@ namespace velocist.Business.Models {
         /// Unit of work property class of the model
         /// </summary>
         [JsonIgnore]
-        public IUnitOfWork _UnitOfWork { get; set; }
+        public IUnitOfWork UnitOfWork { get; set; }
 
         ///// <summary>
         ///// If the model is new
@@ -38,9 +38,7 @@ namespace velocist.Business.Models {
         /// For GenericRepository
         /// </summary>
         public Model(IUnitOfWork unitOfWork) {
-            _UnitOfWork = unitOfWork;
+            UnitOfWork = unitOfWork;
         }
-
     }
-
 }

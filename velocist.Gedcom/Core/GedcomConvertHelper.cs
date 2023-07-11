@@ -1,20 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-using Microsoft.Extensions.Logging;
 using velocist.Gedcom.Gedcom5;
-using velocist.Gedcom.Gedcom5.Structures;
 using velocist.Gedcom.Gedcom5.Tags;
 
 namespace velocist.Gedcom.Core {
 
 	public class GedcomConvertHelper {
-		private static List<List<string>> records { get; set; }
+		//TODO private static List<List<string>> records { get; set; } 
 		public static void SetGedcomObject(List<string> list) {
 			try {
 				//records = new List<List<string>>();
@@ -35,14 +27,14 @@ namespace velocist.Gedcom.Core {
 				//var lineageTags = lineageLinkedGedcom.GetPropertiesTag<TagAttribute>(AttributesType.TagAttribute);
 				var tags = EnumHelpers.GetTagsList<TagAttribute>(TagsEnum.ROLE);
 
-				LINEAGE_LINKED_GEDCOM lineageLinkedGedcom = new LINEAGE_LINKED_GEDCOM();
+				var lineageLinkedGedcom = new LINEAGE_LINKED_GEDCOM();
 
 				//Assembly myAssembly = Assembly.GetExecutingAssembly();
 				//var types = myAssembly.GetTypes().ToList();
 				var type = lineageLinkedGedcom.GetType();
 				var properties = type.GetProperties();
 
-				foreach (string line in list) {
+				foreach (var line in list) {
 					var lineSplit = line.Split(' ');
 					var level = line.Split(' ')[0];
 					var firstTag = line.Split(' ')[1];
@@ -61,15 +53,15 @@ namespace velocist.Gedcom.Core {
 					//}
 					//lineStructure.Level = actualLevel.ToString();
 
-					string actualText = string.Empty;
+					var actualText = string.Empty;
 					//if (startSubstring != -1)
 					//	actualText = line.Substring(startSubstring).Trim();
 
 					//Gets oprionalXRef
 					if (firstTag.StartsWith("@")) {
-						int endSubstring = -1;
+						var endSubstring = -1;
 
-						for (int i = 1; i < line.Length; i++) {
+						for (var i = 1; i < line.Length; i++) {
 							if (line[i].Equals("@")) {
 								endSubstring = line[i];
 								break;
@@ -86,14 +78,15 @@ namespace velocist.Gedcom.Core {
 							foreach (var property in properties) {
 								var attributeValue = property.GetAttributeValue(AttributesType.TagAttribute);
 								if (attributeValue == null)
-									Console.WriteLine($"El atributo para la propiedad {property.ToString()} no está definido.");
+									Console.WriteLine($"El atributo para la propiedad {property} no está definido.");
 								else {
 									//if (attributeValue.Equals(actualText)) {
-										lineageLinkedGedcom.SetValue(property.Name, null, AttributesType.TagAttribute);
+									_ = lineageLinkedGedcom.SetValue(property.Name, null, AttributesType.TagAttribute);
 
 									//}
 								}
 							}
+
 							break;
 						}
 						//string actualTag = string.Empty;
@@ -120,7 +113,6 @@ namespace velocist.Gedcom.Core {
 						//    var data = EnumHelpers.ParseByDescription<HEADER, TagAttribute>(actualText, false);
 						//}
 					}
-
 				}
 				//string data = EnumHelpers.ParseByDescription<HEADER, TagAttribute>(StringTags.HEADER, false);
 
@@ -149,14 +141,13 @@ namespace velocist.Gedcom.Core {
 
 		public static void SetFromGedcomObject(List<string> list) {
 			try {
-				LINEAGE_LINKED_GEDCOM lineageLinkedGedcom = new LINEAGE_LINKED_GEDCOM();
-				List<LineStructure> listLines = new List<LineStructure>();
-				foreach (string line in list) {
+				var lineageLinkedGedcom = new LINEAGE_LINKED_GEDCOM();
+				var listLines = new List<LineStructure>();
+				foreach (var line in list) {
 					//bool ret = false;
 					var lineStructure = new LineStructure();
 
 					//var lineageTags = new GedcomObjectHelper<LINEAGE_LINKED_GEDCOM>().GetTagsProperty();
-
 
 					//foreach (var lineageTag in lineageTags) {
 					//    if (line.Contains(lineageTag.Key)) {
@@ -181,7 +172,6 @@ namespace velocist.Gedcom.Core {
 					//        //}
 					//    }
 					//}
-
 
 					//int i = 0;
 					//while (i < line.Length) {
@@ -276,9 +266,9 @@ namespace velocist.Gedcom.Core {
 
 		public static void Convert(List<string> list) {
 			try {
-				LINEAGE_LINKED_GEDCOM lineageLinked = new LINEAGE_LINKED_GEDCOM();
+				var lineageLinked = new LINEAGE_LINKED_GEDCOM();
 
-				foreach (string item in list) {
+				foreach (var item in list) {
 
 				}
 			} catch (Exception ex) {
@@ -290,10 +280,10 @@ namespace velocist.Gedcom.Core {
 			try {
 				var actualLevel = valueToConvert.Split(" ");
 
-				LineStructure lineStructure = new LineStructure();
+				var lineStructure = new LineStructure();
 
-				for (int i = 0; i < actualLevel.Length; i++) {
-					string value = actualLevel[i];
+				for (var i = 0; i < actualLevel.Length; i++) {
+					var value = actualLevel[i];
 
 					if (value.IsLevel()) {
 						lineStructure.Level = value;
@@ -312,7 +302,6 @@ namespace velocist.Gedcom.Core {
 			}
 		}
 
-
 		private static string[] SplitLevel(string linesString, int level) {
 			try {
 				return linesString.Split($"{level}");
@@ -321,7 +310,6 @@ namespace velocist.Gedcom.Core {
 				throw new Exception(ex.Message);
 			}
 		}
-
 
 		//public static void GetTags<TEnum, T1>(string line) where TEnum : class where T1 : IGEDCOM_ELEMENT {
 		//    try {
@@ -347,9 +335,6 @@ namespace velocist.Gedcom.Core {
 		//        throw new Exception(ex.Message);
 		//    }
 		//}
-
-
-
 
 	}
 }

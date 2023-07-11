@@ -12,7 +12,6 @@ namespace velocist.Business.Models.App {
     /// </summary>
     public class InvestigacionModel /*: Model<InvestigacionModel>*/ {
 
-
         [DisplayName("#")]
         [JsonPropertyName(MappingsDB.Columna_Id)]
         public int Id { get; set; }
@@ -42,7 +41,6 @@ namespace velocist.Business.Models.App {
         [DisplayName("Url")]
         [JsonPropertyName(MappingsDB.Columna_Url)]
         public string Url { get; set; }
-
 
         //public string FileName { get; set; }
         //public string PathFile { get; set; }

@@ -437,7 +437,7 @@
             this.frmIndices.Name = "frmIndices";
             this.frmIndices.Size = new System.Drawing.Size(56, 20);
             this.frmIndices.Text = "Indices";
-            this.frmIndices.Click += new System.EventHandler(this.frmIndices_Click);
+            this.frmIndices.Click += new System.EventHandler(this.FrmIndices_Click);
             // 
             // FrmRecursos
             // 
@@ -451,7 +451,7 @@
             this.gedcomToolStripMenuItem.Name = "gedcomToolStripMenuItem";
             this.gedcomToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.gedcomToolStripMenuItem.Text = "Gedcom";
-            this.gedcomToolStripMenuItem.Click += new System.EventHandler(this.gedcomToolStripMenuItem_Click);
+            this.gedcomToolStripMenuItem.Click += new System.EventHandler(this.GedcomToolStripMenuItem_Click);
             // 
             // SignInToolStripMenuItem
             // 

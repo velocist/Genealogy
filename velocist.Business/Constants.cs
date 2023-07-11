@@ -5,7 +5,6 @@
     /// </summary>
     public class Constants {
 
-
         /// <summary>
         /// Enum roles
         /// </summary>

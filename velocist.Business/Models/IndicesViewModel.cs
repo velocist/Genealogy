@@ -75,13 +75,14 @@ namespace velocist.Business.Models {
         public IndicesViewModel Get() {
             try {
                 Logger.LogDebug("Get<{TEntity},{TContext}>", typeof(IndicesViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
-                Indices obj = UnitOfWork.GetRepository<Indices>().GetByID(IndiceModel.Id);
+                var obj = UnitOfWork.GetRepository<Indices>().GetByID(IndiceModel.Id);
                 if (obj != null) {
                     return JsonAppHelper<IndicesViewModel>.GetEntityFromObject(obj);
                 }
             } catch (Exception ex) {
                 Logger.LogError("{errorMessage}", ex.Message);
             }
+
             return null;
         }
 
@@ -99,6 +100,7 @@ namespace velocist.Business.Models {
             } catch (Exception ex) {
                 Logger.LogError("{errorMessage}", ex.Message);
             }
+
             return new List<IndicesViewModel>();
         }
 
@@ -109,15 +111,16 @@ namespace velocist.Business.Models {
         public bool Save() {
             try {
                 Logger.LogDebug("Save<{TEntity},{TContext}>", typeof(IndicesViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
-                Indices objetoDB = JsonAppHelper<Indices>.GetEntityFromObject(this);
+                var objetoDB = JsonAppHelper<Indices>.GetEntityFromObject(this);
                 UnitOfWork.BeginTransaction();
-                UnitOfWork.GetRepository<Indices>().Insert(objetoDB);
+				_ = UnitOfWork.GetRepository<Indices>().Insert(objetoDB);
                 UnitOfWork.CommitTransaction();
                 return true;
             } catch (Exception ex) {
                 Logger.LogError("{errorMessage}", ex.Message);
                 UnitOfWork.RollbackTransaction();
             }
+
             return false;
         }
 
@@ -128,15 +131,16 @@ namespace velocist.Business.Models {
         public bool Update() {
             try {
                 Logger.LogDebug("Update<{TEntity},{TContext}>", typeof(IndicesViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
-                Indices objetoDB = JsonAppHelper<Indices>.GetEntityFromObject(this);
+                var objetoDB = JsonAppHelper<Indices>.GetEntityFromObject(this);
                 UnitOfWork.BeginTransaction();
-                UnitOfWork.GetRepository<Indices>().Insert(objetoDB);
+				_ = UnitOfWork.GetRepository<Indices>().Insert(objetoDB);
                 UnitOfWork.CommitTransaction();
                 return true;
             } catch (Exception ex) {
                 Logger.LogError("{errorMessage}", ex.Message);
                 UnitOfWork.RollbackTransaction();
             }
+
             return false;
         }
 
@@ -156,6 +160,7 @@ namespace velocist.Business.Models {
                 Logger.LogError("{errorMessage}", ex.Message);
                 UnitOfWork.RollbackTransaction();
             }
+
             return false;
         }
 

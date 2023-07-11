@@ -93,6 +93,7 @@ namespace velocist.Business.Models.App {
             } catch (Exception ex) {
                 Logger.LogError("{errorMessage}", ex.Message);
             }
+
             return new List<CountryModel>();
         }
 

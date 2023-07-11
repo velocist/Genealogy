@@ -135,7 +135,7 @@
             this.treeView.Name = "treeView";
             this.treeView.Size = new System.Drawing.Size(320, 431);
             this.treeView.TabIndex = 18;
-            this.treeView.DoubleClick += new System.EventHandler(this.treeView_DoubleClick);
+            this.treeView.DoubleClick += new System.EventHandler(this.TreeView_DoubleClick);
             // 
             // FrmGedcom
             // 

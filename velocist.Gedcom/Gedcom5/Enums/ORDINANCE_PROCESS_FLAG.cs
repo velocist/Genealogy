@@ -1,6 +1,6 @@
 ﻿namespace velocist.Gedcom.Gedcom5.Enums {
-    public enum ORDINANCE_PROCESS_FLAG {
-        NO,
-        YES
-    }
+	public enum ORDINANCE_PROCESS_FLAG {
+		NO,
+		YES
+	}
 }

@@ -15,7 +15,6 @@
         /// </summary>
         public const string ERROR_MODIFY = "Error al modificar";
 
-
         /// <summary>
         /// The error modify
         /// </summary>
@@ -30,7 +29,6 @@
         /// The error list
         /// </summary>
         public const string ERROR_LIST = "Error al obtener";
-
 
         public const string WARN = "Error 404";
         public const string SUCCESS = "Error 404";
@@ -64,7 +62,6 @@
         //public const string ERROR_GET_MAX_ID = "Error al obtener el Id máximo";
         //public const string ERROR_GET_MAX_ID_DB = "Error al obtener el Id máximo en la base de datos";
         //#endregion
-
 
     }
 }

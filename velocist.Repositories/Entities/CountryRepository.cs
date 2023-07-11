@@ -5,16 +5,15 @@ using velocist.Objects.Entities;
 
 namespace velocist.Repositories.Entities {
 
-    /// <summary>
-    /// 
-    /// </summary>
-    public class CountryRepository : Repository<Country> {
+	/// <summary>
+	/// 
+	/// </summary>
+	public class CountryRepository : Repository<Country> {
 
-        private const string TABLE = MappingsDB.TableCountry;
+		private const string TABLE = MappingsDB.TableCountry;
 
-        /// <inheritdoc/>
-        public CountryRepository(IUnitOfWork unitOfWork) : base(unitOfWork, TABLE) {
-        }
-
-    }
+		/// <inheritdoc/>
+		public CountryRepository(IUnitOfWork unitOfWork) : base(unitOfWork, TABLE) {
+		}
+	}
 }

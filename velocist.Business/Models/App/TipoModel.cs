@@ -43,7 +43,6 @@ namespace velocist.Business.Models.App {
         [JsonPropertyName(MappingsDB.Columna_Descripcion)]
         public string Descripcion { get; set; }
 
-
         //#region CONSTRUCTORS
 
         ///// <inheritdoc/>

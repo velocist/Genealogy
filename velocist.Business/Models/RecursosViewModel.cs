@@ -69,13 +69,14 @@ namespace velocist.Business.Models {
         public RecursosViewModel Get() {
             try {
                 Logger.LogDebug("Get<{TEntity},{TContext}>", typeof(RecursosViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
-                Recurso obj = UnitOfWork.GetRepository<Recurso>().GetByID(RecursoModel.Id);
+                var obj = UnitOfWork.GetRepository<Recurso>().GetByID(RecursoModel.Id);
                 if (obj != null) {
                     return JsonAppHelper<RecursosViewModel>.GetEntityFromObject(obj);
                 }
             } catch (Exception ex) {
                 Logger.LogError("{errorMessage}", ex.Message);
             }
+
             return null;
         }
 
@@ -93,6 +94,7 @@ namespace velocist.Business.Models {
             } catch (Exception ex) {
                 Logger.LogError("{errorMessage}", ex.Message);
             }
+
             return new List<RecursoModel>();
         }
 
@@ -103,15 +105,16 @@ namespace velocist.Business.Models {
         public bool Save() {
             try {
                 Logger.LogDebug("Save<{TEntity},{TContext}>", typeof(RecursosViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
-                Recurso objetoDB = JsonAppHelper<Recurso>.GetEntityFromObject(this);
+                var objetoDB = JsonAppHelper<Recurso>.GetEntityFromObject(this);
                 UnitOfWork.BeginTransaction();
-                UnitOfWork.GetRepository<Recurso>().Insert(objetoDB);
+				_ = UnitOfWork.GetRepository<Recurso>().Insert(objetoDB);
                 UnitOfWork.CommitTransaction();
                 return true;
             } catch (Exception ex) {
                 Logger.LogError("{errorMessage}", ex.Message);
                 UnitOfWork.RollbackTransaction();
             }
+
             return false;
         }
 
@@ -122,15 +125,16 @@ namespace velocist.Business.Models {
         public bool Update() {
             try {
                 Logger.LogDebug("Update<{TEntity},{TContext}>", typeof(RecursosViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
-                Recurso objetoDB = JsonAppHelper<Recurso>.GetEntityFromObject(this);
+                var objetoDB = JsonAppHelper<Recurso>.GetEntityFromObject(this);
                 UnitOfWork.BeginTransaction();
-                UnitOfWork.GetRepository<Recurso>().Insert(objetoDB);
+				_ = UnitOfWork.GetRepository<Recurso>().Insert(objetoDB);
                 UnitOfWork.CommitTransaction();
                 return true;
             } catch (Exception ex) {
                 Logger.LogError("{errorMessage}", ex.Message);
                 UnitOfWork.RollbackTransaction();
             }
+
             return false;
         }
 
@@ -150,6 +154,7 @@ namespace velocist.Business.Models {
                 Logger.LogError("{errorMessage}", ex.Message);
                 UnitOfWork.RollbackTransaction();
             }
+
             return false;
         }
 
