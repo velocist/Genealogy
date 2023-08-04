@@ -1,13 +1,11 @@
 ﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using velocist.Business.Models;
 
 namespace Genealogy.Controllers {
 
 	/// <summary>
 	/// The home controller
 	/// </summary>
-	/// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
+	/// <seealso cref="Controller" />
 	public class HomeController : Controller {
 
 		private readonly ILogger<HomeController> _logger;
@@ -16,7 +14,7 @@ namespace Genealogy.Controllers {
 		/// Initializes a new instance of the <see cref="HomeController"/> class.
 		/// </summary>
 		public HomeController() {
-			_logger = LogService.LogServiceContainer.GetLog<HomeController>();
+			_logger = LogServiceContainer.GetLog<HomeController>();
 		}
 
 		/// <summary>
