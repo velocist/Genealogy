@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using velocist.Business.Models;
 
-namespace Genealogy.Controllers {
+namespace velocist.WebApplication.Controllers {
 
 	/// <summary>
 	/// The home controller

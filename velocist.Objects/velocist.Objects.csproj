@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<GenerateDocumentationFile>False</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Auth\**" />
+		<EmbeddedResource Remove="Auth\**" />
+		<None Remove="Auth\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="Entities\Archivos.cs" />
+		<Compile Remove="Entities\ArchivosDocumentales.cs" />
+		<Compile Remove="Entities\ArchivosIndexaciones.cs" />
+		<Compile Remove="Entities\ImportFile.cs" />
+		<Compile Remove="Entities\Recursos.cs" />
+		<Compile Remove="Entities\VistaPadrones.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="EntityFramework" Version="6.4.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+</Project>

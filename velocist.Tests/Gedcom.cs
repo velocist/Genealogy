@@ -1,6 +1,7 @@
 ﻿using System;
-using Genealogy.Gedcom.Core;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using velocist.Gedcom.Core;
 
 namespace velocist.Tests {
 
@@ -17,7 +18,7 @@ namespace velocist.Tests {
 		/// </summary>
 		/// <param name="_testContext">TestContext</param>
 		[ClassInitialize]
-		public static void SetupTests(TestContext _testContext) {
+		public void SetupTests(TestContext _testContext) {
 			try {
 				testContext = _testContext;
 			} catch (Exception ex) {
