@@ -1,0 +1,16 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.Reflection;
+global using System.Text.Json.Serialization;
+global using Genealogy.Gedcom.Core;
+global using Genealogy.Gedcom.Gedcom5;
+global using Genealogy.Gedcom.Gedcom5.Enums;
+global using Genealogy.Gedcom.Gedcom5.Records;
+global using Genealogy.Gedcom.Gedcom5.Structures;
+global using Genealogy.Gedcom.Gedcom5.SubStructures;
+global using Genealogy.Gedcom.Gedcom5.Tags;
+global using Genealogy.Gedcom.Gedcom5.Types;
+global using velocist.Services.Files;
+global using velocist.Services.Formats;

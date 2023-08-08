@@ -1,0 +1,13 @@
+﻿{
+	"profiles": {
+		"Genealogy.GenealogyGrpcService": {
+			"commandName": "Project",
+			"dotnetRunMessages": true,
+			"launchBrowser": false,
+			"applicationUrl": "http://localhost:5231;https://localhost:7036",
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			}
+		}
+	}
+}

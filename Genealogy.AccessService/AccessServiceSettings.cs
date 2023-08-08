@@ -20,7 +20,7 @@
 		/// <summary>
 		/// The entities context migration
 		/// </summary>
-		public const string AppContextMigration = "velocist.WebApplication";
+		public const string AppContextMigration = "Genealogy.WebApplication";
 
 		/// <summary>
 		/// The entities context migration win forms
@@ -30,7 +30,7 @@
 		/// <summary>
 		/// The entities context migration win forms
 		/// </summary>
-		public const string AuthContextMigration = "velocist.WebApplication";
+		public const string AuthContextMigration = "Genealogy.WebApplication";
 
 	}
 }

@@ -8,7 +8,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\velocist\velocist.DataAccess\velocist.DataAccess.csproj" />
 		<ProjectReference Include="..\..\velocist\velocist.LogService\velocist.LogService.csproj" />
-		<ProjectReference Include="..\velocist.Objects\velocist.Objects.csproj" />
+		<ProjectReference Include="..\Genealogy.Objects\Genealogy.Objects.csproj" />
 	</ItemGroup>
 
 </Project>
