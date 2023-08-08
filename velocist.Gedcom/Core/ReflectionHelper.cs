@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
-using System.Text.Json.Serialization;
-using velocist.Services.Formats;
-
-namespace velocist.Gedcom.Core {
+﻿namespace velocist.Gedcom.Core {
 
 	public class ReflectionResult {
 		public string Name { get; set; }

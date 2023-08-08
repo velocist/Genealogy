@@ -1,10 +1,4 @@
-﻿using Autofac;
-using velocist.AccessService;
-using velocist.IdentityService.Entities;
-using velocist.Services.Formats;
-using velocist.Services.Formats.Interfaces;
-
-namespace velocist.WinFormsApp {
+﻿namespace velocist.WinFormsApp {
 
 	/// <summary>
 	/// The container for inject dependencies

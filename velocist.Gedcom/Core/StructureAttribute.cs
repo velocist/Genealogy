@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace velocist.Gedcom.Core {
+﻿namespace velocist.Gedcom.Core {
 
 	[System.AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
 	internal class StructureAttribute : Attribute {
@@ -16,7 +14,8 @@ namespace velocist.Gedcom.Core {
 		}
 
 		public string GetStructure(string name) {
-			if (name is null) throw new ArgumentNullException(nameof(name));
+			if (name is null)
+				throw new ArgumentNullException(nameof(name));
 			try {
 				return string.Empty;
 			} catch (Exception) {

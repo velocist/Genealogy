@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace velocist.Gedcom.Core {
+﻿namespace velocist.Gedcom.Core {
 	public static class GedcomFileManager {
 
 		static GedcomFileManager() {

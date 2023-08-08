@@ -1,11 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using velocist.IdentityService.Entities;
-using velocist.WinForms;
-
-namespace velocist.WinFormsApp.Forms.Login {
+﻿namespace velocist.WinFormsApp.Forms.Login {
 
 	[AllowAnonymous]
 	public partial class FrmLogin : Form {
@@ -42,6 +35,7 @@ namespace velocist.WinFormsApp.Forms.Login {
 			this.ConfigureModal("Iniciar sesión");
 		}
 
+		[Obsolete]
 		public FrmLogin(SignInManager<User> signInManager, UserManager<User> userManager) {
 			InitializeComponent();
 			_userManager = userManager;

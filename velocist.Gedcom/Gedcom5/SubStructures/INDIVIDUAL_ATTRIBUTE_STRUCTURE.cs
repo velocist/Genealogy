@@ -1,7 +1,4 @@
-﻿using velocist.Gedcom.Core;
-using velocist.Gedcom.Gedcom5.Types;
-
-namespace velocist.Gedcom.Gedcom5.SubStructures {
+﻿namespace velocist.Gedcom.Gedcom5.SubStructures {
 	public class INDIVIDUAL_ATTRIBUTE_STRUCTURE : ISUBSTRUCTURE {
 		public CASTE_NAME Cast { get; set; }
 		public PHYSICAL_DESCRIPTION DSCR { get; set; }

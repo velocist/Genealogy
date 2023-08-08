@@ -1,12 +1,3 @@
-using Microsoft.Extensions.Hosting;
-using velocist.AccessService;
-using velocist.IdentityService;
-using velocist.IdentityService.Entities;
-using velocist.LogService;
-using velocist.Objects.Entities;
-using velocist.Services;
-using velocist.WinFormsApp.Forms;
-
 namespace velocist.WinFormsApp {
 
 	/// <summary>
@@ -18,7 +9,8 @@ namespace velocist.WinFormsApp {
 		///  The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main() {
+		[Obsolete]
+		private static void Main() {
 			// To customize application configuration such as set high DPI settings or default font,
 			// see https://aka.ms/applicationconfiguration.
 			Application.EnableVisualStyles();
@@ -47,7 +39,8 @@ namespace velocist.WinFormsApp {
 		/// <returns></returns>
 		public static IHostBuilder CreateHostBuilder(string[] args) {
 			var host = Host.CreateDefaultBuilder(args);
-			return host.ConfigureServices((context, services) => services.AddServicesDbContextApp<AppEntitiesContext>(AccessServiceConfiguration.GetConnectionString(AccessServiceSettings.AppContextConnection), AccessServiceSettings.AppContextMigrationWinForms)).ConfigureHostConfiguration(webBuilder => webBuilder.Build()); ;
+			return host.ConfigureServices((context, services) => services.AddServicesDbContextApp<AppEntitiesContext>(AccessServiceConfiguration.GetConnectionString(AccessServiceSettings.AppContextConnection), AccessServiceSettings.AppContextMigrationWinForms)).ConfigureHostConfiguration(webBuilder => webBuilder.Build());
+			;
 		}
 	}
 }

@@ -1,10 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using velocist.Gedcom.Core;
-using velocist.Gedcom.Gedcom5.SubStructures;
-using velocist.Gedcom.Gedcom5.Tags;
-using velocist.Gedcom.Gedcom5.Types;
-
-namespace velocist.Gedcom.Gedcom5.Structures {
+﻿namespace velocist.Gedcom.Gedcom5.Structures {
 
 	public class HEADER : ISTRUCTURE {
 
@@ -38,7 +32,7 @@ namespace velocist.Gedcom.Gedcom5.Structures {
 
 		[Required]
 		[Tag(StringTags.CHARACTER)]
-		public CHARACTER_SET CHAR { get; set; }
+		public Types.CHARACTER_SET CHAR { get; set; }
 
 		[Tag(StringTags.LANGUAGE)]
 		public LANGUAGE_OF_TEXT LANG { get; set; }

@@ -1,9 +1,4 @@
-﻿using velocist.DataAccess.MySql;
-using velocist.DataAccess.MySql.Interfaces;
-using velocist.Objects;
-using velocist.Objects.Entities;
-
-namespace velocist.Repositories.Entities {
+﻿namespace velocist.Repositories.Entities {
 
 	/// <summary>
 	/// 

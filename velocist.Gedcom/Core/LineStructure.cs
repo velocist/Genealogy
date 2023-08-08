@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace velocist.Gedcom.Core {
+﻿namespace velocist.Gedcom.Core {
 	internal class LineStructure {
 
 		private static string level;

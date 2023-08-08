@@ -1,9 +1,4 @@
-﻿using System;
-using Autofac;
-using Microsoft.EntityFrameworkCore;
-using velocist.Objects;
-
-namespace velocist.AccessService {
+﻿namespace Genealogy.AccessService {
 
 	/// <summary>
 	/// Class that extends ContainerBuilder 
@@ -41,8 +36,8 @@ namespace velocist.AccessService {
 		/// <typeparam name="TContext">The type of the context.</typeparam>
 		/// <param name="builder">The builder.</param>
 		public static void RegisterSqlServer<TContext>(this ContainerBuilder builder) where TContext : DbContext {
-			_ = builder.RegisterType<DataAccess.SqlServer.UnitOfWork<TContext>>().As<DataAccess.SqlServer.Interfaces.IUnitOfWork<TContext>>().InstancePerLifetimeScope();
-			_ = builder.RegisterType<DataAccess.SqlServer.GenericRepository<IEntity, TContext>>().As<DataAccess.SqlServer.Interfaces.IGenericRepository<IEntity, TContext>>().InstancePerLifetimeScope();
+			_ = builder.RegisterType<velocist.DataAccess.SqlServer.UnitOfWork<TContext>>().As<IUnitOfWork<TContext>>().InstancePerLifetimeScope();
+			_ = builder.RegisterType<velocist.DataAccess.SqlServer.GenericRepository<IEntity, TContext>>().As<IGenericRepository<IEntity, TContext>>().InstancePerLifetimeScope();
 		}
 
 		/// <summary>
@@ -52,8 +47,8 @@ namespace velocist.AccessService {
 		/// <param name="nameConnection"></param>
 		public static void RegisterMySqlServer(this ContainerBuilder builder, string nameConnection) {
 			var connectionString = AccessServiceConfiguration.GetConnectionString(nameConnection);
-			_ = builder.RegisterType<DataAccess.MySql.MySqlConnector>().As<DataAccess.MySql.Interfaces.IConnector>().WithParameter("connectionString", connectionString).InstancePerLifetimeScope();
-			_ = builder.RegisterType<DataAccess.MySql.UnitOfWork>().As<DataAccess.MySql.Interfaces.IUnitOfWork>().InstancePerLifetimeScope();
+			_ = builder.RegisterType<velocist.DataAccess.MySql.MySqlConnector>().As<velocist.DataAccess.MySql.Interfaces.IConnector>().WithParameter("connectionString", connectionString).InstancePerLifetimeScope();
+			_ = builder.RegisterType<velocist.DataAccess.MySql.UnitOfWork>().As<velocist.DataAccess.MySql.Interfaces.IUnitOfWork>().InstancePerLifetimeScope();
 			//builder.RegisterType<Repository<IEntity>>().As<IRepository<IEntity>>().InstancePerLifetimeScope();
 		}
 	}

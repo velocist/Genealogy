@@ -1,21 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.Extensions.Localization;
-using velocist.Business;
-using velocist.Business.Models;
-using velocist.Business.Models.App;
-using velocist.Services.Formats.Interfaces;
-using velocist.Web.RenderView.Interfaces;
-using velocist.WebApplication.Controllers;
-using velocist.WebApplication.Core;
-
-namespace Genealogy.Controllers {
+﻿namespace velocist.WebApplication.Controllers {
 
 	/// <summary>
 	/// Resources controller
 	/// </summary>
-	/// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
+	/// <seealso cref="Controller" />
 	public class RecursosController : Controller {
 
 		#region DEPENDENCE INJECTIONS
@@ -32,6 +20,7 @@ namespace Genealogy.Controllers {
 		/// <value>
 		/// The modal configuration.
 		/// </value>
+		[Obsolete]
 		private ModalConfiguration<RecursosViewModel> ModalConfiguration { get; }
 
 		/// <summary>
@@ -42,8 +31,9 @@ namespace Genealogy.Controllers {
 		/// <param name="viewTranslates">View translations</param>
 		/// <param name="date">Datetime</param>
 		/// <param name="renderView">Render view</param>
+		[Obsolete]
 		public RecursosController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView) {
-			_logger = velocist.LogService.LogServiceContainer.GetLog<RecursosController>();
+			_logger = LogService.LogServiceContainer.GetLog<RecursosController>();
 			_sharedTranslations = sharedTranslations;
 			_viewTranslates = viewTranslates;
 			_date = date;
@@ -60,6 +50,7 @@ namespace Genealogy.Controllers {
 		/// </summary>
 		/// <param name="action">The action.</param>
 		/// <param name="isModal">if set to <c>true</c> [is modal].</param>
+		[Obsolete]
 		private void InitView(Constants.Action action, bool isModal = true) {
 			ViewBag.BreadcumbTitle = _sharedTranslations[ModalConfiguration.Title];
 			ViewBag.BreadcumbController = _sharedTranslations[ModalConfiguration.Title];
@@ -68,37 +59,32 @@ namespace Genealogy.Controllers {
 			if (action.Equals(Constants.Action.CREATE)) {
 				ViewBag.TitleModal = _sharedTranslations[ModalConfiguration.TitleCreate];
 				ViewBag.PartialName = ModalConfiguration.PartialNameEdit;
-				if (isModal) {
+				if (isModal)
 					ViewBag.Action = Constants.CreateAction;
-				}
 			} else if (action.Equals(Constants.Action.EDIT)) {
 				ViewBag.TitleModal = _sharedTranslations[ModalConfiguration.TitleEdit];
 				ViewBag.PartialName = ModalConfiguration.PartialNameEdit;
-				if (isModal) {
+				if (isModal)
 					ViewBag.Action = Constants.EditAction;
-				}
 			} else if (action.Equals(Constants.Action.DETAILS)) {
 				ViewBag.TitleModal = _sharedTranslations[ModalConfiguration.TitleDetails];
 				ViewBag.PartialName = ModalConfiguration.PartialNameDetails;
-				if (isModal) {
+				if (isModal)
 					ViewBag.Action = Constants.DetailsAction;
-				}
 			} else if (action.Equals(Constants.Action.DELETE)) {
 				ViewBag.TitleModal = _sharedTranslations[ModalConfiguration.TitleDelete];
 				ViewBag.PartialName = ModalConfiguration.PartialNameDelete;
-				if (isModal) {
+				if (isModal)
 					ViewBag.Action = Constants.DeleteAction;
-				}
 			} else if (action.Equals(Constants.Action.LIST)) {
 				ViewBag.Title = _sharedTranslations[ModalConfiguration.Title];
 				ViewBag.PartialName = ModalConfiguration.PartialNameList;
 				ViewBag.PartialNameScript = ModalConfiguration.PartialNameScript;
 				ViewBag.TableAjaxAction = ModalConfiguration.TableAjaxAction;
-				if (User.IsInRole(Constants.Roles.SuperAdmin.ToString())) {
+				if (User.IsInRole(Constants.Roles.SuperAdmin.ToString()))
 					ModalConfiguration.UploadFile = true;
-				} else {
+				else
 					ModalConfiguration.UploadFile = false;
-				}
 
 				ViewBag.UploadFile = ModalConfiguration.UploadFile;
 			}
@@ -109,6 +95,7 @@ namespace Genealogy.Controllers {
 		/// </summary>
 		/// <returns></returns>
 		[HttpGet]
+		[Obsolete]
 		public async Task<IActionResult> Index() {
 			try {
 				InitView(Constants.Action.LIST);
@@ -116,7 +103,7 @@ namespace Genealogy.Controllers {
 				return await Task.FromResult(View(ModalConfiguration.IndexPath));
 			} catch (Exception ex) {
 				_logger.LogError(ex.Message);
-				ModelState.AddModelError(string.Empty, velocist.WebApplication.Core.WebStrings.ERROR_SERVER);
+				ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
 				return await Task.FromResult(View(nameof(HomeController.Index)));
 			}
 		}
@@ -127,13 +114,14 @@ namespace Genealogy.Controllers {
 		/// <returns></returns>
 		//[Authorize(Roles = "SuperAdmin")]        
 		[HttpGet]
+		[Obsolete]
 		public async Task<IActionResult> Create() {
 			try {
 				InitView(Constants.Action.CREATE);
 				return await Task.FromResult(View(ModalConfiguration.ModalPath, new RecursosViewModel()));
 			} catch (Exception ex) {
 				_logger.LogError(ex.Message);
-				ModelState.AddModelError(string.Empty, velocist.WebApplication.Core.WebStrings.ERROR_SERVER);
+				ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
 				return await Task.FromResult(View(nameof(Index)));
 			}
 		}
@@ -145,26 +133,26 @@ namespace Genealogy.Controllers {
 		/// <returns></returns>
 		//[Authorize(Roles = "SuperAdmin")]        
 		[HttpPost]
+		[Obsolete]
 		public async Task<IActionResult> Create(RecursosViewModel model) {
 			string strRenderView;
 			try {
 				InitView(Constants.Action.CREATE);
-				if (ModelState.IsValid) {
-					if (model.Save()) {
+				if (ModelState.IsValid)
+					if (model.Save())
 						return await Task.FromResult(new JsonResult(StatusCodes.Status200OK));
-					} else {
-						ModelState.AddModelError(string.Empty, velocist.WebApplication.Core.WebStrings.ERROR_MODIFY);
+					else {
+						ModelState.AddModelError(string.Empty, WebStrings.ERROR_MODIFY);
 						strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
 						return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status400BadRequest });
 					}
-				}
 
-				ModelState.AddModelError(string.Empty, velocist.WebApplication.Core.WebStrings.ERROR_BAD_REQUEST);
+				ModelState.AddModelError(string.Empty, WebStrings.ERROR_BAD_REQUEST);
 				strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
 				return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status400BadRequest });
 			} catch (Exception ex) {
 				_logger.LogError(ex.Message);
-				ModelState.AddModelError(string.Empty, velocist.WebApplication.Core.WebStrings.ERROR_SERVER);
+				ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
 				strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
 				return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status500InternalServerError });
 			}
@@ -177,6 +165,7 @@ namespace Genealogy.Controllers {
 		/// <returns></returns>
 		//[Authorize(Roles = "SuperAdmin")]        
 		[HttpGet]
+		[Obsolete]
 		public async Task<IActionResult> Edit(string id) {
 			string strRenderView;
 			try {
@@ -187,18 +176,18 @@ namespace Genealogy.Controllers {
 						strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
 						return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status200OK });
 					} else {
-						ModelState.AddModelError(string.Empty, velocist.WebApplication.Core.WebStrings.ERROR_GET);
+						ModelState.AddModelError(string.Empty, WebStrings.ERROR_GET);
 						strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
 						return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status400BadRequest });
 					}
 				}
 
-				ModelState.AddModelError(string.Empty, velocist.WebApplication.Core.WebStrings.ERROR_BAD_REQUEST);
+				ModelState.AddModelError(string.Empty, WebStrings.ERROR_BAD_REQUEST);
 				strRenderView = await _renderView.RenderAsync(ModalConfiguration.IndexPath, new RecursosViewModel(), new ViewDataDictionary(ViewData));
 				return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status400BadRequest });
 			} catch (Exception ex) {
 				_logger.LogError(ex.Message);
-				ModelState.AddModelError(string.Empty, velocist.WebApplication.Core.WebStrings.ERROR_SERVER);
+				ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
 				strRenderView = await _renderView.RenderAsync(ModalConfiguration.IndexPath, new RecursosViewModel(), new ViewDataDictionary(ViewData));
 				return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status500InternalServerError });
 			}
@@ -211,26 +200,26 @@ namespace Genealogy.Controllers {
 		/// <returns></returns>
 		//[Authorize(Roles = "SuperAdmin")]        
 		[HttpPost]
+		[Obsolete]
 		public async Task<IActionResult> Edit(RecursosViewModel model) {
 			string strRenderView;
 			try {
 				InitView(Constants.Action.EDIT);
-				if (ModelState.IsValid) {
-					if (model.Update()) {
+				if (ModelState.IsValid)
+					if (model.Update())
 						return await Task.FromResult(new JsonResult(StatusCodes.Status200OK));
-					} else {
-						ModelState.AddModelError(string.Empty, velocist.WebApplication.Core.WebStrings.ERROR_MODIFY);
+					else {
+						ModelState.AddModelError(string.Empty, WebStrings.ERROR_MODIFY);
 						strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
 						return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status400BadRequest });
 					}
-				}
 
-				ModelState.AddModelError(string.Empty, velocist.WebApplication.Core.WebStrings.ERROR_BAD_REQUEST);
+				ModelState.AddModelError(string.Empty, WebStrings.ERROR_BAD_REQUEST);
 				strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
 				return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status400BadRequest });
 			} catch (Exception ex) {
 				_logger.LogError(ex.Message);
-				ModelState.AddModelError(string.Empty, velocist.WebApplication.Core.WebStrings.ERROR_SERVER);
+				ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
 				strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
 				return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status500InternalServerError });
 			}
@@ -242,6 +231,7 @@ namespace Genealogy.Controllers {
 		/// <param name="tipo_id">The tipo identifier.</param>
 		/// <returns></returns>
 		[HttpPost]
+		[Obsolete]
 		//[Authorize(Roles = "SuperAdmin")]        
 		public async Task<IActionResult> List(int tipo_id) {
 			try {
@@ -249,7 +239,7 @@ namespace Genealogy.Controllers {
 				return await Task.FromResult(new JsonResult(model) { StatusCode = StatusCodes.Status200OK });
 			} catch (Exception ex) {
 				_logger.LogError(ex.Message);
-				return await Task.FromResult(new JsonResult(velocist.WebApplication.Core.WebStrings.ERROR_SERVER) { StatusCode = StatusCodes.Status500InternalServerError });
+				return await Task.FromResult(new JsonResult(WebStrings.ERROR_SERVER) { StatusCode = StatusCodes.Status500InternalServerError });
 			}
 		}
 

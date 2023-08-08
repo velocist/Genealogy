@@ -1,20 +1,3 @@
-using System.Globalization;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using velocist.AccessService;
-using velocist.IdentityService;
-using velocist.IdentityService.Entities;
-using velocist.Objects.Entities;
-using velocist.Services;
-using velocist.Web;
-using velocist.WebApplication.Core;
-
 namespace velocist.WebApplication {
 
 	/// <summary>

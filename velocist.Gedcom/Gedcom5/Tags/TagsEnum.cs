@@ -1,6 +1,4 @@
-﻿using velocist.Gedcom.Core;
-
-namespace velocist.Gedcom.Gedcom5.Tags {
+﻿namespace velocist.Gedcom.Gedcom5.Tags {
 	public enum TagsEnum {
 		[Tag(StringTags.ABBREVIATION)]
 		ABBREVIATION,

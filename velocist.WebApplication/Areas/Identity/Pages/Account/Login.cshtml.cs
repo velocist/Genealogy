@@ -1,13 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using velocist.IdentityService.Entities;
-using velocist.Services.Crypto;
-
-namespace velocist.WebApplication.Areas.Identity.Pages.Account {
+﻿namespace velocist.WebApplication.Areas.Identity.Pages.Account {
 	[AllowAnonymous]
 	public class LoginModel : PageModel {
 		private readonly UserManager<User> _userManager;
@@ -20,6 +11,7 @@ namespace velocist.WebApplication.Areas.Identity.Pages.Account {
 		/// <param name="signInManager">The sign in manager.</param>
 		/// <param name="logger">The logger.</param>
 		/// <param name="userManager">The user manager.</param>
+		[Obsolete]
 		public LoginModel(SignInManager<User> signInManager,
 			ILogger<LoginModel> logger,
 			UserManager<User> userManager) {

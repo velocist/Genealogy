@@ -1,7 +1,4 @@
-﻿using velocist.Objects;
-using velocist.WinForms;
-
-namespace velocist.WinFormsApp.Forms {
+﻿namespace velocist.WinFormsApp.Forms {
 	public partial class FrmInvestigacion : Form {
 		public FrmInvestigacion() {
 			InitializeComponent();

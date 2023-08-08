@@ -1,8 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using velocist.Gedcom.Core;
-using velocist.Gedcom.Gedcom5.Types;
-
-namespace velocist.Gedcom.Gedcom5.SubStructures {
+﻿namespace velocist.Gedcom.Gedcom5.SubStructures {
 	public class ADDR : ISUBSTRUCTURE {
 		[Required]
 		public ADDRESS_LINE ADDRESS_LINE { get; set; }

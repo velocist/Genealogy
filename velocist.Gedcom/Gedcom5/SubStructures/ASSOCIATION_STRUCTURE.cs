@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using velocist.Gedcom.Core;
-using velocist.Gedcom.Gedcom5.Types;
-
-namespace velocist.Gedcom.Gedcom5.SubStructures {
+﻿namespace velocist.Gedcom.Gedcom5.SubStructures {
 
 	/// <summary>
 	/// The association pointer only associates INDIvidual records to INDIvidual records.

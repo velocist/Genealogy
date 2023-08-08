@@ -1,11 +1,9 @@
-﻿using velocist.Gedcom.Core;
-using velocist.WinForms;
-
-namespace velocist.WinFormsApp.Forms {
+﻿namespace velocist.WinFormsApp.Forms {
 	public partial class FrmGedcom : Form {
 
 		private readonly ILogger<FrmGedcom> _logger;
 
+		[Obsolete]
 		public FrmGedcom() {
 			InitializeComponent();
 			_logger = LogService.LogServiceContainer.GetLog<FrmGedcom>();

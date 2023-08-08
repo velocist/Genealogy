@@ -1,8 +1,4 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using velocist.Business.Models;
-
-namespace velocist.WebApplication.Controllers {
+﻿namespace velocist.WebApplication.Controllers {
 
 	/// <summary>
 	/// The home controller
@@ -15,6 +11,7 @@ namespace velocist.WebApplication.Controllers {
 		/// <summary>
 		/// Initializes a new instance of the <see cref="HomeController"/> class.
 		/// </summary>
+		[Obsolete]
 		public HomeController() {
 			_logger = LogService.LogServiceContainer.GetLog<HomeController>();
 		}

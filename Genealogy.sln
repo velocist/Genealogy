@@ -27,11 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "velocist.DataAccess", "..\v
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "velocist.IdentityService", "velocist.IdentityService\velocist.IdentityService.csproj", "{4993AC30-C6BC-4A27-8F6C-FA94B74E8D2E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "velocist.AccesService", "velocist.AccesService\velocist.AccesService.csproj", "{BEAA9381-E707-41E8-B6CE-19BD403AED4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genealogy.AccessService", "Genealogy.AccessService\Genealogy.AccessService.csproj", "{BEAA9381-E707-41E8-B6CE-19BD403AED4C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "velocist.LogService", "..\velocist\velocist.LogService\velocist.LogService.csproj", "{9F507419-FE58-4EA2-AE8D-110FC20B5F22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "velocist.GenealogyGrpcService", "velocist.GenealogyGrpcService\velocist.GenealogyGrpcService.csproj", "{7FFE18B6-96F2-4579-86AB-807AFCAC8176}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "velocist.GenealogyGrpcService", "velocist.GenealogyGrpcService\velocist.GenealogyGrpcService.csproj", "{7FFE18B6-96F2-4579-86AB-807AFCAC8176}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{99B038E9-A841-4594-B8F5-8E7182583D7B}"
 	ProjectSection(SolutionItems) = preProject

@@ -1,7 +1,4 @@
-﻿using System.IO;
-using Microsoft.Extensions.Configuration;
-
-namespace velocist.AccessService {
+﻿namespace Genealogy.AccessService {
 
 	/// <summary>
 	/// Class to supports configuaration log

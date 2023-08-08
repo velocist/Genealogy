@@ -1,7 +1,4 @@
-﻿using System;
-using Autofac;
-
-namespace velocist.AccessService {
+﻿namespace Genealogy.AccessService {
 
 	/// <summary>
 	/// The container for inject dependencies
@@ -24,10 +21,10 @@ namespace velocist.AccessService {
 				var builder = new ContainerBuilder();
 
 				//Register repositories manage and unit of work for SQL Server EntitiesContext connection 
-				builder.RegisterSqlServer<Objects.Entities.AppEntitiesContext>();
+				builder.RegisterSqlServer<AppEntitiesContext>();
 
 				var connectionString = AccessServiceConfiguration.GetConnectionString(AccessServiceSettings.AppContextConnection);
-				builder.RegisterDbContext<Objects.Entities.AppEntitiesContext>(connectionString, AccessServiceSettings.AppContextMigration);
+				builder.RegisterDbContext<AppEntitiesContext>(connectionString, AccessServiceSettings.AppContextMigration);
 
 				Container = builder.Build();
 			} catch (Exception) {

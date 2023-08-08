@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-
-namespace velocist.Gedcom.Core {
+﻿namespace velocist.Gedcom.Core {
 	internal static class EnumHelpers {
 
 		/// <summary>Parses the specified value.</summary>

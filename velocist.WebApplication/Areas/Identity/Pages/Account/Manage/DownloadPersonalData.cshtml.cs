@@ -1,10 +1,4 @@
-﻿using System.Text.Json;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using velocist.IdentityService.Entities;
-
-namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
+﻿namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
 	public class DownloadPersonalDataModel : PageModel {
 		private readonly UserManager<User> _userManager;
 		private readonly ILogger<DownloadPersonalDataModel> _logger;

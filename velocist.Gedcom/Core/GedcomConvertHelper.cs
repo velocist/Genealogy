@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using velocist.Gedcom.Gedcom5;
-using velocist.Gedcom.Gedcom5.Tags;
-
-namespace velocist.Gedcom.Core {
+﻿namespace velocist.Gedcom.Core {
 
 	public class GedcomConvertHelper {
 		//TODO private static List<List<string>> records { get; set; } 

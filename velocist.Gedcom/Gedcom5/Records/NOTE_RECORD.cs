@@ -1,11 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using velocist.Gedcom.Core;
-using velocist.Gedcom.Gedcom5.SubStructures;
-using velocist.Gedcom.Gedcom5.Tags;
-using velocist.Gedcom.Gedcom5.Types;
-
-namespace velocist.Gedcom.Gedcom5.Records {
+﻿namespace velocist.Gedcom.Gedcom5.Records {
 	public class NOTE_RECORD : IRECORD {
 
 		[Required]

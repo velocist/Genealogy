@@ -1,7 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Identity;
-
-namespace velocist.IdentityService.Entities {
+﻿namespace velocist.IdentityService.Entities {
 	// Add profile data for application users by adding properties to the User class
 	public class User : IdentityUser {
 

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-
-namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
+﻿namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
 	public static class ManageNavPages {
 		public static string Index => "Index";
 

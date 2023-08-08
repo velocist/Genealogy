@@ -1,7 +1,4 @@
-﻿using velocist.Gedcom.Core;
-using velocist.Gedcom.Gedcom5.Types;
-
-namespace velocist.Gedcom.Gedcom5.Tags {
+﻿namespace velocist.Gedcom.Gedcom5.Tags {
 
 	public class GEDC {
 
@@ -9,7 +6,7 @@ namespace velocist.Gedcom.Gedcom5.Tags {
 		public VERSION_NUMBER VERS { get; set; }
 
 		[Tag(StringTags.FORMAT)]
-		public GEDCOM_FORM FORM { get; set; }
+		public Types.GEDCOM_FORM FORM { get; set; }
 	}
 	public class PLACE {
 
@@ -23,7 +20,7 @@ namespace velocist.Gedcom.Gedcom5.Tags {
 		public VERSION_NUMBER VERS { get; set; }
 
 		[Tag(StringTags.FORMAT)]
-		public GEDCOM_FORM FORM { get; set; }
+		public Types.GEDCOM_FORM FORM { get; set; }
 	}
 
 	public class DATA {

@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using velocist.Gedcom.Core;
-using velocist.Gedcom.Gedcom5.Types;
-
-namespace velocist.Gedcom.Gedcom5.SubStructures {
+﻿namespace velocist.Gedcom.Gedcom5.SubStructures {
 	public class PERSONAL_NAME_PIECES : ISUBSTRUCTURE {
 		public NAME_PIECE_PREFIX NPFX { get; set; }
 		public NAME_PIECE_GIVEN GIVN { get; set; }

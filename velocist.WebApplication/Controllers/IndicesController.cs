@@ -1,16 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.Extensions.Localization;
-using velocist.Business;
-using velocist.Business.Models;
-using velocist.Business.Models.App;
-using velocist.Services.Formats.Interfaces;
-using velocist.Web.RenderView.Interfaces;
-using velocist.WebApplication.Core;
-
-namespace velocist.WebApplication.Controllers {
+﻿namespace velocist.WebApplication.Controllers {
 
 	/// <summary>
 	/// The Indices controller
@@ -32,6 +20,7 @@ namespace velocist.WebApplication.Controllers {
 		/// <value>
 		/// The modal configuration.
 		/// </value>
+		[Obsolete]
 		private ModalConfiguration<IndicesViewModel> ModalConfiguration { get; }
 
 		/// <summary>
@@ -41,6 +30,7 @@ namespace velocist.WebApplication.Controllers {
 		/// <param name="viewTranslates">The view translates.</param>
 		/// <param name="date">The date.</param>
 		/// <param name="renderView">The render view.</param>
+		[Obsolete]
 		public IndicesController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView) {
 			_logger = LogService.LogServiceContainer.GetLog<IndicesController>();
 			_sharedTranslations = sharedTranslations;
@@ -58,6 +48,7 @@ namespace velocist.WebApplication.Controllers {
 		/// </summary>
 		/// <param name="action">The action.</param>
 		/// <param name="isModal">if set to <c>true</c> [is modal].</param>
+		[Obsolete]
 		private void InitView(Constants.Action action, bool isModal = true) {
 			ViewBag.BreadcumbTitle = _sharedTranslations[ModalConfiguration.Title];
 			ViewBag.BreadcumbController = _sharedTranslations[ModalConfiguration.Title];
@@ -107,6 +98,7 @@ namespace velocist.WebApplication.Controllers {
 		/// </summary>
 		/// <returns></returns>
 		[HttpGet]
+		[Obsolete]
 		public async Task<IActionResult> Index() {
 			try {
 				InitView(Constants.Action.LIST, false);
@@ -124,6 +116,7 @@ namespace velocist.WebApplication.Controllers {
 		/// <returns></returns>
 		[Authorize(Roles = "SuperAdmin")]
 		[HttpGet]
+		[Obsolete]
 		public async Task<IActionResult> Create() {
 			if (!User.Identity.IsAuthenticated) {
 				//string strRenderView = await _renderView.RenderAsync("AccessDenied.cshtml", model, new ViewDataDictionary(ViewData));
@@ -148,6 +141,7 @@ namespace velocist.WebApplication.Controllers {
 		/// <returns></returns>
 		[Authorize(Roles = "SuperAdmin")]
 		[HttpPost]
+		[Obsolete]
 		public async Task<IActionResult> Create(IndicesViewModel model) {
 			string strRenderView;
 			if (!User.Identity.IsAuthenticated) {
@@ -185,6 +179,7 @@ namespace velocist.WebApplication.Controllers {
 		/// <returns></returns>
 		[Authorize(Roles = "SuperAdmin")]
 		[HttpGet]
+		[Obsolete]
 		public async Task<IActionResult> Edit(int id) {
 			string strRenderView;
 			try {
@@ -219,6 +214,7 @@ namespace velocist.WebApplication.Controllers {
 		/// <returns></returns>
 		[Authorize(Roles = "SuperAdmin")]
 		[HttpPost]
+		[Obsolete]
 		public async Task<IActionResult> Edit(IndicesViewModel model) {
 			string strRenderView;
 			InitView(Constants.Action.EDIT);
@@ -298,6 +294,7 @@ namespace velocist.WebApplication.Controllers {
 		/// </summary>
 		/// <returns></returns>
 		[HttpGet]
+		[Obsolete]
 		public async Task<JsonResult> List() {
 			try {
 				var model = new IndicesViewModel().List();

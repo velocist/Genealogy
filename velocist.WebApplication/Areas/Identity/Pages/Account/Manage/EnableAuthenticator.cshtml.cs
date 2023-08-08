@@ -1,11 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Encodings.Web;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using velocist.IdentityService.Entities;
-
-namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
+﻿namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
 	public class EnableAuthenticatorModel : PageModel {
 		private readonly UserManager<User> _userManager;
 		private readonly ILogger<EnableAuthenticatorModel> _logger;

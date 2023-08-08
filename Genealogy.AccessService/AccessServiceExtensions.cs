@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace velocist.AccessService {
+﻿namespace Genealogy.AccessService {
 
 	/// <summary>
 	/// Configure services for database access
@@ -25,8 +22,8 @@ namespace velocist.AccessService {
 		/// </summary>
 		/// <param name="services">The services.</param>
 		public static void AddServiceSqlServer(this IServiceCollection services) {
-			_ = services.AddScoped(typeof(DataAccess.SqlServer.Interfaces.IUnitOfWork<>), typeof(DataAccess.SqlServer.UnitOfWork<>));
-			_ = services.AddScoped(typeof(DataAccess.SqlServer.Interfaces.IGenericRepository<,>), typeof(DataAccess.SqlServer.GenericRepository<,>));
+			_ = services.AddScoped(typeof(IUnitOfWork<>), typeof(velocist.DataAccess.SqlServer.UnitOfWork<>));
+			_ = services.AddScoped(typeof(IGenericRepository<,>), typeof(velocist.DataAccess.SqlServer.GenericRepository<,>));
 		}
 
 		/// <summary>
@@ -35,9 +32,9 @@ namespace velocist.AccessService {
 		/// <param name="services">The services.</param>
 		/// <param name="connectionString">The connection string.</param>
 		public static void AddServicesMySql(this IServiceCollection services, string connectionString) {
-			_ = services.AddScoped(typeof(DataAccess.MySql.Interfaces.IUnitOfWork), typeof(DataAccess.MySql.UnitOfWork));
-			_ = services.AddSingleton<DataAccess.MySql.Interfaces.IConnector>(new DataAccess.MySql.MySqlConnector(connectionString));
-			_ = services.AddScoped(typeof(DataAccess.MySql.Interfaces.IRepository<>), typeof(DataAccess.MySql.Repository<>));
+			_ = services.AddScoped(typeof(velocist.DataAccess.MySql.Interfaces.IUnitOfWork), typeof(velocist.DataAccess.MySql.UnitOfWork));
+			_ = services.AddSingleton<velocist.DataAccess.MySql.Interfaces.IConnector>(new velocist.DataAccess.MySql.MySqlConnector(connectionString));
+			_ = services.AddScoped(typeof(velocist.DataAccess.MySql.Interfaces.IRepository<>), typeof(velocist.DataAccess.MySql.Repository<>));
 		}
 	}
 }

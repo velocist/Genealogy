@@ -1,8 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
-
-namespace velocist.Objects.Entities {
+﻿namespace velocist.Objects.Entities {
 
 	/// <summary>
 	/// The family search object

@@ -1,6 +1,4 @@
-﻿using velocist.Gedcom.Gedcom5.Tags;
-
-namespace velocist.Gedcom.Core {
+﻿namespace velocist.Gedcom.Core {
 
 	internal enum RecordTypes {
 		[Tag(StringTags.FAMILY)]

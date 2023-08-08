@@ -1,7 +1,4 @@
-﻿using velocist.Gedcom.Core;
-using velocist.Gedcom.Gedcom5.Tags;
-
-namespace velocist.Gedcom.Gedcom5.Enums {
+﻿namespace velocist.Gedcom.Gedcom5.Enums {
 
 	/// <summary>
 	/// A code which shows which parent in the associated family record adopted this person.

@@ -1,15 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Encodings.Web;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.WebUtilities;
-using velocist.IdentityService.Entities;
-
-namespace velocist.WebApplication.Areas.Identity.Pages.Account {
+﻿namespace velocist.WebApplication.Areas.Identity.Pages.Account {
 	[AllowAnonymous]
 	public class RegisterModel : PageModel {
 		private readonly SignInManager<User> _signInManager;

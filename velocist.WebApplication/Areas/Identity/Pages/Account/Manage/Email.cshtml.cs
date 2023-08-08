@@ -1,13 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Encodings.Web;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.WebUtilities;
-using velocist.IdentityService.Entities;
-
-namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
+﻿namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
 	public partial class EmailModel : PageModel {
 		private readonly UserManager<User> _userManager;
 		private readonly SignInManager<User> _signInManager;

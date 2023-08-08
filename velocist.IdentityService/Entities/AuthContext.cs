@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-
-namespace velocist.IdentityService.Entities {
+﻿namespace velocist.IdentityService.Entities {
 
 	/// <summary>
 	/// Identity database context

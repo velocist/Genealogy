@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
-namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
+﻿namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
 	public class ShowRecoveryCodesModel : PageModel {
 
 		/// <summary>

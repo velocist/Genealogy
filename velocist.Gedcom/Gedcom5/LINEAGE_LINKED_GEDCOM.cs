@@ -1,11 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using velocist.Gedcom.Core;
-using velocist.Gedcom.Gedcom5.Records;
-using velocist.Gedcom.Gedcom5.Structures;
-using velocist.Gedcom.Gedcom5.Tags;
-
-namespace velocist.Gedcom.Gedcom5 {
+﻿namespace velocist.Gedcom.Gedcom5 {
 
 	/// <summary>
 	/// This is a model of the lineage-linked GEDCOM structure for submitting data to other lineage-linked GEDCOM processing systems.

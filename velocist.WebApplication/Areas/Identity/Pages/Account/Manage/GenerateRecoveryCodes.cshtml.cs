@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using velocist.IdentityService.Entities;
-
-namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
+﻿namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
 	public class GenerateRecoveryCodesModel : PageModel {
 		private readonly UserManager<User> _userManager;
 		private readonly ILogger<GenerateRecoveryCodesModel> _logger;

@@ -1,6 +1,4 @@
-﻿using velocist.Business;
-
-namespace velocist.WebApplication.Core {
+﻿namespace velocist.WebApplication.Core {
 
 	/// <summary>
 	/// The class that support modal configuration

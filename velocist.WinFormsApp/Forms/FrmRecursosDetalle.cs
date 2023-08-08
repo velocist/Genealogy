@@ -1,9 +1,4 @@
-﻿using velocist.Business.Models;
-using velocist.Business.Models.App;
-using velocist.Objects;
-using velocist.WinForms;
-
-namespace velocist.WinFormsApp.Forms {
+﻿namespace velocist.WinFormsApp.Forms {
 	public partial class FrmRecursosDetalle : Form {
 
 		private readonly ILogger<FrmRecursosDetalle> _logger;
@@ -11,6 +6,7 @@ namespace velocist.WinFormsApp.Forms {
 		/// <summary>
 		/// Initializes a new instance of the <see cref="FrmRecursosDetalle"/> class.
 		/// </summary>
+		[Obsolete]
 		public FrmRecursosDetalle() {
 			InitializeComponent();
 			_logger = LogService.LogServiceContainer.GetLog<FrmRecursosDetalle>();
@@ -23,6 +19,7 @@ namespace velocist.WinFormsApp.Forms {
 		/// Initializes a new instance of the <see cref="FrmRecursosDetalle"/> class.
 		/// </summary>
 		/// <param name="id">The identifier.</param>
+		[Obsolete]
 		public FrmRecursosDetalle(int id) {
 			InitializeComponent();
 			_ = LoadComboCountry(CmbCountry);
@@ -35,6 +32,7 @@ namespace velocist.WinFormsApp.Forms {
 		/// Loads the form with specified identifier.
 		/// </summary>
 		/// <param name="id">The identifier.</param>
+		[Obsolete]
 		private void LoadForm(int id) {
 			try {
 				var item = new RecursosViewModel(id).Get();
@@ -60,6 +58,7 @@ namespace velocist.WinFormsApp.Forms {
 		/// </summary>
 		/// <param name="combo">The combo.</param>
 		/// <returns></returns>
+		[Obsolete]
 		private ComboBox LoadComboCountry(ComboBox combo) {
 			try {
 				combo.LoadCombo<CountryModel>(MappingsDB.Columna_Id, "Name", new CountryModel().List().ToList());

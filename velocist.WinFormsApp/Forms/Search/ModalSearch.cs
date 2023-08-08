@@ -1,6 +1,4 @@
-﻿using velocist.WinForms;
-
-namespace velocist.WinFormsApp.Search {
+﻿namespace velocist.WinFormsApp.Search {
 	public partial class ModalSearch<T> : Form where T : class {
 
 		private readonly ILogger<ModalSearch<T>> _logger;
@@ -8,6 +6,7 @@ namespace velocist.WinFormsApp.Search {
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ModalSearch{T}"/> class.
 		/// </summary>
+		[Obsolete]
 		public ModalSearch() {
 			InitializeComponent();
 			this.ConfigureForm("Exportación", windowsState: FormWindowState.Normal);

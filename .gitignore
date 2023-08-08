@@ -399,3 +399,7 @@ FodyWeavers.xsd
 velocist.WinFormsApp/Settings/appsettings.json
 velocist.WebApplication/Settings/appsettings.json
 velocist.WebApplication/Properties/launchSettings.json
+/velocist.WinFormsApp/Settings/appsettings.json
+/velocist.GenealogyGrpcService/appsettings.json
+/velocist.GenealogyGrpcService/appsettings.json
+/velocist.GenealogyGrpcService/appsettings.Development.json

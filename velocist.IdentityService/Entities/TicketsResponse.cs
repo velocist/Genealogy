@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace velocist.IdentityService.Entities {
+﻿namespace velocist.IdentityService.Entities {
 	public class TicketsResponse {
 
 		[Key]

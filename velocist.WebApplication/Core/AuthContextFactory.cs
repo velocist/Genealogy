@@ -1,10 +1,4 @@
-﻿using System.IO;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
-using velocist.IdentityService.Entities;
-
-namespace velocist.WebApplication.Core {
+﻿namespace velocist.WebApplication.Core {
 
 	/// <summary>
 	/// The factory Entities context
@@ -22,13 +16,13 @@ namespace velocist.WebApplication.Core {
 		public AuthContext CreateDbContext(string[] args) {
 			IConfiguration configuration = new ConfigurationBuilder()
 				.SetBasePath(Directory.GetCurrentDirectory())
-				.AddJsonFile(AccessService.AccessServiceSettings.AppSettingsFile, optional: false)
+				.AddJsonFile(AccessServiceSettings.AppSettingsFile, optional: false)
 				.Build();
 
 			var builder = new DbContextOptionsBuilder<AuthContext>();
-			var connectionString = configuration.GetConnectionString(AccessService.AccessServiceSettings.AuthContextConnection);
+			var connectionString = configuration.GetConnectionString(AccessServiceSettings.AuthContextConnection);
 
-			_ = builder.UseSqlServer(connectionString, x => x.MigrationsAssembly(AccessService.AccessServiceSettings.AuthContextMigration))
+			_ = builder.UseSqlServer(connectionString, x => x.MigrationsAssembly(AccessServiceSettings.AuthContextMigration))
 				.EnableSensitiveDataLogging();
 			return new AuthContext(builder.Options);
 		}

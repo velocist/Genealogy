@@ -1,18 +1,11 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using velocist.Gedcom.Core;
-using velocist.Gedcom.Gedcom5.SubStructures;
-using velocist.Gedcom.Gedcom5.Tags;
-using velocist.Gedcom.Gedcom5.Types;
-
-namespace velocist.Gedcom.Gedcom5.Records {
+﻿namespace velocist.Gedcom.Gedcom5.Records {
 	public class FAM_RECORD : IRECORD {
 
 		[Required]
 		[Tag(StringTags.FAMILY)]
 		public XREF FAM { get; set; }
 
-		public RESTRICTION_NOTICE RESN { get; set; }
+		public Enums.RESTRICTION_NOTICE RESN { get; set; }
 
 		public List<FAMILY_EVENT_STRUCTURE> FAMILY_EVENT_STRUCTURE { get; set; }
 

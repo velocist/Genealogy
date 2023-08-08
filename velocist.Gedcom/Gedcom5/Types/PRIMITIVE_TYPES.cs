@@ -1,9 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using velocist.Gedcom.Core;
-using velocist.Gedcom.Gedcom5.Enums;
-using velocist.Gedcom.Gedcom5.Tags;
-
-namespace velocist.Gedcom.Gedcom5.Types {
+﻿namespace velocist.Gedcom.Gedcom5.Types {
 
 	/// <summary>
 	/// The name of the city used in the address. Isolated for sorting or indexing.

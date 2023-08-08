@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
-namespace velocist.WebApplication.Areas.Identity.Pages.Account {
+﻿namespace velocist.WebApplication.Areas.Identity.Pages.Account {
 	[AllowAnonymous]
 	public class LockoutModel : PageModel {
 		public void OnGet() {

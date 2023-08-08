@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using velocist.Gedcom.Core;
-using velocist.Gedcom.Gedcom5.Types;
-
-namespace velocist.Gedcom.Gedcom5.SubStructures {
+﻿namespace velocist.Gedcom.Gedcom5.SubStructures {
 	public class EVENT_DETAIL : ISUBSTRUCTURE {
 
 		public EVENT_OR_FACT_CLASSIFICATION TYPE { get; set; }
@@ -13,7 +9,7 @@ namespace velocist.Gedcom.Gedcom5.SubStructures {
 		public RESPONSIBLE_AGENCY AGNC { get; set; }
 		public RELIGIOUS_AFFILIATION RELI { get; set; }
 		public CAUSE_OF_EVENT CAUS { get; set; }
-		public RESTRICTION_NOTICE RESN { get; set; }
+		public Types.RESTRICTION_NOTICE RESN { get; set; }
 		public List<NOTE_STRUCTURE> NOTES { get; set; }
 		public List<SOURCE_CITATION> SOURCES { get; set; }
 		public List<MULTIMEDIA_LINK> MULTIMEDIA { get; set; }

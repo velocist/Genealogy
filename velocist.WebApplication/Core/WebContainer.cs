@@ -1,10 +1,4 @@
-﻿using Autofac;
-using velocist.AccessService;
-using velocist.IdentityService.Entities;
-using velocist.Services.Formats;
-using velocist.Services.Formats.Interfaces;
-
-namespace velocist.WebApplication.Core {
+﻿namespace velocist.WebApplication.Core {
 
 	/// <summary>
 	/// The container for inject dependencies

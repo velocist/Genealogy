@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace velocist.WinFormsApp.Forms {
+﻿namespace velocist.WinFormsApp.Forms {
     partial class FrmIndices {
         /// <summary>
         ///  Required designer variable.

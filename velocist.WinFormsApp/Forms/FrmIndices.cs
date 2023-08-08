@@ -1,18 +1,16 @@
-using velocist.Business.Models;
-using velocist.Objects;
-using velocist.WinForms;
-
 namespace velocist.WinFormsApp.Forms {
 
 	public partial class FrmIndices : Form {
 
 		private static ILogger<FrmIndices> _logger;
 
+		[Obsolete]
 		public FrmIndices() {
 			InitializeComponent();
 			_logger = LogService.LogServiceContainer.GetLog<FrmIndices>();
 		}
 
+		[Obsolete]
 		private void FrmIndices_Load(object sender, EventArgs e) {
 			InitTable(DgvData);
 			LoadTable(DgvData);
@@ -34,6 +32,7 @@ namespace velocist.WinFormsApp.Forms {
 			}
 		}
 
+		[Obsolete]
 		private static void LoadTable(DataGridView dataGridView, int employeeId = 0) {
 			try {
 				var list = new IndicesViewModel().List().ToList();

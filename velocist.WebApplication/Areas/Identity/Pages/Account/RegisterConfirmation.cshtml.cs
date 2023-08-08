@@ -1,12 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.WebUtilities;
-using velocist.IdentityService.Entities;
-
-namespace velocist.WebApplication.Areas.Identity.Pages.Account {
+﻿namespace velocist.WebApplication.Areas.Identity.Pages.Account {
 	[AllowAnonymous]
 	public class RegisterConfirmationModel : PageModel {
 		private readonly UserManager<User> _userManager;

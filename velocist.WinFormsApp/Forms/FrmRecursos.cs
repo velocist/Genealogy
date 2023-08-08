@@ -1,11 +1,4 @@
-﻿using System.Drawing;
-using velocist.Business.Models;
-using velocist.Business.Models.App;
-using velocist.Objects;
-using velocist.WinForms;
-using velocist.WinForms.Export;
-
-namespace velocist.WinFormsApp.Forms {
+﻿namespace velocist.WinFormsApp.Forms {
 
 	/// <summary>
 	/// Form for resources
@@ -20,6 +13,7 @@ namespace velocist.WinFormsApp.Forms {
 		/// <summary>
 		/// Initializes a new instance of the <see cref="FrmRecursos"/> class.
 		/// </summary>
+		[Obsolete]
 		public FrmRecursos() {
 			InitializeComponent();
 			_logger = LogService.LogServiceContainer.GetLog<FrmRecursos>();
@@ -31,6 +25,7 @@ namespace velocist.WinFormsApp.Forms {
 		/// </summary>
 		/// <param name="sender">The source of the event.</param>
 		/// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+		[Obsolete]
 		private void FrmRecurso_Load(object sender, EventArgs e) {
 			InitTable(DgvData);
 			LoadTable(DgvData);
@@ -68,6 +63,7 @@ namespace velocist.WinFormsApp.Forms {
 		/// </summary>
 		/// <param name="dataGridView">The data grid view.</param>
 		/// <exception cref="System.Exception"></exception>
+		[Obsolete]
 		private static void LoadTable(DataGridView dataGridView) {
 			try {
 				var list = new RecursosViewModel().List().ToList();
@@ -84,6 +80,7 @@ namespace velocist.WinFormsApp.Forms {
 		/// <param name="combo">The combo.</param>
 		/// <returns></returns>
 		/// <exception cref="System.Exception"></exception>
+		[Obsolete]
 		private static ComboBox LoadComboCountry(ComboBox combo) {
 			try {
 				combo.LoadCombo<CountryModel>(MappingsDB.Columna_Id, "Name", new CountryModel().List().ToList());
@@ -130,6 +127,7 @@ namespace velocist.WinFormsApp.Forms {
 		/// </summary>
 		/// <param name="sender">The source of the event.</param>
 		/// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+		[Obsolete]
 		private void DgvData_DoubleClick(object sender, EventArgs e) {
 			try {
 				if (searchRow) {
@@ -165,7 +163,7 @@ namespace velocist.WinFormsApp.Forms {
 			}
 		}
 
-		DataGridViewTextBoxEditingControl editDgvEc = null;
+		private DataGridViewTextBoxEditingControl editDgvEc = null;
 
 		/// <summary>
 		/// Handles the EditingControlShowing event of the DataGridView control.
@@ -174,7 +172,8 @@ namespace velocist.WinFormsApp.Forms {
 		/// <param name="e">The <see cref="DataGridViewEditingControlShowingEventArgs"/> instance containing the event data.</param>
 		private void DataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e) {
 			// unhook the old handle
-			if (editDgvEc != null) editDgvEc.TextChanged -= EditDgvEc_TextChanged;
+			if (editDgvEc != null)
+				editDgvEc.TextChanged -= EditDgvEc_TextChanged;
 			// store a reference
 			editDgvEc = e.Control as DataGridViewTextBoxEditingControl;
 			// hook up the TextChanged event
@@ -186,13 +185,15 @@ namespace velocist.WinFormsApp.Forms {
 		/// </summary>
 		/// <param name="sender">The source of the event.</param>
 		/// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-		void EditDgvEc_TextChanged(object sender, EventArgs e) {
+		private void EditDgvEc_TextChanged(object sender, EventArgs e) {
 			if (DgvData.CurrentCell.RowIndex == 0) {
 				var col = DgvData.CurrentCell.ColumnIndex;
-				if (editDgvEc.Text == "") DgvData.ClearSelection();
+				if (editDgvEc.Text == "")
+					DgvData.ClearSelection();
 				else
 					foreach (DataGridViewRow row in DgvData.Rows) {
-						if (row.Index > 0) row.Selected =
+						if (row.Index > 0)
+							row.Selected =
 							row.Cells[col].Value.ToString().Contains(editDgvEc.Text);
 					}
 			}
@@ -204,7 +205,8 @@ namespace velocist.WinFormsApp.Forms {
 		/// <param name="sender">The source of the event.</param>
 		/// <param name="e">The <see cref="DataGridViewCellPaintingEventArgs"/> instance containing the event data.</param>
 		private void DataGridView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e) {
-			if (e.ColumnIndex >= 0 || e.RowIndex != 0) return;
+			if (e.ColumnIndex >= 0 || e.RowIndex != 0)
+				return;
 			e.Graphics.DrawString("$", new Font("Wingdings", 11f), Brushes.Black, e.CellBounds);
 			e.Handled = true;
 		}

@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace velocist.Objects.Entities {
+﻿namespace velocist.Objects.Entities {
 
 	/// <summary>
 	/// The entities context

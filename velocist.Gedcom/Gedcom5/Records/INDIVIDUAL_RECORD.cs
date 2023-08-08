@@ -1,22 +1,15 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using velocist.Gedcom.Core;
-using velocist.Gedcom.Gedcom5.SubStructures;
-using velocist.Gedcom.Gedcom5.Tags;
-using velocist.Gedcom.Gedcom5.Types;
-
-namespace velocist.Gedcom.Gedcom5.Records {
+﻿namespace velocist.Gedcom.Gedcom5.Records {
 	public class INDIVIDUAL_RECORD : IRECORD {
 
 		[Required]
 		[Tag(StringTags.INDIVIDUAL)]
 		public XREF INDI { get; set; }
 
-		public RESTRICTION_NOTICE RESN { get; set; }
+		public Types.RESTRICTION_NOTICE RESN { get; set; }
 
 		public List<PERSONAL_NAME_STRUCTURE> PERSONAL_NAME_STRUCTURE { get; set; }
 
-		public SEX_VALUE SEX { get; set; }
+		public Types.SEX_VALUE SEX { get; set; }
 
 		public List<INDIVIDUAL_EVENT_STRUCTURE> INDIVIDUAL_EVENT_STRUCTURE { get; set; }
 		public List<INDIVIDUAL_ATTRIBUTE_STRUCTURE> INDIVIDUAL_ATTRIBUTE_STRUCTURE { get; set; }

@@ -1,0 +1,10 @@
+﻿global using System;
+global using System.IO;
+global using Autofac;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using velocist.DataAccess.SqlServer.Interfaces;
+global using velocist.Objects;
+global using velocist.Objects.Entities;
+global using velocist.Services.Reflection;

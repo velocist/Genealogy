@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using velocist.IdentityService.Entities;
-
-namespace velocist.IdentityService {
+﻿namespace velocist.IdentityService {
 
 	/// <summary>
 	/// Configure services for database access

@@ -1,188 +1,180 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Extensions.Logging;
-using velocist.AccessService;
-using velocist.Business.Models.App;
-using velocist.Objects.Entities;
-using velocist.Services.Json;
+﻿namespace velocist.Business.Models {
 
-#nullable disable
+	/// <summary>
+	/// The Indices view model class
+	/// </summary>
+	/// <seealso cref="BaseModel{TEntity, TContext}" />
+	[Obsolete]
+	public class IndicesViewModel : BaseModel<IndicesViewModel, AppEntitiesContext> {
 
-namespace velocist.Business.Models {
+		/// <summary>
+		/// The logger
+		/// </summary>
+		public readonly ILogger<IndicesViewModel> Logger;
 
-    /// <summary>
-    /// The Indices view model class
-    /// </summary>
-    /// <seealso cref="BaseModel{TEntity, TContext}" />
-    public class IndicesViewModel : BaseModel<IndicesViewModel, AppEntitiesContext> {
+		#region PROPERTIES
 
-        /// <summary>
-        /// The logger
-        /// </summary>
-        public readonly ILogger<IndicesViewModel> Logger;
+		/// <summary>
+		/// Gets or sets the indice model.
+		/// </summary>
+		/// <value>
+		/// The indice model.
+		/// </value>
+		public IndiceModel IndiceModel { get; set; }
 
-        #region PROPERTIES
+		#endregion
 
-        /// <summary>
-        /// Gets or sets the indice model.
-        /// </summary>
-        /// <value>
-        /// The indice model.
-        /// </value>
-        public IndiceModel IndiceModel { get; set; }
+		/// <summary>
+		/// Gets or sets the name of the file.
+		/// </summary>
+		/// <value>
+		/// The name of the file.
+		/// </value>
+		public string FileName { get; set; }
 
-        #endregion
+		/// <summary>
+		/// Gets or sets the path file.
+		/// </summary>
+		/// <value>
+		/// The path file.
+		/// </value>
+		public string PathFile { get; set; }
 
-        /// <summary>
-        /// Gets or sets the name of the file.
-        /// </summary>
-        /// <value>
-        /// The name of the file.
-        /// </value>
-        public string FileName { get; set; }
+		#region CONSTRUCTORS
 
-        /// <summary>
-        /// Gets or sets the path file.
-        /// </summary>
-        /// <value>
-        /// The path file.
-        /// </value>
-        public string PathFile { get; set; }
+		/// <inheritdoc/>
+		[Obsolete]
+		public IndicesViewModel() : base() {
+			Logger = LogService.LogServiceContainer.GetLog<IndicesViewModel>();
+		}
 
-        #region CONSTRUCTORS
+		/// <summary>
+		/// Initializes a new instance of the <see cref="IndicesViewModel"/> class.
+		/// </summary>
+		/// <param name="id">The identifier.</param>
+		[Obsolete]
+		public IndicesViewModel(object id) : base() {
+			Logger = LogService.LogServiceContainer.GetLog<IndicesViewModel>();
+			IndiceModel.Id = int.Parse(id.ToString());
+		}
 
-        /// <inheritdoc/>
-        public IndicesViewModel() : base() {
-            Logger = LogService.LogServiceContainer.GetLog<IndicesViewModel>();
-        }
+		#endregion
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IndicesViewModel"/> class.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        public IndicesViewModel(object id) : base() {
-            Logger = LogService.LogServiceContainer.GetLog<IndicesViewModel>();
-            IndiceModel.Id = int.Parse(id.ToString());
-        }
+		/// <summary>
+		/// Gets this instance.
+		/// </summary>
+		/// <returns></returns>
+		public IndicesViewModel Get() {
+			try {
+				Logger.LogDebug("Get<{TEntity},{TContext}>", typeof(IndicesViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
+				var obj = UnitOfWork.GetRepository<Indices>().GetByID(IndiceModel.Id);
+				if (obj != null) {
+					return JsonAppHelper<IndicesViewModel>.GetEntityFromObject(obj);
+				}
+			} catch (Exception ex) {
+				Logger.LogError("{errorMessage}", ex.Message);
+			}
 
-        #endregion
+			return null;
+		}
 
-        /// <summary>
-        /// Gets this instance.
-        /// </summary>
-        /// <returns></returns>
-        public IndicesViewModel Get() {
-            try {
-                Logger.LogDebug("Get<{TEntity},{TContext}>", typeof(IndicesViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
-                var obj = UnitOfWork.GetRepository<Indices>().GetByID(IndiceModel.Id);
-                if (obj != null) {
-                    return JsonAppHelper<IndicesViewModel>.GetEntityFromObject(obj);
-                }
-            } catch (Exception ex) {
-                Logger.LogError("{errorMessage}", ex.Message);
-            }
+		/// <summary>
+		/// Lists this instance.
+		/// </summary>
+		/// <returns></returns>
+		public IEnumerable<IndicesViewModel> List() {
+			try {
+				Logger.LogDebug("List<{TEntity},{TContext}>", typeof(IndicesViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
+				IEnumerable<object> list = UnitOfWork.GetRepository<Indices>().Get();
+				if (list != null && list.Any()) {
+					return JsonAppHelper<IndicesViewModel>.GetListFromObject(list);
+				}
+			} catch (Exception ex) {
+				Logger.LogError("{errorMessage}", ex.Message);
+			}
 
-            return null;
-        }
+			return new List<IndicesViewModel>();
+		}
 
-        /// <summary>
-        /// Lists this instance.
-        /// </summary>
-        /// <returns></returns>
-        public IEnumerable<IndicesViewModel> List() {
-            try {
-                Logger.LogDebug("List<{TEntity},{TContext}>", typeof(IndicesViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
-                IEnumerable<object> list = UnitOfWork.GetRepository<Indices>().Get();
-                if (list != null && list.Any()) {
-                    return JsonAppHelper<IndicesViewModel>.GetListFromObject(list);
-                }
-            } catch (Exception ex) {
-                Logger.LogError("{errorMessage}", ex.Message);
-            }
-
-            return new List<IndicesViewModel>();
-        }
-
-        /// <summary>
-        /// Saves this instance.
-        /// </summary>
-        /// <returns></returns>
-        public bool Save() {
-            try {
-                Logger.LogDebug("Save<{TEntity},{TContext}>", typeof(IndicesViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
-                var objetoDB = JsonAppHelper<Indices>.GetEntityFromObject(this);
-                UnitOfWork.BeginTransaction();
+		/// <summary>
+		/// Saves this instance.
+		/// </summary>
+		/// <returns></returns>
+		public bool Save() {
+			try {
+				Logger.LogDebug("Save<{TEntity},{TContext}>", typeof(IndicesViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
+				var objetoDB = JsonAppHelper<Indices>.GetEntityFromObject(this);
+				UnitOfWork.BeginTransaction();
 				_ = UnitOfWork.GetRepository<Indices>().Insert(objetoDB);
-                UnitOfWork.CommitTransaction();
-                return true;
-            } catch (Exception ex) {
-                Logger.LogError("{errorMessage}", ex.Message);
-                UnitOfWork.RollbackTransaction();
-            }
+				UnitOfWork.CommitTransaction();
+				return true;
+			} catch (Exception ex) {
+				Logger.LogError("{errorMessage}", ex.Message);
+				UnitOfWork.RollbackTransaction();
+			}
 
-            return false;
-        }
+			return false;
+		}
 
-        /// <summary>
-        /// Updates this instance.
-        /// </summary>
-        /// <returns></returns>
-        public bool Update() {
-            try {
-                Logger.LogDebug("Update<{TEntity},{TContext}>", typeof(IndicesViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
-                var objetoDB = JsonAppHelper<Indices>.GetEntityFromObject(this);
-                UnitOfWork.BeginTransaction();
+		/// <summary>
+		/// Updates this instance.
+		/// </summary>
+		/// <returns></returns>
+		public bool Update() {
+			try {
+				Logger.LogDebug("Update<{TEntity},{TContext}>", typeof(IndicesViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
+				var objetoDB = JsonAppHelper<Indices>.GetEntityFromObject(this);
+				UnitOfWork.BeginTransaction();
 				_ = UnitOfWork.GetRepository<Indices>().Insert(objetoDB);
-                UnitOfWork.CommitTransaction();
-                return true;
-            } catch (Exception ex) {
-                Logger.LogError("{errorMessage}", ex.Message);
-                UnitOfWork.RollbackTransaction();
-            }
+				UnitOfWork.CommitTransaction();
+				return true;
+			} catch (Exception ex) {
+				Logger.LogError("{errorMessage}", ex.Message);
+				UnitOfWork.RollbackTransaction();
+			}
 
-            return false;
-        }
+			return false;
+		}
 
-        /// <summary>
-        /// Delete indice by id
-        /// </summary>
-        /// <returns>True if product has been deleted, false otherwise</returns>
-        public bool Delete() {
-            try {
-                Logger.LogDebug("Delete<{TEntity},{TContext}>", typeof(IndicesViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
-                Indices objetoDB = new() { Id = IndiceModel.Id };
-                UnitOfWork.BeginTransaction();
-                UnitOfWork.GetRepository<Indices>().Delete(objetoDB);
-                UnitOfWork.CommitTransaction();
-                return true;
-            } catch (Exception ex) {
-                Logger.LogError("{errorMessage}", ex.Message);
-                UnitOfWork.RollbackTransaction();
-            }
+		/// <summary>
+		/// Delete indice by id
+		/// </summary>
+		/// <returns>True if product has been deleted, false otherwise</returns>
+		public bool Delete() {
+			try {
+				Logger.LogDebug("Delete<{TEntity},{TContext}>", typeof(IndicesViewModel).Name, typeof(Objects.Entities.AppEntitiesContext).Name);
+				Indices objetoDB = new() { Id = IndiceModel.Id };
+				UnitOfWork.BeginTransaction();
+				UnitOfWork.GetRepository<Indices>().Delete(objetoDB);
+				UnitOfWork.CommitTransaction();
+				return true;
+			} catch (Exception ex) {
+				Logger.LogError("{errorMessage}", ex.Message);
+				UnitOfWork.RollbackTransaction();
+			}
 
-            return false;
-        }
+			return false;
+		}
 
-        //public bool Import(string path, int rowHeader) {
-        //    try {
-        //        List<IndicesModel> list = ExcelHelper<IndicesModel>.Import(path, rowHeader);
-        //        _UnitOfWork.BeginTransaction();
-        //        if (list != null && list.Count > 0) {
-        //            foreach (IndicesModel model in list) {
-        //                Indices objetoDB = JsonAppHelper<Indices>.GetEntityFromObject(model);
-        //                if (new IndicesRepository(_UnitOfWork).Insert(objetoDB) == 0) {
-        //                    _UnitOfWork.Rollback();
-        //                }
-        //            }
-        //        }
-        //        _UnitOfWork.Commit();
-        //        return true;
-        //    } catch (Exception ex) {
-        //                        Logger.LogError("{errorMessage}",ex.Message);
-        //    }
-        //    _UnitOfWork.Rollback();
-        //    return false;
-        //}
-    }
+		//public bool Import(string path, int rowHeader) {
+		//    try {
+		//        List<IndicesModel> list = ExcelHelper<IndicesModel>.Import(path, rowHeader);
+		//        _UnitOfWork.BeginTransaction();
+		//        if (list != null && list.Count > 0) {
+		//            foreach (IndicesModel model in list) {
+		//                Indices objetoDB = JsonAppHelper<Indices>.GetEntityFromObject(model);
+		//                if (new IndicesRepository(_UnitOfWork).Insert(objetoDB) == 0) {
+		//                    _UnitOfWork.Rollback();
+		//                }
+		//            }
+		//        }
+		//        _UnitOfWork.Commit();
+		//        return true;
+		//    } catch (Exception ex) {
+		//                        Logger.LogError("{errorMessage}",ex.Message);
+		//    }
+		//    _UnitOfWork.Rollback();
+		//    return false;
+		//}
+	}
 }

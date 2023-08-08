@@ -1,13 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using velocist.IdentityService.Entities;
-
-namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
+﻿namespace velocist.WebApplication.Areas.Identity.Pages.Account.Manage {
 	public class ResetAuthenticatorModel : PageModel {
-		readonly UserManager<User> _userManager;
+		private readonly UserManager<User> _userManager;
 		private readonly SignInManager<User> _signInManager;
-		readonly ILogger<ResetAuthenticatorModel> _logger;
+		private readonly ILogger<ResetAuthenticatorModel> _logger;
 
 		public ResetAuthenticatorModel(
 			UserManager<User> userManager,

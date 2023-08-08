@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace velocist.Gedcom.Core {
+﻿namespace velocist.Gedcom.Core {
 
 	[System.AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
 	internal class TagAttribute : Attribute {

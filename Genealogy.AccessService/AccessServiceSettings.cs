@@ -1,4 +1,4 @@
-﻿namespace velocist.AccessService {
+﻿namespace Genealogy.AccessService {
 
 	public class AccessServiceSettings {
 

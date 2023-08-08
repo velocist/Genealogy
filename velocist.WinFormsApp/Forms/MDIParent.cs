@@ -1,6 +1,4 @@
-﻿using velocist.WinForms;
-
-namespace velocist.WinFormsApp.Forms {
+﻿namespace velocist.WinFormsApp.Forms {
 	public partial class MDIParent : Form {
 
 		private int childFormNumber = 0;
@@ -12,6 +10,7 @@ namespace velocist.WinFormsApp.Forms {
 		/// <summary>
 		/// Initializes a new instance of the <see cref="MDIParent"/> class.
 		/// </summary>
+		[Obsolete]
 		public MDIParent() {
 			InitializeComponent();
 			//_userManager = (UserManager<User>)serviceProvider.GetService(typeof(UserManager<User>));
@@ -63,7 +62,7 @@ namespace velocist.WinFormsApp.Forms {
 			}
 		}
 
-		private void ExitToolsStripMenuItem_Click(object sender, EventArgs e) => this.Close();
+		private void ExitToolsStripMenuItem_Click(object sender, EventArgs e) => Close();
 
 		private void CutToolStripMenuItem_Click(object sender, EventArgs e) {
 		}
@@ -92,6 +91,7 @@ namespace velocist.WinFormsApp.Forms {
 			}
 		}
 
+		[Obsolete]
 		private void FrmIndices_Click(object sender, EventArgs e) {
 			try {
 				if (!this.CheckOpenForms<FrmIndices>()) {
@@ -106,6 +106,7 @@ namespace velocist.WinFormsApp.Forms {
 			}
 		}
 
+		[Obsolete]
 		private void FrmRecursos_Click(object sender, EventArgs e) {
 			try {
 				if (!this.CheckOpenForms<FrmRecursos>()) {
@@ -120,6 +121,7 @@ namespace velocist.WinFormsApp.Forms {
 			}
 		}
 
+		[Obsolete]
 		private void GedcomToolStripMenuItem_Click(object sender, EventArgs e) {
 			try {
 				if (!this.CheckOpenForms<FrmGedcom>()) {
