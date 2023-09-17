@@ -1,6 +1,6 @@
 ﻿namespace Genealogy.Gedcom.Core {
 
-	public class PrimitiveType : IGEDCOM_TYPE {
+    public class PrimitiveType : IGEDCOM_TYPE {
 
-	}
+    }
 }

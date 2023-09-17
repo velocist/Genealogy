@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Class Name="Genealogy.Business.Services.FSCatalogService" Collapsed="true">
+    <Position X="23.5" Y="1.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Services\FSService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Services.FSFilmService" Collapsed="true">
+    <Position X="1.5" Y="1.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Services\FSService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Services.FSImageService" Collapsed="true">
+    <Position X="30" Y="1.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Services\FSService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Services.FSRecordService" Collapsed="true">
+    <Position X="5.5" Y="1.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Services\FSService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Services.IndiceImagenesService" Collapsed="true">
+    <Position X="14.25" Y="1.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Services\FSService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Models.App.CountryModel" Collapsed="true">
+    <Position X="1" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAIAAAAAAAAAQAAAAQAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\App\CountryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Models.App.FSCatalogModel" Collapsed="true">
+    <Position X="8" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgEAAAAQAAAgAAAAAAAAAAEEAAAA=</HashCode>
+      <FileName>Models\App\FSCatalogModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Models.App.FSFilmModel" Collapsed="true">
+    <Position X="17.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAABAAAAAAAAAAAAAAAAAAAAAAAAhEAAgA=</HashCode>
+      <FileName>Models\App\FSFilmModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Models.App.FSImageModel" Collapsed="true">
+    <Position X="10.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAQAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\App\FSImageModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Models.App.FSRecordModel" Collapsed="true">
+    <Position X="19.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAABAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Models\App\FSRecordModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Models.App.IndiceImagenModel" Collapsed="true">
+    <Position X="14.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAgAAAQAAABAAAAAAAAACAAAAIAAAAAAAABAAAA=</HashCode>
+      <FileName>Models\App\IndiceImagenModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Models.App.IndiceModel" Collapsed="true">
+    <Position X="21.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BCAAQAgAAAQAAAAAAAAAABABCgAAAAAAAIAAAABAgAA=</HashCode>
+      <FileName>Models\App\IndiceModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Models.App.InvestigacionModel" Collapsed="true">
+    <Position X="5.5" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAgAAAAAAAAAAAAAgAAAAAAAAAgAAA=</HashCode>
+      <FileName>Models\App\InvestigacionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Models.App.RecursoModel" Collapsed="true">
+    <Position X="12.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAQAAAAAAAAAgAABCAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\App\RecursoModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Models.App.TipoModel" Collapsed="true">
+    <Position X="3.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\App\TipoModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Core.Base.BaseModel" Collapsed="true">
+    <Position X="11.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Base\BaseModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Genealogy.Business.Core.Base.BaseGenealogyModel" Collapsed="true">
+    <Position X="13.5" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgEAAAAAAAACAAAIAAAAAA=</HashCode>
+      <FileName>Core\Base\BaseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Core.Base.BaseService&lt;TModel, TEntity, TContext&gt;" Collapsed="true">
+    <Position X="16" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAIAAABAAAAAAAAAAAEAgAAAAAAAIAAAAAI=</HashCode>
+      <FileName>Core\Base\BaseService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Genealogy.Business.Services.CountryService" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\CountryService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Services.IndiceService" Collapsed="true">
+    <Position X="19" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\IndiceService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Services.InvestigacionService" Collapsed="true">
+    <Position X="21.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Services\InvestigacionService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Services.RecursoService" Collapsed="true">
+    <Position X="27.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Services\RecursoService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Services.TipoService" Collapsed="true">
+    <Position X="12" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Services\TipoService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Constants" Collapsed="true">
+    <Position X="34.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIEgIEEAAAgAQACMAAAAAIAAAAAAAACAAgAAADACKAA=</HashCode>
+      <FileName>Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Business.Strings" Collapsed="true">
+    <Position X="36.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACBAAAAAAAAgAAAAAEgAQAAAQAAAAAAAAAgAAA=</HashCode>
+      <FileName>Strings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="velocist.Services.Core.Interfaces.IBaseModel" Collapsed="true">
+    <Position X="34.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="velocist.Services.Core.Interfaces.IBaseService&lt;TModel, TEntity, TContext&gt;" Collapsed="true">
+    <Position X="36.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

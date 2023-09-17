@@ -6,7 +6,16 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Remove="BaseModel.cs" />
+	  <Compile Remove="AccessService\**" />
+	  <Compile Remove="Core\**" />
+	  <EmbeddedResource Remove="AccessService\**" />
+	  <EmbeddedResource Remove="Core\**" />
+	  <None Remove="AccessService\**" />
+	  <None Remove="Core\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="Model.cs" />
 		<Compile Remove="Models\ArchivoModel.cs" />
 		<Compile Remove="Models\ArchivosDocumentalesModel.cs" />
 		<Compile Remove="Models\ArchivosIndexacionesModel.cs" />
@@ -22,10 +31,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Autofac" Version="7.0.1" />
-		<PackageReference Include="Google.Protobuf" Version="3.23.4" />
-		<PackageReference Include="Grpc.Net.Client" Version="2.55.0" />
-		<PackageReference Include="Grpc.Tools" Version="2.56.2">
+	  <Compile Include="Core\Base\GenealogyBaseModel.cs" />
+	  <Compile Include="Core\Base\GenealogyService.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Autofac" Version="7.1.0" />
+		<PackageReference Include="Google.Protobuf" Version="3.24.2" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.57.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.57.0">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -36,7 +50,6 @@
 		<ProjectReference Include="..\..\velocist\velocist.DataAccess\velocist.DataAccess.csproj" />
 		<ProjectReference Include="..\..\velocist\velocist.LogService\velocist.LogService.csproj" />
 		<ProjectReference Include="..\..\velocist\velocist.Services\velocist.Services.csproj" />
-		<ProjectReference Include="..\Genealogy.AccessService\Genealogy.AccessService.csproj" />
 		<ProjectReference Include="..\Genealogy.Objects\Genealogy.Objects.csproj" />
 	</ItemGroup>
 

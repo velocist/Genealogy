@@ -1,0 +1,1680 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.ADDR" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="383.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAgAAgAAAAAAAAAAAAAAAAByAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\ADDR.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.ADDRESS_STRUCTURE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="385" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAACAAAAAAAQAAAAAAAAEAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\ADDRESS_STRUCTURE.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.ASSOCIATION_STRUCTURE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="386.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAQAAAAAAAAAAAAAAAAAAgAAAAAQAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\ASSOCIATION_STRUCTURE.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.CHANGE_DATE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="390.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\CHANGE_DATE.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.CHILD_TO_FAMILY_LINK" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="393.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABIAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\CHILD_TO_FAMILY_LINK.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.EVENT_DETAIL" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="385" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAgAABAAIQAAAAAAAAAAAAAAAAAAkEAAAAAEI=</HashCode>
+      <FileName>Gedcom5\SubStructures\EVENT_DETAIL.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.FAMILY_EVENT_DETAIL" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="392" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAACAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\FAMILY_EVENT_DETAIL.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.FAMILY_EVENT_STRUCTURE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="393.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\FAMILY_EVENT_STRUCTURE.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.INDIVIDUAL_ATTRIBUTE_STRUCTURE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="390.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAUAAAAABAAAAAgAIAIAAAAEAAAAACAEAAAAAIEA=</HashCode>
+      <FileName>Gedcom5\SubStructures\INDIVIDUAL_ATTRIBUTE_STRUCTURE.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.INDIVIDUAL_EVENT_DETAIL" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="392" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\INDIVIDUAL_EVENT_DETAIL.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.INDIVIDUAL_EVENT_STRUCTURE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="393.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\INDIVIDUAL_EVENT_STRUCTURE.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.LDS_INDIVIDUAL_ORDINANCE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="383.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\LDS_INDIVIDUAL_ORDINANCE.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.LDS_SPOUSE_SEALING" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="385" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\LDS_SPOUSE_SEALING.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.MULTIMEDIA_LINK" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="390.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\MULTIMEDIA_LINK.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.NOTE_STRUCTURE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="383.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\NOTE_STRUCTURE.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.PERSONAL_NAME_PIECES" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="385" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAQAAAAAQAAgAAAAQAQAAgAABAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\PERSONAL_NAME_PIECES.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.PERSONAL_NAME_STRUCTURE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="386.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Gedcom5\SubStructures\PERSONAL_NAME_STRUCTURE.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.PLACE_STRUCTURE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="390.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\PLACE_STRUCTURE.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.SOURCE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="386.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAABAAAAAAAEA=</HashCode>
+      <FileName>Gedcom5\SubStructures\SOURCE.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.SOURCE_CITATION" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="388.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\SOURCE_CITATION.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.SOURCE_REPOSITORY_CITATION" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="392" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\SOURCE_REPOSITORY_CITATION.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.SubStructures.SPOUSE_TO_FAMILY_LINK" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="393.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\SubStructures\SPOUSE_TO_FAMILY_LINK.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Records.FAM_RECORD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="390.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAACAAABAAAEACAAgAAAAAAQKAAAAAIABIAgAAI=</HashCode>
+      <FileName>Gedcom5\Records\FAM_RECORD.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Records.INDIVIDUAL_RECORD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="395.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAEAEAQEIAEAAABAAKQAQQAABFJBgAAI=</HashCode>
+      <FileName>Gedcom5\Records\INDIVIDUAL_RECORD.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Records.MULTIMEDIA_RECORD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="392" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAEAAAAAAAAAAAAAAAAAARIAgAAI=</HashCode>
+      <FileName>Gedcom5\Records\MULTIMEDIA_RECORD.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Records.NOTE_RECORD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="395.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAQAAAAAAAAAAAAAAAAAABAAgAAI=</HashCode>
+      <FileName>Gedcom5\Records\NOTE_RECORD.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Records.REPOSITORY_RECORD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="383.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAIAgAEM=</HashCode>
+      <FileName>Gedcom5\Records\REPOSITORY_RECORD.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Records.SOURCE_RECORD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="390.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAEAAAAAICCAACgIAAAABAAEIAgAAI=</HashCode>
+      <FileName>Gedcom5\Records\SOURCE_RECORD.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Records.SUBMISSION_RECORD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="385" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAEAAAAAAAEAAAAAAAAAAgGCQAAAAAAAIAgAAA=</HashCode>
+      <FileName>Gedcom5\Records\SUBMISSION_RECORD.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Records.SUBMITTER_RECORD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="386.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAMAAAAAAKABAAAAAAIAgAEA=</HashCode>
+      <FileName>Gedcom5\Records\SUBMITTER_RECORD.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Tags.StringTags" Collapsed="true">
+    <Position X="395.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>TgPQc1PgE9ghalQI6fACy4x8Dcj8oMUKjxsMRjJEYE4=</HashCode>
+      <FileName>Gedcom5\Tags\StringTags.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Tags.GEDC" Collapsed="true">
+    <Position X="395.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Tags\Tags.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Tags.PLACE" Collapsed="true">
+    <Position X="388.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Tags\Tags.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Tags.SOUR" Collapsed="true">
+    <Position X="385" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Tags\Tags.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Tags.DATA" Collapsed="true">
+    <Position X="395.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Tags\Tags.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ADDRESS_CITY" Collapsed="true">
+    <Position X="37.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ADDRESS_COUNTRY" Collapsed="true">
+    <Position X="69" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ADDRESS_EMAIL" Collapsed="true">
+    <Position X="95" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ADDRESS_FAX" Collapsed="true">
+    <Position X="122" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ADDRESS_LINE" Collapsed="true">
+    <Position X="150.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ADDRESS_LINE1" Collapsed="true">
+    <Position X="174.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ADDRESS_LINE2" Collapsed="true">
+    <Position X="203" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ADDRESS_LINE3" Collapsed="true">
+    <Position X="233.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ADDRESS_POSTAL_CODE" Collapsed="true">
+    <Position X="255.75" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ADDRESS_STATE" Collapsed="true">
+    <Position X="288.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ADDRESS_WEB_PAGE" Collapsed="true">
+    <Position X="335.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ADOPTED_BY_WHICH_PARENT" Collapsed="true">
+    <Position X="353.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.AGE_AT_EVENT" Collapsed="true">
+    <Position X="18.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ANCESTRAL_FILE_NUMBER" Collapsed="true">
+    <Position X="39.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.APPROVED_SYSTEM_ID" Collapsed="true">
+    <Position X="71.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ATTRIBUTE_DESCRIPTOR" Collapsed="true">
+    <Position X="124.25" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ATTRIBUTE_TYPE" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="388.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.AUTOMATED_RECORD_ID" Collapsed="true">
+    <Position X="176.75" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.CASTE_NAME" Collapsed="true">
+    <Position X="205.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.CAUSE_OF_EVENT" Collapsed="true">
+    <Position X="235.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.CERTAINTY_ASSESSMENT" Collapsed="true">
+    <Position X="258.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.CHANGE_DATE" Collapsed="true">
+    <Position X="315.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.CHARACTER_SET" Collapsed="true">
+    <Position X="337.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAg=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.CHILD_LINKAGE_STATUS" Collapsed="true">
+    <Position X="356.75" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.COPYRIGHT_GEDCOM_FILE" Collapsed="true">
+    <Position X="42.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.COPYRIGHT_SOURCE_DATA" Collapsed="true">
+    <Position X="74.25" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.COUNT_OF_CHILDREN" Collapsed="true">
+    <Position X="97.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.COUNT_OF_MARRIAGES" Collapsed="true">
+    <Position X="127" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DATE" Collapsed="true">
+    <Position X="179.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DATE_APPROXIMATED" Collapsed="true">
+    <Position X="207.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DATE_CALENDAR" Collapsed="true">
+    <Position X="237.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DATE_CALENDAR_ESCAPE" Collapsed="true">
+    <Position X="261.25" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DATE_EXACT" Collapsed="true">
+    <Position X="291" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DATE_FREN" Collapsed="true">
+    <Position X="317.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DATE_GREG" Collapsed="true">
+    <Position X="340" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DATE_HEBR" Collapsed="true">
+    <Position X="359.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DATE_JULN" Collapsed="true">
+    <Position X="20.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DATE_LDS_ORD" Collapsed="true">
+    <Position X="45.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DATE_PERIOD" Collapsed="true">
+    <Position X="77.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DATE_PHRASE" Collapsed="true">
+    <Position X="99.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DATE_RANGE" Collapsed="true">
+    <Position X="129.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DATE_VALUE" Collapsed="true">
+    <Position X="153" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DAY" Collapsed="true">
+    <Position X="181.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DESCRIPTIVE_TITLE" Collapsed="true">
+    <Position X="210.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.DIGIT" Collapsed="true">
+    <Position X="240" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ENTRY_RECORDING_DATE" Collapsed="true">
+    <Position X="264" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.EVENT_ATTRIBUTE_TYPE" Collapsed="true">
+    <Position X="293.25" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.EVENT_DESCRIPTOR" Collapsed="true">
+    <Position X="319.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.EVENT_OR_FACT_CLASSIFICATION" Collapsed="true">
+    <Position X="361.75" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.EVENT_TYPE_CITED_FROM" Collapsed="true">
+    <Position X="22.75" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.EVENT_TYPE_FAMILY" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="386.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.EVENT_TYPE_INDIVIDUAL" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="388.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.EVENTS_RECORDED" Collapsed="true">
+    <Position X="102" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.FILE_NAME" Collapsed="true">
+    <Position X="212.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.GEDCOM_CONTENT_DESCRIPTION" Collapsed="true">
+    <Position X="266.75" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.GEDCOM_FORM" Collapsed="true">
+    <Position X="296" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.GENERATIONS_OF_ANCESTORS" Collapsed="true">
+    <Position X="322.25" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.GENERATIONS_OF_DESCENDANTS" Collapsed="true">
+    <Position X="342.25" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.LANGUAGE_ID" Collapsed="true">
+    <Position X="132" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.LANGUAGE_OF_TEXT" Collapsed="true">
+    <Position X="155.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.LANGUAGE_PREFERENCE" Collapsed="true">
+    <Position X="184" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.LDS_BAPTISM_DATE_STATUS" Collapsed="true">
+    <Position X="215" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.LDS_ENDOWMENT_DATE_STATUS" Collapsed="true">
+    <Position X="270" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.LDS_CHILD_SEALING_DATE_STATUS" Collapsed="true">
+    <Position X="242.25" Y="1.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.MONTH" Collapsed="true">
+    <Position X="365" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.MONTH_FREN" Collapsed="true">
+    <Position X="25.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.MONTH_HEBR" Collapsed="true">
+    <Position X="48" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.MULTIMEDIA_FILE_REFERENCE" Collapsed="true">
+    <Position X="79.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.MULTIMEDIA_FORMAT" Collapsed="true">
+    <Position X="104.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_OF_BUSINESS" Collapsed="true">
+    <Position X="186.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_OF_FAMILY_FILE" Collapsed="true">
+    <Position X="218" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_OF_PRODUCT" Collapsed="true">
+    <Position X="245.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_OF_REPOSITORY" Collapsed="true">
+    <Position X="273.25" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_OF_SOURCE_DATA" Collapsed="true">
+    <Position X="298.25" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_PERSONAL" Collapsed="true">
+    <Position X="325.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_PHONETIC_VARIATION" Collapsed="true">
+    <Position X="345.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_PIECE" Collapsed="true">
+    <Position X="367.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_PIECE_GIVEN" Collapsed="true">
+    <Position X="27.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_PIECE_NICKNAME" Collapsed="true">
+    <Position X="50.25" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_PIECE_PREFIX" Collapsed="true">
+    <Position X="82.5" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_PIECE_SUFFIX" Collapsed="true">
+    <Position X="107.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_PIECE_SURNAME" Collapsed="true">
+    <Position X="134.25" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_PIECE_SURNAME_PREFIX" Collapsed="true">
+    <Position X="157.75" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_ROMANIZED_VARIATION" Collapsed="true">
+    <Position X="189.25" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_TEXT" Collapsed="true">
+    <Position X="220.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NAME_TYPE" Collapsed="true">
+    <Position X="248.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NATIONAL_ID_NUMBER" Collapsed="true">
+    <Position X="276" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NATIONAL_OR_TRIBAL_ORIGIN" Collapsed="true">
+    <Position X="301" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NEW_TAG" Collapsed="true">
+    <Position X="327.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NOBILITY_TYPE_TITLE" Collapsed="true">
+    <Position X="393.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NULL" Collapsed="true">
+    <Position X="53" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.NUMBER" Collapsed="true">
+    <Position X="85" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.OCCUPATION" Collapsed="true">
+    <Position X="109.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ORDINANCE_PROCESS_FLAG" Collapsed="true">
+    <Position X="137" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.PEDIGREE_LINKAGE_TYPE" Collapsed="true">
+    <Position X="161" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.PERMANENT_RECORD_FILE_NUMBER" Collapsed="true">
+    <Position X="192.5" Y="1.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.PHONE_NUMBER" Collapsed="true">
+    <Position X="278.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.PHONETIC_TYPE" Collapsed="true">
+    <Position X="304.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.PHYSICAL_DESCRIPTION" Collapsed="true">
+    <Position X="330" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.PLACE_HIERARCHY" Collapsed="true">
+    <Position X="369.5" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.PLACE_LATITUDE" Collapsed="true">
+    <Position X="30.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.PLACE_LIVING_ORDINANCE" Collapsed="true">
+    <Position X="55.25" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.PLACE_LONGITUDE" Collapsed="true">
+    <Position X="87.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.PLACE_NAME" Collapsed="true">
+    <Position X="112" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.PLACE_PHONETIC_VARIATION" Collapsed="true">
+    <Position X="140" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.PLACE_ROMANIZED_VARIATION" Collapsed="true">
+    <Position X="163.75" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.PLACE_TEXT" Collapsed="true">
+    <Position X="223" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.POSSESSIONS" Collapsed="true">
+    <Position X="250.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.PUBLICATION_DATE" Collapsed="true">
+    <Position X="281" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.RECEIVING_SYSTEM_NAME" Collapsed="true">
+    <Position X="306.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.RECORD_IDENTIFIER" Collapsed="true">
+    <Position X="348.5" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.REGISTERED_RESOURCE_IDENTIFIER" Collapsed="true">
+    <Position X="372" Y="1.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.RELATION_IS_DESCRIPTOR" Collapsed="true">
+    <Position X="32.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.RELIGIOUS_AFFILIATION" Collapsed="true">
+    <Position X="58.25" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.RESPONSIBLE_AGENCY" Collapsed="true">
+    <Position X="114.25" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.RESTRICTION_NOTICE" Collapsed="true">
+    <Position X="143" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ROLE_DESCRIPTOR" Collapsed="true">
+    <Position X="167" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ROLE_IN_EVENT" Collapsed="true">
+    <Position X="196" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.ROMANIZED_TYPE" Collapsed="true">
+    <Position X="225.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.SCHOLASTIC_ACHIEVEMENT" Collapsed="true">
+    <Position X="252.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.SEX_VALUE" Collapsed="true">
+    <Position X="283.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.SOCIAL_SECURITY_NUMBER" Collapsed="true">
+    <Position X="309.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.SOURCE_CALL_NUMBER" Collapsed="true">
+    <Position X="375.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.SOURCE_DESCRIPTION" Collapsed="true">
+    <Position X="61" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.SOURCE_DESCRIPTIVE_TITLE" Collapsed="true">
+    <Position X="89.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.SOURCE_FILED_BY_ENTRY" Collapsed="true">
+    <Position X="117" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.SOURCE_JURISDICTION_PLACE" Collapsed="true">
+    <Position X="145.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.SOURCE_MEDIA_TYPE" Collapsed="true">
+    <Position X="169.5" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.SOURCE_ORIGINATOR" Collapsed="true">
+    <Position X="198.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.SOURCE_PUBLICATION_FACTS" Collapsed="true">
+    <Position X="227.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.SUBMITTER_NAME" Collapsed="true">
+    <Position X="378.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.SUBMITTER_REGISTERED_RFN" Collapsed="true">
+    <Position X="63.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.SUBMITTER_TEXT" Collapsed="true">
+    <Position X="92.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.TEMPLE_CODE" Collapsed="true">
+    <Position X="119.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.TEXT" Collapsed="true">
+    <Position X="148.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.TEXT_FROM_SOURCE" Collapsed="true">
+    <Position X="172" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.TIME_VALUE" Collapsed="true">
+    <Position X="200.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.TRANSMISSION_DATE" Collapsed="true">
+    <Position X="230.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.USER_REFERENCE_NUMBER" Collapsed="true">
+    <Position X="285.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.USER_REFERENCE_TYPE" Collapsed="true">
+    <Position X="312.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.VERSION_NUMBER" Collapsed="true">
+    <Position X="332.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.WHERE_WITHIN_SOURCE" Collapsed="true">
+    <Position X="351" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.XREF" Collapsed="true">
+    <Position X="380.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.YEAR" Collapsed="true">
+    <Position X="35.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Types.YEAR_GREG" Collapsed="true">
+    <Position X="66.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Types\PRIMITIVE_TYPES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Structures.HEADER" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="388.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQCAQAAAAAQAgAQAAAAAACSBAAgEAQAAAAAA=</HashCode>
+      <FileName>Gedcom5\Structures\HEADER.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Structures.RECORD" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="392" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Structures\RECORD.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.Structures.TRLR" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="390.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Structures\TRLR.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Gedcom5.LINEAGE_LINKED_GEDCOM" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="386.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAACAAAABAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\LINEAGE_LINKED_GEDCOM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Core.CharacterExtensions" Collapsed="true">
+    <Position X="392" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKgAUBCAAARAgIAAAAAIQAACAAAEAICgARAEAABAA=</HashCode>
+      <FileName>Core\CharacterExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Core.EnumHelpers" Collapsed="true">
+    <Position X="383.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAIgAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\EnumHelpers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Core.GedcomConvertHelper" Collapsed="true">
+    <Position X="383.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACggAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Core\GedcomConvertHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Core.GedcomExtensions" Collapsed="true">
+    <Position X="385" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Core\GedcomExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Core.GedcomFileManager" Collapsed="true">
+    <Position X="386.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Core\GedComFileManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Core.LineStructure" Collapsed="true">
+    <Position X="388.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAQACAAEAAgAAAEAAAAAAAAEAEAAAABABAAAAEBAAA=</HashCode>
+      <FileName>Core\LineStructure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Core.PrimitiveType" Collapsed="true">
+    <Position X="199.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\PrimitiveType.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Genealogy.Gedcom.Core.ReflectionResult" Collapsed="true">
+    <Position X="395.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAEAAAAAAQAgAAAAAAA=</HashCode>
+      <FileName>Core\ReflectionHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Core.ReflectionHelper" Collapsed="true">
+    <Position X="393.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAACAAAIACAAgAAAAAAAAAAAAAAAAAAAAAACAAAAAE=</HashCode>
+      <FileName>Core\ReflectionHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Core.StructureAttribute" Collapsed="true">
+    <Position X="383.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgBAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\StructureAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.Gedcom.Core.TagAttribute" Collapsed="true">
+    <Position X="388.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\TagAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Genealogy.Gedcom.Core.IGEDCOM_TYPE" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Interfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Genealogy.Gedcom.Core.IEVENT_ATTRIBUTE_TYPE" Collapsed="true">
+    <Position X="5" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Interfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Genealogy.Gedcom.Core.IGEDCOM_ELEMENT" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Interfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Genealogy.Gedcom.Core.ISUBSTRUCTURE" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Interfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Genealogy.Gedcom.Core.ISTRUCTURE" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Interfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Genealogy.Gedcom.Core.IRECORD" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Interfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Genealogy.Gedcom.Core.IGEDCOM_ENUM" Collapsed="true">
+    <Position X="383.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Interfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.ADOPTED_BY_WHICH_PARENT" Collapsed="true">
+    <Position X="383.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAgAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Gedcom5\Enums\ADOPTED_BY_WHICH_PARENT.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.AGE_AT_EVENT" Collapsed="true">
+    <Position X="385" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAgQAAAQAAABAAEAAAEAAIAgAAJAAAAgAAA=</HashCode>
+      <FileName>Gedcom5\Enums\AGE_AT_EVENT.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.ATTRIBUTE_TYPE" Collapsed="true">
+    <Position X="386.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAAAAAAAAAAAAAAAIAAAAEAAAAACAEAAAAAIEA=</HashCode>
+      <FileName>Gedcom5\Enums\ATTRIBUTE_TYPE.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.CERTAINTY_ASSESSMENT" Collapsed="true">
+    <Position X="392" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABCAAAAAAAAAAABAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Enums\CERTAINTY_ASSESSMENT.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.CHARACTER_SET" Collapsed="true">
+    <Position X="393.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEBAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Enums\CHARACTER_SET.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.CHILD_LINKAGE_STATUS" Collapsed="true">
+    <Position X="395.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Gedcom5\Enums\CHILD_LINKAGE_STATUS.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.EVENT_TYPE_FAMILY" Collapsed="true">
+    <Position X="385" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAACYBBgEAAAAgACAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Gedcom5\Enums\EVENT_TYPE_FAMILY.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.EVENT_TYPE_INDIVIDUAL" Collapsed="true">
+    <Position X="386.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAICCFEAAACIAwAEAgAQgAAAEIGAAAAAAAABAAEA=</HashCode>
+      <FileName>Gedcom5\Enums\EVENT_TYPE_INDIVIDUAL.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.GEDCOM_FORM" Collapsed="true">
+    <Position X="388.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Enums\GEDCOM_FORM.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.LANGUAGE_ID" Collapsed="true">
+    <Position X="390.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YkQAgACQRFCAAAAAQIGIBAAABgoQgAgUAIgAACAEACA=</HashCode>
+      <FileName>Gedcom5\Enums\LANGUAGE_ID.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.LDS_BAPTISM_DATE_STATUS" Collapsed="true">
+    <Position X="392" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAgAAAEAAAAgAAAIAAIAAAAAAgA=</HashCode>
+      <FileName>Gedcom5\Enums\LDS_BAPTISM_DATE_STATUS.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.LDS_CHILD_SEALING_DATE_STATUS" Collapsed="true">
+    <Position X="393.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAgAAAEAAAEgAAAIAAAAAAAAAiA=</HashCode>
+      <FileName>Gedcom5\Enums\LDS_CHILD_SEALING_DATE_STATUS.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.LDS_ENDOWMENT_DATE_STATUS" Collapsed="true">
+    <Position X="395.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAgAAAEAAAAgAAAIAAIAAAAAAgA=</HashCode>
+      <FileName>Gedcom5\Enums\LDS_ENDOWMENT_DATE_STATUS.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.LDS_SPOUSE_SEALING_DATE_STATUS" Collapsed="true">
+    <Position X="383.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAIAgAAQAAAAEgAAAIAAAAAAAAAgA=</HashCode>
+      <FileName>Gedcom5\Enums\LDS_SPOUSE_SEALING_DATE_STATUS.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.MONTH" Collapsed="true">
+    <Position X="385" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIBAAACAKAEABAAAAAAAgEIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Enums\MONTH.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.MONTH_FREN" Collapsed="true">
+    <Position X="386.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DAAACAAAAAAAAQEAgACAgAAgAAAAAAIAEIAAAAEAAAA=</HashCode>
+      <FileName>Gedcom5\Enums\MONTH_FREN.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.MONTH_HEBR" Collapsed="true">
+    <Position X="388.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABCAAAAIAAAACAAgAAAAAAAQAAAAAhAAAAEJI=</HashCode>
+      <FileName>Gedcom5\Enums\MONTH_HEBR.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.MULTIMEDIA_FORMAT" Collapsed="true">
+    <Position X="390.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAABAACAAAAIAAAAIAAAAAAAAEAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Gedcom5\Enums\MULTIMEDIA_FORMAT.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.NAME_TYPE" Collapsed="true">
+    <Position X="392" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAgAAAAAgAAAAAgAQAAAAABAA=</HashCode>
+      <FileName>Gedcom5\Enums\NAME_TYPE.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.ORDINANCE_PROCESS_FLAG" Collapsed="true">
+    <Position X="393.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Enums\ORDINANCE_PROCESS_FLAG.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.PEDIGREE_LINKAGE_TYPE" Collapsed="true">
+    <Position X="395.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAEAAAAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Enums\PEDIGREE_LINKAGE_TYPE.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.RESTRICTION_NOTICE" Collapsed="true">
+    <Position X="386.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAACAA=</HashCode>
+      <FileName>Gedcom5\Enums\RESTRICTION_NOTICE.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.ROLE_IN_EVENT" Collapsed="true">
+    <Position X="388.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAACAAgACQAAQAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Gedcom5\Enums\ROLE_IN_EVENT.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.SEX_VALUE" Collapsed="true">
+    <Position X="390.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAICAAA=</HashCode>
+      <FileName>Gedcom5\Enums\SEX_VALUE.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.SOURCE_MEDIA_TYPE" Collapsed="true">
+    <Position X="392" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAABDEAAEAQAAAAAAAAQAAAAAAACAAAIBAQCAAAAA=</HashCode>
+      <FileName>Gedcom5\Enums\SOURCE_MEDIA_TYPE.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Enums.XREF_TYPE" Collapsed="true">
+    <Position X="395.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACQAAAAAAAAUAAAAAAAAAACQAAAAAAEAAAAAE=</HashCode>
+      <FileName>Gedcom5\Enums\XREF_TYPE.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Gedcom5.Tags.TagsEnum" Collapsed="true">
+    <Position X="393.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>TgPQc1PgE9ghalQI6fACy4x8Dcj8oMUKjxsMRjJEYE4=</HashCode>
+      <FileName>Gedcom5\Tags\TagsEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Core.RecordTypes" Collapsed="true">
+    <Position X="385" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAQAAABAAQAAAAAAAABAAACAAAAAAAgAAE=</HashCode>
+      <FileName>Core\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Core.PointerType" Collapsed="true">
+    <Position X="383.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Core.Delim" Collapsed="true">
+    <Position X="383.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Core.AttributeType" Collapsed="true">
+    <Position X="390.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAEAAAAAAAA=</HashCode>
+      <FileName>Core\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genealogy.Gedcom.Core.AttributesType" Collapsed="true">
+    <Position X="388.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAIAEAAAEAAAA=</HashCode>
+      <FileName>Core\ReflectionHelper.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

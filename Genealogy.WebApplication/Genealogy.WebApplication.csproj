@@ -9,6 +9,8 @@
 	<ItemGroup>
 		<Compile Remove="Areas\Identity\IdentityHostingStartup.cs" />
 		<Compile Remove="Core\ExcelHelper.cs" />
+		<Compile Remove="Core\WebConfiguration.cs" />
+		<Compile Remove="Core\WebContainer.cs" />
 		<Compile Remove="DiContainer.cs" />
 		<Compile Remove="Program_old.cs" />
 		<Compile Remove="Startup_old.cs" />
@@ -35,30 +37,32 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Autofac" Version="7.0.1" />
+		<PackageReference Include="Autofac" Version="7.1.0" />
 		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
 		<PackageReference Include="Grpc" Version="2.46.6" />
-		<PackageReference Include="Grpc.AspNetCore" Version="2.55.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.9" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.9" />
-		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7.0.9" />
+		<PackageReference Include="Grpc.AspNetCore" Version="2.57.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7.0.10" />
 		<PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.2.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.9" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.9">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.10">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
-		<PackageReference Include="Microsoft.Identity.Web" Version="2.13.2" />
-		<PackageReference Include="Microsoft.Identity.Web.UI" Version="2.13.2" />
-		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.8" />
+		<PackageReference Include="Microsoft.Identity.Web" Version="2.13.3" />
+		<PackageReference Include="Microsoft.Identity.Web.UI" Version="2.13.3" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\velocist\velocist.DataAccess\velocist.DataAccess.csproj" />
 		<ProjectReference Include="..\..\velocist\velocist.LogService\velocist.LogService.csproj" />
+		<ProjectReference Include="..\..\velocist\velocist.Services\velocist.Services.csproj" />
 		<ProjectReference Include="..\..\velocist\velocist.Web\velocist.Web.csproj" />
-		<ProjectReference Include="..\Genealogy.AccessService\Genealogy.AccessService.csproj" />
 		<ProjectReference Include="..\Genealogy.Business\Genealogy.Business.csproj" />
+		<ProjectReference Include="..\Genealogy.Common\Genealogy.Common.csproj" />
 		<ProjectReference Include="..\Genealogy.IdentityService\Genealogy.IdentityService.csproj" />
 	</ItemGroup>
 

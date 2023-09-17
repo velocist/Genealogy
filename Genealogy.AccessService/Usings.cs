@@ -6,5 +6,5 @@ global using Genealogy.Objects.Entities;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
-global using velocist.DataAccess.SqlServer.Interfaces;
-global using velocist.Services.Reflection;
+global using velocist.Services.DataAccess.SqlServer.Interfaces;
+global using velocist.Core.Interfaces;

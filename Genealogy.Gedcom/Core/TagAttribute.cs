@@ -1,24 +1,24 @@
 ﻿namespace Genealogy.Gedcom.Core {
 
-	[AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
-	internal class TagAttribute : Attribute {
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
+    internal class TagAttribute : Attribute {
 
-		public readonly string Description;
-		//public IGEDCOM_TYPE Structure;
-		//public string AttributeValue;
+        public readonly string Description;
+        //public IGEDCOM_TYPE Structure;
+        //public string AttributeValue;
 
-		public TagAttribute(string name) {
-			Description = name;
-			//AttributeValue = GetStructure(name);
-		}
+        public TagAttribute(string name) {
+            Description = name;
+            //AttributeValue = GetStructure(name);
+        }
 
-		//public string GetStructure(string name) {
-		//    try {
+        //public string GetStructure(string name) {
+        //    try {
 
-		//        return string.Empty;
-		//    } catch (Exception) {
-		//        return null;
-		//    }
-		//}
-	}
+        //        return string.Empty;
+        //    } catch (Exception) {
+        //        return null;
+        //    }
+        //}
+    }
 }

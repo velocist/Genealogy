@@ -47,8 +47,8 @@
 		/// <param name="nameConnection"></param>
 		public static void RegisterMySqlServer(this ContainerBuilder builder, string nameConnection) {
 			var connectionString = AccessServiceConfiguration.GetConnectionString(nameConnection);
-			_ = builder.RegisterType<velocist.DataAccess.MySql.MySqlConnector>().As<velocist.DataAccess.MySql.Interfaces.IConnector>().WithParameter("connectionString", connectionString).InstancePerLifetimeScope();
-			_ = builder.RegisterType<velocist.DataAccess.MySql.UnitOfWork>().As<velocist.DataAccess.MySql.Interfaces.IUnitOfWork>().InstancePerLifetimeScope();
+			_ = builder.RegisterType<velocist.DataAccess.MySql.MySqlConnector>().As<velocist.Services.DataAccess.MySql.Interfaces.IConnector>().WithParameter("connectionString", connectionString).InstancePerLifetimeScope();
+			_ = builder.RegisterType<velocist.DataAccess.MySql.UnitOfWork>().As<velocist.Services.DataAccess.MySql.Interfaces.IUnitOfWork>().InstancePerLifetimeScope();
 			//builder.RegisterType<Repository<IEntity>>().As<IRepository<IEntity>>().InstancePerLifetimeScope();
 		}
 	}

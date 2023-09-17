@@ -1,5 +1,5 @@
 ﻿namespace Genealogy.Gedcom.Gedcom5.SubStructures {
-	public class FAMILY_EVENT_STRUCTURE : ISUBSTRUCTURE {
-		//TODO
-	}
+    public class FAMILY_EVENT_STRUCTURE : ISUBSTRUCTURE {
+        //TODO
+    }
 }

@@ -32,9 +32,9 @@
 		/// <param name="services">The services.</param>
 		/// <param name="connectionString">The connection string.</param>
 		public static void AddServicesMySql(this IServiceCollection services, string connectionString) {
-			_ = services.AddScoped(typeof(velocist.DataAccess.MySql.Interfaces.IUnitOfWork), typeof(velocist.DataAccess.MySql.UnitOfWork));
-			_ = services.AddSingleton<velocist.DataAccess.MySql.Interfaces.IConnector>(new velocist.DataAccess.MySql.MySqlConnector(connectionString));
-			_ = services.AddScoped(typeof(velocist.DataAccess.MySql.Interfaces.IRepository<>), typeof(velocist.DataAccess.MySql.Repository<>));
+			_ = services.AddScoped(typeof(velocist.Services.DataAccess.MySql.Interfaces.IUnitOfWork), typeof(velocist.Services.DataAccess.MySql.UnitOfWork));
+			_ = services.AddSingleton<velocist.Services.DataAccess.MySql.Interfaces.IConnector>(new velocist.DataAccess.MySql.MySqlConnector(connectionString));
+			_ = services.AddScoped(typeof(velocist.Services.DataAccess.MySql.Interfaces.IRepository<>), typeof(velocist.DataAccess.MySql.Repository<>));
 		}
 	}
 }

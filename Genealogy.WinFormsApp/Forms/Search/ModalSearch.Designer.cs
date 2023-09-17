@@ -1,5 +1,5 @@
 ﻿namespace Genealogy.WinFormsApp.Search {
-    partial class ModalSearch<T>  {
+    partial class ModalSearch  {
         /// <summary>
         /// Required designer variable.
         /// </summary>

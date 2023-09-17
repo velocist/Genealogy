@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Class Name="Genealogy.WinFormsApp.Program" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.WinFormsApp.Forms.MDIParent" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BJCgiv0EhCEIEAEKCiC28IdyrABBAMgBSkxARzAAQEc=</HashCode>
+      <FileName>Forms\MDIParent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.WinFormsApp.Forms.FrmRecursos" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAQAAAAACAAAAAQACSAgAQCoAIAAABiACAEAMQQACA=</HashCode>
+      <FileName>Forms\FrmRecursos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.WinFormsApp.Forms.FrmInvestigacion" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAQQCCAAAACoAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms\FrmInvestigacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.WinFormsApp.Forms.FrmIndicesDetalle" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms\FrmIndicesDetalle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.WinFormsApp.Forms.FrmRecursosDetalle" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAASAICAEiICAAAQAQCAAAACICQnAAAgRDgABAAAAAA=</HashCode>
+      <FileName>Forms\FrmRecursosDetalle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.WinFormsApp.Forms.FrmIndices" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQACAACBEQACCAAAAioIALAAAAACAIAQYUAAA=</HashCode>
+      <FileName>Forms\FrmIndices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.WinFormsApp.Forms.FrmGedcom" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAACACBAABAAASCACAACMAIAAABAACAQBAiCAAA=</HashCode>
+      <FileName>Forms\FrmGedcom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.WinFormsApp.Search.ModalSearch" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQACAACBACAACAAAACICAAAAAAACgAAAAAAAA=</HashCode>
+      <FileName>Forms\Search\ModalSearch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.WinFormsApp.Forms.Login.FrmLogin" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAIACAAABAAAEDAAAACMAAACQAAECIAAAAAIAA=</HashCode>
+      <FileName>Forms\Login\FrmLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Genealogy.WinFormsApp.Forms.Export.ModalExport" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABACAAAAAAAACAAAACIAAAAAAAABAAAAAAAAI=</HashCode>
+      <FileName>Forms\Export\ModalExport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

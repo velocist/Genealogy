@@ -12,6 +12,7 @@
 		<Compile Remove="Forms\FrmExport.Designer.cs" />
 		<Compile Remove="Forms\ModalExport.cs" />
 		<Compile Remove="Forms\ModalExport.Designer.cs" />
+		<Compile Remove="WinFormsContainer.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -44,19 +45,31 @@
 
 	<ItemGroup>
 		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.10">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\velocist\velocist.DataAccess\velocist.DataAccess.csproj" />
 		<ProjectReference Include="..\..\velocist\velocist.LogService\velocist.LogService.csproj" />
+		<ProjectReference Include="..\..\velocist\velocist.Services\velocist.Services.csproj" />
+		<ProjectReference Include="..\..\velocist\velocist.WinFormsControlLibrary\velocist.WinFormsControlLibrary.csproj" />
 		<ProjectReference Include="..\..\velocist\velocist.WinForms\velocist.WinForms.csproj" />
-		<ProjectReference Include="..\Genealogy.AccessService\Genealogy.AccessService.csproj" />
 		<ProjectReference Include="..\Genealogy.Business\Genealogy.Business.csproj" />
+		<ProjectReference Include="..\Genealogy.Common\Genealogy.Common.csproj" />
 		<ProjectReference Include="..\Genealogy.IdentityService\Genealogy.IdentityService.csproj" />
 		<ProjectReference Include="..\Genealogy.Gedcom\Genealogy.Gedcom.csproj" />
 		<ProjectReference Include="..\Genealogy.Objects\Genealogy.Objects.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<Compile Update="Forms\Export\ModalExport.cs" />
 		<Compile Update="Forms\FrmRecursosDetalle.cs" />
 		<Compile Update="Forms\Search\ModalSearch.cs" />
 	</ItemGroup>

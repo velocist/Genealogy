@@ -14,11 +14,30 @@
 
 	<ItemGroup>
 	  <Compile Remove="Gedcom.cs" />
+	  <Compile Remove="RepositoryTests.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.9" />
+	  <None Remove="Settings\appsettings.json" />
+	  <None Remove="Settings\logSettings.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Settings\appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Settings\logSettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.10" />
 		<PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
 		<PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
 		<PackageReference Include="coverlet.collector" Version="6.0.0">
@@ -29,7 +48,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Technicals\" />
+	  <ProjectReference Include="..\..\velocist\velocist.DataAccess\velocist.DataAccess.csproj" />
+	  <ProjectReference Include="..\..\velocist\velocist.Services\velocist.Services.csproj" />
+	  <ProjectReference Include="..\Genealogy.Business\Genealogy.Business.csproj" />
+	  <ProjectReference Include="..\Genealogy.Common\Genealogy.Common.csproj" />
+	  <ProjectReference Include="..\Genealogy.IdentityService\Genealogy.IdentityService.csproj" />
 	</ItemGroup>
 
 </Project>

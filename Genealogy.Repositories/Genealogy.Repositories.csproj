@@ -9,6 +9,7 @@
 		<Compile Remove="Entities\ArchivosDocumentalesRepository.cs" />
 		<Compile Remove="Entities\ArchivosIndexacionesRepository.cs" />
 		<Compile Remove="Entities\ArchivosRepository.cs" />
+		<Compile Remove="Entities\CountryRepository.cs" />
 		<Compile Remove="Entities\ImportFilesRepository.cs" />
 		<Compile Remove="Entities\IndicesRepository.cs" />
 		<Compile Remove="Entities\RecursosRepository.cs" />
@@ -20,11 +21,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Folder Include="Entities\" />
 		<Folder Include="Interfaces\" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\velocist\velocist.DataAccess\velocist.DataAccess.csproj" />
+		<ProjectReference Include="..\..\velocist\velocist.Services\velocist.Services.csproj" />
 		<ProjectReference Include="..\Genealogy.Objects\Genealogy.Objects.csproj" />
 	</ItemGroup>
 

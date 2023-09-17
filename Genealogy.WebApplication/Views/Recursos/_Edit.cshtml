@@ -1,31 +1,31 @@
-﻿@model RecursosViewModel
-<input asp-for="RecursoModel.Id" type="text" class="form-control" hidden>
+﻿@model RecursoModel
+<input asp-for="Id" type="text" class="form-control" hidden>
 <div class="form-row">
     <div class="col-sm-12">
-        <label asp-for="RecursoModel.Nombre"></label>
-        <input asp-for="RecursoModel.Nombre" type="text" class="form-control" required>
-        <span asp-validation-for="RecursoModel.Nombre" class="text-danger"></span>
+        <label asp-for="Nombre"></label>
+        <input asp-for="Nombre" type="text" class="form-control" required>
+        <span asp-validation-for="Nombre" class="text-danger"></span>
     </div>
     <div class="col-sm-6">
-        <label asp-for="RecursoModel.Pueblo"></label>
-        <input asp-for="RecursoModel.Pueblo" type="text" class="form-control">
+        <label asp-for="Pueblo"></label>
+        <input asp-for="Pueblo" type="text" class="form-control">
     </div>
     <div class="col-sm-6">
-        <label asp-for="RecursoModel.Provincia"></label>
-        <input asp-for="RecursoModel.Provincia" type="text" class="form-control">
+        <label asp-for="Provincia"></label>
+        <input asp-for="Provincia" type="text" class="form-control">
     </div>
     <div class="col-sm-6">
-        <label asp-for="RecursoModel.Pais"></label>
-        <input asp-for="RecursoModel.Pais" type="text" class="form-control">
+        <label asp-for="Pais"></label>
+        <input asp-for="Pais" type="text" class="form-control">
     </div>
     <div class="col-sm-12">
-        <label asp-for="RecursoModel.Notas"></label>
-        <textarea asp-for="RecursoModel.Notas" type="text" class="form-control"></textarea>
-        <span asp-validation-for="RecursoModel.Notas" class="text-danger"></span>
+        <label asp-for="Observaciones"></label>
+        <textarea asp-for="Observaciones" type="text" class="form-control"></textarea>
+        <span asp-validation-for="Observaciones" class="text-danger"></span>
     </div>
     <div class="col-sm-12">
-        <label asp-for="RecursoModel.Url"></label>
-        <textarea asp-for="RecursoModel.Url" type="text" class="form-control" required></textarea>
-        <span asp-validation-for="RecursoModel.Url" class="text-danger"></span>
+        <label asp-for="Url"></label>
+        <textarea asp-for="Url" type="text" class="form-control" required></textarea>
+        <span asp-validation-for="Url" class="text-danger"></span>
     </div>
 </div>

@@ -1,11 +1,11 @@
 ﻿namespace Genealogy.WebApplication.Core {
 
-	public class WebConfiguration {
+    public class WebConfiguration {
 
-		/// <summary>
-		/// The translations folder
-		/// </summary>
-		public const string TranslationsFolder = "Translations";
+        /// <summary>
+        /// The translations folder
+        /// </summary>
+        public const string TranslationsFolder = "Translations";
 
-	}
+    }
 }

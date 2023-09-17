@@ -5,7 +5,6 @@
 	/// </summary>
 	/// <typeparam name="TEntity">The type of the entity.</typeparam>
 	/// <typeparam name="TContext">The type of the context.</typeparam>
-	[Obsolete]
 	public abstract class BaseModel<TEntity, TContext> : IBaseModel where TEntity : class where TContext : DbContext {
 
 		/// <summary>
