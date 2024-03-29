@@ -1,4 +1,5 @@
 using Genealogy.Common;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Genealogy.WinFormsApp {
 
@@ -22,12 +23,27 @@ namespace Genealogy.WinFormsApp {
             var host = Host.CreateDefaultBuilder(Array.Empty<string>());
 
             _ = host.ConfigureAppConfiguration((hostingContext, config) => AccessServiceConfiguration.GetConfiguration())
-                .ConfigureLogging(logging => LogServiceContainer.GetConfiguration())
+                .ConfigureLogging(logging => {
+                    //LogServiceContainer.GetConfiguration();
+                    logging.ClearProviders();
+                    logging.AddLog4Net(AccessServiceConfiguration.LogSettingsFile, true);
+#if DEBUG
+                    logging.SetMinimumLevel(LogLevel.Trace);
+#else
+                    logging.SetMinimumLevel(LogLevel.Error);
+#endif
+                })
                 .ConfigureServices((context, services) => {
                     _ = services.ConfigureAppDatabaseServices();
                     _ = services.ConfigureAppUnitOfWork();
                     _ = services.ConfigureAppServices();
+
+
+                    var builder = services.BuildServiceProvider();
+                    InitializeLog(builder.GetRequiredService<ILoggerFactory>());
+
                 }).Build();
+
             Application.Run(new MDIParent());
         }
 
@@ -38,12 +54,8 @@ namespace Genealogy.WinFormsApp {
         /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(string[] args) {
             var host = Host.CreateDefaultBuilder(args);
-            return host.ConfigureServices((context, services) => {
-                services.AddServicesDbContextApp<AppEntitiesContext>(AccessServiceConfiguration.GetConnectionString(AccessServiceConfiguration.GetAppConnectionName()), AccessServiceConfiguration.GetAppContextMigration());
-            }).ConfigureHostConfiguration(webBuilder => webBuilder.Build());
+            return host.ConfigureServices((context, services) => services.AddServicesDbContextApp<AppEntitiesContext>(AccessServiceConfiguration.GetConnectionString(AccessServiceConfiguration.GetAppConnectionName()), AccessServiceConfiguration.GetAppContextMigration())).ConfigureHostConfiguration(webBuilder => webBuilder.Build());
             ;
         }
-
-
     }
 }

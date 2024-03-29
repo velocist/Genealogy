@@ -1,0 +1,69 @@
+{
+	"CustomViewModels": [
+		{
+			"Id": "ListadoRecursos",
+			"ViewType": 8,
+			"Title": "Recursos",
+			"SubTitle": "Listado",
+			"ControllerName": "Recursos",
+			"ActionName": "Index",
+			"ViewName": "Index",
+			"ViewPath": "~/Views/Shared/Index.cshtml",
+			"PartialViewName": "_List",
+			"PartialViewPath": "~/Views/Recursos/_List.cshtml",
+			"UploadFile": false,
+			"IsTableView": true,
+			"TableView": {
+				"IdTable": "dtRecursos",
+				"ControllerName": "Recursos",
+				"ActionName": "List",
+				"TableAjaxAction": "List",
+				"TableScript": "~/Views/Recursos/_ListScriptConfigure.cshtml",
+				"EnableServerSide": false,
+				"HasPagination": true,
+				"HasOrdering": true,
+				"HasSearch": true,
+				"HasInformation": true
+			}
+		},
+		{
+			"Id": "CrearRecursos",
+			"ViewType": 5,
+			"Title": "Creación del registro",
+			"ControllerName": "Recursos",
+			"ActionName": "Create",
+			"ViewName": "Modal",
+			"ViewPath": "~/Views/Shared/Modals/Modal.cshtml",
+			"PartialViewName": "_Edit",
+			"PartialViewPath": "~/Views/Recursos/_Edit.cshtml",
+			"UploadFile": false,
+			"IsTableView": false
+		},
+		{
+			"Id": "EditarRecursos",
+			"ViewType": 5,
+			"Title": "Edición del registro",
+			"ControllerName": "Recursos",
+			"ActionName": "Edit",
+			"ViewName": "Modal",
+			"ViewPath": "~/Views/Shared/Modals/Modal.cshtml",
+			"PartialViewName": "_Edit",
+			"PartialViewPath": "~/Views/Recursos/_Edit.cshtml",
+			"UploadFile": false,
+			"IsTableView": false
+		},
+		{
+			"Id": "DetalleRecursos",
+			"ViewType": 5,
+			"Title": "Detalle del registro",
+			"ControllerName": "Recursos",
+			"ActionName": "Details",
+			"ViewName": "ModalDetails",
+			"ViewPath": "~/Views/Shared/Modals/ModalDetails.cshtml",
+			"PartialViewName": "_Edit",
+			"PartialViewPath": "~/Views/Recursos/_Edit.cshtml",
+			"UploadFile": false,
+			"IsTableView": false
+		}
+	]
+}

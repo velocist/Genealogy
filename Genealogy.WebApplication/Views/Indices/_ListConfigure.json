@@ -1,0 +1,69 @@
+{
+	"CustomViewModels": [
+		{
+			"Id": "ListadoIndices",
+			"ViewType": 8,
+			"Title": "Indices",
+			"SubTitle": "Listado",
+			"ControllerName": "Indices",
+			"ActionName": "Index",
+			"ViewName": "Index",
+			"ViewPath": "~/Views/Shared/Index.cshtml",
+			"PartialViewName": "_List",
+			"PartialViewPath": "~/Views/Indices/_List.cshtml",
+			"UploadFile": false,
+			"IsTableView": true,
+			"TableView": {
+				"IdTable": "dtIndices",
+				"ControllerName": "Indices",
+				"ActionName": "List",
+				"TableAjaxAction": "List",
+				"TableScript": "~/Views/Indices/_IndicesScriptsPartial.cshtml",
+				"EnableServerSide": false,
+				"HasPagination": true,
+				"HasOrdering": true,
+				"HasSearch": true,
+				"HasInformation": true
+			}
+		},
+		{
+			"Id": "CrearIndices",
+			"ViewType": 5,
+			"Title": "Creación del registro",
+			"ControllerName": "Indices",
+			"ActionName": "Create",
+			"ViewName": "Modal",
+			"ViewPath": "~/Views/Shared/Modals/Modal.cshtml",
+			"PartialViewName": "_Edit",
+			"PartialViewPath": "~/Views/Indices/_Edit.cshtml",
+			"UploadFile": false,
+			"IsTableView": false
+		},
+		{
+			"Id": "EditarIndices",
+			"ViewType": 5,
+			"Title": "Edición del registro",
+			"ControllerName": "Indices",
+			"ActionName": "Edit",
+			"ViewName": "Modal",
+			"ViewPath": "~/Views/Shared/Modals/Modal.cshtml",
+			"PartialViewName": "_Edit",
+			"PartialViewPath": "~/Views/Indices/_Edit.cshtml",
+			"UploadFile": false,
+			"IsTableView": false
+		},
+		{
+			"Id": "DetalleIndices",
+			"ViewType": 5,
+			"Title": "Detalle del registro",
+			"ControllerName": "Indices",
+			"ActionName": "Details",
+			"ViewName": "ModalDetails",
+			"ViewPath": "~/Views/Shared/Modals/ModalDetails.cshtml",
+			"PartialViewName": "_Edit",
+			"PartialViewPath": "~/Views/Indices/_Edit.cshtml",
+			"UploadFile": false,
+			"IsTableView": false
+		}
+	]
+}

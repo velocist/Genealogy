@@ -1,9 +1,12 @@
-﻿namespace Genealogy.Business.Models.App {
+﻿using Genealogy.Business.Core;
+
+namespace Genealogy.Business.Models.App
+{
 
     /// <summary>
     /// The family search image model.
     /// </summary>
-    /// <seealso cref="Genealogy.Business.Core.Base.GenealogyBaseModel" />
+    /// <seealso cref="GenealogyBaseModel" />
     public class FSImageModel : GenealogyBaseModel {
 
         /// <summary>
@@ -14,7 +17,7 @@
         /// </value>
         [DisplayName("Número")]
         [JsonPropertyName(MappingsDB.Columna_Image)]
-        public string NumberImage { get; set; }
+        public string NumberImage { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the cita referencia.
@@ -24,7 +27,7 @@
         /// </value>
         [DisplayName("Cita/Referencia")]
         [JsonPropertyName(MappingsDB.Columna_Citation)]
-        public string Citation { get; set; }
+        public string Citation { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the registro catalogo.
@@ -32,8 +35,18 @@
         /// <value>
         /// The registro catalogo.
         /// </value>
-		[DisplayName("Film")]
+        [DisplayName("Film id")]
         [JsonPropertyName(MappingsDB.Columna_FsFilmId)]
+        public int FSFilmId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the registro catalogo.
+        /// </summary>
+        /// <value>
+        /// The registro catalogo.
+        /// </value>
+		[DisplayName("Film/Coleccion")]
+        [JsonIgnore]
         public FSFilmModel FSFilm { get; set; }
     }
 }

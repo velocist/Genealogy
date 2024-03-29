@@ -1,0 +1,112 @@
+﻿@model List<FileViewerModel>
+@{
+    Layout = "";
+    string partialNameScript = ViewBag.PartialNameScript;
+}
+
+@if (Model != null && Model.Count > 1) {
+    <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+        @{
+            bool first = true;
+            string active = "";
+        }
+        @foreach (FileViewerModel item in Model) {
+            @if (first) {
+                active = "active";
+                first = false;
+            } else {
+                active = "";
+            }
+            <li class="nav-item @active">
+                <a class="nav-link" id="@item.TableName-tab" data-toggle="tab" href="#@item.TableName" role="tab" aria-controls="@item.TableName" aria-selected="true">@item.TableName</a>
+            </li>
+        }
+    </ul>
+}
+
+@if (Model != null && Model.Count > 1) {
+    <div class="tab-content" id="myTabContent">
+        @{
+            bool first = true;
+            string active = "";
+        }
+        @foreach (FileViewerModel item in Model) {
+            @if (first) {
+                active = "active";
+                first = false;
+            } else {
+                active = "";
+            }
+            <div class="tab-pane fade show @active" id="@item.TableName" role="tabpanel" aria-labelledby="@item.TableName-tab">
+                <div class="table-responsive">
+                    <table id="FileViewer_@item.TableName" class="table table-sm table-compact table-striped table-bordered nowrap tableViewer" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                @if (item.TableColumnsListString != null) {
+                                    @foreach (string column in item.TableColumnsListString) {
+                                        <th>@column</th>
+                                    }
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (item.Rows != null) {
+                                @foreach (Array row in item.Rows) {
+                                    <tr>
+                                        @for (int i = 0; i < item.TableColumnsListString.Count; i++) {
+                                            <td>
+                                                @row.GetValue(i)
+                                                @*<input value="@row.GetValue(i)" type="text" class="form-control"/>*@
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        }
+    </div>
+    await Html.RenderPartialAsync(partialNameScript);
+
+} else if (Model != null) {
+    @foreach (FileViewerModel item in Model) {
+        <div class="table-responsive">
+            <table id="FileViewer_@item.TableName" class="table table-sm table-compact table-striped table-bordered nowrap tableViewer" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        @if (item.TableColumnsListString != null) {
+                            @foreach (string column in item.TableColumnsListString) {
+                                <th>@column</th>
+                            }
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (item.Rows != null) {
+                        @foreach (Array row in item.Rows) {
+                            <tr>
+                                @for (int i = 0; i < item.TableColumnsListString.Count; i++) {
+                                    <td>
+                                        @row.GetValue(i)
+                                        @*<input value="@row.GetValue(i)" type="text" class="form-control"/>*@
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    }
+    await Html.RenderPartialAsync(partialNameScript);
+}

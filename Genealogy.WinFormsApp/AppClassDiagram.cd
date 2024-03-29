@@ -10,7 +10,7 @@
   <Class Name="Genealogy.WinFormsApp.Forms.MDIParent" Collapsed="true">
     <Position X="5.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BJCgiv0EhCEIEAEKCiC28IdyrABBAMgBSkxARzAAQEc=</HashCode>
+      <HashCode>BZDgiv0EhCEIEAEKCiC28KdyrABBAMgBSkxARzAAcEc=</HashCode>
       <FileName>Forms\MDIParent.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -45,7 +45,7 @@
   <Class Name="Genealogy.WinFormsApp.Forms.FrmIndices" Collapsed="true">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAQACAACBEQACCAAAAioIALAAAAACAIAQYUAAA=</HashCode>
+      <HashCode>AAQQAAAQACACCBAQACCAAAAioIALAAAAACAIAUQUAQA=</HashCode>
       <FileName>Forms\FrmIndices.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -65,6 +65,13 @@
   </Class>
   <Class Name="Genealogy.WinFormsApp.Forms.Login.FrmLogin" Collapsed="true">
     <Position X="0.5" Y="1.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Genealogy.WinFormsApp.Forms.Login.FrmLogin.InputModel" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Forms\Login\FrmLogin.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAABAAIACAAABAAAEDAAAACMAAACQAAECIAAAAAIAA=</HashCode>
       <FileName>Forms\Login\FrmLogin.cs</FileName>
@@ -73,7 +80,7 @@
   <Class Name="Genealogy.WinFormsApp.Forms.Export.ModalExport" Collapsed="true">
     <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAABACAAAAAAAACAAAACIAAAAAAAABAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACIAAAAAAAAAAIAAAAAAI=</HashCode>
       <FileName>Forms\Export\ModalExport.cs</FileName>
     </TypeIdentifier>
   </Class>

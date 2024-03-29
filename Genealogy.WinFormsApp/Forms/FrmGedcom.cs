@@ -1,11 +1,14 @@
-﻿namespace Genealogy.WinFormsApp.Forms {
+﻿using Genealogy.Gedcom.Core;
+using velocist.WinForms.DataGridViewControl;
+
+namespace Genealogy.WinFormsApp.Forms {
     public partial class FrmGedcom : Form {
 
-        private readonly ILogger<FrmGedcom> _logger;
+        private readonly ILogger _logger;
 
         public FrmGedcom() {
             InitializeComponent();
-            _logger = LogServiceContainer.GetLog<FrmGedcom>();
+            _logger = GetStaticLogger<FrmGedcom>();
         }
 
         private static void InitTable(DataGridView dataGridView) {
@@ -27,7 +30,7 @@
                     TxtOutputFileName.Text = OfdFilePath.FileName;
                 }
             } catch (Exception ex) {
-                //_logger.LogError(ex.Message);
+                _logger.LogError(ex.Message);
                 _ = MessageBox.Show(ex.Message);
             }
         }
@@ -65,7 +68,7 @@
                 //    var row = DgvData.SelectedRows[0];
                 //}
             } catch (Exception ex) {
-                //_logger.LogError(ex.Message);
+                _logger.LogError(ex.Message);
                 _ = MessageBox.Show(ex.Message);
             }
         }
@@ -75,10 +78,10 @@
                 if (treeView.SelectedNode.IsSelected) {
                     //var data = EnumHelpers.ParseByDescription<ADOPTED_BY_WHICH_PARENT, TagAttribute>(StringTags.HUSBAND, false);
                     //GedComFileManager.SetGedcomObject(list);
-                    //_logger.LogDebug("Data");
+                    _logger.LogDebug("Data");
                 }
             } catch (Exception ex) {
-                //_logger.LogError(ex.Message);
+                _logger.LogError(ex.Message);
                 _ = MessageBox.Show(ex.Message);
             }
         }

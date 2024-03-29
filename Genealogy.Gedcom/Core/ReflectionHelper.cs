@@ -76,6 +76,7 @@
         /// <param name="entity">Entity for set the property</param>
         /// <param name="name">Name of the property</param>
         /// <param name="value">Value to set</param>
+        /// <param name="attributesType"></param>
         /// <returns>Entity with new property value</returns>
         public static TObject SetValue<TObject>(this TObject entity, string name, object value, AttributesType attributesType = AttributesType.None) {
             try {

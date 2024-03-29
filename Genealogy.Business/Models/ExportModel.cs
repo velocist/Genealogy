@@ -3,7 +3,7 @@
     /// <summary>
     /// Model for export data.
     /// </summary>
-    public class ExportModel : IBaseModel {
+    public class ExportModel {
 
         /// <summary>
         /// Gets or sets the name of the file.

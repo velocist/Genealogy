@@ -1,4 +1,5 @@
-﻿using Genealogy.WebApplication.Models;
+﻿using Genealogy.Business.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Genealogy.WebApplication.Controllers {
 
@@ -6,89 +7,23 @@ namespace Genealogy.WebApplication.Controllers {
     /// Resources controller
     /// </summary>
     /// <seealso cref="Controller" />
-    public class RecursosController : Controller {
+    public class RecursosController : BaseController<RecursosController, RecursoModel> {
 
-        #region DEPENDENCE INJECTIONS
-        private static ILogger<RecursosController> _logger;
-        private readonly IStringLocalizer<SharedTranslations> _sharedTranslations;
-        private readonly IStringLocalizer<ViewsTranslations> _viewTranslates;
-        private readonly IDateTime _date;
-        private readonly IViewRender _renderView;
-        private readonly RecursoService _service;
-        #endregion
-
-        /// <summary>
-        /// Gets the modal configuration.
-        /// </summary>
-        /// <value>
-        /// The modal configuration.
-        /// </value>
-        private ModalConfiguration<RecursoService> ModalConfiguration { get; }
+        private static IRecursoService<RecursoModel, Recurso, AppEntitiesContext> _service;
 
         /// <summary>
         /// Constructor of the controller
         /// </summary>
-        /// <param name="unitOfWork">Unit of work</param>
         /// <param name="sharedTranslations">Shared Translations</param>
         /// <param name="viewTranslates">View translations</param>
         /// <param name="date">Datetime</param>
         /// <param name="renderView">Render view</param>
-        public RecursosController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView, RecursoService baseService) {
-            _logger = LogServiceContainer.GetLog<RecursosController>();
-            _sharedTranslations = sharedTranslations;
-            _viewTranslates = viewTranslates;
-            _date = date;
-            _renderView = renderView;
-            ModalConfiguration = new ModalConfiguration<RecursoService>("Recursos") {
-                Title = "Recursos",
-                TableAjaxAction = "/Recursos/" + Constants.ListAction,
-                IndexPath = "~/Views/Recursos/Index.cshtml"
-            };
+        /// <param name="baseService"></param>
+        public RecursosController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView, RecursoService baseService)
+            : base(sharedTranslations, viewTranslates, date, renderView, "Recursos") {
             _service = baseService;
-        }
-
-        /// <summary>
-        /// Initializes the view.
-        /// </summary>
-        /// <param name="action">The action.</param>
-        /// <param name="isModal">if set to <c>true</c> [is modal].</param>
-        private void InitView(Constants.Action action, bool isModal = true) {
-            ViewBag.BreadcumbTitle = _sharedTranslations[ModalConfiguration.Title];
-            ViewBag.BreadcumbController = _sharedTranslations[ModalConfiguration.Title];
-            ViewBag.ControllerName = ModalConfiguration.ControllerName;
-
-            if (action.Equals(Constants.Action.CREATE)) {
-                ViewBag.TitleModal = _sharedTranslations[ModalConfiguration.TitleCreate];
-                ViewBag.PartialName = ModalConfiguration.PartialNameEdit;
-                if (isModal)
-                    ViewBag.Action = Constants.CreateAction;
-            } else if (action.Equals(Constants.Action.EDIT)) {
-                ViewBag.TitleModal = _sharedTranslations[ModalConfiguration.TitleEdit];
-                ViewBag.PartialName = ModalConfiguration.PartialNameEdit;
-                if (isModal)
-                    ViewBag.Action = Constants.EditAction;
-            } else if (action.Equals(Constants.Action.DETAILS)) {
-                ViewBag.TitleModal = _sharedTranslations[ModalConfiguration.TitleDetails];
-                ViewBag.PartialName = ModalConfiguration.PartialNameDetails;
-                if (isModal)
-                    ViewBag.Action = Constants.DetailsAction;
-            } else if (action.Equals(Constants.Action.DELETE)) {
-                ViewBag.TitleModal = _sharedTranslations[ModalConfiguration.TitleDelete];
-                ViewBag.PartialName = ModalConfiguration.PartialNameDelete;
-                if (isModal)
-                    ViewBag.Action = Constants.DeleteAction;
-            } else if (action.Equals(Constants.Action.LIST)) {
-                ViewBag.Title = _sharedTranslations[ModalConfiguration.Title];
-                ViewBag.PartialName = ModalConfiguration.PartialNameList;
-                ViewBag.PartialNameScript = ModalConfiguration.PartialNameScript;
-                ViewBag.TableAjaxAction = ModalConfiguration.TableAjaxAction;
-                if (User.IsInRole(Constants.Roles.SuperAdmin.ToString()))
-                    ModalConfiguration.UploadFile = true;
-                else
-                    ModalConfiguration.UploadFile = false;
-
-                ViewBag.UploadFile = ModalConfiguration.UploadFile;
-            }
+            var json = System.IO.File.ReadAllText("./Views/Recursos/_ListConfigure.json");
+            Views = velocist.Services.Json.JsonAppHelper<ViewModel>.ConvertJsonToObject(json, false);
         }
 
         /// <summary>
@@ -98,9 +33,9 @@ namespace Genealogy.WebApplication.Controllers {
         [HttpGet]
         public async Task<IActionResult> Index() {
             try {
-                InitView(Constants.Action.LIST);
-                //ViewBag.Tipos = new TipoModel().GetAll();
-                return await Task.FromResult(View(ModalConfiguration.IndexPath));
+                ViewData.Model = _service.GetAll(x => x.Tipo == 1).ToList();
+                PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.View && x.ActionName == nameof(Index) && x.ControllerName == _controllerName);
+                return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, ViewData.Model);
             } catch (Exception ex) {
                 _logger.LogError(ex.Message);
                 ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
@@ -108,16 +43,34 @@ namespace Genealogy.WebApplication.Controllers {
             }
         }
 
-        /// <summary>
-        /// Creates this instance.
-        /// </summary>
-        /// <returns></returns>
-        //[Authorize(Roles = "SuperAdmin")]        
-        [HttpGet]
+		/// <summary>
+		/// Lists the specified tipo identifier.
+		/// </summary>
+		/// <param name="tipo_id">The tipo identifier.</param>
+		/// <returns></returns>
+		[HttpPost]
+		//[Authorize(Roles = "SuperAdmin")]        
+		public async Task<IActionResult> List(int tipo_id) {
+			try {
+				var model = _service.GetAll(x => x.Tipo == tipo_id);
+				return await Task.FromResult(new JsonResult(model) { StatusCode = StatusCodes.Status200OK });
+			} catch (Exception ex) {
+				_logger.LogError(ex.Message);
+				return await Task.FromResult(new JsonResult(WebStrings.ERROR_SERVER) { StatusCode = StatusCodes.Status500InternalServerError });
+			}
+		}
+
+		/// <summary>
+		/// Creates this instance.
+		/// </summary>
+		/// <returns></returns>
+		//[Authorize(Roles = "SuperAdmin")]        
+		[HttpGet]
         public async Task<IActionResult> Create() {
             try {
-                InitView(Constants.Action.CREATE);
-                return await Task.FromResult(View(ModalConfiguration.ModalPath, _service));
+                ViewData.Model = new RecursoModel();
+                PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.CustomModal && x.ActionName == nameof(Create) && x.ControllerName == _controllerName);
+                return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, ViewData.Model);
             } catch (Exception ex) {
                 _logger.LogError(ex.Message);
                 ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
@@ -133,26 +86,23 @@ namespace Genealogy.WebApplication.Controllers {
         //[Authorize(Roles = "SuperAdmin")]        
         [HttpPost]
         public async Task<IActionResult> Create(RecursoModel model) {
-            string strRenderView;
+            ViewData.Model = model;
+            PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.CustomModal && x.ActionName == nameof(Create) && x.ControllerName == _controllerName);
             try {
-                InitView(Constants.Action.CREATE);
                 if (ModelState.IsValid)
                     if (_service.Add(model) != null)
                         return await Task.FromResult(new JsonResult(StatusCodes.Status200OK));
                     else {
                         ModelState.AddModelError(string.Empty, WebStrings.ERROR_MODIFY);
-                        strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
-                        return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status400BadRequest });
+                        return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, model, new ViewDataDictionary(ViewData), statusCode: StatusCodes.Status400BadRequest);
                     }
 
                 ModelState.AddModelError(string.Empty, WebStrings.ERROR_BAD_REQUEST);
-                strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
-                return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status400BadRequest });
+                return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, model, new ViewDataDictionary(ViewData), statusCode: StatusCodes.Status400BadRequest);
             } catch (Exception ex) {
                 _logger.LogError(ex.Message);
                 ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
-                strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
-                return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status500InternalServerError });
+                return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, model, new ViewDataDictionary(ViewData), statusCode: StatusCodes.Status500InternalServerError);
             }
         }
 
@@ -164,29 +114,26 @@ namespace Genealogy.WebApplication.Controllers {
         //[Authorize(Roles = "SuperAdmin")]        
         [HttpGet]
         public async Task<IActionResult> Edit(string id) {
-            string strRenderView;
+            PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.CustomModal && x.ActionName == nameof(Edit) && x.ControllerName == _controllerName);
             try {
-                InitView(Constants.Action.EDIT);
-                if (id != null && id.Length > 0) {
-                    var model = _service.GetById(int.Parse(id));
-                    if (model != null) {
-                        strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
-                        return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status200OK });
-                    } else {
-                        ModelState.AddModelError(string.Empty, WebStrings.ERROR_GET);
-                        strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
-                        return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status400BadRequest });
-                    }
+
+                if (id == null || id.Length > 0) {
+                    ModelState.AddModelError(string.Empty, WebStrings.ERROR_BAD_REQUEST);
+                    return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, new RecursoModel(), new ViewDataDictionary(ViewData), statusCode: StatusCodes.Status400BadRequest);
                 }
 
-                ModelState.AddModelError(string.Empty, WebStrings.ERROR_BAD_REQUEST);
-                strRenderView = await _renderView.RenderAsync(ModalConfiguration.IndexPath, _service, new ViewDataDictionary(ViewData));
-                return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status400BadRequest });
+                var model = _service.GetById(int.Parse(id));
+                if (model == null) {
+                    ModelState.AddModelError(string.Empty, WebStrings.ERROR_GET);
+                    return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, new RecursoModel(), new ViewDataDictionary(ViewData), statusCode: StatusCodes.Status400BadRequest);
+                }
+
+                ViewData.Model = model;
+                return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, model, new ViewDataDictionary(ViewData), statusCode: StatusCodes.Status200OK);
             } catch (Exception ex) {
                 _logger.LogError(ex.Message);
                 ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
-                strRenderView = await _renderView.RenderAsync(ModalConfiguration.IndexPath, _service, new ViewDataDictionary(ViewData));
-                return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status500InternalServerError });
+                return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, new RecursoModel(), new ViewDataDictionary(ViewData), statusCode: StatusCodes.Status500InternalServerError);
             }
         }
 
@@ -199,44 +146,121 @@ namespace Genealogy.WebApplication.Controllers {
         [HttpPost]
         public async Task<IActionResult> Edit(RecursoModel model) {
             string strRenderView;
+            ViewData.Model = model;
+            PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.CustomModal && x.ActionName == nameof(Edit) && x.ControllerName == _controllerName);
             try {
-                InitView(Constants.Action.EDIT);
                 if (ModelState.IsValid)
-                    if (_service.Edit(model) != null)
+                    if (_service.Edit(model))
                         return await Task.FromResult(new JsonResult(StatusCodes.Status200OK));
                     else {
                         ModelState.AddModelError(string.Empty, WebStrings.ERROR_MODIFY);
-                        strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
-                        return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status400BadRequest });
+                        return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, new RecursoModel(), new ViewDataDictionary(ViewData), statusCode: StatusCodes.Status400BadRequest);
                     }
 
                 ModelState.AddModelError(string.Empty, WebStrings.ERROR_BAD_REQUEST);
-                strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
-                return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status400BadRequest });
+                return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, model, new ViewDataDictionary(ViewData), statusCode: StatusCodes.Status400BadRequest);
             } catch (Exception ex) {
                 _logger.LogError(ex.Message);
                 ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
-                strRenderView = await _renderView.RenderAsync(ModalConfiguration.ModalPath, model, new ViewDataDictionary(ViewData));
-                return await Task.FromResult(new JsonResult(strRenderView) { StatusCode = StatusCodes.Status500InternalServerError });
+                return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, model, new ViewDataDictionary(ViewData), statusCode: StatusCodes.Status500InternalServerError);
             }
         }
 
-        /// <summary>
-        /// Lists the specified tipo identifier.
-        /// </summary>
-        /// <param name="tipo_id">The tipo identifier.</param>
-        /// <returns></returns>
-        [HttpPost]
-        //[Authorize(Roles = "SuperAdmin")]        
-        public async Task<IActionResult> List(int tipo_id) {
+        [HttpGet]
+        public async Task<IActionResult> Details(string id) {
+            ViewData.Model = new RecursoModel();
+            PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.CustomModal && x.ActionName == nameof(Details) && x.ControllerName == _controllerName);
             try {
-                var model = _service.GetAll(/*tipo_id*/);
-                return await Task.FromResult(new JsonResult(model) { StatusCode = StatusCodes.Status200OK });
+
+                if (id == null || id.Length < 0) {
+                    ModelState.AddModelError(string.Empty, WebStrings.ERROR_BAD_REQUEST);
+                    return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, ViewData.Model, new ViewDataDictionary(ViewData), statusCode: StatusCodes.Status400BadRequest);
+                }
+
+                var model = _service.GetById(int.Parse(id));
+                if (model == null) {
+                    ModelState.AddModelError(string.Empty, WebStrings.ERROR_GET);
+                    return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, ViewData.Model, new ViewDataDictionary(ViewData), statusCode: StatusCodes.Status400BadRequest);
+                }
+
+                return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, model, new ViewDataDictionary(ViewData), statusCode: StatusCodes.Status200OK);
             } catch (Exception ex) {
                 _logger.LogError(ex.Message);
-                return await Task.FromResult(new JsonResult(WebStrings.ERROR_SERVER) { StatusCode = StatusCodes.Status500InternalServerError });
+                ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
+                return await ShowRenderView(ReturnViewTypeId.View, PropertiesView, ViewData.Model, new ViewDataDictionary(ViewData), statusCode: StatusCodes.Status500InternalServerError);
             }
         }
+
+       
+
+
+        //public async Task<ActionResult> EjemploModales(int tipo) {
+        //    try {
+        //        var model = new RecursoModel() {
+        //            Id = 1,
+        //            LastChange = DateTime.Now,
+        //        };
+        //        var modal = new CustomModalModel() {
+        //            Title = "Home",
+        //            SubTitle = "Panel de control",
+        //            ControllerName = "Home",
+        //            ActionName = "Index",
+        //            //Model = model,
+        //            ViewName = "Index",
+        //            ViewPath = "~/View/Shared/Common/Index.cshtml",
+        //            PartialViewName = "_Dashboard",
+        //            PartialViewPath = "~/Views/Home/_Dashboard.cshtml",
+        //            IsTableView = true,
+        //            UploadFile = true,
+        //            TableView = new PropertiesTableView() {
+        //                TableAjaxAction = "_RecursosScriptsPartial.cshtml",
+        //                HasOrdering = true,
+        //                HasPagination = true,
+        //                HasSearch = true,
+        //            }
+        //        };
+
+        //        switch (tipo) {
+        //            //case (int)ReturnViewTypeId.ConfirmModal: //Devuelve un modal de información renderizado.
+        //            //var config = new ConfirmModalConfiguration() {
+        //            //    //Setear parametros para los botones de Accion
+        //            //    AccionBotonOK = $"URL?con=parametros",
+        //            //    AccionBotonKO = $"URL?con=parametros"
+        //            //};
+        //            //return await ShowRenderView(ReturnViewTypeId.ConfirmModal, new GenericModalModel("modalConfirmacion", message: "Esto es un modal de confirmación.", viewType: ReturnViewTypeId.ConfirmModal, config));
+
+        //            case (int)ReturnViewTypeId.InformationModal: //Devuelve un modal de información renderizado.
+        //            return await ShowRenderView(ReturnViewTypeId.InformationModal, modal/*, model, new CustomModal<BaseModel>("modalInformacion", message: "Esto es un modal de información.", viewType: ReturnViewTypeId.InformationModal)*/);
+
+        //            case (int)ReturnViewTypeId.SucessModal: //Devuelve un modal de éxito renderizado.
+        //            return await ShowRenderView(ReturnViewTypeId.SucessModal, modal/*, model, new CustomModal<BaseModel>("modalSuccess", message: "Esto es un modal de éxito.", viewType: ReturnViewTypeId.SucessModal)*/);
+
+        //            case (int)ReturnViewTypeId.WarningModal: //Devuelve un modal de advertencia renderizado.
+        //            return await ShowRenderView(ReturnViewTypeId.WarningModal, modal/*, model, new CustomModal<BaseModel>("modalWarning", message: "Esto es un modal de advertencia.", viewType: ReturnViewTypeId.WarningModal)*/);
+
+        //            case (int)ReturnViewTypeId.ErrorModal: //Devuelve un modal de error renderizado.
+        //            return await ShowRenderView(ReturnViewTypeId.ErrorModal, modal/*, model, new CustomModal<BaseModel>("modalError", message: "Esto es un modal de error.", viewType: ReturnViewTypeId.ErrorModal)*/);
+
+        //            case (int)ReturnViewTypeId.CustomModal: //Devuelve un modal personalizado renderizado.
+        //            return await ShowRenderView(ReturnViewTypeId.CustomModal, modal, /*model, */"modalPersonalizado");
+
+        //            case (int)ReturnViewTypeId.StringView: //Devuelve una vista renderizada
+        //            return await ShowRenderView(ReturnViewTypeId.StringView, modal, /*model,*/ "Vista");
+
+        //            case (int)ReturnViewTypeId.StringPartialView:
+        //            return await ShowRenderView(ReturnViewTypeId.StringPartialView, modal, /*model,*/ "_VistaParcial");
+
+        //            case (int)ReturnViewTypeId.View:
+        //            return await ShowRenderView(ReturnViewTypeId.View, modal, /*model,*/ "_VistaParcial");
+
+        //            default:
+        //            return await Task.FromResult(Json(new { reload = true }));
+        //        };
+        //    } catch (Exception ex) {
+        //        return null;
+        //        //return await ShowRenderView(ReturnViewTypeId.ErrorModal, new CustomModal("modalError", message: "Error de servidor", viewType: ReturnViewTypeId.ErrorModal));
+        //    }
+        //}
 
         //[Authorize(Roles = "SuperAdmin")]
         //[HttpPost]

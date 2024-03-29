@@ -1,7 +1,5 @@
-using Genealogy.Business.Core.Base;
 using Genealogy.Common;
-using Microsoft.Extensions.DependencyInjection;
-using velocist.Services.Core;
+using velocist.Services.Log;
 
 namespace Genealogy.WebApplication {
 
@@ -29,6 +27,7 @@ namespace Genealogy.WebApplication {
         /// </summary>
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services) {
+            
             /* HSTS (HTTP Strict Transport Security)
              * Forces the web server to communicate over an HTTPS connection */
             _ = services.AddHsts(options => {
@@ -63,6 +62,9 @@ namespace Genealogy.WebApplication {
                 options.LogoutPath = $"/Identity/Account/Logout";
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
             });
+
+            var builder = services.BuildServiceProvider();
+            InitializeLog(builder.GetRequiredService<ILoggerFactory>());
         }
 
         /// <summary>

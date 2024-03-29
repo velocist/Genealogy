@@ -3,12 +3,14 @@
 
         /// <summary>Parses the specified value.</summary>
         /// <typeparam name="TEnum">The enum type to parse.</typeparam>
+        /// <typeparam name="TAttribute">The attribute type to find.</typeparam>
         /// <param name="value">The text value to parse.</param>
         /// <returns>The enum equivalent of the passed text.</returns>
         public static TEnum Parse<TEnum, TAttribute>(string value) where TAttribute : Attribute => Parse<TEnum, TAttribute>(value, false);
 
         /// <summary>Parses the specified value.</summary>
         /// <typeparam name="TEnum">The enum type to parse.</typeparam>
+        /// <typeparam name="TAttribute">The attribute type to find.</typeparam>
         /// <param name="value">The text value to parse.</param>
         /// <param name="ignoreCase">if set to <c>true</c> the parsing will not be case sensitive.</param>
         /// <returns>The enum equivalent of the passed text.</returns>
@@ -22,6 +24,7 @@
 
         /// <summary>Parses the specified value.</summary>
         /// <typeparam name="TEnum">The enum type to parse.</typeparam>
+        /// <typeparam name="TAttribute">The attribute type to find.</typeparam>
         /// <param name="value">The text value to parse.</param>
         /// <param name="ignoreCase">if set to <c>true</c> the parsing will not be case sensitive.</param>
         /// <param name="defaultValue">The default value if all else fails.</param>
@@ -36,6 +39,7 @@
 
         /// <summary>Parses a string into an enum by comparing against the description attribute of the enum.</summary>
         /// <typeparam name="TEnum">The type of the enum to parse to, normally inferred by the compiler.</typeparam>
+        /// <typeparam name="TAttribute">The attribute type to find.</typeparam>
         /// <param name="value">The text value to parse.</param>
         /// <param name="ignoreCase">if set to <c>true</c> the parsing will not be case sensitive.</param>
         /// <returns>The enum equivalent of the passed text or a default value if parsing does not succeed.</returns>
@@ -68,6 +72,7 @@
 
         /// <summary>Parses a string into an enum by comparing against the description attribute of the enum.</summary>
         /// <typeparam name="TEnum">The type of the enum to parse to, normally inferred by the compiler.</typeparam>
+        /// <typeparam name="TAttribute">The attribute type to find.</typeparam>
         /// <param name="value">The text value to parse.</param>
         /// <param name="ignoreCase">if set to <c>true</c> the parsing will not be case sensitive.</param>
         /// <param name="defaultValue">The default value if all else fails.</param>

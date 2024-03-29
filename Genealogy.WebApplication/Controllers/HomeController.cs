@@ -1,47 +1,82 @@
-﻿namespace Genealogy.WebApplication.Controllers {
+﻿using Newtonsoft.Json;
 
-    /// <summary>
-    /// The home controller
-    /// </summary>
-    /// <seealso cref="Controller" />
-    public class HomeController : Controller {
+namespace Genealogy.WebApplication.Controllers {
 
-        private readonly ILogger<HomeController> _logger;
+	/// <summary>
+	/// The home controller
+	/// </summary>
+	/// <seealso cref="Controller" />
+	public class HomeController : BaseController<HomeController, HomeViewModel> {
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="HomeController"/> class.
-        /// </summary>
-        public HomeController() {
-            _logger = LogServiceContainer.GetLog<HomeController>();
-        }
+		/// <summary>
+		/// Initializes a new instance of the <see cref="HomeController"/> class.
+		/// </summary>
+		public HomeController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView)
+			: base(sharedTranslations, viewTranslates, date, renderView, "Home") {
+		}
 
-        /// <summary>
-        /// Indexes this instance.
-        /// </summary>
-        /// <returns></returns>
-        public IActionResult Index() {
-            _logger.LogDebug("Index");
-            return View();
-        }
+		/// <summary>
+		/// Indexes this instance.
+		/// </summary>
+		/// <returns></returns>
+		public async Task<IActionResult> Index() {
+			_logger.LogDebug("Index");
 
-        /// <summary>
-        /// Privacies this instance.
-        /// </summary>
-        /// <returns></returns>
-        public IActionResult Privacy() => View();
+			var json = System.IO.File.ReadAllText("./Views/Home/IndexConfigure.json");
+			PropertiesView = JsonConvert.DeserializeObject<CustomViewModel>(json);
 
-        /// <summary>
-        /// Errors this instance.
-        /// </summary>
-        /// <returns></returns>
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+			ViewData.Model = new HomeViewModel() {
+				ListaGrupos = {
+					new Grupos() { Id = 1, Title = "Grupo1" }
+				},
+				ListaBuscadores = {
+					new Buscadores() { Id = 1, Title = "Buscador1" }
+				},
+			};
 
-        /// <summary>
-        /// Errors the specified XHR.
-        /// </summary>
-        /// <param name="xhr">The XHR.</param>
-        /// <returns></returns>
-        public IActionResult Error(object xhr) => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
+			return await ShowRenderView<HomeViewModel>(ReturnViewTypeId.View, PropertiesView);
+		}
+
+		//public async Task<IActionResult> Listar() {
+		//	_logger.LogDebug("Listar");
+
+		//	var json = System.IO.File.ReadAllText("./Controllers/jsonConfigure.json");
+		//	PropertiesView = JsonConvert.DeserializeObject<CustomViewModel>(json);
+
+		//	ViewData.Model = new HomeViewModel() {
+		//		ListaGrupos = {
+		//			new Grupos() { Id = 1, Title = "Grupo1" },
+		//			new Grupos() { Id = 2, Title = "Grupo2" }
+		//		},
+		//		ListaBuscadores = {
+		//			new Buscadores() { Id = 1, Title = "Buscador1" },
+		//			new Buscadores() { Id = 2, Title = "Buscador2" }
+		//		},
+		//	};
+
+		//	return await ShowRenderView<HomeViewModel>(ReturnViewTypeId.View, PropertiesView);
+		//}
+
+		/// <summary>
+		/// Privacies this instance.
+		/// </summary>
+		/// <returns></returns>
+		public IActionResult Privacy() => View();
+
+		/// <summary>
+		/// Errors this instance.
+		/// </summary>
+		/// <returns></returns>
+		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+		public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+
+		/// <summary>
+		/// Errors the specified XHR.
+		/// </summary>
+		/// <param name="xhr">The XHR.</param>
+		/// <returns></returns>
+		public IActionResult Error(object xhr) => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+	}
+
+
 }

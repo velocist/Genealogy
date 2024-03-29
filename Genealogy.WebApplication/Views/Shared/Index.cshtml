@@ -1,0 +1,75 @@
+﻿@{
+	var viewProperties = ViewData["PropertiesView"] as CustomViewModel;
+}
+<div class="card">
+	<div class="card-header">
+		<h1 class="card-title h1">
+			@viewProperties.Title
+			@{
+				if (string.IsNullOrEmpty(viewProperties.SubTitle))
+					@viewProperties.SubTitle
+			}
+		</h1>
+	</div>
+	<div class="card-body">
+		<partial name="~/Views/Shared/_AlertError.cshtml" />
+		@if (viewProperties.IsTableView) {
+			<table id="@viewProperties.TableView.IdTable" class="table table-sm table-compact table-striped table-bordered nowrap" cellspacing="0" width="100%">
+				<partial name="@viewProperties.PartialViewName" model="@ViewData.Model" />
+
+			</table>
+		} else {
+			<partial name="@viewProperties.PartialViewName" model="@ViewData.Model" />
+		}
+	</div>
+	<div class="card-footer">
+	</div>
+</div>
+
+@if (User.Identity.IsAuthenticated) {
+	if (viewProperties.UploadFile) {
+		<input type="file" class="custom-file-input" id="file" name="file" hidden />
+		await Html.RenderPartialAsync("~/Views/Shared/Scripts/_UploadFileScriptsPartial.cshtml");
+
+		<script type="text/javascript">
+			var buttons = true;
+			var uploadFile = true;
+		</script>
+	} else {
+		<script type="text/javascript">
+			var buttons = true;
+			var buttons = false;
+		</script>
+	}
+} else {
+	<script type="text/javascript">
+		var buttons = false;
+		var uploadFile = false;
+	</script>
+}
+@if (viewProperties.PartialsViews.Count() > 0) {
+	@foreach (string partial in viewProperties.PartialsViews) {
+		await Html.RenderPartialAsync(partial);
+	}
+}
+@section Styles {
+	@if (viewProperties.Styles.Count() > 0) {
+		@foreach (string style in viewProperties.Styles) {
+			await Html.RenderPartialAsync(style);
+		}
+	}
+	@if (viewProperties.IsTableView) {
+		await Html.RenderPartialAsync("~/Views/Shared/Scripts/_TableStylesPartial.cshtml");
+	}
+}
+@section Scripts {
+	@if (viewProperties.Scripts.Count() > 0) {
+		@foreach (string script in viewProperties.Scripts) {
+			await Html.RenderPartialAsync(script);
+		}
+	}
+	@if (viewProperties.IsTableView) {
+		await Html.RenderPartialAsync("~/Views/Shared/Scripts/_TableScriptsPartial.cshtml");
+		await Html.RenderPartialAsync(viewProperties.TableView.TableScript, viewProperties.TableView);
+	}
+}

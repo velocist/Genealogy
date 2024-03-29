@@ -1,8 +1,12 @@
-﻿namespace Genealogy.Business.Models.App {
+﻿using Genealogy.Business.Core;
+
+namespace Genealogy.Business.Models.App
+{
 
     /// <summary>
     /// The family search catalog model.
     /// </summary>
+    [JsonSerializable(typeof(FSCatalogModel))]
     public class FSCatalogModel : GenealogyBaseModel {
 
         /// <summary>
@@ -23,7 +27,7 @@
         /// </value>
 		[DisplayName("Autor")]
         [JsonPropertyName(MappingsDB.Columna_Author)]
-        public string Author { get; set; }
+        public string Author { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the format.
@@ -43,7 +47,7 @@
         /// </value>
 		[DisplayName("Publicación")]
         [JsonPropertyName(MappingsDB.Columna_Publication)]
-        public string Publication { get; set; }
+        public string Publication { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the notas.
@@ -53,7 +57,7 @@
         /// </value>
         [DisplayName("Notas")]
         [JsonPropertyName(MappingsDB.Columna_Note)]
-        public string Note { get; set; }
+        public string Note { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the number.

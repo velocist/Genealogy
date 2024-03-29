@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GenealogyDocumentation": {
+      "commandName": "Executable",
+      "executablePath": "$(SHFBROOT)\\Tools\\SandcastleBuilderGUI.exe"
+    }
+  }
+}

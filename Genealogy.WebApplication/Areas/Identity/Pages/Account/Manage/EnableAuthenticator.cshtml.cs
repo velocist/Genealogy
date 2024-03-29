@@ -100,7 +100,7 @@
             var result = new StringBuilder();
             var currentPosition = 0;
             while (currentPosition + 4 < unformattedKey.Length) {
-                _ = result.Append(unformattedKey.AsSpan(currentPosition, 4)).Append(" ");
+                _ = result.Append(unformattedKey.AsSpan(currentPosition, 4)).Append(' ');
                 currentPosition += 4;
             }
 

@@ -12,17 +12,17 @@
 
         public static object FindTag<TAttribute>(this string line) where TAttribute : Attribute {
             try {
-                //return GetProperties<TAttribute>();
+                //return GetPropertiesDictionary<TAttribute>();
                 return new NotImplementedException();
             } catch (Exception ex) {
                 throw new Exception(ex.Message);
             }
         }
 
-        //private static object GetProperties<TEnum, TAttribute>(this TEnum gedcomType) where TAttribute : Attribute {
+        //private static object GetPropertiesDictionary<TEnum, TAttribute>(this TEnum gedcomType) where TAttribute : Attribute {
         //    try {
         //        dynamic gedcomObj = Activator.CreateInstance(typeof(TEnum));
-        //        foreach (PropertyInfo propInfo in typeof(TEnum).GetProperties()) {
+        //        foreach (PropertyInfo propInfo in typeof(TEnum).GetPropertiesDictionary()) {
         //            object valor = typeof(TEnum).GetProperty(propInfo.Name).GetValue(gedcomObj, null);
         //            string descriptionAttribute = propInfo.Name;
         //            foreach (object attr in propInfo.GetCustomAttributes(true)) {

@@ -1,25 +1,37 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0-windows</TargetFramework>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <NoWarn>1701;1702;1591</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <NoWarn>1701;1702;1591</NoWarn>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<Compile Remove="Technicals\Persistence\**" />
+		<Compile Remove="velocistServices\**" />
 		<EmbeddedResource Remove="Technicals\Persistence\**" />
+		<EmbeddedResource Remove="velocistServices\**" />
 		<None Remove="Technicals\Persistence\**" />
+		<None Remove="velocistServices\**" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Compile Remove="Gedcom.cs" />
 	  <Compile Remove="RepositoryTests.cs" />
+	  <Compile Remove="Technicals\IndiceServiceTest.cs" />
+	  <Compile Remove="Technicals\Reflection\ObjectHelperTests.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <None Remove="Settings\appsettings.json" />
-	  <None Remove="Settings\logSettings.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -28,23 +40,19 @@
 	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 	  </Content>
-	  <Content Include="Settings\logSettings.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-	  </Content>
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.10" />
-		<PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
-		<PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
-		<PackageReference Include="coverlet.collector" Version="6.0.0">
+		<PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="8.0.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
+		<PackageReference Include="MSTest.TestAdapter" Version="3.2.2" />
+		<PackageReference Include="MSTest.TestFramework" Version="3.2.2" />
+		<PackageReference Include="coverlet.collector" Version="6.0.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="7.0.0" />
+		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="8.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -53,6 +61,90 @@
 	  <ProjectReference Include="..\Genealogy.Business\Genealogy.Business.csproj" />
 	  <ProjectReference Include="..\Genealogy.Common\Genealogy.Common.csproj" />
 	  <ProjectReference Include="..\Genealogy.IdentityService\Genealogy.IdentityService.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Settings\log4net.config">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\Console\logSettingsConsole-Warning.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\Debug\logSettingsDebug-Warning.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\Debug\logSettingsDebug-Trace.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\Debug\logSettingsDebug-Information.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\Debug\logSettingsDebug-Error.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\LogLevel\logSettingsLogLevel-Debug.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\LogLevel\logSettingsLogLevel-Error.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\LogLevel\logSettingsLogLevel-Information.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\LogLevel\logSettingsLogLevel-Trace.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\LogLevel\logSettingsLogLevel-Warning.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\Settings\log4netWithConsoleAppender-Trace.config">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\Settings\log4netWithConsoleAppender-Debug.config">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\Settings\log4netWithAll.config">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\Settings\log4netWithRollingFileAppender.config">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Settings\logSettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\Console\logSettingsConsole-Error.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\Console\logSettingsConsole-Information.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\Console\logSettingsConsole-Debug.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\Console\logSettingsConsole-Trace.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\Debug\logSettingsDebug-Debug.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Technicals\Logger\LogSettings\logSettings-LogLevel.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>

@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "";
+    var viewProperties = ViewData["PropertiesView"] as CustomViewModel;
+}
+<div class="modal fade show" id="staticBackdrop" data-backdrop="static" role="dialog" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-lg modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">@viewProperties.Title</h5>
+                <button type="button" class="close" onclick="CloseModal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">@SharedTranslations["Cerrar"]</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <partial name="@viewProperties.PartialViewName" model="Model" />
+            </div>
+            <div class="modal-footer">
+                <div class="col-sm-offset-2">
+                    <button type="button" class="btn btn-sm btn-secondary" onclick="CloseModal()">@SharedTranslations["Cerrar"]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+}
+@section Scripts{
+}

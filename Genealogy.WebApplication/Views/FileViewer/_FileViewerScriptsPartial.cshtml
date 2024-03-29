@@ -1,0 +1,102 @@
+﻿<script type="text/javascript">
+    //Upload file
+    function UploadFileViewer(controller, action) {
+        var fileName = $('.custom-file-input').val().split("\\").pop();
+        //$('.custom-file-input').siblings(".custom-file-label").addClass("selected").html(fileName);
+
+        var formData = new FormData();
+        formData.append('file', $('#file')[0].files[0]);
+        formData.append('row', $('#row').val());
+
+        $.ajax({
+            url: '/' + controller + '/' + action + '/',
+            type: 'POST',
+            data: formData,
+            processData: false,  // tell jQuery not to process the data
+            contentType: false,  // tell jQuery not to set contentType
+            beforeSend: function () {
+                document.body.style.cursor = 'wait';
+            },
+            success: function (data, textStatus) {
+                $('#tableData').html(data);
+                LoadTable(fileName);
+            },
+            error: function (xhr, textStatus) {
+                if (xhr.responseJSON != undefined) {
+                    $('body').html(xhr.responseJSON);
+                } else if (xhr.responseText != undefined) {
+                    $('body').html(xhr.responseText);
+                } else {
+                    alert(textStatus);
+                }
+            },
+            complete: function (xhr, textStatus) {
+                document.body.style.cursor = 'auto';
+            }
+        });
+    };
+
+    function LoadTable(fileName) {
+        $('.tableViewer').DataTable({
+            select: {
+                info: false,
+                style: 'multiple'
+            },
+            fixedColumns: {
+                left: 1
+            },
+            initComplete: function () {
+                //tableFileViewer.columns.adjust().draw();
+                if (buttons) {
+                    var api = this.api();
+                    api.button().add(1, {
+                        name: 'Export',
+                        extend: 'collection',
+                        text: function (e, dt, row, a) {
+                            var data = '<i class="bi bi-download" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Exportar"]"></i>';
+                            return data;
+                        },
+                        buttons: [
+                            { extend: 'copy' },
+                            { extend: 'csv' },
+                            { extend: 'excel', title: fileName + 'Export' },
+                            { extend: 'pdf', title: fileName + 'Export'},
+                            {
+                                extend: 'print',
+                                customize: function (win) {
+                                    $(win.document.body).addClass('white-bg');
+                                    $(win.document.body).css('font-size', '10px');
+
+                                    $(win.document.body).find('table')
+                                        .addClass('compact')
+                                        .css('font-size', 'inherit');
+                                }
+                            }
+                        ]
+                    });
+                    api.button().add(2, {
+                        text: '<i class="bi bi-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Eliminar"></i>', action: function (e, dt, row, a) {
+                            dt.rows('.selected').remove().draw();
+                        }, enabled: false, name: 'Delete'
+                    });
+                }
+            },
+        }).on('select', function (e, dt, type, indexes) {
+            if (type === 'row') {
+                dt.button('Delete:name').enable(
+                    dt.rows({ selected: true }).indexes().length === 0 ? false : true
+                );
+            }
+        }).on('deselect', function (e, dt, type, indexes) {
+            dt.button('Delete:name').disable();
+        });
+    }
+
+    $(document).ready(function () {
+        $(".custom-file-input").on("change", function () {
+            //UploadFileViewer('@ViewData["ViewDataControllerName"]', 'Index');
+            var fileName = $('.custom-file-input').val().split("\\").pop();
+            $('.custom-file-input').siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    });
+</script>

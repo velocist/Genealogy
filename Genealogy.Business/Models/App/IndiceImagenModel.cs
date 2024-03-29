@@ -1,9 +1,12 @@
-﻿namespace Genealogy.Business.Models.App {
+﻿using Genealogy.Business.Core;
+
+namespace Genealogy.Business.Models.App
+{
 
     /// <summary>
-    /// The family search index of images model.
+    /// The family search index of images model. <see cref="IndiceImagen"/>
     /// </summary>
-    /// <seealso cref="Genealogy.Business.Core.Base.GenealogyBaseModel" />
+    /// <seealso cref="GenealogyBaseModel" />
     public class IndiceImagenModel : GenealogyBaseModel {
 
         /// <summary>
@@ -14,7 +17,7 @@
         /// </value>
 		[DisplayName("Partido judicial")]
         [JsonPropertyName(MappingsDB.Columna_PartidoJudicial)]
-        public string PartidoJudicial { get; set; }
+        public string PartidoJudicial { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the pueblo.
@@ -24,7 +27,7 @@
         /// </value>
 		[DisplayName("Pueblo")]
         [JsonPropertyName(MappingsDB.Columna_Pueblo)]
-        public string Pueblo { get; set; }
+        public string Pueblo { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the provincia.
@@ -34,16 +37,7 @@
         /// </value>
 		[DisplayName("Provincia")]
         [JsonPropertyName(MappingsDB.Columna_Provincia)]
-        public string Provincia { get; set; }
-
-        /// <summary>
-        /// Gets or sets the pais.
-        /// </summary>
-        /// <value>
-        /// The pais.
-        /// </value>
-		[DisplayName("País")]
-        public Country Pais { get; set; }
+        public string Provincia { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the año.
@@ -53,24 +47,46 @@
         /// </value>
 		[DisplayName("Año")]
         [JsonPropertyName(MappingsDB.Columna_Periodo)]
-        public string Año { get; set; }
+        public string Año { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets or sets the fs record.
+        /// Gets or sets the pais identifier.
+        /// </summary>
+        /// <value>
+        /// The pais identifier.
+        /// </value>
+        [DisplayName("País id")]
+        [JsonPropertyName(MappingsDB.TableCountry_Id)]
+        public int? PaisId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the film identifier.
+        /// </summary>
+        /// <value>
+        /// The film identifier.
+        /// </value>
+        [DisplayName("Film id")]
+        [JsonPropertyName(MappingsDB.Columna_FsFilmId)]
+        public int? FilmId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the pais.
+        /// </summary>
+        /// <value>
+        /// The pais.
+        /// </value>
+        [DisplayName("País")]
+        [JsonIgnore]
+        public Country Pais { get; set; }
+
+        /// <summary>
+        /// Gets or sets the fs film.
         /// </summary>
         /// <value>
         /// The fs record.
         /// </value>
-		[DisplayName("Registro")]
-        public FSRecordModel FSRecord { get; set; }
-
-        /// <summary>
-        /// Gets or sets the fs image.
-        /// </summary>
-        /// <value>
-        /// The fs image.
-        /// </value>
-		[DisplayName("Imagen")]
-        public FSImageModel FSImage { get; set; }
+		[DisplayName("Film")]
+        [JsonIgnore]
+        public FSFilmModel FSFilm { get; set; }
     }
 }

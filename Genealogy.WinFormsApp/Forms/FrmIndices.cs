@@ -1,72 +1,287 @@
-using Genealogy.WinFormsApp.Forms.Export;
-using MathNet.Numerics.Statistics.Mcmc;
-using velocist.Services.Json;
+using velocist.WinForms.DataGridViewControl;
+using velocist.WinForms.FormControl;
 
 namespace Genealogy.WinFormsApp.Forms {
-    public class BaseForm<TForm, TService> : Form {
 
-        protected static ILogger<TForm> _logger;
-        protected static TService _service;
-
-        public BaseForm(TService service) {
-            _logger = LogServiceContainer.GetLog<TForm>();
-            _service = service;
-        }
-
-
-    }
+    /// <summary>
+    /// Form for indices
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class FrmIndices : Form {
 
-        private static ILogger<FrmIndices> _logger;
-        private static IBaseService<IndiceModel, Indices, AppEntitiesContext> _service;
+        private static ILogger _logger;
+        private static IIndiceService<IndiceImagenModel, IndiceImagen, AppEntitiesContext> _service;
+        private List<IndiceImagenModel> _listModel;
+        private static UserConfiguration _userConfiguration { get; set; }
 
-        public FrmIndices(IndiceService service)  {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FrmIndices"/> class.
+        /// </summary>
+        /// <param name="service">The service.</param>
+        public FrmIndices(IndiceImagenService service) {
             InitializeComponent();
-            _logger = LogServiceContainer.GetLog<FrmIndices>();
+            _logger = GetStaticLogger<FrmIndices>();
             _service = service;
+
+            this.ConfigureForm("Indices");
+
+            var btnAdd = CustomTable.Controls.Find("BtnAdd", false)[0];
+            btnAdd.Click += new EventHandler(BtnAdd_Click);
+
+            var btnSave = CustomTable.Controls.Find("BtnSave", false)[0];
+            btnSave.Click += new EventHandler(BtnSave_Click);
+
+            var btnEdit = CustomTable.Controls.Find("BtnEdit", false)[0];
+            btnEdit.Click += new EventHandler(BtnEdit_Click);
+
+            var btnDelete = CustomTable.Controls.Find("BtnDelete", false)[0];
+            btnDelete.Click += new EventHandler(BtnDelete_Click);
+
+            var dgvData = CustomTable.Controls.Find("DgvData", false)[0];
+            dgvData.Click += new EventHandler(DgvData_Click);
+
+            var btnSearch = FrmSearch.Controls.Find("BtnSearch", false)[0];
+            btnSearch.Click += new EventHandler(BtnSearch_Click);
+
+            var btnExport = FrmExport.Controls.Find("BtnExport", false)[0];
+            btnExport.Click += new EventHandler(BtnExport_Click);
+
+            var btnImport = FrmExport.Controls.Find("BtnImport", false)[0];
+            btnImport.Click += new EventHandler(BtnImport_Click);
         }
 
-        private void FrmIndices_Load(object sender, EventArgs e) => LoadTable(DgvData);
+        /// <summary>
+        /// Handles the Load event of the FrmIndices control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void FrmIndices_Load(object sender, EventArgs e) {
+            try {
+                LoadTable();
+            } catch (Exception ex) {
+                _logger.LogError(ex, "{message}", ex.Message);
+                _ = MessageBox.Show(ex.Message);
+            }
+        }
 
-        private static void LoadTable(DataGridView dataGridView, int employeeId = 0) {
+        #region DATAGRID
+
+        /// <summary>
+        /// Handles the Click event of the DgvData control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void DgvData_Click(object sender, EventArgs e) {
+            try {
+                if (CustomTable.TableData.SelectedRows.Count == 1) {
+                    LoadDetails();
+                }
+            } catch (Exception ex) {
+                _logger.LogError(ex, "{message}", ex.Message);
+                _ = MessageBox.Show(ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region FILTER MODULE
+
+        /// <summary>
+        /// Handles the Click event of the BtnSearch control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void BtnSearch_Click(object sender, EventArgs e) {
+            try {
+                var list = _service.Search(FrmSearch.TxtTextToSearch).ToList();
+                if (list != null)
+                    _ = CustomTable.TableData.LoadTable(list);
+            } catch (Exception ex) {
+                _logger.LogError(ex, "{message}", ex.Message);
+                _ = MessageBox.Show(ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region BUTTON MODULE
+
+        private void BtnAdd_Click(object sender, EventArgs e) {
+            try {
+                groupBox2.CleanControls();
+            } catch (Exception ex) {
+                _logger.LogError(ex, "{message}", ex.Message);
+                _ = MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Handles the Click event of the BtnSave control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <exception cref="Exception"></exception>
+        private void BtnSave_Click(object sender, EventArgs e) {
+            try {
+                var model = GetObject();
+                if (model.Id > 0) {
+                    var list = _service.Edit(model);
+                } else {
+                    var list = _service.Add(model);
+                }
+
+                LoadTable();
+            } catch (Exception ex) {
+                _logger.LogError(ex, "{message}", ex.Message);
+                _ = MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Handles the Click event of the BtnEdit control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void BtnEdit_Click(object sender, EventArgs e) {
+            try {
+                LoadDetails();
+            } catch (Exception ex) {
+                _logger.LogError(ex, "{message}", ex.Message);
+                _ = MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Handles the Click event of the BtnDelete control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void BtnDelete_Click(object sender, EventArgs e) {
+            try {
+                if (int.Parse(CommonDataControl.Id) > 0) {
+                    var list = _service.RemoveById(CommonDataControl.Id);
+                }
+
+                LoadTable();
+            } catch (Exception ex) {
+                _logger.LogError(ex, "{message}", ex.Message);
+                _ = MessageBox.Show(ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region EXPORT MODULE
+
+        /// <summary>
+        /// Handles the Click event of the BtnImport control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void BtnImport_Click(object sender, EventArgs e) {
+            try {
+                var result = Import();
+
+                if (result.Any()) {
+                    _service.AddAll(result);
+                    _ = MessageBox.Show("Importación realizada con éxito.");
+                    LoadTable();
+                } else {
+                    _ = MessageBox.Show("Error al realizar la importación.");
+                }
+            } catch (Exception ex) {
+                _logger.LogError(ex, "{message}", ex.Message);
+                _ = MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Handles the Click event of the BtnExport control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void BtnExport_Click(object sender, EventArgs e) {
+            try {
+                var result = Export();
+
+                if (result) {
+                    _ = MessageBox.Show("Exportación realizada con éxito.");
+                } else {
+                    _ = MessageBox.Show("Error al realizar la exportación.");
+                }
+            } catch (Exception ex) {
+                _logger.LogError(ex, "{message}", ex.Message);
+                _ = MessageBox.Show(ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region COMMON PRIVATES 
+
+        /// <summary>
+        /// Loads the table.
+        /// </summary>
+        /// <exception cref="Exception"></exception>
+        private void LoadTable() {
             try {
                 var list = _service.GetAll().ToList();
-                if (list != null)
-                    _ = dataGridView.LoadTable(list, allowAddNewRow: true);
+                if (list != null) {
+                    _ = CustomTable.TableData.LoadTable(list);
+                    _listModel = list;
+                }
             } catch (Exception ex) {
                 _logger.LogError(ex, ex.Message);
                 throw new Exception(ex.Message);
             }
         }
 
-        private void BtnExport_Click(object sender, EventArgs e) {
-            try {
-                var entities = JsonAppHelper<IndiceModel>.GetListFromObject(DgvData.DataSource);
-                _service.Export(frmGenericExport1.OutputFilename,entities,);
-                
-            } catch (Exception ex) {
-                _logger.LogError(ex, ex.Message);
-                _ = MessageBox.Show(ex.Message);
-            }
+        /// <summary>
+        /// Loads the details.
+        /// </summary>
+        public void LoadDetails() {
+            CommonDataControl.Id = CustomTable.TableData.SelectedRows[0].Cells[CustomTable.TableData.Columns[MappingsDB.Columna_Id].Index].Value?.ToString();
+            CommonDataControl.AddDate = CustomTable.TableData.SelectedRows[0].Cells[CustomTable.TableData.Columns["AddDate"].Index].Value?.ToString();
+            CommonDataControl.LastChange = CustomTable.TableData.SelectedRows[0].Cells[CustomTable.TableData.Columns["LastChange"].Index].Value?.ToString();
+            CommonDataControl.Observations = CustomTable.TableData.SelectedRows[0].Cells[CustomTable.TableData.Columns[MappingsDB.Columna_Observaciones].Index].Value?.ToString();
+            CommonDataControl.Url = CustomTable.TableData.SelectedRows[0].Cells[CustomTable.TableData.Columns[MappingsDB.Columna_Url].Index].Value?.ToString();
         }
 
-        private void BtnSave_Click(object sender, EventArgs e) {
-            try {
-                var mdodel = JsonConvertHelper<IndiceModel>.GetListFromObject(DgvData.DataSource);
-                var list = _service.AddAll(mdodel);
-            } catch (Exception ex) {
-                _logger.LogError(ex, ex.Message);
-                _ = MessageBox.Show(ex.Message);
-            }
-        }
+        /// <summary>
+        /// Loads the model.
+        /// </summary>
+        /// <returns></returns>
+        public IndiceImagenModel LoadModel() => new() {
+            Id = int.Parse(CommonDataControl.Id),
+            Observaciones = CommonDataControl.Observations,
+            Url = CommonDataControl.Url,
+        };
 
-        private void BtnCancel_Click(object sender, EventArgs e) {
-            try {
-                this.Close();
-            } catch (Exception ex) {
-                _logger.LogError(ex, ex.Message);
-                _ = MessageBox.Show(ex.Message);
-            }
-        }
+        /// <summary>
+        /// Gets the list.
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerable<IndiceImagenModel> GetList() => JsonAppHelper<IndiceImagenModel>.GetListFromObject(_listModel);
+
+        /// <summary>
+        /// Gets the object.
+        /// </summary>
+        /// <returns></returns>
+        private IndiceImagenModel GetObject() => JsonAppHelper<IndiceImagenModel>.GetEntityFromObject(LoadModel());
+
+        /// <summary>
+        /// Imports this instance.
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerable<IndiceImagenModel> Import() => ExportExcel<IndiceImagenModel>.Import(FrmExport.OutputFilename, 0);
+
+        /// <summary>
+        /// Exports this instance.
+        /// </summary>
+        /// <returns></returns>
+        private bool Export() => ExportExcel<IndiceImagenModel>.Export(_listModel, FrmExport.OutputFilename, true);
+
+        #endregion               
+
     }
 }

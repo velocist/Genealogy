@@ -11,7 +11,6 @@
         /// </summary>
         /// <param name="args">Arguments provided by the design-time service.</param>
         /// <returns>
-        /// An instance of <typeparamref name="TContext" />.
         /// </returns>
         public AppEntitiesContext CreateDbContext(string[] args) {
             IConfiguration configuration = new ConfigurationBuilder()

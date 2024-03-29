@@ -4,19 +4,7 @@
     /// 
     /// </summary>
     [Table(MappingsDB.TablaTipo)]
-    public class Tipo : BaseEntity {
-
-        /// <summary>
-        /// Gets or sets the identifier.
-        /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
-        [Key]
-        [Column(MappingsDB.Columna_Id)]
-        [JsonPropertyName(MappingsDB.Columna_Id)]
-        public int Id { get; set; }
-
+    public class Tipo : FSBaseEntity {
         /// <summary>
         /// Gets or sets the nombre.
         /// </summary>
@@ -45,6 +33,6 @@
         /// </value>
         [Column(MappingsDB.Columna_Notas, TypeName = "varchar(255)")]
         [JsonPropertyName(MappingsDB.Columna_Notas)]
-        public string Notas { get; set; }
+        public string? Notas { get; set; }
     }
 }

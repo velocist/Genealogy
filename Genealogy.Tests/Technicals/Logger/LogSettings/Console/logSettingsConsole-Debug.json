@@ -1,0 +1,11 @@
+{
+	"Logging": {
+		"Console": {
+			"LogLevel": {
+				"Default": "Debug",
+				"Microsoft": "Debug",
+				"Microsoft.AspNetCore": "Debug"
+			}
+		}
+	}
+}

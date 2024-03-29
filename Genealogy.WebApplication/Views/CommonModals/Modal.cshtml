@@ -1,11 +1,13 @@
 ﻿@{
     Layout = "";
+    var viewProperties = ViewData["PropertiesView"] as CustomViewModel;
+
 }
 <div class="modal" id="staticBackdrop" data-backdrop="static" role="dialog" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-lg modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">@ViewBag.TitleModal</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">@viewProperties.Title</h5>
                 <button type="button" class="close" onclick="CloseModal()" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     <span class="sr-only">@SharedTranslations["Cerrar"]</span>
@@ -13,14 +15,14 @@
             </div>
             <div class="modal-body">
                 <partial name="~/Views/Shared/_AlertError.cshtml" />
-                <form id="@ViewBag.Action">
-                    <partial name="@ViewBag.PartialName" model="Model" />
+                <form id="@viewProperties.ActionName'">
+                    <partial name="@viewProperties.PartialViewName" model="@ViewData.Model" />
                 </form>
             </div>
             <div class="modal-footer">
                 <div class="col-sm-offset-2">
                     <button type="button" class="btn btn-sm btn-secondary" onclick="CloseModal()">@SharedTranslations["Cerrar"]</button>
-                    <input type="button" onclick="Submit('@ViewBag.ControllerName','@ViewBag.Action')" value="@SharedTranslations["Guardar"]" class="btn btn-sm btn-primary" />
+                    <input type="button" onclick="Submit('@viewProperties.ControllerName','@viewProperties.ActionName')" value="@SharedTranslations["Guardar"]" class="btn btn-sm btn-primary" />
                 </div>
             </div>
         </div>

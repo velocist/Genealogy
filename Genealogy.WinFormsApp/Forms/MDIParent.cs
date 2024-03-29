@@ -1,11 +1,13 @@
-﻿namespace Genealogy.WinFormsApp.Forms {
+﻿using velocist.WinForms.FormControl;
+
+namespace Genealogy.WinFormsApp.Forms {
     public partial class MDIParent : Form {
 
         private int childFormNumber = 0;
 
         //private readonly UserManager<User> _userManager;
         //private readonly SignInManager<User> _signInManager;
-        private readonly ILogger<MDIParent> _logger;
+        private readonly ILogger _logger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MDIParent"/> class.
@@ -14,7 +16,7 @@
             InitializeComponent();
             //_userManager = (UserManager<User>)serviceProvider.GetService(typeof(UserManager<User>));
             //_signInManager = (SignInManager<User>)serviceProvider.GetService(typeof(SignInManager<User>)); ;
-            _logger = LogServiceContainer.GetLog<MDIParent>();
+            _logger = GetStaticLogger<MDIParent>();
             this.ConfigureForm("Genealogia");
         }
 
@@ -72,7 +74,7 @@
         private void PasteToolStripMenuItem_Click(object sender, EventArgs e) {
         }
 
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e) => toolStrip.Visible = toolBarToolStripMenuItem.Checked;
+        //private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e) => ToolTrip.Visible = toolBarToolStripMenuItem.Checked;
 
         private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e) => statusStrip.Visible = statusBarToolStripMenuItem.Checked;
 
@@ -93,7 +95,7 @@
         private void FrmIndices_Click(object sender, EventArgs e) {
             try {
                 if (!this.CheckOpenForms<FrmIndices>()) {
-                    FrmIndices frm = new(Common.Services.Resolve<IndiceService>()) {
+                    FrmIndices frm = new(Common.ServicesConfiguration.Resolve<IndiceImagenService>()) {
                         MdiParent = this
                     };
                     frm.Show();
@@ -107,7 +109,7 @@
         private void FrmRecursos_Click(object sender, EventArgs e) {
             try {
                 if (!this.CheckOpenForms<FrmRecursos>()) {
-                    FrmRecursos frm = new(Common.Services.Resolve<RecursoService>()) {
+                    FrmRecursos frm = new(Common.ServicesConfiguration.Resolve<RecursoService>()) {
                         MdiParent = this
                     };
                     frm.Show();
@@ -148,11 +150,55 @@
         private void FrmInvestigacion_Click(object sender, EventArgs e) {
             try {
                 if (!this.CheckOpenForms<FrmInvestigacion>()) {
-                    FrmInvestigacion frm = new(Common.Services.Resolve<InvestigacionService>()) {
+                    FrmInvestigacion frm = new(Common.ServicesConfiguration.Resolve<InvestigacionService>()) {
                         MdiParent = this
                     };
                     frm.Show();
                 }
+            } catch (Exception ex) {
+                _logger.LogError(ex.Message);
+                _ = MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CatalogosToolStripMenuItem_Click(object sender, EventArgs e) {
+            try {
+                if (!this.CheckOpenForms<FrmFSCatalog>()) {
+                    FrmFSCatalog frm = new(Common.ServicesConfiguration.Resolve<FSCatalogService>()) {
+                        MdiParent = this
+                    };
+                    frm.Show();
+                }
+            } catch (Exception ex) {
+                _logger.LogError(ex.Message);
+                _ = MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FilmsToolStripMenuItem_Click(object sender, EventArgs e) {
+            try {
+                //if (!this.CheckOpenForms<FrmFamilySearch>()) {
+                //FrmFamilySearch frm = new(Common.Services.Resolve<FSFilm>()) {
+                //    MdiParent = this
+                //};
+                //frm.Show();
+                //}
+                throw new NotImplementedException();
+            } catch (Exception ex) {
+                _logger.LogError(ex.Message);
+                _ = MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void IndicesToolStripMenuItem_Click(object sender, EventArgs e) {
+            try {
+                //if (!this.CheckOpenForms<FrmFamilySearch>()) {
+                //    FrmFamilySearch frm = new(Common.Services.Resolve<FSRecordService>()) {
+                //        MdiParent = this
+                //    };
+                //    frm.Show();
+                //}
+                throw new NotImplementedException();
             } catch (Exception ex) {
                 _logger.LogError(ex.Message);
                 _ = MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);

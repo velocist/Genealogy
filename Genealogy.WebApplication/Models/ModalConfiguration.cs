@@ -1,5 +1,8 @@
-﻿namespace Genealogy.WebApplication.Models {
+﻿using velocist.Services.Core;
+using velocist.Services.Core.Interfaces;
 
+namespace Genealogy.WebApplication.Models {
+    
     /// <summary>
     /// The class that support modal configuration
     /// </summary>

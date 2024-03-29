@@ -1,9 +1,12 @@
-﻿namespace Genealogy.Business.Models.App {
+﻿using Genealogy.Business.Core;
+
+namespace Genealogy.Business.Models.App
+{
 
     /// <summary>
     /// The family search film model.
     /// </summary>
-    /// <seealso cref="Genealogy.Business.Core.Base.GenealogyBaseModel" />
+    /// <seealso cref="GenealogyBaseModel" />
     public class FSFilmModel : GenealogyBaseModel {
 
         /// <summary>
@@ -24,7 +27,7 @@
         /// </value>
 		[DisplayName("Film")]
         [JsonPropertyName(MappingsDB.Columna_FilmId)]
-        public int FilmId { get; set; }
+        public int? FilmId { get; set; }
 
         /// <summary>
         /// Gets or sets the image group number.
@@ -34,7 +37,7 @@
         /// </value>
         [DisplayName("Número de grupo de imagenes")]
         [JsonPropertyName(MappingsDB.Columna_ImageGroupNumber)]
-        public int ImageGroupNumber { get; set; }
+        public int? ImageGroupNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the cita referencia.
@@ -44,7 +47,7 @@
         /// </value>
 		[DisplayName("Cita/Referencia")]
         [JsonPropertyName(MappingsDB.Columna_Citation)]
-        public string Citation { get; set; }
+        public string Citation { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the notas.
@@ -54,7 +57,17 @@
         /// </value>
         [DisplayName("Notas")]
         [JsonPropertyName(MappingsDB.Columna_Note)]
-        public string Note { get; set; }
+        public string Note { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Gets or sets the fs catalog identifier.
+        /// </summary>
+        /// <value>
+        /// The fs catalog identifier.
+        /// </value>
+        [DisplayName("Catalogo Id")]
+        [JsonPropertyName(MappingsDB.Columna_FsCatalogId)]
+        public int FSCatalogId { get; set; }
 
         /// <summary>
         /// Gets or sets the registro catalogo.
@@ -62,8 +75,8 @@
         /// <value>
         /// The registro catalogo.
         /// </value>
-		[DisplayName("Catalogo")]
-        [JsonPropertyName(MappingsDB.Columna_FsCatalogId)]
+        [DisplayName("Catalogo")]
+        [JsonIgnore]
         public FSCatalogModel FSCatalog { get; set; }
     }
 }

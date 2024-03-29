@@ -23,33 +23,36 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            frmGenericExport = new velocist.WinFormsControlLibrary.FrmGenericExport();
+            FrmGenericExport = new FrmGenericExport();
             SuspendLayout();
             // 
-            // frmGenericExport
+            // FrmGenericExport
             // 
-            frmGenericExport.Location = new Point(10, 12);
-            frmGenericExport.MaximumSize = new Size(675, 70);
-            frmGenericExport.MinimumSize = new Size(675, 70);
-            frmGenericExport.Name = "frmGenericExport";
-            frmGenericExport.OutputFilename = "Export_20230409";
-            frmGenericExport.Size = new Size(675, 70);
-            frmGenericExport.TabIndex = 0;
+            FrmGenericExport.ExportModel.InitRowHeader = 0;
+            FrmGenericExport.Location = new Point(12, 2);
+            FrmGenericExport.MaximumSize = new Size(0, 45);
+            FrmGenericExport.MinimumSize = new Size(740, 30);
+            FrmGenericExport.Name = "FrmGenericExport";
+            FrmGenericExport.ExportModel.OutputFilename = "C:\\Users\\Cristina\\Desktop\\20233009.xlsx";
+            FrmGenericExport.ExportModel.RowHeader = false;
+            FrmGenericExport.Size = new Size(740, 30);
+            FrmGenericExport.TabIndex = 0;
             // 
             // ModalExport
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(697, 94);
-            Controls.Add(frmGenericExport);
+            ClientSize = new Size(757, 33);
+            Controls.Add(FrmGenericExport);
+            MaximizeBox = false;
             Name = "ModalExport";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ModalExport";
-            Load += ModalExport_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private velocist.WinFormsControlLibrary.FrmGenericExport frmGenericExport;
+        private FrmGenericExport FrmGenericExport;
     }
 }

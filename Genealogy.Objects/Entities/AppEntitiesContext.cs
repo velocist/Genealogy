@@ -1,6 +1,4 @@
-﻿using Genealogy.Objects.Entitiesv1;
-
-namespace Genealogy.Objects.Entities {
+﻿namespace Genealogy.Objects.Entities {
 
     /// <summary>
     /// The entities context
@@ -16,13 +14,13 @@ namespace Genealogy.Objects.Entities {
         /// </value>
         public virtual DbSet<Country> Country { get; set; }
 
-        /// <summary>
-        /// Gets or sets the indice.
-        /// </summary>
-        /// <value>
-        /// The indice.
-        /// </value>
-        public virtual DbSet<Indices> Indice { get; set; }
+        ///// <summary>
+        ///// Gets or sets the indice.
+        ///// </summary>
+        ///// <value>
+        ///// The indice.
+        ///// </value>
+        //public virtual DbSet<Indices> Indice { get; set; }
 
         /// <summary>
         /// Gets or sets the investigacion.

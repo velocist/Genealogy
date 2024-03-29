@@ -1,30 +1,43 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
-		<GenerateDocumentationFile>False</GenerateDocumentationFile>
+		<TargetFramework>net8.0</TargetFramework>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <NoWarn>1701;1702;1591</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <NoWarn>1701;1702;1591</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<Compile Remove="Auth\**" />
+		<Compile Remove="Entitiesv1\**" />
 		<EmbeddedResource Remove="Auth\**" />
+		<EmbeddedResource Remove="Entitiesv1\**" />
 		<None Remove="Auth\**" />
+		<None Remove="Entitiesv1\**" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Compile Remove="Entities\Archivos.cs" />
 		<Compile Remove="Entities\ArchivosDocumentales.cs" />
 		<Compile Remove="Entities\ArchivosIndexaciones.cs" />
+		<Compile Remove="Entities\FamilySearch.cs" />
 		<Compile Remove="Entities\ImportFile.cs" />
+		<Compile Remove="Entities\Indices.cs" />
 		<Compile Remove="Entities\Recursos.cs" />
 		<Compile Remove="Entities\VistaPadrones.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="EntityFramework" Version="6.4.4" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.10" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 

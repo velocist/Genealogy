@@ -1,0 +1,27 @@
+{
+	"CustomViewModel": {
+		"Title": "Dashboard",
+		"SubTitle": "Home",
+		"ControllerName": "Home",
+		"ActionName": "Index",
+		"ViewName": "CommonIndex",
+		"ViewPath": "~/Views/Common/CommonIndex.cshtml",
+		"PartialViewPath": "_Dashboard",
+		"PartialViewName": "~/Views/Home/_Dashboard.cshtml",
+		"UploadFile": false,
+		"IsTableView": false,
+		"TableView": {
+			"IdTable": "dtHome",
+			"ControllerName": "Home",
+			"ActionName": "Listar",
+			"TableAjaxAction": "Listar",
+			"TableScript": "_HomeScriptsPartial.cshtml",
+			"EnableServerSide": false,
+			"HasPagination": true,
+			"HasOrdering": true,
+			"HasSearch": true,
+			"HasInformation": true,
+			"IsResponsive": true
+		}
+	}
+}

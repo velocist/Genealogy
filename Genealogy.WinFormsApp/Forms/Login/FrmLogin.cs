@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using velocist.WinForms.FormControl;
+
 namespace Genealogy.WinFormsApp.Forms.Login {
 
     [AllowAnonymous]
@@ -6,7 +8,7 @@ namespace Genealogy.WinFormsApp.Forms.Login {
 
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly ILogger<FrmLogin> _logger;
+        private readonly ILogger _logger;
 
         //[BindProperty]
         public InputModel Input { get; set; }
@@ -40,7 +42,7 @@ namespace Genealogy.WinFormsApp.Forms.Login {
             InitializeComponent();
             _userManager = userManager;
             _signInManager = signInManager;
-            _logger = LogServiceContainer.GetLog<FrmLogin>();
+            _logger = GetStaticLogger<FrmLogin>();
             this.ConfigureModal("Iniciar sesión");
         }
 

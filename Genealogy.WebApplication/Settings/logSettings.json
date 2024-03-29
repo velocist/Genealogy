@@ -1,29 +1,36 @@
 {
-  "Logging": {
-    "LogLevel": {
-      "Default": "Debug", //Information
-      "Microsoft": "Warning",
-      "Microsoft.Hosting.Lifetime": "Trace",
-      "Microsoft.EntityFrameworkCore.Database.Command": "Warning",
-      "Microsoft.AspNetCore": "Warning"
-    },
-    "Debug": {
-      "LogLevel": {
-        "Default": "Debug",
-        "Microsoft": "Warning",
-        "Microsoft.Hosting.Lifetime": "Trace",
-        "Microsoft.EntityFrameworkCore.Database.Command": "Warning",
-        "Microsoft.AspNetCore": "Warning"
-      }
-    },
-    "Console": {
-      "LogLevel": {
-        "Default": "Debug",
-        "Microsoft": "Warning",
-        "Microsoft.Hosting.Lifetime": "Trace",
-        "Microsoft.EntityFrameworkCore.Database.Command": "Warning",
-        "Microsoft.AspNetCore": "Warning"
-      }
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "velocist": "Trace",
+            "Microsoft.Hosting.Lifetime": "Error",
+            "Microsoft.AspNetCore": "Error",
+            "Microsoft.EntityFrameworkCore.Database.Command": "Warning"
+        }
+        //"LogLevel": {
+        //  "Default": "Debug", //Information
+        //  "Microsoft": "Warning",
+        //  "Microsoft.Hosting.Lifetime": "Trace",
+        //  "Microsoft.EntityFrameworkCore.Database.Command": "Warning",
+        //  "Microsoft.AspNetCore": "Warning"
+        //},
+        //"Debug": {
+        //  "LogLevel": {
+        //    "Default": "Debug",
+        //    "Microsoft": "Warning",
+        //    "Microsoft.Hosting.Lifetime": "Trace",
+        //    "Microsoft.EntityFrameworkCore.Database.Command": "Warning",
+        //    "Microsoft.AspNetCore": "Warning"
+        //  }
+        //},
+        //"Console": {
+        //  "LogLevel": {
+        //    "Default": "Debug",
+        //    "Microsoft": "Warning",
+        //    "Microsoft.Hosting.Lifetime": "Trace",
+        //    "Microsoft.EntityFrameworkCore.Database.Command": "Warning",
+        //    "Microsoft.AspNetCore": "Warning"
+        //  }
+        //}
     }
-  }
 }

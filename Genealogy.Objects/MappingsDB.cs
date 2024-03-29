@@ -37,7 +37,7 @@
         public const string Columna_Pais = "pais";
         public const string Columna_Notas = "notas";
         public const string Columna_Url = "url";
-        public const string Columna_Periodo = "año";
+        public const string Columna_Periodo = "year";
         public const string Columna_RegistroCatalogo = "registro_catalogo";
         public const string Columna_UrlRegistroCatalogo = "url_registro_catalogo";
         public const string Columna_Microfilm = "microfilm";
@@ -89,6 +89,7 @@
         public const string Columna_Format = "format";
         public const string Columna_Author = "author";
         public const string Columna_FilmId = "film_id";
+        public const string Columna_ImageId = "image_id";
         public const string Columna_Observations = "observations";
 
         public const string Columna_DigitalNote = "film_digital_note";

@@ -17,7 +17,7 @@
         public static void AddServicesIdentityDbContext<TContext>(this IServiceCollection services, string connectionString, string migrationAssembly, bool enableSensitiveDataLogging = true, bool requireConfirmedAccount = true) where TContext : DbContext {
 
             _ = services.AddDbContext<TContext>(options =>
-                options.UseSqlServer(connectionString, x => x.MigrationsAssembly(migrationAssembly))
+                options.UseSqlServer(connectionString/*, x => x.MigrationsAssembly(migrationAssembly)*/)
                 .EnableSensitiveDataLogging(enableSensitiveDataLogging));
 
             _ = services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = requireConfirmedAccount)

@@ -6,15 +6,6 @@
 
     [Table(MappingsDB.TableCountry)]
     public class Country : BaseEntity {
-
-        /// <summary>
-        /// Country id
-        /// </summary>
-        [Key]
-        [Column(MappingsDB.TableCountry_Id)]
-        [JsonPropertyName(MappingsDB.TableCountry_Id)]
-        public int Id { get; set; }
-
         /// <summary>
         /// Iso2
         /// </summary>

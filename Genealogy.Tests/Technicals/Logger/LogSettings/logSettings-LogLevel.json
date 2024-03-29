@@ -1,0 +1,27 @@
+{
+	"Logging": {
+		"LogLevel": { // All providers, LogLevel applies to all the enabled providers.
+			"Default": "Trace", //Information
+			"Microsoft": "Trace",
+			//	"Microsoft.Hosting.Lifetime": "Trace",
+			"Microsoft.EntityFrameworkCore.Database.Command": "Warning",
+			"Microsoft.AspNetCore": "Warning"
+		}
+		//"Debug": {
+		//	"LogLevel": {
+		//		"Default": "Trace",
+		//		"Microsoft": "Trace",
+		//		"Microsoft.EntityFrameworkCore.Database.Command": "Warning",
+		//		"Microsoft.AspNetCore": "Warning"
+		//	}
+		//},
+		//"Console": {
+		//	"LogLevel": {
+		//		"Default": "Trace",
+		//		"Microsoft": "Warning",
+		//		"Microsoft.EntityFrameworkCore.Database.Command": "Warning",
+		//		"Microsoft.AspNetCore": "Warning"
+		//	}
+		//}
+	}
+}

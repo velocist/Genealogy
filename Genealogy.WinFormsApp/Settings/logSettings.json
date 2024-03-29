@@ -1,26 +1,10 @@
 {
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft": "Warning",
-      "Microsoft.Hosting.Lifetime": "Trace",
-      "Microsoft.EntityFrameworkCore.Database.Command": "Warning"
-    },
-    "Debug": {
-      "LogLevel": {
-        "Default": "Debug",
-        "Microsoft": "Warning",
-        "Microsoft.Hosting.Lifetime": "Trace",
-        "Microsoft.EntityFrameworkCore.Database.Command": "Warning"
-      }
-    },
-    "Console": {
-      "LogLevel": {
-        "Default": "Debug",
-        "Microsoft": "Warning",
-        "Microsoft.Hosting.Lifetime": "Trace",
-        "Microsoft.EntityFrameworkCore.Database.Command": "Warning"
-      }
-    }
-  }
+	"Logging": {
+		"LogLevel": {
+			"Default": "Information",
+			"Microsoft": "Information",
+			"Microsoft.Hosting.Lifetime": "Trace",
+			"Microsoft.EntityFrameworkCore.Database.Command": "Warning"
+		}
+	}
 }

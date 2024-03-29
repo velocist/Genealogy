@@ -1,5 +1,4 @@
-﻿using System.Reflection.Metadata;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
 namespace Genealogy.Common {
 
@@ -11,8 +10,10 @@ namespace Genealogy.Common {
         /// <summary>
         /// The application settings file
         /// </summary>
+        public const string LogSettingsFile = "Settings/log4net.config";
         public const string AppSettingsFile = "Settings/appsettings.json";
         private const string AccessServiceSettingsName = "AccessServiceSettings";
+        private const string LogSettingsName = "Settings/logSettings.json";
 
         /// <summary>
         /// Gets the configuration.
@@ -29,6 +30,7 @@ namespace Genealogy.Common {
             Configuration = new ConfigurationBuilder()
                .SetBasePath(Directory.GetCurrentDirectory())
                .AddJsonFile(AppSettingsFile, optional: false)
+               .AddJsonFile(LogSettingsName, optional: false)
                .Build();
         }
 
@@ -43,18 +45,18 @@ namespace Genealogy.Common {
         /// </summary>
         /// <param name="connectionName">Name of the connection.</param>
         /// <returns>Return string connection.</returns>
-        public static string GetConnectionString(string connectionName) => Configuration.GetConnectionString(connectionName);
+        public static string? GetConnectionString(string connectionName) => Configuration.GetConnectionString(connectionName);
 
         /// <summary>
         /// Gets the access service setting.
         /// </summary>
         /// <param name="setting">The setting.</param>
         /// <returns></returns>
-        public static string GetAccessServiceSetting(string setting) => Configuration.GetSection(AccessServiceSettingsName + setting).Value;
+        public static string? GetAccessServiceSetting(string setting) => Configuration.GetSection(AccessServiceSettingsName + setting).Value;
 
-        public static string GetAppConnectionName() => Configuration.GetSection(AccessServiceSettingsName + ":" + "AppContextConnection").Value;
-        public static string GetAppContextMigration() => Configuration.GetSection(AccessServiceSettingsName + ":" + "AppContextMigration").Value;
-        public static string GetAuthContextMigration() => Configuration.GetSection(AccessServiceSettingsName + ":" + "AuthContextMigration").Value;
-        public static string GetAuthConnectionName() => Configuration.GetSection(AccessServiceSettingsName + ":" + "AuthContextConnection").Value;
+        public static string? GetAppConnectionName() => Configuration.GetSection(AccessServiceSettingsName + ":" + "AppContextConnection").Value;
+        public static string? GetAppContextMigration() => Configuration.GetSection(AccessServiceSettingsName + ":" + "AppContextMigration").Value;
+        public static string? GetAuthContextMigration() => Configuration.GetSection(AccessServiceSettingsName + ":" + "AuthContextMigration").Value;
+        public static string? GetAuthConnectionName() => Configuration.GetSection(AccessServiceSettingsName + ":" + "AuthContextConnection").Value;
     }
 }

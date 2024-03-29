@@ -1,15 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0-windows</TargetFramework>
-		<GenerateDocumentationFile>False</GenerateDocumentationFile>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<UseWindowsForms>true</UseWindowsForms>
 		<OutputType>WinExe</OutputType>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <NoWarn>1701;1702;1591</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <NoWarn>1701;1702;1591</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Forms\Search\**" />
+	  <EmbeddedResource Remove="Forms\Search\**" />
+	  <None Remove="Forms\Search\**" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<Compile Remove="Forms\FrmExport.cs" />
 		<Compile Remove="Forms\FrmExport.Designer.cs" />
+		<Compile Remove="Forms\FrmFamilySearch.cs" />
+		<Compile Remove="Forms\FrmFamilySearch.Designer.cs" />
+		<Compile Remove="Forms\FrmIndicesDetalle.cs" />
+		<Compile Remove="Forms\FrmIndicesDetalle.Designer.cs" />
+		<Compile Remove="Forms\FrmRecursosDetalle.cs" />
+		<Compile Remove="Forms\FrmRecursosDetalle.Designer.cs" />
 		<Compile Remove="Forms\ModalExport.cs" />
 		<Compile Remove="Forms\ModalExport.Designer.cs" />
 		<Compile Remove="WinFormsContainer.cs" />
@@ -17,6 +37,9 @@
 
 	<ItemGroup>
 		<EmbeddedResource Remove="Forms\FrmExport.resx" />
+		<EmbeddedResource Remove="Forms\FrmFamilySearch.resx" />
+		<EmbeddedResource Remove="Forms\FrmIndicesDetalle.resx" />
+		<EmbeddedResource Remove="Forms\FrmRecursosDetalle.resx" />
 		<EmbeddedResource Remove="Forms\ModalExport.resx" />
 	</ItemGroup>
 
@@ -44,15 +67,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
+		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="9.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.10">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.3">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="8.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -63,15 +87,42 @@
 		<ProjectReference Include="..\..\velocist\velocist.WinForms\velocist.WinForms.csproj" />
 		<ProjectReference Include="..\Genealogy.Business\Genealogy.Business.csproj" />
 		<ProjectReference Include="..\Genealogy.Common\Genealogy.Common.csproj" />
-		<ProjectReference Include="..\Genealogy.IdentityService\Genealogy.IdentityService.csproj" />
 		<ProjectReference Include="..\Genealogy.Gedcom\Genealogy.Gedcom.csproj" />
+		<ProjectReference Include="..\Genealogy.IdentityService\Genealogy.IdentityService.csproj" />
 		<ProjectReference Include="..\Genealogy.Objects\Genealogy.Objects.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Update="Forms\Export\ModalExport.cs" />
-		<Compile Update="Forms\FrmRecursosDetalle.cs" />
-		<Compile Update="Forms\Search\ModalSearch.cs" />
+		<Compile Update="Forms\FrmFSCatalog.cs">
+		  <SubType>Form</SubType>
+		</Compile>
+		<Compile Update="Properties\Resources.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Properties\Settings.Designer.cs">
+		  <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Properties\Settings.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+	  </None>
+	  <None Update="Settings\log4net.config">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>

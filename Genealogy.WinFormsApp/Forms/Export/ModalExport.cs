@@ -1,4 +1,6 @@
-﻿using velocist.Services.Import;
+﻿using velocist.WinForms.FormControl;
+using velocist.WinFormsControlLibrary.Models;
+using velocist.WinFormsControlLibrary.Types;
 
 namespace Genealogy.WinFormsApp.Forms.Export {
 
@@ -9,37 +11,38 @@ namespace Genealogy.WinFormsApp.Forms.Export {
     public partial class ModalExport : Form {
 
         private readonly ILogger _logger;
-        public dynamic List { get; set; }
+
+        public ExportModel ExportModel { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ModalExport"/> class.
         /// </summary>
-        /// <param name="list">The list.</param>
-        public ModalExport(object list) {
+        /// <param name="type">The type of modal.</param>
+        /// <param name="title">The title of modal.</param>
+        public ModalExport(ModalTypeId type, string title = "") {
             InitializeComponent();
-            this.ConfigureForm("Exportación", windowsState: FormWindowState.Normal);
-            this.List = list;
-            //_logger = GetStaticLogger<ModalExport<TEntity>>();
-            _logger = LogServiceContainer.GetLog<ModalExport>();
+            if (type == ModalTypeId.Export)
+                title = "Exportación";
+            else if (type == ModalTypeId.Import)
+                title = "Importación";
+
+            this.ConfigureForm(title, windowsState: FormWindowState.Normal);
+            ExportModel = new ExportModel();
+
+            var btnAccept = FrmGenericExport.Controls.Find("BtnAccept", false)[0];
+            btnAccept.Click += new EventHandler(BtnAccept_Click);
+            _logger = GetStaticLogger<ModalExport>();
         }
 
         /// <summary>
-        /// Handles the Load event of the ModalExport control.
+        /// Handles the Click event of the BtnImport control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void ModalExport_Load(object sender, EventArgs e) {
+        private void BtnAccept_Click(object sender, EventArgs e) {
             try {
-                var result = false;
-                result = ExportExcel.Export<dynamic>(List, frmGenericExport.OutputFilename);
-
-                if (result) {
-                    _ = MessageBox.Show("Exportación realizada con éxito.");
-                    _logger.LogError("Export done succesfully");
-                } else {
-                    _ = MessageBox.Show("Error al realizar la exportación.");
-                    _logger.LogError("Failed to import");
-                }
+                ExportModel.OutputFilename = FrmGenericExport.ExportModel.OutputFilename;
+                this.DialogResult = DialogResult.OK;
             } catch (Exception ex) {
                 _logger.LogError(ex, "{message}", ex.Message);
                 _ = MessageBox.Show(ex.Message);

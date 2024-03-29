@@ -1,4 +1,4 @@
-﻿@model IndiceModel
+﻿@model IndiceImagenModel 
 <input asp-for="Id" type="text" class="form-control" hidden>
 <div class="form-row">
     <div class="col-sm-6">
@@ -6,8 +6,8 @@
         <input asp-for="Pueblo" type="text" class="form-control">
     </div>
     <div class="col-sm-12">
-        <label asp-for="Periodo"></label>
-        <input asp-for="Periodo" type="text" class="form-control">
+        <label asp-for="Año"></label>
+        <input asp-for="Año" type="text" class="form-control">
     </div>
     <div class="col-sm-6">
         <label asp-for="PartidoJudicial"></label>
@@ -17,7 +17,7 @@
         <label asp-for="Provincia"></label>
         <input asp-for="Provincia" type="text" class="form-control">
     </div>
-    <div class="col-sm-12">
+@*    <div class="col-sm-12">
         <label asp-for="RegistroCatalogo"></label>
         <input asp-for="RegistroCatalogo" type="text" class="form-control">
     </div>
@@ -40,7 +40,7 @@
     <div class="col-sm-12">
         <label asp-for="CitaReferencia"></label>
         <textarea asp-for="CitaReferencia" type="text" class="form-control"></textarea>
-    </div>
+    </div>*@
     <div class="col-sm-12">
         <label asp-for="Observaciones"></label>
         <textarea asp-for="Observaciones" type="text" class="form-control"></textarea>
