@@ -377,7 +377,7 @@ namespace Genealogy.WinFormsApp.Forms {
         /// Imports this instance.
         /// </summary>
         /// <returns></returns>
-        private IEnumerable<RecursoModel> Import(string importPath) => ExportExcel<RecursoModel>.Import(importPath, 0);
+        private IEnumerable<RecursoModel> Import(string importPath) => ExportExcel<RecursoModel>.ImportList(importPath, 0);
 
         /// <summary>
         /// Exports this instance.

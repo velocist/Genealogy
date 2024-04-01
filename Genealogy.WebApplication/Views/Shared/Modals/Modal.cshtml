@@ -14,7 +14,7 @@
             </div>
             <div class="modal-body">
                 <partial name="~/Views/Shared/_AlertError.cshtml" />
-                <form id="@viewProperties.ActionName'">
+                <form id="@viewProperties.ControllerName@viewProperties.ActionName">
                     <partial name="@viewProperties.PartialViewName" model="@ViewData.Model" />
                 </form>
             </div>

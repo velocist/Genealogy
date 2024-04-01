@@ -1,0 +1,30 @@
+{
+	"CustomViewModels": [
+		{
+			"Id": "VisorArchivos",
+			"ViewType": 8,
+			"Title": "Visor de archivos",
+			"SubTitle": "",
+			"ControllerName": "FileViewer",
+			"ActionName": "Index",
+			"ViewName": "Index",
+			"ViewPath": "~/Views/FileViewer/Index.cshtml",
+			"PartialViewName": "_List",
+			"PartialViewPath": "~/Views/FileViewer/_List.cshtml",
+			"UploadFile": false,
+			"IsTableView": true,
+			"TableView": {
+				"IdTable": "dtFileViewer",
+				"ControllerName": "FileViewer",
+				"ActionName": "List",
+				"TableAjaxAction": "List",
+				"TableScript": "~/Views/FileViewer/_FileViewerScriptsPartial.cshtml",
+				"EnableServerSide": false,
+				"HasPagination": true,
+				"HasOrdering": true,
+				"HasSearch": true,
+				"HasInformation": true
+			}
+		}		
+	]
+}

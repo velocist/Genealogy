@@ -293,7 +293,7 @@ namespace Genealogy.WinFormsApp.Forms {
         /// Imports this instance.
         /// </summary>
         /// <returns></returns>
-        private IEnumerable<InvestigacionModel> Import() => ExportExcel<InvestigacionModel>.Import(FrmExport.OutputFilename, 0);
+        private IEnumerable<InvestigacionModel> Import() => ExportExcel<List<InvestigacionModel>>.Import(FrmExport.OutputFilename, 0);
 
         /// <summary>
         /// Exports this instance.

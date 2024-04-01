@@ -273,7 +273,7 @@ namespace Genealogy.WinFormsApp.Forms {
         /// Imports this instance.
         /// </summary>
         /// <returns></returns>
-        private IEnumerable<IndiceImagenModel> Import() => ExportExcel<IndiceImagenModel>.Import(FrmExport.OutputFilename, 0);
+        private IEnumerable<IndiceImagenModel> Import() => ExportExcel<IndiceImagenModel>.ImportList(FrmExport.OutputFilename, 0);
 
         /// <summary>
         /// Exports this instance.

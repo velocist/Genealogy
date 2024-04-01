@@ -1,0 +1,33 @@
+﻿@model FSImageModel
+<input asp-for="Id" type="text" class="form-control" hidden>
+<div class="form-row">
+	<div class="col-sm-12">
+		<label asp-for="Citation"></label>
+		<input asp-for="Citation" type="text" class="form-control" required>
+		<span asp-validation-for="Citation" class="text-danger"></span>
+	</div>
+	<div class="col-sm-12">
+		<label asp-for="NumberImage"></label>
+		<input asp-for="NumberImage" type="text" class="form-control" required>
+		<span asp-validation-for="NumberImage" class="text-danger"></span>
+	</div>
+	<div class="col-sm-12">
+		<label asp-for="FSFilmId"></label>
+		<input asp-for="FSFilmId" type="text" class="form-control" required>
+		<span asp-validation-for="FSFilmId" class="text-danger"></span>
+	</div>
+	<div class="col-sm-6">
+		<label asp-for="Citation"></label>
+		<input asp-for="Citation" type="text" class="form-control">
+	</div>
+	<div class="col-sm-12">
+		<label asp-for="Observaciones"></label>
+		<textarea asp-for="Observaciones" type="text" class="form-control"></textarea>
+		<span asp-validation-for="Observaciones" class="text-danger"></span>
+	</div>
+	<div class="col-sm-12">
+		<label asp-for="Url"></label>
+		<textarea asp-for="Url" type="text" class="form-control" required></textarea>
+		<span asp-validation-for="Url" class="text-danger"></span>
+	</div>
+</div>

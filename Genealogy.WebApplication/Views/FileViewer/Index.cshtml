@@ -1,54 +1,48 @@
 ﻿@{
-    //ViewData["Title"] = ViewBag.Title;
-    //ViewData["ViewDataControllerName"] = "FileViewer";//ViewBag.ControllerName;
-    //bool UploadFile = ViewBag.UploadFile;
-    //string partialName = " ~/Views/FileViewer/Instructions.cshtml";// ViewBag.PartialName;
+	var viewProperties = ViewData["PropertiesView"] as CustomViewModel;
 }
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <partial name="~/Views/Shared/_AlertError.cshtml" />
-        </div>
-    </div>
-    <div class="row mb-3">
-        <form method="post" asp-action="Index" aps-controller="FileViewer" class="form-row col-12">
-            <div class="col-12 col-sm-6">
-                <div class="custom-file">
-                    <input id="file" type="file" name="file" class="custom-file-input fileviewer" required>
-                    <label class="custom-file-label" for="file">@SharedTranslations["Elija un archivo .csv, .xls o .xlsx"]</label>
-                </div>
-            </div>
-            <div class="col-12 col-sm-2">
-                <input type="number" id="row" name="row" class="input input-sm form-control" value="-1" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Fila columnas"]">
-            </div>
-            <div class="col-sm">
-                <input type="button" onclick="UploadFileViewer('@ViewData["ViewDataControllerName"]', 'Index');" value="@SharedTranslations["Leer"]" class="btn btn-sm  btn-primary" />
-            </div>
-        </form>
-    </div>
-    <div class="row mb-3">
-        <div class="col-12">
-            <div id="tableData">
-                @*<partial name="@partialName" />*@
-            </div>
-        </div>
-    </div>
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<partial name="~/Views/Shared/_AlertError.cshtml" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="card border-dark">
+			<h5 class="card-header text-center">@SharedTranslations["Visor de archivos"]</h5>
+			<div class="card-body text-dark">
+				<form method="post" asp-action="Index" aps-controller="FileViewer" class="form-row col-12">
+					<div class="col-12 col-sm-6">
+						<div class="input-group">
+							<input id="file" name="file" type="file" class="form-control" aria-describedby="btnRead" aria-label="Upload">
+							<span class="input-group-text">Row</span>
+							<input type="text" class="form-control" placeholder="-1" aria-label="Row" title="@SharedTranslations["Fila columnas"]">
+							<button class="btn btn-outline-secondary" type="button" id="btnRead" onclick="UploadFileViewer('@viewProperties.ControllerName', 'Index');">@SharedTranslations["Leer"]</button>
+						</div>
+					</div>
+				</form>
+				<div id="tableData">
+					<partial name="~/Views/FileViewer/_List.cshtml" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<partial name="~/Views/FileViewer/_Instructions.cshtml" />
 </div>
-@*<partial name="~/Views/FileViewer/Instructions.cshtml" />*@
 @*@if (User.Identity.IsAuthenticated) {*@
-    @if (true) { 
-        <input type="file" class="custom-file-input" id="file" name="file" hidden />
-        await Html.RenderPartialAsync("~/Views/Shared/Scripts/_UploadFileScriptsPartial.cshtml");
-        <script type="text/javascript">
-            var buttons = true;
-            var uploadFile = true;
-        </script>
-    } else {
-        <script type="text/javascript">
-            var buttons = true;
-            var buttons = false;
-        </script>
-    }
+@if (true) {
+	<input type="file" class="custom-file-input" id="file" name="file" hidden />
+	await Html.RenderPartialAsync("~/Views/FileViewer/_FileViewerScriptsPartial.cshtml");
+	<script type="text/javascript">
+		var buttons = true;
+		var uploadFile = true;
+	</script>
+} else {
+	<script type="text/javascript">
+		var buttons = true;
+		var buttons = false;
+	</script>
+}
 @*} else {
     <script type="text/javascript">
         var buttons = false;
@@ -56,8 +50,12 @@
     </script>
 }*@
 @section Styles {
-    @{await Html.RenderPartialAsync("~/Views/Shared/Scripts/_TableStylesPartial.cshtml");}
+	@{
+		await Html.RenderPartialAsync("~/Views/Shared/Scripts/_TableStylesPartial.cshtml");
+	}
 }
-@section Scripts{
-    @{await Html.RenderPartialAsync("~/Views/Shared/Scripts/_TableScriptsPartial.cshtml");}
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("~/Views/Shared/Scripts/_TableScriptsPartial.cshtml");
+	}
 }

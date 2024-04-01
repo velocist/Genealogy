@@ -10,84 +10,27 @@ function CloseModal() {
 
 //Show modal
 function ShowModal( data ) {
-	$( '#modalDiv' ).html( data );
-	$( '.modal' ).toggle();
-};
-
-function ShowError( code ) {
-	var error = code;
-	$.ajax( {
-		url: 'Home/Error/',
-		type: 'GET',
-		data: { xhr: code },
-		beforeSend: function () {
-			document.body.style.cursor = 'wait';
-		},
-		success: function ( data, textStatus ) {
-			ShowModal( data );
-		},
-		error: function ( xhr, textStatus ) {
-			ShowError( xhr );
-		},
-		complete: function ( xhr, textStatus ) {
-			document.body.style.cursor = 'auto';
-		}
-	} );
-};
-
-//Get modal
-function GetModal( controller, action, id ) {
-	if ( id == null ) {
-		$.ajax( {
-			url: '/' + controller + '/' + action + '/',
-			type: 'GET',
-			beforeSend: function () {
-				document.body.style.cursor = 'wait';
-			},
-			success: function ( data, textStatus ) {
-				ShowModal( data );
-			},
-			error: function ( xhr, textStatus ) {
-				ShowModal( xhr );
-			},
-			complete: function ( xhr, textStatus ) {
-				document.body.style.cursor = 'auto';
-			}
-		} );
+	if ( data.includes('DOCTYPE') == true ) {
+		$( 'html' ).html( data );
 	} else {
-		$.ajax( {
-			url: '/' + controller + '/' + action + '/',
-			type: 'GET',
-			data: { id: id },
-			beforeSend: function () {
-				document.body.style.cursor = 'wait';
-			},
-			success: function ( data, textStatus ) {
-				ShowModal( data );
-			},
-			error: function ( xhr, textStatus ) {
-				ShowError( xhr );
-			},
-			complete: function ( xhr, textStatus ) {
-				document.body.style.cursor = 'auto';
-			}
-		} );
+		$( '#modalDiv' ).html( data );
+		$( '.modal' ).toggle();
 	}
-}
+};
 
-function GetModalPost( controller, action, id ) {
+function GetModal(method, controller, action, id ) {
 	$.ajax( {
 		url: '/' + controller + '/' + action + '/',
-		type: 'POST',
+		type: method,
 		data: { id: id },
 		beforeSend: function () {
 			document.body.style.cursor = 'wait';
 		},
-		success: function ( data, textStatus ) {
-			window.location.reload();
+		success: function ( data, textStatus, jqXHR ) {
+			ShowResponse( data, textStatus, jqXHR );
 		},
-		error: function ( xhr, textStatus ) {
-			ShowModal( xhr.responseJSON );
+		error: function ( jqXHR, textStatus, errorThrown ) {
+			ShowResponse( errorThrown, textStatus, jqXHR );
 		},
 		complete: function ( xhr, textStatus ) {
 			document.body.style.cursor = 'auto';
@@ -99,18 +42,34 @@ function Submit( controller, action ) {
 	$.ajax( {
 		url: '/' + controller + '/' + action + '/',
 		type: 'POST',
-		data: $( '#' + action + '' ).serialize(),
+		data: $( '#' + controller + action ).serialize(),
 		beforeSend: function () {
 			document.body.style.cursor = 'wait';
 		},
-		success: function ( data, textStatus ) {
-			window.location.reload();
+		success: function ( data, textStatus, jqXHR ) {
+			ShowResponse( data, textStatus, jqXHR );
 		},
-		error: function ( xhr, textStatus ) {
-			ShowModal( xhr.responseJSON );
+		error: function ( jqXHR, textStatus, errorThrown ) {
+			ShowResponse( null, textStatus, jqXHR );
 		},
 		complete: function ( xhr, textStatus ) {
 			document.body.style.cursor = 'auto';
 		}
 	} );
 };
+
+function ShowResponse( data, textStatus, jqXHR ) {
+	switch ( jqXHR.status ) {
+		case 200:
+			ShowModal( data );
+			break;
+		case 400:
+		case 404:
+			window.location.href = jqXHR.responseJSON;
+			break;
+		default:
+			ShowModal( data );
+			//alert( jqXHR.statusCode )
+			break;
+	};
+}

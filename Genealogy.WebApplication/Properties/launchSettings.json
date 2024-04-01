@@ -3,10 +3,12 @@
     "Genealogy": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "http://localhost:55561",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:55560;http://localhost:55561"
+      "applicationUrl": "http://localhost:55561",
+      "hotReloadEnabled": false
     }
   }
 }

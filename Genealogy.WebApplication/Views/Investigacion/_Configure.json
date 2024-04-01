@@ -1,0 +1,69 @@
+{
+	"CustomViewModels": [
+		{
+			"Id": "ListadoInvestigacion",
+			"ViewType": 8,
+			"Title": "Investigacion",
+			"SubTitle": "Listado",
+			"ControllerName": "Investigacion",
+			"ActionName": "Index",
+			"ViewName": "Index",
+			"ViewPath": "~/Views/Shared/Index.cshtml",
+			"PartialViewName": "_List",
+			"PartialViewPath": "~/Views/Investigacion/_List.cshtml",
+			"UploadFile": false,
+			"IsTableView": true,
+			"TableView": {
+				"IdTable": "dtInvestigacion",
+				"ControllerName": "Investigacion",
+				"ActionName": "List",
+				"TableAjaxAction": "List",
+				"TableScript": "~/Views/Investigacion/_ListScriptConfigure.cshtml",
+				"EnableServerSide": false,
+				"HasPagination": true,
+				"HasOrdering": true,
+				"HasSearch": true,
+				"HasInformation": true
+			}
+		},
+		{
+			"Id": "CrearInvestigacion",
+			"ViewType": 8,
+			"Title": "Creación del registro",
+			"ControllerName": "Investigacion",
+			"ActionName": "Create",
+			"ViewName": "Modal",
+			"ViewPath": "~/Views/Shared/Modals/Modal.cshtml",
+			"PartialViewName": "_Edit",
+			"PartialViewPath": "~/Views/Investigacion/_Edit.cshtml",
+			"UploadFile": false,
+			"IsTableView": false
+		},
+		{
+			"Id": "EditarInvestigacion",
+			"ViewType": 8,
+			"Title": "Edición del registro",
+			"ControllerName": "Investigacion",
+			"ActionName": "Edit",
+			"ViewName": "Modal",
+			"ViewPath": "~/Views/Shared/Modals/Modal.cshtml",
+			"PartialViewName": "_Edit",
+			"PartialViewPath": "~/Views/Investigacion/_Edit.cshtml",
+			"UploadFile": false,
+			"IsTableView": false
+		},
+		{
+			"Id": "DetalleInvestigacion",
+			"ViewType": 8,
+			"Title": "Detalle del registro",
+			"ControllerName": "Investigacion",
+			"ActionName": "Details",
+			"ViewName": "ModalDetails",
+			"ViewPath": "~/Views/Shared/Modals/ModalDetails.cshtml",
+			"PartialViewName": "_Edit",
+			"PartialViewPath": "~/Views/Investigacion/_Edit.cshtml",
+			"UploadFile": false,
+			"IsTableView": false
+		}
+	]
+}

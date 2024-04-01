@@ -14,12 +14,17 @@
 	<div class="card-body">
 		<partial name="~/Views/Shared/_AlertError.cshtml" />
 		@if (viewProperties.IsTableView) {
-			<table id="@viewProperties.TableView.IdTable" class="table table-sm table-compact table-striped table-bordered nowrap" cellspacing="0" width="100%">
+			<table id="@viewProperties.TableView.IdTable" class="table table-sm table-compact table-striped table-bordered nowrap table-primary" cellspacing="0" width="100%">
 				<partial name="@viewProperties.PartialViewName" model="@ViewData.Model" />
 
 			</table>
 		} else {
 			<partial name="@viewProperties.PartialViewName" model="@ViewData.Model" />
+		}
+		@if (viewProperties.PartialsViews.Count() > 0) {
+			@foreach (string partial in viewProperties.PartialsViews) {
+				await Html.RenderPartialAsync(partial);
+			}
 		}
 	</div>
 	<div class="card-footer">
@@ -47,11 +52,7 @@
 		var uploadFile = false;
 	</script>
 }
-@if (viewProperties.PartialsViews.Count() > 0) {
-	@foreach (string partial in viewProperties.PartialsViews) {
-		await Html.RenderPartialAsync(partial);
-	}
-}
+
 @section Styles {
 	@if (viewProperties.Styles.Count() > 0) {
 		@foreach (string style in viewProperties.Styles) {

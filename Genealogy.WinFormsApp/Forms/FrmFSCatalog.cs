@@ -274,7 +274,7 @@ namespace Genealogy.WinFormsApp.Forms {
         /// Imports this instance.
         /// </summary>
         /// <returns></returns>
-        private IEnumerable<FSCatalogModel> Import() => ExportExcel<FSCatalogModel>.Import(FrmExport.OutputFilename, 0);
+        private IEnumerable<FSCatalogModel> Import() => ExportExcel<FSCatalogModel>.ImportList(FrmExport.OutputFilename, 0);
 
         /// <summary>
         /// Exports this instance.

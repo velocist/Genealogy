@@ -1,18 +1,22 @@
-﻿<script type="text/javascript" src="~/lib/bs-custom-file/bs-custom-file-input.min.js"></script>
+﻿@{
+    var viewProperties = ViewData["PropertiesView"] as CustomViewModel;
+}
+<script type="text/javascript" src="~/lib/bs-custom-file/bs-custom-file-input.min.js"></script>
 <script type="text/javascript" id="UploadFileScript">
     $(document).ready(function () {
-        $(".custom-file-input").on("change", function () {
-            UploadFile('@ViewData["ViewDataControllerName"]', 'Import');
-        });
+        // $(".custom-file-input").on("change", function () {
+        //     UploadFile( 'viewProperties.ControllerName', 'Index' );
+        // });
     });
 
     //Upload file
-    function UploadFile(controller, action) {
+    function UploadFileViewer( controller, action ) {
         //var fileName = $(this).val().split("\\").pop();
         //$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 
         var formData = new FormData();
         formData.append('file', $('#file')[0].files[0]);
+        formData.append( 'row', $( '#row' ).val() );
 
         $.ajax({
             url: '/' + controller + '/' + action + '/',

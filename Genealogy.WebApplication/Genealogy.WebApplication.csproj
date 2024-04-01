@@ -38,6 +38,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Content Remove="Controllers\jsonConfigure.json" />
 		<Content Remove="Settings\appsettings.Development.json" />
 		<Content Remove="Settings\log4net.config" />
 		<Content Remove="Settings\logSettings.Development.json" />
@@ -45,6 +46,7 @@
 		<Content Remove="Views\Home\_Dashboard.cshtml" />
 		<Content Remove="Views\Recursos\Index.cshtml" />
 		<Content Remove="Views\Shared\Modals\ModalDetails.cshtml" />
+		<Content Remove="Views\Shared\Scripts\_ModalScriptsPartial.cshtml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -102,6 +104,10 @@
 			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\files\" />
 	</ItemGroup>
 
 </Project>

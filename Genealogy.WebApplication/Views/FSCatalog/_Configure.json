@@ -1,0 +1,69 @@
+{
+	"CustomViewModels": [
+		{
+			"Id": "ListadoFSCatalog",
+			"ViewType": 8,
+			"Title": "FSCatalog",
+			"SubTitle": "Listado",
+			"ControllerName": "FSCatalog",
+			"ActionName": "Index",
+			"ViewName": "Index",
+			"ViewPath": "~/Views/Shared/Index.cshtml",
+			"PartialViewName": "_List",
+			"PartialViewPath": "~/Views/FSCatalog/_List.cshtml",
+			"UploadFile": false,
+			"IsTableView": true,
+			"TableView": {
+				"IdTable": "dtFSCatalog",
+				"ControllerName": "FSCatalog",
+				"ActionName": "List",
+				"TableAjaxAction": "List",
+				"TableScript": "~/Views/FSCatalog/_ListScriptConfigure.cshtml",
+				"EnableServerSide": false,
+				"HasPagination": true,
+				"HasOrdering": true,
+				"HasSearch": true,
+				"HasInformation": true
+			}
+		},
+		{
+			"Id": "CrearFSCatalog",
+			"ViewType": 5,
+			"Title": "Creación del registro",
+			"ControllerName": "FSCatalog",
+			"ActionName": "Create",
+			"ViewName": "Modal",
+			"ViewPath": "~/Views/Shared/Modals/Modal.cshtml",
+			"PartialViewName": "_Edit",
+			"PartialViewPath": "~/Views/FSCatalog/_Edit.cshtml",
+			"UploadFile": false,
+			"IsTableView": false
+		},
+		{
+			"Id": "EditarFSCatalog",
+			"ViewType": 5,
+			"Title": "Edición del registro",
+			"ControllerName": "FSCatalog",
+			"ActionName": "Edit",
+			"ViewName": "Modal",
+			"ViewPath": "~/Views/Shared/Modals/Modal.cshtml",
+			"PartialViewName": "_Edit",
+			"PartialViewPath": "~/Views/FSCatalog/_Edit.cshtml",
+			"UploadFile": false,
+			"IsTableView": false
+		},
+		{
+			"Id": "DetalleFSCatalog",
+			"ViewType": 5,
+			"Title": "Detalle del registro",
+			"ControllerName": "FSCatalog",
+			"ActionName": "Details",
+			"ViewName": "ModalDetails",
+			"ViewPath": "~/Views/Shared/Modals/ModalDetails.cshtml",
+			"PartialViewName": "_Edit",
+			"PartialViewPath": "~/Views/FSCatalog/_Edit.cshtml",
+			"UploadFile": false,
+			"IsTableView": false
+		}
+	]
+}

@@ -1,59 +1,55 @@
-﻿<div class="container">
-    <div class="row">
-        <div class="form-row col-12">
-            <div class="card border-dark">
-                <h5 class="card-header text-center">@SharedTranslations["¿Cómo funciona el Visor?"]</h5>
-                <div class="card-body text-dark">
-                    <div class="row  mb-3">
-                        <div class="col-12">
-                            <h6 class="card-subtitle mb-2 text-muted">@SharedTranslations["Instrucciones de uso"]</h6>
-                        </div>
-                        <div class="col-12">
-                            <p class="card-text">@SharedTranslations["Este visor únicamente lee un archivo .csv, .xls o .xlsx y lo muestra en una tabla. "]</p>
-                            <p class="card-text">@SharedTranslations["Para visualizar correctamente el archivo, se recomienda seguir las siguientes instrucciones"]</p>
-                            <ul class="">
-                                <li class="">@SharedTranslations["Suba el archivo de la indexación"]</li>
-                                <li class="">@SharedTranslations["Especifique el número de fila en la que empieza los encabezados de columna. Si no tiene, ponga -1."]</li>
-                                <li class="">@SharedTranslations["Clique el botón 'Leer' y espere."]</li>
-                                <li class="">@SharedTranslations["Si todo ha salido correcto, le saldrá la tabla con los datos del archivo. Si no, le saldrá un mensaje de error."]</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <h6 class="card-subtitle mb-2 text-muted">@SharedTranslations["Plantillas para indexaciones"]</h6>
-                        </div>
-                        <div class="col-12">
-                            <p class="card-text">@SharedTranslations["A continuación hay disponible unas plantillas que puede descargar para realizar las indexaciones."]</p>
-                            <div class="col-12">
-                                <a asp-action="DownloadTemplate" asp-controller="@ViewData["ViewDataControllerName"]" asp-route-plantilla="Padrones" class="col-form-label" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Descargar plantilla Censo Padron"]">
-                                    @SharedTranslations["Descargar plantilla Censo Padron"]
-                                </a>
-                            </div>
-                            <div class="col-12">
-                                <a asp-action="DownloadTemplate" asp-controller="@ViewData["ViewDataControllerName"]" asp-route-plantilla="Matrimonios" class="col-form-label" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Descargar plantilla Matrimonios"]">
-                                    @SharedTranslations["Descargar plantilla Matrimonios"]
-                                </a>
-                            </div>
-                            <div class="col-12">
-                                <a asp-action="DownloadTemplate" asp-controller="@ViewData["ViewDataControllerName"]" asp-route-plantilla="Nacimientos" class="col-form-label" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Descargar plantilla Nacimientos"]">
-                                    @SharedTranslations["Descargar plantilla Nacimientos"]
-                                </a>
-                            </div>
-                            <div class="col-12">
-                                <a asp-action="DownloadTemplate" asp-controller="@ViewData["ViewDataControllerName"]" asp-route-plantilla="Defunciones" class="col-form-label" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Descargar plantilla Nacimientos"]">
-                                    @SharedTranslations["Descargar plantilla Defunciones"]
-                                </a>
-                            </div>
-                            <div class="col-12">
-                                <a asp-action="DownloadTemplate" asp-controller="@ViewData["ViewDataControllerName"]" asp-route-plantilla="Completa" class="col-form-label" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Descargar plantilla completa"]">
-                                    @SharedTranslations["Descargar plantilla completa"]
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+﻿<div class="row">
+	<div class="card border-dark">
+		<h5 class="card-header text-center">@SharedTranslations["¿Cómo funciona el Visor?"]</h5>
+		<div class="card-body text-dark">
+			<div class="row  mb-3">
+				<div class="col-12">
+					<h6 class="card-subtitle mb-2 text-muted">@SharedTranslations["Instrucciones de uso"]</h6>
+				</div>
+				<div class="col-12">
+					<p class="card-text">@SharedTranslations["Este visor únicamente lee un archivo .csv, .xls o .xlsx y lo muestra en una tabla. "]</p>
+					<p class="card-text">@SharedTranslations["Para visualizar correctamente el archivo, se recomienda seguir las siguientes instrucciones"]</p>
+					<ul class="">
+						<li class="">@SharedTranslations["Suba el archivo de la indexación"]</li>
+						<li class="">@SharedTranslations["Especifique el número de fila en la que empieza los encabezados de columna. Si no tiene, ponga -1."]</li>
+						<li class="">@SharedTranslations["Clique el botón 'Leer' y espere."]</li>
+						<li class="">@SharedTranslations["Si todo ha salido correcto, le saldrá la tabla con los datos del archivo. Si no, le saldrá un mensaje de error."]</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<h6 class="card-subtitle mb-2 text-muted">@SharedTranslations["Plantillas para indexaciones"]</h6>
+				</div>
+				<div class="col-12">
+					<p class="card-text">@SharedTranslations["A continuación hay disponible unas plantillas que puede descargar para realizar las indexaciones."]</p>
+					<div class="col-12">
+						<a asp-action="DownloadTemplate" asp-controller="@ViewData["ViewDataControllerName"]" asp-route-plantilla="Padrones" class="col-form-label" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Descargar plantilla Censo Padron"]">
+							@SharedTranslations["Descargar plantilla Censo Padron"]
+						</a>
+					</div>
+					<div class="col-12">
+						<a asp-action="DownloadTemplate" asp-controller="@ViewData["ViewDataControllerName"]" asp-route-plantilla="Matrimonios" class="col-form-label" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Descargar plantilla Matrimonios"]">
+							@SharedTranslations["Descargar plantilla Matrimonios"]
+						</a>
+					</div>
+					<div class="col-12">
+						<a asp-action="DownloadTemplate" asp-controller="@ViewData["ViewDataControllerName"]" asp-route-plantilla="Nacimientos" class="col-form-label" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Descargar plantilla Nacimientos"]">
+							@SharedTranslations["Descargar plantilla Nacimientos"]
+						</a>
+					</div>
+					<div class="col-12">
+						<a asp-action="DownloadTemplate" asp-controller="@ViewData["ViewDataControllerName"]" asp-route-plantilla="Defunciones" class="col-form-label" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Descargar plantilla Nacimientos"]">
+							@SharedTranslations["Descargar plantilla Defunciones"]
+						</a>
+					</div>
+					<div class="col-12">
+						<a asp-action="DownloadTemplate" asp-controller="@ViewData["ViewDataControllerName"]" asp-route-plantilla="Completa" class="col-form-label" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Descargar plantilla completa"]">
+							@SharedTranslations["Descargar plantilla completa"]
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

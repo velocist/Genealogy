@@ -34,7 +34,7 @@ namespace Genealogy.WebApplication.Controllers {
 				},
 			};
 
-			return await ShowRenderView<HomeViewModel>(ReturnViewTypeId.View, PropertiesView);
+			return await ShowRenderView(ReturnViewTypeId.View, ViewData.Model, PropertiesView);
 		}
 
 		//public async Task<IActionResult> Listar() {

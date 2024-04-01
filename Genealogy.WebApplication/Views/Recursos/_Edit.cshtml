@@ -1,31 +1,31 @@
 ﻿@model RecursoModel
-<input asp-for="Id" type="text" class="form-control" hidden>
 <div class="form-row">
-    <div class="col-sm-12">
-        <label asp-for="Nombre"></label>
-        <input asp-for="Nombre" type="text" class="form-control" required>
-        <span asp-validation-for="Nombre" class="text-danger"></span>
-    </div>
-    <div class="col-sm-6">
-        <label asp-for="Pueblo"></label>
-        <input asp-for="Pueblo" type="text" class="form-control">
-    </div>
-    <div class="col-sm-6">
-        <label asp-for="Provincia"></label>
-        <input asp-for="Provincia" type="text" class="form-control">
-    </div>
-    <div class="col-sm-6">
-        <label asp-for="PaisId"></label>
-        <input asp-for="PaisId" type="text" class="form-control">
-    </div>
-    <div class="col-sm-12">
-        <label asp-for="Observaciones"></label>
-        <textarea asp-for="Observaciones" type="text" class="form-control"></textarea>
-        <span asp-validation-for="Observaciones" class="text-danger"></span>
-    </div>
-    <div class="col-sm-12">
-        <label asp-for="Url"></label>
-        <textarea asp-for="Url" type="text" class="form-control" required></textarea>
-        <span asp-validation-for="Url" class="text-danger"></span>
-    </div>
+	<input asp-for="Id" type="text" class="form-control" hidden>
+	<div class="col-sm-12">
+		<label asp-for="Nombre"></label>
+		<input asp-for="Nombre" type="text" class="form-control" required>
+		<span asp-validation-for="Nombre" class="text-danger"></span>
+	</div>
+	<div class="col-sm-6">
+		<label asp-for="Pueblo"></label>
+		<input asp-for="Pueblo" type="text" class="form-control">
+	</div>
+	<div class="col-sm-6">
+		<label asp-for="Provincia"></label>
+		<input asp-for="Provincia" type="text" class="form-control">
+	</div>
+	<div class="col-sm-6">
+		<label asp-for="PaisId"></label>
+		<input asp-for="PaisId" type="text" class="form-control">
+	</div>
+	<div class="col-sm-12">
+		<label asp-for="Observaciones"></label>
+		<textarea asp-for="Observaciones" type="text" class="form-control"></textarea>
+		<span asp-validation-for="Observaciones" class="text-danger"></span>
+	</div>
+	<div class="col-sm-12">
+		<label asp-for="Url"></label>
+		<textarea asp-for="Url" type="text" class="form-control" required></textarea>
+		<span asp-validation-for="Url" class="text-danger"></span>
+	</div>
 </div>
