@@ -403,3 +403,6 @@ velocist.WebApplication/Properties/launchSettings.json
 /velocist.GenealogyGrpcService/appsettings.json
 /velocist.GenealogyGrpcService/appsettings.json
 /velocist.GenealogyGrpcService/appsettings.Development.json
+/Genealogy.Api/Settings/appsettings.json
+/Genealogy.Api/appsettings.Development.json
+/Genealogy.Api/appsettings.json
