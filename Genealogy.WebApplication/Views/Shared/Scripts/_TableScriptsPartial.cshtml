@@ -72,7 +72,7 @@
                 type: 'GET',
                 dataSrc: '',
                 error: function (settings, json, xhr) {
-                    json.data = [];
+                    // json.data = [];
                     $('#@viewProperties.ControllerName tbody td').text(json);
                     $('#@viewProperties.ControllerName tbody td').css('color', 'red');
                 }

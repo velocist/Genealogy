@@ -29,9 +29,11 @@
 		<Compile Remove="Models\ArchivosIndexacionesModel.cs" />
 		<Compile Remove="Models\ArchivosModel.cs" />
 		<Compile Remove="Models\ErrorViewModel.cs" />
+		<Compile Remove="Models\FileViewerModel.cs" />
 		<Compile Remove="Models\InvestigacionesViewModel.cs" />
 		<Compile Remove="Models\RecursosModel.cs" />
 		<Compile Remove="Models\VistaPadronesModel.cs" />
+		<Compile Remove="Services\FileViewerService.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

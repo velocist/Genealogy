@@ -1,4 +1,5 @@
-﻿<script type="text/javascript">
+﻿
+<script type="text/javascript">
     //Upload file
     function UploadFileViewer(controller, action) {
         var fileName = $('.custom-file-input').val().split("\\").pop();
@@ -19,7 +20,8 @@
             },
             success: function (data, textStatus) {
                 $('#tableData').html(data);
-                LoadTable(fileName);
+                // $( '.tableViewer' ).DataTable( {} );
+                // LoadTable(fileName);
             },
             error: function (xhr, textStatus) {
                 if (xhr.responseJSON != undefined) {
@@ -36,61 +38,61 @@
         });
     };
 
-    function LoadTable(fileName) {
-        $('.tableViewer').DataTable({
-            select: {
-                info: false,
-                style: 'multiple'
-            },
-            fixedColumns: {
-                left: 1
-            },
-            initComplete: function () {
-                //tableFileViewer.columns.adjust().draw();
-                if (buttons) {
-                    var api = this.api();
-                    api.button().add(1, {
-                        name: 'Export',
-                        extend: 'collection',
-                        text: function (e, dt, row, a) {
-                            var data = '<i class="bi bi-download" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Exportar"]"></i>';
-                            return data;
-                        },
-                        buttons: [
-                            { extend: 'copy' },
-                            { extend: 'csv' },
-                            { extend: 'excel', title: fileName + 'Export' },
-                            { extend: 'pdf', title: fileName + 'Export'},
-                            {
-                                extend: 'print',
-                                customize: function (win) {
-                                    $(win.document.body).addClass('white-bg');
-                                    $(win.document.body).css('font-size', '10px');
+    // function LoadTable(fileName) {
+    //     $('.tableViewer').DataTable({
+    //         select: {
+    //             info: false,
+    //             style: 'multiple'
+    //         },
+    //         fixedColumns: {
+    //             left: 1
+    //         },
+    //         initComplete: function () {
+    //             //tableFileViewer.columns.adjust().draw();
+    //             if (buttons) {
+    //                 var api = this.api();
+    //                 api.button().add(1, {
+    //                     name: 'Export',
+    //                     extend: 'collection',
+    //                     text: function (e, dt, row, a) {
+    //                         var data = '<i class="bi bi-download" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="SharedTranslations["Exportar"]"></i>';
+    //                         return data;
+    //                     },
+    //                     buttons: [
+    //                         { extend: 'copy' },
+    //                         { extend: 'csv' },
+    //                         { extend: 'excel', title: fileName + 'Export' },
+    //                         { extend: 'pdf', title: fileName + 'Export'},
+    //                         {
+    //                             extend: 'print',
+    //                             customize: function (win) {
+    //                                 $(win.document.body).addClass('white-bg');
+    //                                 $(win.document.body).css('font-size', '10px');
 
-                                    $(win.document.body).find('table')
-                                        .addClass('compact')
-                                        .css('font-size', 'inherit');
-                                }
-                            }
-                        ]
-                    });
-                    api.button().add(2, {
-                        text: '<i class="bi bi-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Eliminar"></i>', action: function (e, dt, row, a) {
-                            dt.rows('.selected').remove().draw();
-                        }, enabled: false, name: 'Delete'
-                    });
-                }
-            },
-        }).on('select', function (e, dt, type, indexes) {
-            if (type === 'row') {
-                dt.button('Delete:name').enable(
-                    dt.rows({ selected: true }).indexes().length === 0 ? false : true
-                );
-            }
-        }).on('deselect', function (e, dt, type, indexes) {
-            dt.button('Delete:name').disable();
-        });
-    }
+    //                                 $(win.document.body).find('table')
+    //                                     .addClass('compact')
+    //                                     .css('font-size', 'inherit');
+    //                             }
+    //                         }
+    //                     ]
+    //                 });
+    //                 api.button().add(2, {
+    //                     text: '<i class="bi bi-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Eliminar"></i>', action: function (e, dt, row, a) {
+    //                         dt.rows('.selected').remove().draw();
+    //                     }, enabled: false, name: 'Delete'
+    //                 });
+    //             }
+    //         },
+    //     }).on('select', function (e, dt, type, indexes) {
+    //         if (type === 'row') {
+    //             dt.button('Delete:name').enable(
+    //                 dt.rows({ selected: true }).indexes().length === 0 ? false : true
+    //             );
+    //         }
+    //     }).on('deselect', function (e, dt, type, indexes) {
+    //         dt.button('Delete:name').disable();
+    //     });
+    // }
 
     $(document).ready(function () {
         $(".custom-file-input").on("change", function () {

@@ -1,4 +1,4 @@
-﻿@model List<FileViewerModel>
+﻿@model FileViewerModel
 @{
 	Layout = "";
 	var viewProperties = ViewData["PropertiesView"] as CustomViewModel;
@@ -24,52 +24,87 @@
     </ul>
 } *@
 
-<div class="tab-content" id="myTabContent">
-	@{
+@* <div class="tab-content" id="myTabContent"> *@
+@* 	@{
 		bool first = true;
 		string active = "";
-	}
-	@if (Model != null && Model.Any()) {
-		@foreach (FileViewerModel item in Model) {
-			@if (first) {
-				active = "active";
-				first = false;
-			} else {
-				active = "";
-			}
-			<div class="tab-pane fade show @active" id="@item.TableName" role="tabpanel" aria-labelledby="@item.TableName-tab">
-				<div class="table-responsive">
-					<table id="FileViewer_@item.TableName" class="table table-sm table-compact table-striped table-bordered nowrap tableViewer" cellspacing="0" width="100%">
-						<thead>
-							<tr>
-								@if (item.Columns != null) {
-									@foreach (string column in item.Columns) {
-										<th>@column</th>
-									}
-								}
-							</tr>
-						</thead>
-						<tbody>
-							@if (item.Rows != null) {
-								@foreach (Array row in item.Rows) {
-									<tr>
-										@for (int i = 0; i < item.Columns.Count; i++) {
-											<td>
-												@row.GetValue(i)
-												@*<input value="@row.GetValue(i)" type="text" class="form-control"/>*@
-											</td>
-										}
-									</tr>
-								}
+	} *@
+	@* 	@if (Model != null && Model.Any()) {
+	@foreach (FileViewerModel item in Model) { *@
+	@* @if (first) {
+		active = "active";
+		first = false;
+	} else {
+		active = "";
+	} *@
+	@* <div class="tab-panel fade show " id="@Model.TableName" role="tabpanel" aria-labelledby="@Model.TableName-tab">
+		<div class="table-responsive"> *@
+			<table id="FileViewer_@Model.TableName" class="table table-sm table-compact table-striped table-bordered nowrap tableViewer" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						@if (Model.Columns != null) {
+							@foreach (string column in Model.Columns) {
+								<th>@column</th>
 							}
-						</tbody>
-						<tfoot>
+						}
+					</tr>
+				</thead>
+				<tbody>
+					@if (Model.Rows != null) {
+						@foreach (object[] row in Model.Rows) {
 							<tr>
+								@for (int i = 0; i < Model.Columns.Count; i++) {
+									<td>
+										@row.GetValue(i)
+										@*<input value="@row.GetValue(i)" type="text" class="form-control"/>*@
+									</td>
+								}
 							</tr>
-						</tfoot>
-					</table>
-				</div>
-			</div>
-		}
-	}
-</div>
+						}
+					}
+				</tbody>
+				<tfoot>
+					<tr>
+					</tr>
+				</tfoot>
+			</table>
+@* 		</div>
+	</div> *@
+	@* 		}
+	} *@
+@* </div> *@
+<script type="text/javascript">
+	var tableViewer;
+	$( document ).ready( function () {
+		tableViewer = $( '.tableViewer' ).DataTable( {
+			scrollCollapse: true,
+			scrollX: true,
+			scrollY: true,
+			fixedHeader: {
+				header: true,
+				footer: false
+			},
+			dom:
+				'<"row pb-2"<"col-sm-12 col-md-12 col-lg-12 dataTables_filter"B>>' +
+				'<"row"<"col-sm-12 col-md-12 col-lg-6"l><"col-sm-12 col-md-12 col-lg-6"f>>' +
+				'<"row"<"col-sm-12"tr>>' +
+				'<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>',
+			language: {
+				url: 'lib/datatables.net/es_es.json'
+			},
+			buttons: [
+				{
+					extend: 'colvis',
+					text: function ( dt, button, config ) {
+						return '<i class="bi bi-eye" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="@SharedTranslations["Mostrar"]"></i> @SharedTranslations["Mostrar"]';
+					},
+					className: "",
+
+					columns: 'th:nth-child(n+3)'
+				}
+			],
+			initComplete: function (settings, json) {
+            },
+		} );
+	} );
+</script>

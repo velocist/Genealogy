@@ -19,6 +19,8 @@
 		public async Task<IActionResult> Index() {
 			try {
 				PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.View && x.ActionName == nameof(Index) && x.ControllerName == ControllerName);
+				//ViewData.Model = new FileViewerModel();
+
 				return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.View);
 			} catch (Exception ex) {
 				_logger.LogError(ex.Message);
@@ -32,8 +34,8 @@
 		//[Authorize(Roles = "SuperAdmin")]
 		[HttpPost]
 		public async Task<IActionResult> Index(IFormFile file, int row) {
-			PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.PartialView && x.ActionName == nameof(Index) && x.ControllerName == ControllerName);
-			var model = new List<FileViewerModel>();
+			PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.View && x.ActionName == nameof(Index) && x.ControllerName == ControllerName);
+			var model = new FileViewerModel();
 			//var model = new FileViewerModel();
 			try {
 				if (file != null) {
@@ -51,12 +53,12 @@
 					//Copy file to import
 					var pathCopy = FilesHelper.CopyFile(file, path);
 
-					model.Add(new FileViewerModel());
+					//model.Add(new FileViewerModel());
 					if (pathCopy != null && pathCopy.Length > 0) {
-						model = ExportExcel<FileViewerModel>.ImportList(pathCopy, row);
+						model = ExportExcel<FileViewerModel>.Import(pathCopy, row);
 						if (model != null) {
 							ViewData.Model = model;
-							return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status200OK);
+							return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, model, statusCode: StatusCodes.Status200OK);
 						} else {
 							ModelState.AddModelError(string.Empty, "Error al importar el archivo.");
 							return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
