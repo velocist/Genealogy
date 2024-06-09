@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Net.Http;
+using System.Reflection;
 using Genealogy.Common;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -118,110 +119,87 @@ namespace Genealogy.Tests.Core {
 
     }
 
-    public class BaseServiceTest<TModel, TService> : BaseConfigureTest {
-
-        public TService _service;
-        public TModel _model;
-
-    }
-
-    public class ServiceTest<TModel, TEntity, TService>
-        where TService : IBaseService<TModel, TEntity, AppEntitiesContext> {
-
-        /// <summary>
-        /// Gets or sets the unit of work.
-        /// </summary>
-        /// <value>
-        /// The unit of work.
-        /// </value>
-        protected IUnitOfWorkSqlServer<AppEntitiesContext> _unitOfWork { get; set; }
-
-        /// <summary>
-        /// Gets or sets the service.
-        /// </summary>
-        /// <value>
-        /// The service.
-        /// </value>
-        protected TService _service { get; set; }
+    public class BaseApiTest<TModel> : BaseConfigureTest {
 
         /// <summary>
         /// The model
         /// </summary>
-        protected TModel _model { get; set; }
+        protected TModel ModelTest { get; set; }
 
         /// <summary>
         /// The list
         /// </summary>
-        protected List<TModel> _list { get; set; }
+        protected List<TModel> ListTest { get; set; }
+
+        protected HttpClient GenealogyApiClient = new HttpClient() {
+            BaseAddress = new Uri("https://localhost:7040/api/"),
+        };
+
+        protected string GenealogyApiClientEndpoint { get; set; }
+
+    }
+
+    public class BaseServicesTest<TModel, TService> : BaseConfigureTest {
 
         /// <summary>
-        /// The logger
+        /// The service
         /// </summary>
-        protected static ILogger<ServiceTest<TModel, TEntity, TService>> _logger { get; set; }
+        protected TService ServiceTest { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceTest{TModel,TEntity,TService}"/> class.
+        /// The model
         /// </summary>
-        public ServiceTest() {
-            var host = Host.CreateDefaultBuilder(Array.Empty<string>());
-            _ = host.ConfigureAppConfiguration((hostingContext, config) => AccessServiceConfiguration.GetConfiguration())
-                .ConfigureLogging(logging => {
-                    //LogServiceContainer.GetConfiguration();
-                    logging.ClearProviders();
-                    logging.AddLog4Net(AccessServiceConfiguration.LogSettingsFile, true);
-#if DEBUG
-                    //logging.SetMinimumLevel(LogLevel.Trace);
-#else
-                    logging.SetMinimumLevel(LogLevel.Error);
-#endif
-                }).ConfigureServices((context, services) => {
-                    _ = services.ConfigureAppDatabaseServices();
-                    _ = services.ConfigureAppUnitOfWork();
-                    _ = services.ConfigureAppServices();
+        protected TModel ModelTest { get; set; }
 
-                    var builder = services.BuildServiceProvider();
-                    InitializeLog(builder.GetRequiredService<ILoggerFactory>());
+        /// <summary>
+        /// The list
+        /// </summary>
+        protected List<TModel> ListTest { get; set; }
+    }
 
-                    //_unitOfWork = services.BuildServiceProvider().GetRequiredService<IUnitOfWorkSqlServer<AppEntitiesContext>>();
-                    _unitOfWork = (IUnitOfWorkSqlServer<AppEntitiesContext>)builder.GetRequiredService(typeof(IUnitOfWorkSqlServer<AppEntitiesContext>));
-                    _service = (TService)builder.GetRequiredService(typeof(TService));
-                }).Build();
-            //_logger = LogServiceContainer.GetLog<ServiceTest<TModel, TEntity, TService>>();
-            _logger = (ILogger<ServiceTest<TModel, TEntity, TService>>)GetStaticLogger<ServiceTest<TModel, TEntity, TService>>();
+    public class ServicesTest<TModel, TEntity, TService> : BaseServicesTest<TModel, TService>
+        where TService : IBaseService<TModel, TEntity, AppEntitiesContext> {
 
-            //_service = Activator.CreateInstance<TService>();
+        ///// <summary>
+        ///// Gets or sets the service.
+        ///// </summary>
+        ///// <value>
+        ///// The service.
+        ///// </value>
+        //protected TService ServiceTest { get; set; }
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="ServiceTest{TModel,TEntity,TService}"/> class.
+		/// </summary>
+		public ServicesTest() : base() {
+//            var host = Host.CreateDefaultBuilder(Array.Empty<string>());
+//            _ = host.ConfigureAppConfiguration((hostingContext, config) => AccessServiceConfiguration.GetConfiguration())
+//                .ConfigureLogging(logging => {
+//                    //LogServiceContainer.GetConfiguration();
+//                    logging.ClearProviders();
+//                    logging.AddLog4Net(AccessServiceConfiguration.LogSettingsFile, true);
+//#if DEBUG
+//                    //logging.SetMinimumLevel(LogLevel.Trace);
+//#else
+//                    logging.SetMinimumLevel(LogLevel.Error);
+//#endif
+//                }).ConfigureServices((context, services) => {
+//                    _ = services.ConfigureAppDatabaseServices();
+//                    _ = services.ConfigureAppUnitOfWork();
+//                    _ = services.ConfigureAppServices();
+
+//                    var builder = services.BuildServiceProvider();
+//                    InitializeLog(builder.GetRequiredService<ILoggerFactory>());
+
+//                    //_unitOfWork = (IUnitOfWorkSqlServer<AppEntitiesContext>)builder.GetRequiredService(typeof(IUnitOfWorkSqlServer<AppEntitiesContext>));
+//                    ServiceTest = (TService)builder.GetRequiredService(typeof(TService));
+//                }).Build();
+//            //_logger = LogServiceContainer.GetLog<ServiceTest<TModel, TEntity, TService>>();
+//            _logger = (ILogger<ServiceTest<TModel, TEntity, TService>>)GetStaticLogger<ServiceTest<TModel, TEntity, TService>>();
+
+//            //ServiceTest = Activator.CreateInstance<TService>();
         }
 
-        /// <summary>
-        /// Logs the results.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list">The list.</param>
-        public void LogResults<T>(IEnumerable<T> list) where T : class {
-            foreach (var item in list) {
-                var stringItem = JsonAppHelper<T>.GetString(item);
-                _logger.LogInformation(stringItem);
-            }
-        }
-
-        /// <summary>
-        /// Logs the results.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="item">The item.</param>
-        public void LogResults<T>(T item) where T : class {
-            var stringItem = JsonAppHelper<T>.GetString(item);
-            _logger.LogInformation(stringItem);
-        }
-
-        /// <summary>
-        /// Logs the results.
-        /// </summary>
-        /// <param name="item">The item.</param>
-        public void LogResults(object item) {
-            var stringItem = JsonAppHelper<object>.GetString(item);
-            _logger.LogInformation(stringItem);
-        }
     }
 
     /// <summary>

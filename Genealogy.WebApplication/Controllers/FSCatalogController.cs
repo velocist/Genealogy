@@ -1,7 +1,4 @@
-﻿using Genealogy.Business.Services.Interfaces;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-
-namespace Genealogy.WebApplication.Controllers {
+﻿namespace Genealogy.WebApplication.Controllers {
 
 	/// <summary>
 	/// Resources controller
@@ -10,15 +7,15 @@ namespace Genealogy.WebApplication.Controllers {
 	public class FSCatalogController : BaseServiceController<FSCatalogController, FSCatalogModel, FSCatalog> {
 
 		/// <summary>
-		/// Constructor of the controller
+		/// Initializes a new instance of the <see cref="FSCatalogController"/> class.
 		/// </summary>
-		/// <param name="sharedTranslations">Shared Translations</param>
-		/// <param name="viewTranslates">View translations</param>
-		/// <param name="date">Datetime</param>
-		/// <param name="renderView">Render view</param>
-		/// <param name="baseService"></param>
+		/// <param name="sharedTranslations">The shared translations.</param>
+		/// <param name="viewTranslates">The view translates.</param>
+		/// <param name="date">The date.</param>
+		/// <param name="renderView">The render view.</param>
+		/// <param name="baseService">The base service.</param>
 		public FSCatalogController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView, FSCatalogService baseService)
-			: base(sharedTranslations, viewTranslates, date, renderView, "FSCatalog", baseService) {
+			: base(sharedTranslations, viewTranslates, date, renderView, "FSCatalog") {
 			var json = System.IO.File.ReadAllText("./Views/FSCatalog/_Configure.json");
 			Views = velocist.Services.Json.JsonAppHelper<ViewModel>.ConvertJsonToObject(json, false);
 		}

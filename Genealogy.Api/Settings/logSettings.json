@@ -1,0 +1,11 @@
+{
+	"Logging": {
+		"LogLevel": {
+			"Default": "Trace",
+			"velocist.*": "Trace",
+			"Microsoft": "Debug",
+			"Microsoft.EntityFrameworkCore.Database.Command": "Warning",
+			"Microsoft.AspNetCore": "Warning"
+		}
+	}
+}

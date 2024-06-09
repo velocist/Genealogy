@@ -1,9 +1,9 @@
 ﻿@{
 	var viewProperties = ViewData["PropertiesView"] as CustomViewModel;
 }
-<div class="card">
-	<div class="card-header">
-		<h1 class="card-title h1">
+<div class="card ">
+	<div class="card-header bg-primary">
+		<h1 class="card-title h2">
 			@viewProperties.Title
 			@{
 				if (string.IsNullOrEmpty(viewProperties.SubTitle))
@@ -14,7 +14,7 @@
 	<div class="card-body">
 		<partial name="~/Views/Shared/_AlertError.cshtml" />
 		@if (viewProperties.IsTableView) {
-			<table id="@viewProperties.TableView.IdTable" class="table table-sm table-compact table-striped table-bordered nowrap table-primary" cellspacing="0" width="100%">
+			<table id="@viewProperties.TableView.IdTable" class="table table-sm table-compact table-bordered nowrap table-secondary" cellspacing="0" width="100%">
 				<partial name="@viewProperties.PartialViewName" model="@ViewData.Model" />
 
 			</table>
@@ -27,7 +27,7 @@
 			}
 		}
 	</div>
-	<div class="card-footer">
+	<div class="card-footer bg-primary">
 	</div>
 </div>
 

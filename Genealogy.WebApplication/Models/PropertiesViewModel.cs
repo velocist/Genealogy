@@ -140,9 +140,9 @@
 		public List<string> Scripts { get; set; }
 
 		public PropertiesViewModel() {
-			PartialsViews = new List<string>();
-			Styles = new List<string>();
-			Scripts = new List<string>();
+			PartialsViews = [];
+			Styles = [];
+			Scripts = [];
 		}
 	}
 

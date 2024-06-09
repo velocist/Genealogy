@@ -1,35 +1,67 @@
-﻿using Genealogy.Business.Core;
-using NuGet.Protocol;
+﻿using System.Net.Http;
+using System.Net.Http.Json;
+using Genealogy.Business.Core;
 
 namespace Genealogy.WebApplication.Core {
 	public class BaseServiceController<TController, TModel, TEntity> : BaseController<TController, TModel>
 		where TController : Controller
-		where TModel : class {
+		where TModel : GenealogyBaseModel, new() {
 
-		private static IGenealogyServices<TModel, TEntity, AppEntitiesContext> _service { get; set; }
+		protected HttpClient GenealogyApiClient = new() {
+			BaseAddress = new Uri("https://localhost:7040/api/"),
+		};
 
-		public BaseServiceController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView, string controllerName, IGenealogyServices<TModel, TEntity, AppEntitiesContext> service) : base(sharedTranslations, viewTranslates, date, renderView, controllerName) {
+		public string GenealogyApiEndpoint { get; set; }
+
+		public BaseServiceController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView, string controllerName/*, IGenealogyServices<TModel, TEntity, AppEntitiesContext> service*/) : base(sharedTranslations, viewTranslates, date, renderView, controllerName) {
 			_logger = GetStaticLogger<TController>();
-			_service = service;
+			//_service = service;
+			GenealogyApiEndpoint = GenealogyApiClient.BaseAddress + ControllerName;
 		}
 
-		public async Task<IActionResult> CreateResponse(ReturnViewTypeId viewType, Exception ex) {
+		protected async Task<IActionResult> CreateResponse(ReturnViewTypeId viewType, Exception ex) {
 			_logger.LogError(ex.Message);
 			return await CreateResponse(viewType, WebStrings.ERROR_SERVER, statusCode: StatusCodes.Status500InternalServerError);
 		}
 
-		public async Task<IActionResult> CreateResponse(ReturnViewTypeId viewType, string message, int statusCode) {
+		protected async Task<IActionResult> CreateResponse(ReturnViewTypeId viewType, string message, int statusCode) {
 			_logger.LogError(message);
 			TempData["Error"] = message;
 			ModelState.AddModelError(WebStrings.ERROR, message);
 			return await ShowRenderView(viewType, ViewData.Model, statusCode);
 		}
-
-		public async Task<IActionResult> CreateResponse(ReturnViewTypeId viewType, string message, int statusCode, string url) {
+        
+		protected async Task<IActionResult> CreateResponse(ReturnViewTypeId viewType, string message, int statusCode, string url) {
 			_logger.LogError(message);
 			TempData["Error"] = message;
 			ModelState.AddModelError(WebStrings.ERROR, message);
 			return await ShowRenderView(viewType, url, statusCode);
+		}
+
+        protected async Task<IActionResult> CreateResponse(ReturnViewTypeId viewType, HttpResponseMessage message) {
+            LogResponse(message);
+            TempData["Error"] = message.ReasonPhrase;
+            ModelState.AddModelError(WebStrings.ERROR, message.ReasonPhrase);
+            return await ShowRenderView(viewType, ViewData.Model, message.StatusCode);
+        }
+
+		protected void LogResponse(HttpResponseMessage messageResponse) {
+			_logger.LogDebug($"IsSuccessStatusCode: {messageResponse.IsSuccessStatusCode} " +
+				$"StatusCode: {messageResponse.StatusCode} " +
+				$"ReasonPhrase: {messageResponse.ReasonPhrase} " +
+				$"RequestMessage: {messageResponse.RequestMessage}");
+		}
+
+		protected IAsyncEnumerable<TModel> GetListResult(HttpResponseMessage messageResponse) {
+			LogResponse(messageResponse);
+			var model = messageResponse.Content.ReadFromJsonAsAsyncEnumerable<TModel>();
+			return model;
+		}
+
+		protected Task<TResponse> GetObjectResult<TResponse>(HttpResponseMessage messageResponse) {
+			LogResponse(messageResponse);
+			var model = messageResponse.Content.ReadFromJsonAsync<TResponse>();
+			return model;
 		}
 
 		/// <summary>
@@ -38,14 +70,17 @@ namespace Genealogy.WebApplication.Core {
 		/// <returns></returns>
 		[HttpGet]
 		public async Task<IActionResult> Index() {
-			GetConfiguration(nameof(Index));
+            //Configuracmos la vista
+            GetConfiguration(nameof(Index));
 			try {
-				if (TempData.TryGetValue("Error", out object error)) {
+                //Devolvemos la vista de error si lo hay
+                if (TempData.TryGetValue("Error", out var error)) {
 					ModelState.AddModelError(string.Empty, error.ToString());
 					return await ShowRenderView<TModel>(PropertiesView.ViewType, statusCode: StatusCodes.Status400BadRequest);
 				}
 
-				return await ShowRenderView<TModel>(PropertiesView.ViewType);
+                //Devolvemos la vista
+                return await ShowRenderView<TModel>(PropertiesView.ViewType);
 			} catch (Exception ex) {
 				_logger.LogError(ex.Message);
 				ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
@@ -61,12 +96,20 @@ namespace Genealogy.WebApplication.Core {
 		//[Authorize(Roles = "SuperAdmin")]        
 		public async Task<IActionResult> List() {
 			try {
-				var model = _service.GetAll();
+				//Hecemos la llamada a la api
+				var result = await GenealogyApiClient.GetAsync(GenealogyApiEndpoint);
+
+				//Obtenemos los resultados
+				var model = GetListResult(result);
+
+				//Devolvemos la respuesta
 				if (model != null)
 					return await ShowRenderView(ReturnViewTypeId.Json, model, statusCode: StatusCodes.Status200OK);
 
+				//Devolvemos error 
 				return await CreateResponse(ReturnViewTypeId.Json, WebStrings.ERROR_GET, StatusCodes.Status400BadRequest);
 			} catch (Exception ex) {
+				_logger.LogError(ex.Message);
 				return await CreateResponse(ReturnViewTypeId.Json, ex);
 			}
 		}
@@ -78,10 +121,13 @@ namespace Genealogy.WebApplication.Core {
 		//[Authorize(Roles = "SuperAdmin")]        
 		[HttpGet]
 		public async Task<IActionResult> Create() {
+			//Configuracmos la vista
 			GetConfiguration(nameof(Create));
 			try {
-				return await ShowRenderView(PropertiesView.ViewType, ViewData.Model, statusCode: StatusCodes.Status200OK);
+				//Devolvemos la vista
+				return await ShowRenderView(PropertiesView.ViewType, new TModel(), statusCode: StatusCodes.Status200OK);
 			} catch (Exception ex) {
+				_logger.LogError(ex.Message);
 				return await CreateResponse(PropertiesView.ViewType, ex);
 			}
 		}
@@ -96,14 +142,29 @@ namespace Genealogy.WebApplication.Core {
 		public async Task<IActionResult> Create(TModel model) {
 			GetConfiguration(nameof(Create), model);
 			try {
+				//Comprobamos los datos de entrada
 				if (!ModelState.IsValid)
-					return await ShowRenderView(PropertiesView.ViewType, ViewData.Model, statusCode: StatusCodes.Status400BadRequest);
+					return await CreateResponse(PropertiesView.ViewType, WebStrings.ERROR_MODIFY, statusCode: StatusCodes.Status400BadRequest);
+					//return await ShowRenderView(PropertiesView.ViewType, ViewData.Model, statusCode: StatusCodes.Status400BadRequest);
 
-				if (_service.Add(model) != null)
+				//Hecemos la llamada a la api
+				var response = await GenealogyApiClient.PostAsJsonAsync(GenealogyApiEndpoint, model);
+
+				//Devolvemos error
+				if (!response.IsSuccessStatusCode)
+                    return await CreateResponse(PropertiesView.ViewType, response);
+
+                //Obtenemos los resultados
+                var result = GetObjectResult<bool>(response);
+
+				//Devolvemos la respuesta
+				if (result.Result)
 					return await ShowRenderView(PropertiesView.ViewType, ViewData.Model, statusCode: StatusCodes.Status200OK);
 
+				//Devolvemos error 
 				return await CreateResponse(PropertiesView.ViewType, WebStrings.ERROR_MODIFY, StatusCodes.Status400BadRequest);
 			} catch (Exception ex) {
+				_logger.LogError(ex.Message);
 				return await CreateResponse(PropertiesView.ViewType, ex);
 			}
 		}
@@ -119,18 +180,23 @@ namespace Genealogy.WebApplication.Core {
 		public async Task<IActionResult> Edit(string id) {
 			GetConfiguration(nameof(Edit));
 			try {
-
+				//Comprobamos los datos de entrada
 				if (string.IsNullOrEmpty(id))
 					return await CreateResponse(ReturnViewTypeId.Json, WebStrings.ERROR_DATA, statusCode: StatusCodes.Status400BadRequest, Url.ActionLink(nameof(Index)));
 
-				var model = _service.GetById(int.Parse(id));
+				//Hecemos la llamada a la api
+				var model = await GenealogyApiClient.GetFromJsonAsync<TModel>($"{GenealogyApiEndpoint}/{id}");
+
+				//Devolvemos la respuesta
 				if (model != null) {
 					ViewData.Model = model;
 					return await ShowRenderView(PropertiesView.ViewType, ViewData.Model, statusCode: StatusCodes.Status200OK);
 				}
 
+				//Devolvemos error 
 				return await CreateResponse(ReturnViewTypeId.Json, WebStrings.ERROR_GET, statusCode: StatusCodes.Status400BadRequest, Url.ActionLink(nameof(Index)));
 			} catch (Exception ex) {
+				_logger.LogError(ex.Message);
 				return await CreateResponse(ReturnViewTypeId.Json, ex);
 			}
 		}
@@ -145,14 +211,24 @@ namespace Genealogy.WebApplication.Core {
 		public async Task<IActionResult> Edit(TModel model) {
 			GetConfiguration(nameof(Edit), model);
 			try {
+				//Comprobamos los datos de entrada
 				if (!ModelState.IsValid)
 					return await CreateResponse(PropertiesView.ViewType, WebStrings.ERROR_DATA, statusCode: StatusCodes.Status400BadRequest, Url.ActionLink(nameof(Index)));
 
-				if (_service.Edit(model))
+				//Hecemos la llamada a la api
+				var response = await GenealogyApiClient.PutAsJsonAsync($"{GenealogyApiEndpoint}/{model.Id}", model);
+
+				//Obtenemos los resultados
+				var result = await GetObjectResult<bool>(response);
+
+				//Devolvemos la respuesta
+				if (result)
 					return await Task.FromResult(new JsonResult(StatusCodes.Status200OK));
 
+				//Devolvemos error 
 				return await CreateResponse(PropertiesView.ViewType, WebStrings.ERROR_MODIFY, statusCode: StatusCodes.Status400BadRequest);
 			} catch (Exception ex) {
+				_logger.LogError(ex.Message);
 				return await CreateResponse(PropertiesView.ViewType, ex);
 			}
 		}
@@ -161,19 +237,60 @@ namespace Genealogy.WebApplication.Core {
 		public async Task<IActionResult> Details(string id) {
 			GetConfiguration(nameof(Details));
 			try {
-
+				//Comprobamos los datos de entrada
 				if (string.IsNullOrEmpty(id))
 					return await CreateResponse(ReturnViewTypeId.Json, WebStrings.ERROR_DATA, statusCode: StatusCodes.Status400BadRequest, Url.ActionLink(nameof(Index)));
 
-				var model = _service.GetById(int.Parse(id));
-				if (model != null) 
+				//Hecemos la llamada a la api
+				var model = await GenealogyApiClient.GetFromJsonAsync<TModel>($"{GenealogyApiEndpoint}/{id}");
+
+				//Devolvemos la respuesta
+				if (model != null)
 					return await ShowRenderView(PropertiesView.ViewType, model, statusCode: StatusCodes.Status200OK);
 
+				//Devolvemos error 
 				return await CreateResponse(ReturnViewTypeId.Json, WebStrings.ERROR_GET, statusCode: StatusCodes.Status400BadRequest, Url.ActionLink(nameof(Index)));
 			} catch (Exception ex) {
+				_logger.LogError(ex.Message);
 				return await CreateResponse(ReturnViewTypeId.Json, ex);
 			}
 		}
+
+		////[Authorize(Roles = "SuperAdmin")]
+		//[HttpPost]
+		//public async Task<IActionResult> Export(IFormFile file) {
+		//	try {
+		//		if (file == null)
+		//			return await CreateResponse(ReturnViewTypeId.Json, WebStrings.ERROR_IMPORT, statusCode: StatusCodes.Status400BadRequest);
+
+		//		TModel model = new();
+
+		//		//Check format file
+		//		if (!file.FileName.EndsWith(".csv"))
+		//			return await CreateResponse(ReturnViewTypeId.Json, _sharedTranslations["Selecciona un archivo csv"], statusCode: StatusCodes.Status400BadRequest);
+
+		//		//Copy file to import
+		//		var pathCopy = FilesHelper.CopyFile(file, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", file.FileName));
+
+		//		if (string.IsNullOrEmpty(pathCopy) == null)
+		//			return await CreateResponse(ReturnViewTypeId.Json, WebStrings.ERROR_IMPORT, statusCode: StatusCodes.Status400BadRequest);
+
+		//		model.ExportModel.FileName = Path.GetFileName(file.FileName);
+
+		//		//Do import
+		//		var result = await GenealogyApiClient.PostAsJsonAsync(GenealogyApiEndpoint + $"/Export", model.ExportModel);
+
+		//		var model = result.Content.ReadFromJsonAsAsyncEnumerable<TModel>();
+		//		if (model.Export(pathCopy, 0))
+		//			return await Task.FromResult(new JsonResult(StatusCodes.Status200OK));
+		//		else
+		//			return await CreateResponse(ReturnViewTypeId.Json, WebStrings.ERROR_IMPORT, statusCode: StatusCodes.Status400BadRequest);
+
+		//	} catch (Exception ex) {
+		//		_logger.LogError(ex.Message);
+		//		return await CreateResponse(ReturnViewTypeId.Json, ex);
+		//	}
+		//}
 	}
 
 	public class BaseController<TController, TModel> : Controller
@@ -186,12 +303,14 @@ namespace Genealogy.WebApplication.Core {
 		public readonly IStringLocalizer<ViewsTranslations> _viewTranslates;
 		public readonly IDateTime _date;
 		public readonly IViewRender _renderView;
-		public readonly string _controllerName;
+		private readonly string _controllerName;
 
 		public ViewModel Views { get; set; }
 
 		[ViewData]
 		public CustomViewModel PropertiesView { get; set; }
+
+		public string ControllerName => _controllerName;
 
 		public BaseController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView, string controllerName) {
 			_logger = GetStaticLogger<TController>();
@@ -202,112 +321,24 @@ namespace Genealogy.WebApplication.Core {
 			_controllerName = controllerName;
 		}
 
-		//public void ConfigureModal() {
-		//	Modal = new CustomModalModel() {
-		//		ControllerName = _controllerName,
-		//		//TableAjaxAction = Constants.ListAction,
-		//		UploadFile = false,
-		//		ViewName = "",
-		//		PartialViewName = "",
-		//		Title = "",
-		//	};
-
-		//	ModalConfiguration = new ModalConfiguration<TModel>("Recursos") {
-		//		Title = "Recursos",
-		//		TableAjaxAction = "/Recursos/" + Constants.ListAction,
-		//		//IndexPath = "~/Views/Recursos/Index.cshtml"
-		//		IndexPath = Constants.CommonIndexViewName
-		//	};
-		//	ModalConfiguration.ControllerName = $"{_controllerName}";
-
-		//	ModalConfiguration.IndexPath = Constants.CommonIndexViewName;
-
-		//	ModalConfiguration.PartialNameScript = $"~/Views/{_controllerName}/_{_controllerName}ScriptsPartial.cshtml";
-
-		//	ModalConfiguration.PartialNameList = $"~/Views/{_controllerName}/_List.cshtml";
-		//	ModalConfiguration.PartialNameCreate = $"~/Views/{_controllerName}/_Edit.cshtml";
-		//	ModalConfiguration.PartialNameEdit = $"~/Views/{_controllerName}/_Edit.cshtml";
-		//	ModalConfiguration.PartialNameDetails = $"~/Views/{_controllerName}/_Edit.cshtml";
-		//	ModalConfiguration.PartialNameDelete = $"~/Views/{_controllerName}/_Delete.cshtml";
-
-		//	ModalConfiguration.ModalPath = Constants._CommonModal;
-		//	ModalConfiguration.ModalError = Constants._ModalError;
-		//	ModalConfiguration.ModalDelete = Constants._ModalDelete;
-
-		//	ModalConfiguration.TitleCreate = Constants.ModalTitleCreate;
-		//	ModalConfiguration.TitleEdit = Constants.ModalTitleEdit;
-		//	ModalConfiguration.TitleDetails = Constants.ModalTitleDetails;
-		//	ModalConfiguration.TitleDelete = Constants.ModalTitleDelete;
-
-		//	ModalConfiguration.TableAjaxAction = Constants.ListAction;
-		//	ModalConfiguration.UploadFile = false;
-		//}
-
-		///// <summary>
-		///// Initializes the view.
-		///// </summary>
-		///// <param name="action">The action.</param>
-		///// <param name="isModal">if set to <c>true</c> [is modal].</param>
-		//public void InitView(Constants.Action action, bool isModal = true) {
-		//    ViewBag.BreadcumbTitle = _sharedTranslations[ModalConfiguration.Title];
-		//    ViewBag.BreadcumbController = _sharedTranslations[ModalConfiguration.Title];
-		//    ViewBag.ControllerName = ModalConfiguration.ControllerName;
-
-		//    if (action.Equals(Constants.Action.CREATE)) {
-		//        ViewBag.TitleModal = _sharedTranslations[ModalConfiguration.TitleCreate];
-		//        ViewBag.PartialName = ModalConfiguration.PartialNameEdit;
-		//        if (isModal)
-		//            ViewBag.Action = Constants.CreateAction;
-		//    } else if (action.Equals(Constants.Action.EDIT)) {
-		//        ViewBag.TitleModal = _sharedTranslations[ModalConfiguration.TitleEdit];
-		//        ViewBag.PartialName = ModalConfiguration.PartialNameEdit;
-		//        if (isModal)
-		//            ViewBag.Action = Constants.EditAction;
-		//    } else if (action.Equals(Constants.Action.DETAILS)) {
-		//        ViewBag.TitleModal = _sharedTranslations[ModalConfiguration.TitleDetails];
-		//        ViewBag.PartialName = ModalConfiguration.PartialNameDetails;
-		//        if (isModal)
-		//            ViewBag.Action = Constants.DetailsAction;
-		//    } else if (action.Equals(Constants.Action.DELETE)) {
-		//        ViewBag.TitleModal = _sharedTranslations[ModalConfiguration.TitleDelete];
-		//        ViewBag.PartialName = ModalConfiguration.PartialNameDelete;
-		//        if (isModal)
-		//            ViewBag.Action = Constants.DeleteAction;
-		//    } else if (action.Equals(Constants.Action.LIST)) {
-		//        ViewBag.Title = _sharedTranslations[ModalConfiguration.Title];
-		//        ViewBag.PartialName = ModalConfiguration.PartialNameList;
-		//        ViewBag.PartialNameScript = ModalConfiguration.PartialNameScript;
-		//        ViewBag.TableAjaxAction = ModalConfiguration.TableAjaxAction;
-		//        if (User.IsInRole(Constants.Roles.SuperAdmin.ToString()))
-		//            ModalConfiguration.UploadFile = true;
-		//        else
-		//            ModalConfiguration.UploadFile = false;
-
-		//        ViewBag.UploadFile = ModalConfiguration.UploadFile;
-		//    }
-		//}
-
 		public void GetConfiguration(string action) {
-			PropertiesView = Views.CustomViewModels.Find(x => x.ActionName == action && x.ControllerName == _controllerName);
+			PropertiesView = Views.CustomViewModels.Find(x => x.ActionName == action && x.ControllerName == ControllerName);
 			ViewData.Add("PropertiesView", PropertiesView);
 		}
 
-		public void GetConfiguration<TModel>(string action, TModel model) {
-			PropertiesView = Views.CustomViewModels.Find(x => x.ActionName == action && x.ControllerName == _controllerName);
-			ViewData.Add("PropertiesView", PropertiesView);
+		public void GetConfiguration(string action, TModel model) {
+			GetConfiguration(action);
 			ViewData.Model = model;
 		}
 
 		/// <summary>
 		/// Renderiza el html del tipo de vista y los argumentos para una respuesta Javascript/JQuery/Ajax.
 		/// </summary>
-		/// <typeparam name="TView">Modelo de la vista.</typeparam>
 		/// <typeparam name="TModel">Modelo de la vista.</typeparam>
 		/// <param name="viewType"><see cref="ReturnViewTypeId"/>Tipo de modal/vista que queremos renderizar.</param>
-		/// <param name="view"></param>
 		/// <param name="model">Modelo de la vista para renderizar. En caso de que el modal/vista contenga un modelo.</param>
-		/// <param name="viewName">Nombre de la vista.</param>
 		/// <param name="args">Argumentos para devolver en el resultado.</param>
+		/// <param name="statusCode"></param>
 		/// <returns></returns>
 		public async Task<ActionResult> ShowRenderView<TModel>(ReturnViewTypeId viewType, /*IBasePropertiesView view,*/ TModel model = default,/* ViewDataDictionary viewData = null,*/ object args = null, int statusCode = 200) where TModel : class {
 			try {
@@ -320,27 +351,27 @@ namespace Genealogy.WebApplication.Core {
 					case ReturnViewTypeId.WarningModal:
 					case ReturnViewTypeId.ErrorModal:
 						var simpleModalString = await _renderView.RenderAsync(PropertiesView.ViewName, ViewData.Model, new ViewDataDictionary(ViewData));
-						if (statusCode != 0) {
+						if (statusCode != 0)
 							return await Task.FromResult(new JsonResult(simpleModalString) { StatusCode = statusCode });
-						} else {
+						else
 							return await Task.FromResult(Json(new { modal = simpleModalString, args }));
-						}
+
 
 					case ReturnViewTypeId.CustomModal:
 						var customModalString = await _renderView.RenderAsync(PropertiesView.ViewPath, ViewData.Model, new ViewDataDictionary(ViewData));
-						if (statusCode != 0) {
+						if (statusCode != 0)
 							return await Task.FromResult(new JsonResult(customModalString) { StatusCode = statusCode });
-						} else {
+						else
 							return await Task.FromResult(Json(new { modal = customModalString }));
-						}
+
 
 					case ReturnViewTypeId.StringView:
 						var viewString = await _renderView.RenderAsync(PropertiesView.ViewPath, ViewData.Model, new ViewDataDictionary(ViewData));
-						if (statusCode != 0) {
+						if (statusCode != 0)
 							return await Task.FromResult(new JsonResult(viewString) { StatusCode = statusCode });
-						} else {
+						else
 							return await Task.FromResult(Json(new { view = viewString, args }));
-						}
+
 
 					case ReturnViewTypeId.StringPartialView:
 						var partialViewString = string.Empty;

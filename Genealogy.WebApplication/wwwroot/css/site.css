@@ -1,3 +1,9 @@
+:root {
+    --dt-row-selected: 13, 110, 151;
+    --dt-row-selected-text: 255, 255, 255;
+    --dt-row-selected-link: 9, 10, 11;
+}
+
 html {
   font-size: 14px;
 }
@@ -15,4 +21,23 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+footer {
+    position: fixed;
+    height: 50px;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--bs-primary);
+}
+
+table.dataTable thead tr > .dtfc-fixed-left, 
+table.dataTable thead tr > .dtfc-fixed-right, 
+table.dataTable tfoot tr > .dtfc-fixed-left, 
+table.dataTable tfoot tr > .dtfc-fixed-right {
+    background-color: inherit;
+}
+
+table.dataTable tbody tr > .dtfc-fixed-left, table.dataTable tbody tr > .dtfc-fixed-right {
+    background-color: inherit;
 }

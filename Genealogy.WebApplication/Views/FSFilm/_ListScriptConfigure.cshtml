@@ -32,6 +32,7 @@
 			],
 			ajax: {
 				url: '@Model.ControllerName/@Model.TableAjaxAction/',
+
 				type: 'POST',
 				//dataSrc: '',
 				// data:
@@ -43,7 +44,8 @@
 					$( '#@Model.ControllerName tbody td' ).text( json );
 					$( '#@Model.ControllerName tbody td' ).css( 'color', 'red' );
 				}
-			}
+			},
+			rowId: 'Id'
 		} ).on( 'select', function ( e, dt, type, indexes ) {
 			// if ( buttons ) {
 			if ( type === 'row' ) {
@@ -68,6 +70,6 @@
 			dt.button( 'Delete:name' ).disable();
 			dt.button( 'Copy:name' ).disable();
 			// }
-		} );
+		} );		
 	} );
 </script>

@@ -2,19 +2,19 @@
 
 namespace Genealogy.Tests.Services {
     [TestClass]
-    public class InvestigacionTests : ServiceTest<InvestigacionModel, Investigacion, InvestigacionService> {
+    public class InvestigacionTests : ServicesTest<InvestigacionModel, Investigacion, InvestigacionService> {
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InvestigacionService"/> class.
         /// </summary>
         public InvestigacionTests() : base() {
-            _service = new InvestigacionService(_unitOfWork);
-            _model = GetData.GetInvestigacionModel("investigacion");
-            _list = new() {
-                _model,
+            ServiceTest = new InvestigacionService(UnitOfWork);
+            ModelTest = GetData.GetInvestigacionModel("investigacion");
+            ListTest = new() {
+                ModelTest,
             };
-            _model.LastChange = DateTime.Now;
-            _list.Add(_model);
+            ModelTest.LastChange = DateTime.Now;
+            ListTest.Add(ModelTest);
         }
 
         #region Base services tests
@@ -26,7 +26,7 @@ namespace Genealogy.Tests.Services {
         [Priority(4)]
         public void GetByIdTest() {
             try {
-                var result = _service.GetById(_service.GetLastId());
+                var result = ServiceTest.GetById(ServiceTest.GetLastId());
                 LogResults(result);
 
             } catch (Exception ex) {
@@ -41,7 +41,7 @@ namespace Genealogy.Tests.Services {
         [Priority(5)]
         public void RemoveByIdTest() {
             try {
-                var result = _service.RemoveById(3);
+                var result = ServiceTest.RemoveById(3);
                 Assert.IsTrue(result);
                 LogResults(result);
 
@@ -56,7 +56,7 @@ namespace Genealogy.Tests.Services {
         [TestMethod()]
         public void GetTest() {
             try {
-                var result = _service.Get(x => x.Url.Equals(_model.Url));
+                var result = ServiceTest.Get(x => x.Url.Equals(ModelTest.Url));
 
             } catch (Exception ex) {
                 Assert.Fail(ex.Message);
@@ -70,9 +70,9 @@ namespace Genealogy.Tests.Services {
         [Priority(2)]
         public void AddTest() {
             try {
-                _model.Observaciones = "Add test";
-                _model.RecordId = 6;
-                var result = _service.Add(_model);
+                ModelTest.Observaciones = "Add test";
+                ModelTest.RecordId = 6;
+                var result = ServiceTest.Add(ModelTest);
                 LogResults(result);
 
             } catch (Exception ex) {
@@ -88,10 +88,10 @@ namespace Genealogy.Tests.Services {
         [Priority(3)]
         public void EditTest() {
             try {
-                _model.Id = _service.GetLastId();
-                _model.Observaciones = "Edit test";
-                _model.LastChange = DateTime.Now;
-                var result = _service.Edit(_model);
+                ModelTest.Id = ServiceTest.GetLastId();
+                ModelTest.Observaciones = "Edit test";
+                ModelTest.LastChange = DateTime.Now;
+                var result = ServiceTest.Edit(ModelTest);
                 Assert.IsTrue(result);
                 LogResults(result);
 
@@ -106,8 +106,8 @@ namespace Genealogy.Tests.Services {
         [TestMethod()]
         public void RemoveTest() {
             try {
-                _model.Id = _service.GetLastId() - 1;
-                var result = _service.Remove(_model);
+                ModelTest.Id = ServiceTest.GetLastId() - 1;
+                var result = ServiceTest.Remove(ModelTest);
                 Assert.IsTrue(result);
                 LogResults(result);
 
@@ -123,7 +123,7 @@ namespace Genealogy.Tests.Services {
         [Priority(1)]
         public void GetAllTest() {
             try {
-                var result = _service.GetAll();
+                var result = ServiceTest.GetAll();
                 LogResults(result);
 
             } catch (Exception ex) {
@@ -137,8 +137,8 @@ namespace Genealogy.Tests.Services {
         [TestMethod()]
         public void AddAllTest() {
             try {
-                _model.Observaciones = "Add all test";
-                var result = _service.AddAll(_list);
+                ModelTest.Observaciones = "Add all test";
+                var result = ServiceTest.AddAll(ListTest);
                 Assert.IsTrue(result);
                 LogResults(result);
 
@@ -154,9 +154,9 @@ namespace Genealogy.Tests.Services {
         [Ignore]
         public void UpdateAllTest() {
             try {
-                _model.Observaciones = "Update all test";
-                _model.LastChange = DateTime.Now;
-                var result = _service.EditAll(_list);
+                ModelTest.Observaciones = "Update all test";
+                ModelTest.LastChange = DateTime.Now;
+                var result = ServiceTest.EditAll(ListTest);
                 Assert.IsTrue(result);
                 LogResults(result);
 
@@ -172,12 +172,12 @@ namespace Genealogy.Tests.Services {
         [Ignore]
         public void RemoveAllTest() {
             try {
-                _list = new();
-                _model.Id = 3;
-                _list.Add(_model);
-                _model.Id = 4;
-                _list.Add(_model);
-                var result = _service.RemoveAll(_list);
+                ListTest = new();
+                ModelTest.Id = 3;
+                ListTest.Add(ModelTest);
+                ModelTest.Id = 4;
+                ListTest.Add(ModelTest);
+                var result = ServiceTest.RemoveAll(ListTest);
                 Assert.IsTrue(result);
                 LogResults(result);
 
@@ -192,7 +192,7 @@ namespace Genealogy.Tests.Services {
         [TestMethod()]
         public void GetLastIdTest() {
             try {
-                var result = _service.GetLastId();
+                var result = ServiceTest.GetLastId();
                 Assert.IsNotNull(result);
                 LogResults(result);
 
@@ -207,7 +207,7 @@ namespace Genealogy.Tests.Services {
         [TestMethod()]
         public void GetCountTest() {
             try {
-                var result = _service.GetCount();
+                var result = ServiceTest.GetCount();
                 Assert.IsNotNull(result);
                 LogResults(result);
 
@@ -220,7 +220,7 @@ namespace Genealogy.Tests.Services {
         /// Exports the services test.
         /// </summary>
         [TestMethod()]
-        public void ExportTest() => ExportExcel<InvestigacionModel>.Export(_list, @"C:\Temp\InvestigacionModel.xlsx", true);
+        public void ExportTest() => ExportExcel<InvestigacionModel>.Export(ListTest, @"C:\Temp\InvestigacionModel.xlsx", true);
 
         #endregion
 
@@ -230,8 +230,8 @@ namespace Genealogy.Tests.Services {
         [TestMethod()]
         public void SaveWithEntitiesTest() {
             try {
-                //_model.Observaciones = "Save with entities test";
-                //var result = _service.SaveWithEntities(_model);
+                //ModelTest.Observaciones = "Save with entities test";
+                //var result = ServiceTest.SaveWithEntities(ModelTest);
                 //Assert.IsTrue(result);
 
             } catch (Exception ex) {

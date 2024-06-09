@@ -1,16 +1,14 @@
-﻿
-
-namespace Genealogy.Controllers {
+﻿namespace Genealogy.Controllers {
 	public class FileViewerController : BaseController<FileViewerController, FileViewerModel> {
 
 		/// <summary>
-		/// Constructor of the controller
+		/// Initializes a new instance of the <see cref="FileViewerController"/> class.
 		/// </summary>
-		/// <param name="unitOfWork">Unit of work</param>
-		/// <param name="sharedTranslations">Shared Translations</param>
-		/// <param name="viewTranslates">View translations</param>
-		/// <param name="date">Datetime</param>
-		/// <param name="renderView">Render view</param>
+		/// <param name="sharedTranslations">The shared translations.</param>
+		/// <param name="viewTranslates">The view translates.</param>
+		/// <param name="date">The date.</param>
+		/// <param name="renderView">The render view.</param>
+		/// <param name="baseService">The base service.</param>
 		public FileViewerController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView, FSCatalogService baseService)
 			: base(sharedTranslations, viewTranslates, date, renderView, "FileViewer") {
 			var json = System.IO.File.ReadAllText("./Views/FileViewer/_Configure.json");
@@ -20,7 +18,7 @@ namespace Genealogy.Controllers {
 		[HttpGet]
 		public async Task<IActionResult> Index() {
 			try {
-				PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.View && x.ActionName == nameof(Index) && x.ControllerName == _controllerName);
+				PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.View && x.ActionName == nameof(Index) && x.ControllerName == ControllerName);
 				return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.View);
 			} catch (Exception ex) {
 				_logger.LogError(ex.Message);
@@ -34,7 +32,7 @@ namespace Genealogy.Controllers {
 		//[Authorize(Roles = "SuperAdmin")]
 		[HttpPost]
 		public async Task<IActionResult> Index(IFormFile file, int row) {
-			PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.PartialView && x.ActionName == nameof(Index) && x.ControllerName == _controllerName);
+			PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.PartialView && x.ActionName == nameof(Index) && x.ControllerName == ControllerName);
 			var model = new List<FileViewerModel>();
 			//var model = new FileViewerModel();
 			try {
@@ -45,13 +43,13 @@ namespace Genealogy.Controllers {
 						return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
 					}
 
-					string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", "files", file.FileName);
+					var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", "files", file.FileName);
 					if (System.IO.File.Exists(path)) {
 						System.IO.File.Delete(path);
 					}
 
 					//Copy file to import
-					string pathCopy = FilesHelper.CopyFile(file, path);
+					var pathCopy = FilesHelper.CopyFile(file, path);
 
 					model.Add(new FileViewerModel());
 					if (pathCopy != null && pathCopy.Length > 0) {
@@ -84,22 +82,22 @@ namespace Genealogy.Controllers {
 		/// <returns>ActionResult</returns>
 		[HttpGet]
 		public async Task<ActionResult> DownloadTemplate(string plantilla) {
-			PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.View && x.ActionName == nameof(Index) && x.ControllerName == _controllerName);
+			PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.View && x.ActionName == nameof(Index) && x.ControllerName == ControllerName);
 			try {
 				if (plantilla == null || plantilla.Equals(string.Empty)) {
 					TempData["Message"] = WebStrings.ERROR_SERVER;//ModelState.AddModelError(string.Empty, Strings.ERROR_SERVER);
 					return await Task.FromResult(RedirectToAction(nameof(HomeController.Index)));
 				}
 
-				string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", "files", $"Plantilla{plantilla}.xltx");//PlantillaPadron
-				string fileName = Path.GetFileName(filePath);
+				var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", "files", $"Plantilla{plantilla}.xltx");//PlantillaPadron
+				var fileName = Path.GetFileName(filePath);
 
 				if (!System.IO.File.Exists(filePath)) {
 					TempData["Message"] = WebStrings.ERROR_SERVER;//ModelState.AddModelError(string.Empty, Strings.ERROR_SERVER);
 					return await Task.FromResult(RedirectToAction(nameof(HomeController.Index)));
 				}
 
-				byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
+				var fileBytes = System.IO.File.ReadAllBytes(filePath);
 				FileResult archivo = File(fileBytes, "multipart/form-data", fileName); //application/force-download
 				if (archivo != null) {
 					return archivo;

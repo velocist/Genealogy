@@ -11,6 +11,10 @@ namespace Genealogy.WebApplication.Controllers {
 		/// <summary>
 		/// Initializes a new instance of the <see cref="HomeController"/> class.
 		/// </summary>
+		/// <param name="sharedTranslations">The shared translations.</param>
+		/// <param name="viewTranslates">The view translates.</param>
+		/// <param name="date">The date.</param>
+		/// <param name="renderView">The render view.</param>
 		public HomeController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView)
 			: base(sharedTranslations, viewTranslates, date, renderView, "Home") {
 		}

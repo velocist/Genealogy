@@ -1,253 +1,256 @@
-﻿using velocist.Services.Import;
+﻿using System.Net.Http;
+using velocist.Services.Import;
 
 namespace Genealogy.Tests.Services {
 
-    /// <summary>
-    /// Tests for FSFilm services. <see cref="FSFilmService"/>
-    /// </summary>
-    /// <seealso cref="Core.ServiceTest&lt;Business.Models.App.FSFilmModel, Objects.Entities.FSFilm, Business.Services.FSFilmService&gt;" />
-    [TestClass()]
-    public class FSFilmServiceTests : ServiceTest<FSFilmModel, FSFilm, FSFilmService> {
+	/// <summary>
+	/// Tests for FSFilm services. <see cref="FSFilmService"/>
+	/// </summary>
+	/// <seealso cref="Core.ServiceTest&lt;Business.Models.App.FSFilmModel, Objects.Entities.FSFilm, Business.Services.FSFilmService&gt;" />
+	[TestClass()]
+	public class FSFilmServiceTests : ServicesTest<FSFilmModel, FSFilm, FSFilmService> {
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FSFilmServiceTests"/> class.
-        /// </summary>
-        public FSFilmServiceTests() : base() {
-            _service = new FSFilmService(_unitOfWork);
-            _model = GetData.GetFSRecordModel($"film_").FSFilm;
-            _list = new() {
-                _model,
-            };
-            _model.LastChange = DateTime.Now;
-            _list.Add(_model);
-        }
+		/// <summary>
+		/// Initializes a new instance of the <see cref="FSFilmServiceTests"/> class.
+		/// </summary>
+		public FSFilmServiceTests() : base() {
+			ServiceTest = new FSFilmService(UnitOfWork);
+			ModelTest = GetData.GetFSRecordModel($"film_").FSFilm;
+			ListTest = new() {
+				ModelTest,
+			};
+			ModelTest.LastChange = DateTime.Now;
+			ListTest.Add(ModelTest);
+		}
 
-        #region Base services tests
+		#region Base services tests
 
-        /// <summary>
-        /// Gets by identifier services test.
-        /// </summary>
-        [TestMethod()]
-        [Priority(4)]
-        public void GetByIdTest() {
-            try {
-                var result = _service.GetById(_service.GetLastId());
-                LogResults(result);
+		/// <summary>
+		/// Gets by identifier services test.
+		/// </summary>
+		[TestMethod()]
+		[Priority(4)]
+		public void GetByIdTest() {
+			try {
+				var result = ServiceTest.GetById(ServiceTest.GetLastId());
+				LogResults(result);
 
-            } catch (Exception ex) {
-                Assert.Fail(ex.Message);
-            }
-        }
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
+		}
 
-        /// <summary>
-        /// Removes by identifier services test.
-        /// </summary>
-        [TestMethod()]
-        [Priority(5)]
-        public void RemoveByIdTest() {
-            try {
-                var result = _service.RemoveById(3);
-                Assert.IsTrue(result);
-                LogResults(result);
+		/// <summary>
+		/// Removes by identifier services test.
+		/// </summary>
+		[TestMethod()]
+		[Priority(5)]
+		public void RemoveByIdTest() {
+			try {
+				var result = ServiceTest.RemoveById(3);
+				Assert.IsTrue(result);
+				LogResults(result);
 
-            } catch (Exception ex) {
-                Assert.Fail(ex.Message);
-            }
-        }
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
+		}
 
-        /// <summary>
-        /// Gets services test.
-        /// </summary>
-        [TestMethod()]
-        public void GetTest() {
-            try {
-                var result = _service.Get(x => x.Observaciones.Equals(_model.Observaciones));
+		/// <summary>
+		/// Gets services test.
+		/// </summary>
+		[TestMethod()]
+		public void GetTest() {
+			try {
+				var result = ServiceTest.Get(x => x.Observaciones.Equals(ModelTest.Observaciones));
 
-            } catch (Exception ex) {
-                Assert.Fail(ex.Message);
-            }
-        }
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
+		}
 
-        /// <summary>
-        /// Adds services test.
-        /// </summary>
-        [TestMethod()]
-        [Priority(2)]
-        public void AddTest() {
-            try {
-                _model.Observaciones = "Add test";
-                var result = _service.Add(_model);
-                LogResults(result);
+		/// <summary>
+		/// Adds services test.
+		/// </summary>
+		[TestMethod()]
+		[Priority(2)]
+		public void AddTest() {
+			try {
+				ModelTest.Observaciones = "Add test";
+				var result = ServiceTest.Add(ModelTest);
+				LogResults(result);
 
-            } catch (Exception ex) {
-                Assert.Fail(ex.Message);
-            }
-        }
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
+		}
 
-        /// <summary>
-        /// Edits services test.
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        [TestMethod()]
-        [Priority(3)]
-        public void EditTest() {
-            try {
-                _model.Id = _service.GetLastId();
-                _model.Observaciones = "Edit test";
-                _model.LastChange = DateTime.Now;
-                var result = _service.Edit(_model);
-                Assert.IsTrue(result);
-                LogResults(result);
+		/// <summary>
+		/// Edits services test.
+		/// </summary>
+		/// <exception cref="NotImplementedException"></exception>
+		[TestMethod()]
+		[Priority(3)]
+		public void EditTest() {
+			try {
+				ModelTest.Id = ServiceTest.GetLastId();
+				ModelTest.Observaciones = "Edit test";
+				ModelTest.LastChange = DateTime.Now;
+				var result = ServiceTest.Edit(ModelTest);
+				Assert.IsTrue(result);
+				LogResults(result);
 
-            } catch (Exception ex) {
-                Assert.Fail(ex.Message);
-            }
-        }
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
+		}
 
-        /// <summary>
-        /// Removes services test.
-        /// </summary>
-        [TestMethod()]
-        public void RemoveTest() {
-            try {
-                _model.Id = _service.GetLastId() - 1;
-                var result = _service.Remove(_model);
-                Assert.IsTrue(result);
-                LogResults(result);
+		/// <summary>
+		/// Removes services test.
+		/// </summary>
+		[TestMethod()]
+		public void RemoveTest() {
+			try {
+				ModelTest.Id = ServiceTest.GetLastId() - 1;
+				var result = ServiceTest.Remove(ModelTest);
+				Assert.IsTrue(result);
+				LogResults(result);
 
-            } catch (Exception ex) {
-                Assert.Fail(ex.Message);
-            }
-        }
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
+		}
 
-        /// <summary>
-        /// Gets all services test.
-        /// </summary>
-        [TestMethod()]
-        [Priority(1)]
-        public void GetAllTest() {
-            try {
-                var result = _service.GetAll();
-                LogResults(result);
+		/// <summary>
+		/// Gets all services test.
+		/// </summary>
+		[TestMethod()]
+		[Priority(1)]
+		public void GetAllTest() {
+			try {
+				var result = ServiceTest.GetAll();
+				LogResults(result);
 
-            } catch (Exception ex) {
-                Assert.Fail(ex.Message);
-            }
-        }
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
+		}
 
-        /// <summary>
-        /// Adds all services test.
-        /// </summary>
-        [TestMethod()]
-        [Ignore]
-        public void AddAllTest() {
-            try {
-                _model.Observaciones = "Add all test";
-                _list = new() {
-                    _model,
-                    _model
-                };
-                var result = _service.AddAll(_list);
-                Assert.IsTrue(result);
-                LogResults(result);
+		/// <summary>
+		/// Adds all services test.
+		/// </summary>
+		[TestMethod()]
+		[Ignore]
+		public void AddAllTest() {
+			try {
+				ModelTest.Observaciones = "Add all test";
+				ListTest = new() {
+					ModelTest,
+					ModelTest
+				};
+				var result = ServiceTest.AddAll(ListTest);
+				Assert.IsTrue(result);
+				LogResults(result);
 
-            } catch (Exception ex) {
-                Assert.Fail(ex.Message);
-            }
-        }
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
+		}
 
-        /// <summary>
-        /// Updates all services test.
-        /// </summary>
-        [TestMethod()]
-        [Ignore]
-        public void UpdateAllTest() {
-            try {
-                _model.Observaciones = "Update all test";
-                _model.LastChange = DateTime.Now;
-                _list = new() {
-                    _model,
-                    _model
-                };
-                var result = _service.EditAll(_list);
-                Assert.IsTrue(result);
-                LogResults(result);
+		/// <summary>
+		/// Updates all services test.
+		/// </summary>
+		[TestMethod()]
+		[Ignore]
+		public void UpdateAllTest() {
+			try {
+				ModelTest.Observaciones = "Update all test";
+				ModelTest.LastChange = DateTime.Now;
+				ListTest = new() {
+					ModelTest,
+					ModelTest
+				};
+				var result = ServiceTest.EditAll(ListTest);
+				Assert.IsTrue(result);
+				LogResults(result);
 
-            } catch (Exception ex) {
-                Assert.Fail(ex.Message);
-            }
-        }
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
+		}
 
-        /// <summary>
-        /// Removes all services test.
-        /// </summary>
-        [TestMethod()]
-        [Ignore]
-        public void RemoveAllTest() {
-            try {
-                _list = new();
-                _model.Id = 3;
-                _list.Add(_model);
-                _model.Id = 4;
-                _list.Add(_model);
-                var result = _service.RemoveAll(_list);
-                Assert.IsTrue(result);
-                LogResults(result);
+		/// <summary>
+		/// Removes all services test.
+		/// </summary>
+		[TestMethod()]
+		[Ignore]
+		public void RemoveAllTest() {
+			try {
+				ListTest = new();
+				ModelTest.Id = 3;
+				ListTest.Add(ModelTest);
+				ModelTest.Id = 4;
+				ListTest.Add(ModelTest);
+				var result = ServiceTest.RemoveAll(ListTest);
+				Assert.IsTrue(result);
+				LogResults(result);
 
-            } catch (Exception ex) {
-                Assert.Fail(ex.Message);
-            }
-        }
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
+		}
 
-        /// <summary>
-        /// Gets the last identifier services test.
-        /// </summary>
-        [TestMethod()]
-        public void GetLastIdTest() {
-            try {
-                var result = _service.GetLastId();
-                Assert.IsNotNull(result);
-                LogResults(result);
+		/// <summary>
+		/// Gets the last identifier services test.
+		/// </summary>
+		[TestMethod()]
+		public void GetLastIdTest() {
+			try {
+				var result = ServiceTest.GetLastId();
+				Assert.IsNotNull(result);
+				LogResults(result);
 
-            } catch (Exception ex) {
-                Assert.Fail(ex.Message);
-            }
-        }
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
+		}
 
-        /// <summary>
-        /// Gets the count services test.
-        /// </summary>
-        [TestMethod()]
-        public void GetCountTest() {
-            try {
-                var result = _service.GetCount();
-                Assert.IsNotNull(result);
-                LogResults(result);
+		/// <summary>
+		/// Gets the count services test.
+		/// </summary>
+		[TestMethod()]
+		public void GetCountTest() {
+			try {
+				var result = ServiceTest.GetCount();
+				Assert.IsNotNull(result);
+				LogResults(result);
 
-            } catch (Exception ex) {
-                Assert.Fail(ex.Message);
-            }
-        }
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
+		}
 
-        /// <summary>
-        /// Exports the services test.
-        /// </summary>
-        [TestMethod()]
-        public void ExportTest() => ExportExcel<FSFilmModel>.Export(_list, @"C:\Temp\FSFilmModel.xlsx", true);
+		/// <summary>
+		/// Exports the services test.
+		/// </summary>
+		[TestMethod()]
+		public void ExportTest() => ExportExcel<FSFilmModel>.Export(ListTest, @"C:\Temp\FSFilmModel.xlsx", true);
 
-        #endregion
+		#endregion
 
-        [TestMethod()]
-        public void SaveWithEntitiesTest() {
-            try {
-                _model.Observaciones = "Save with entities test";
+		[TestMethod()]
+		public void SaveWithEntitiesTest() {
+			try {
+				ModelTest.Observaciones = "Save with entities test";
 
-                var result = _service.SaveWithEntities(_model);
-                Assert.IsTrue(result);
+				var result = ServiceTest.SaveWithEntities(ModelTest);
+				Assert.IsTrue(result);
 
-            } catch (Exception ex) {
-                Assert.Fail(ex.Message);
-            }
-        }
-    }
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
+		}
+
+		
+	}
 }

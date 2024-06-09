@@ -1,61 +1,62 @@
 ﻿namespace Genealogy.WebApplication.Core {
 
-    /// <summary>
-    /// Class that contains message strings constants
-    /// </summary>
-    public class WebStrings {
+	/// <summary>
+	/// Class that contains message strings constants
+	/// </summary>
+	public class WebStrings {
 
-        /// <summary>
-        /// The error save
-        /// </summary>
-        public const string ERROR_SAVE = "Error al guardar";
+		/// <summary>
+		/// The error save
+		/// </summary>
+		public const string ERROR_SAVE = "Error al guardar";
 
-        /// <summary>
-        /// The error server
-        /// </summary>
-        public const string ERROR_SERVER = "Error de servidor";
+		/// <summary>
+		/// The error server
+		/// </summary>
+		public const string ERROR_SERVER = "Error de servidor";
 
-        /// <summary>
-        /// The error bad request
-        /// </summary>
-        public const string ERROR_BAD_REQUEST = "Error 400";
+		/// <summary>
+		/// The error bad request
+		/// </summary>
+		public const string ERROR_BAD_REQUEST = "Error 400";
 
-        /// <summary>
-        /// The warn
-        /// </summary>
-        public const string WARN = "Warning";
+		/// <summary>
+		/// The warn
+		/// </summary>
+		public const string WARN = "Warning";
 
-        /// <summary>
-        /// The success
-        /// </summary>
-        public const string SUCCESS = "Success";
+		/// <summary>
+		/// The success
+		/// </summary>
+		public const string SUCCESS = "Success";
 
-        /// <summary>
-        /// The error
-        /// </summary>
-        public const string ERROR = "Error";
+		/// <summary>
+		/// The error
+		/// </summary>
+		public const string ERROR = "Error";
 
-        /// <summary>
-        /// The error modify
-        /// </summary>
-        public const string ERROR_MODIFY = "Error al modificar";
+		/// <summary>
+		/// The error modify
+		/// </summary>
+		public const string ERROR_MODIFY = "Error al modificar";
 
-        /// <summary>
-        /// The error modify
-        /// </summary>
-        public const string ERROR_REMOVE = "Error al eliminar";
+		/// <summary>
+		/// The error modify
+		/// </summary>
+		public const string ERROR_REMOVE = "Error al eliminar";
 
-        /// <summary>
-        /// The error get
-        /// </summary>
-        public const string ERROR_GET = "Error al obtener";
+		/// <summary>
+		/// The error get
+		/// </summary>
+		public const string ERROR_GET = "Error al obtener";
 
-        /// <summary>
-        /// The error list
-        /// </summary>
-        public const string ERROR_LIST = "Error al obtener";
+		/// <summary>
+		/// The error list
+		/// </summary>
+		public const string ERROR_LIST = "Error al obtener";
 
-        public const string ERROR_DATA = "Los datos de entrada están vacíos.";
+		public const string ERROR_DATA = "Los datos de entrada están vacíos.";
+		public const string ERROR_IMPORT = "Error al importar el archivo.";
 
 		//#region DATABASE CRUD
 
