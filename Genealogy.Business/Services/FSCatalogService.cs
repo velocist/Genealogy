@@ -33,7 +33,7 @@
 		/// <inheritdoc/>
 		public virtual bool SaveWithEntities(FSCatalogModel model) {
 			try {
-				var objetoCatalogDB = JsonAppHelper<FSCatalog>.GetEntityFromObject(model);
+				var objetoCatalogDB = JsonHelper<FSCatalog>.ConverToObject(model);
 
 				var catalogRepository = UnitOfWork.GetRepository<FSCatalog>();
 

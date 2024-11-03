@@ -17,7 +17,7 @@
 		public FSFilmController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView/*, FSFilmService baseService*/)
 			: base(sharedTranslations, viewTranslates, date, renderView, "FSFilm"/*, baseService*/) {
 			var json = System.IO.File.ReadAllText("./Views/FSFilm/_Configure.json");
-			Views = velocist.Services.Json.JsonAppHelper<ViewModel>.ConvertJsonToObject(json, false);
+			Views = velocist.Services.Json.JsonHelper<ViewModel>.DeserializeToObject(json, false);
 		}
 
 	}

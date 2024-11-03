@@ -53,7 +53,7 @@ namespace Genealogy.Tests.Technicals.Reflection {
 
         [TestMethod()]
         public void GetValuesTest() {
-            var result = model.GetValues(excludeIgnore, jsonAttribute);
+            var result = model.GetValues(excludeIgnore);
             LogResults(result);
         }
 
@@ -75,7 +75,7 @@ namespace Genealogy.Tests.Technicals.Reflection {
 
         [TestMethod()]
         public void GetNamePropertiesTest() {
-            var result = model.GetNameProperties(excludeIgnore, jsonAttribute);
+            var result = model.GetProperties(excludeIgnore, jsonAttribute);
             LogResults(result);
         }
 

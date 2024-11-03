@@ -78,7 +78,7 @@
                         break;
                     }
                 }
-                //string data = EnumHelpers.ParseByDescription<HEADER, TagAttribute>(StringTags.HEADER, false);
+                //string data = EnumExtensions.ParseByDescription<HEADER, TagAttribute>(StringTags.HEADER, false);
 
                 //foreach (var lineageTag in lineageTags) {
                 //    if (line.Contains(lineageTag.Key)) {

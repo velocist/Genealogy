@@ -26,19 +26,19 @@
 				UnitOfWork.BeginTransaction();
 
 				var catalogRepository = UnitOfWork.GetRepository<FSCatalog>();
-				var objetoCatalogDB = JsonAppHelper<FSCatalog>.GetEntityFromObject(model.FSFilm.FSCatalog);
+				var objetoCatalogDB = JsonHelper<FSCatalog>.ConverToObject(model.FSFilm.FSCatalog);
 				var catalogResult = catalogRepository.Insert(objetoCatalogDB);
 				UnitOfWork.Save();
 
 				var filmRepository = UnitOfWork.GetRepository<FSFilm>();
 				model.FSFilm.FSCatalogId = catalogResult.Id;
-				var objetoFilmDB = JsonAppHelper<FSFilm>.GetEntityFromObject(model.FSFilm);
+				var objetoFilmDB = JsonHelper<FSFilm>.ConverToObject(model.FSFilm);
 				var filmResult = filmRepository.Insert(objetoFilmDB);
 				UnitOfWork.Save();
 
 				model.FSFilmId = filmResult.Id;
 
-				var objetoDB = JsonAppHelper<FSRecord>.GetEntityFromObject(model);
+				var objetoDB = JsonHelper<FSRecord>.ConverToObject(model);
 				var entity = _repository.Insert(objetoDB);
 
 				UnitOfWork.Save();

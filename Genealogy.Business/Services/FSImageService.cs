@@ -22,8 +22,8 @@
 
 		public bool SaveWithEntities(FSImageModel model) {
 			try {
-				var objetoDB = JsonAppHelper<FSImage>.GetEntityFromObject(model);
-				//var objetoCatalogDB = JsonAppHelper<FSCatalog>.GetEntityFromObject(model.FSCatalog);
+				var objetoDB = JsonHelper<FSImage>.ConverToObject(model);
+				//var objetoCatalogDB = JsonHelper<FSCatalog>.ConverToObject(model.FSCatalog);
 
 				//var catalogRepository = UnitOfWork.GetRepository<FSCatalog>();
 

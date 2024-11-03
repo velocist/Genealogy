@@ -261,13 +261,13 @@ namespace Genealogy.WinFormsApp.Forms {
         /// Gets the list.
         /// </summary>
         /// <returns></returns>
-        private IEnumerable<IndiceImagenModel> GetList() => JsonAppHelper<IndiceImagenModel>.GetListFromObject(_listModel);
+        private IEnumerable<IndiceImagenModel> GetList() => JsonHelper<IndiceImagenModel>.ConvertToList(_listModel);
 
         /// <summary>
         /// Gets the object.
         /// </summary>
         /// <returns></returns>
-        private IndiceImagenModel GetObject() => JsonAppHelper<IndiceImagenModel>.GetEntityFromObject(LoadModel());
+        private IndiceImagenModel GetObject() => JsonHelper<IndiceImagenModel>.ConverToObject(LoadModel());
 
         /// <summary>
         /// Imports this instance.

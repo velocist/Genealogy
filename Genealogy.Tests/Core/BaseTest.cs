@@ -62,7 +62,7 @@ namespace Genealogy.Tests.Core {
         /// <param name="list">The list.</param>
         public void LogResults<T>(IEnumerable<T> list) where T : class {
             foreach (var item in list) {
-                var stringItem = JsonAppHelper<T>.GetString(item);
+                var stringItem = JsonHelper<T>.Serialize(item);
                 //_logger.LogInformation(stringItem);
             }
         }
@@ -73,7 +73,7 @@ namespace Genealogy.Tests.Core {
         /// <typeparam name="T"></typeparam>
         /// <param name="item">The item.</param>
         public void LogResults<T>(T item) where T : class {
-            var stringItem = JsonAppHelper<T>.GetString(item);
+            var stringItem = JsonHelper<T>.Serialize(item);
             //_logger.LogInformation(stringItem);
         }
 
@@ -82,7 +82,7 @@ namespace Genealogy.Tests.Core {
         /// </summary>
         /// <param name="item">The item.</param>
         public void LogResults(object item) {
-            var stringItem = JsonAppHelper<object>.GetString(item);
+            var stringItem = JsonHelper<object>.Serialize(item);
             //_logger.LogInformation(stringItem);
         }
 
@@ -111,7 +111,7 @@ namespace Genealogy.Tests.Core {
         /// </summary>
         /// <param name="list">The list.</param>
         public void LogResults(Dictionary<string, object> list) {
-            var stringItem = JsonAppHelper<Dictionary<string, object>>.GetString(list);
+            var stringItem = JsonHelper<Dictionary<string, object>>.Serialize(list);
             //foreach (var item in list) {
             //    _logger.LogInformation($"Key: {item.Key} Value: {item.Value}");
             //}

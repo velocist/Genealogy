@@ -23,8 +23,8 @@
 		/// <inheritdoc/>
 		public virtual bool SaveWithEntities(FSFilmModel model) {
 			try {
-				var objetoDB = JsonAppHelper<FSFilm>.GetEntityFromObject(model);
-				var objetoCatalogDB = JsonAppHelper<FSCatalog>.GetEntityFromObject(model.FSCatalog);
+				var objetoDB = JsonHelper<FSFilm>.ConverToObject(model);
+				var objetoCatalogDB = JsonHelper<FSCatalog>.ConverToObject(model.FSCatalog);
 
 				var catalogRepository = UnitOfWork.GetRepository<FSCatalog>();
 

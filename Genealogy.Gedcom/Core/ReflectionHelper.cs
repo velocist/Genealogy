@@ -142,8 +142,9 @@
                             return entity;
                             case "Boolean":
                             if (value != null) {
-                                var valBool = FormatHelper.StringToBoolean(value.ToString());
-                                entity.GetType().GetProperty(propertyName).SetValue(entity, valBool);
+                                object outResult;
+								var valBool = FormatHelper.ConvertToBoolean(value, out outResult);
+								entity.GetType().GetProperty(propertyName).SetValue(entity, outResult);
                             } else
                                 entity.GetType().GetProperty(propertyName).SetValue(entity, false);
 

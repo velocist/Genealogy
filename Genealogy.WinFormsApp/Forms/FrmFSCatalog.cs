@@ -262,13 +262,13 @@ namespace Genealogy.WinFormsApp.Forms {
         /// Gets the list.
         /// </summary>
         /// <returns></returns>
-        private IEnumerable<FSCatalogModel> GetList() => JsonAppHelper<FSCatalogModel>.GetListFromObject(_listModel);
+        private IEnumerable<FSCatalogModel> GetList() => JsonHelper<FSCatalogModel>.ConvertToList(_listModel);
 
         /// <summary>
         /// Gets the object.
         /// </summary>
         /// <returns></returns>
-        private FSCatalogModel GetObject() => JsonAppHelper<FSCatalogModel>.GetEntityFromObject(LoadModel());
+        private FSCatalogModel GetObject() => JsonHelper<FSCatalogModel>.ConverToObject(LoadModel());
 
         /// <summary>
         /// Imports this instance.

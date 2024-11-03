@@ -76,7 +76,7 @@ namespace Genealogy.WinFormsApp.Forms {
         private void TreeView_DoubleClick(object sender, EventArgs e) {
             try {
                 if (treeView.SelectedNode.IsSelected) {
-                    //var data = EnumHelpers.ParseByDescription<ADOPTED_BY_WHICH_PARENT, TagAttribute>(StringTags.HUSBAND, false);
+                    //var data = EnumExtensions.ParseByDescription<ADOPTED_BY_WHICH_PARENT, TagAttribute>(StringTags.HUSBAND, false);
                     //GedComFileManager.SetGedcomObject(list);
                     _logger.LogDebug("Data");
                 }

@@ -29,55 +29,64 @@
 		bool first = true;
 		string active = "";
 	} *@
-	@* 	@if (Model != null && Model.Any()) {
+@* 	@if (Model != null && Model.Any()) {
 	@foreach (FileViewerModel item in Model) { *@
-	@* @if (first) {
+@* @if (first) {
 		active = "active";
 		first = false;
 	} else {
 		active = "";
 	} *@
-	@* <div class="tab-panel fade show " id="@Model.TableName" role="tabpanel" aria-labelledby="@Model.TableName-tab">
+@* <div class="tab-panel fade show " id="@Model.TableName" role="tabpanel" aria-labelledby="@Model.TableName-tab">
 		<div class="table-responsive"> *@
-			<table id="FileViewer_@Model.TableName" class="table table-sm table-compact table-striped table-bordered nowrap tableViewer" cellspacing="0" width="100%">
-				<thead>
-					<tr>
-						@if (Model.Columns != null) {
-							@foreach (string column in Model.Columns) {
-								<th>@column</th>
-							}
-						}
-					</tr>
-				</thead>
-				<tbody>
-					@if (Model.Rows != null) {
-						@foreach (object[] row in Model.Rows) {
-							<tr>
-								@for (int i = 0; i < Model.Columns.Count; i++) {
-									<td>
-										@row.GetValue(i)
-										@*<input value="@row.GetValue(i)" type="text" class="form-control"/>*@
-									</td>
-								}
-							</tr>
-						}
+<table id="FileViewer_@Model.TableName" class="table table-sm table-compact table-striped table-bordered nowrap tableViewer" cellspacing="0" width="100%">
+	<thead>
+		<tr>
+			@if (Model.Columns != null) {
+				@foreach (string column in Model.Columns) {
+					<th>@column</th>
+				}
+			}
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.Rows != null) {
+			@foreach (object[] row in Model.Rows) {
+				<tr>
+					@for (int i = 0; i < Model.Columns.Count; i++) {
+						<td>
+							@row.GetValue(i)
+							@*<input value="@row.GetValue(i)" type="text" class="form-control"/>*@
+						</td>
 					}
-				</tbody>
-				<tfoot>
-					<tr>
-					</tr>
-				</tfoot>
-			</table>
+				</tr>
+			}
+		}
+	</tbody>
+	<tfoot>
+		<tr>
+		</tr>
+	</tfoot>
+</table>
 @* 		</div>
 	</div> *@
-	@* 		}
+@* 		}
 	} *@
 @* </div> *@
 <script type="text/javascript">
 	var tableViewer;
 	$( document ).ready( function () {
+
+		if ( tableViewer ) {
+			tableViewer.destroy();
+		}
+
 		tableViewer = $( '.tableViewer' ).DataTable( {
 			scrollCollapse: true,
+			select:{
+				style:'multi',
+
+			},
 			scrollX: true,
 			scrollY: true,
 			fixedHeader: {
@@ -103,8 +112,8 @@
 					columns: 'th:nth-child(n+3)'
 				}
 			],
-			initComplete: function (settings, json) {
-            },
+			initComplete: function ( settings, json ) {
+			},
 		} );
 	} );
 </script>

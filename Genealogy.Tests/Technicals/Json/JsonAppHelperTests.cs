@@ -34,34 +34,44 @@
 
         [TestMethod()]
         public void GetStringTest() {
-            var result = JsonAppHelper<FSCatalog, FSCatalogModel>.GetString(model, optionsSerialize, indent);
-        }
+            var result = JsonHelper<FSCatalog>.Serialize(model, optionsSerialize, indent);
+				Console.WriteLine($"{result}");
+		}
 
-        [TestMethod()]
+		[TestMethod()]
         public void GetEntityFromObjectTest() {
 
-            var result = JsonAppHelper<FSCatalog, FSCatalogModel>.GetEntityFromObject(model, optionsSerialize, optionsDeserialize, indent);
-        }
+            var result = JsonHelper<FSCatalog>.ConverToObject(model, optionsSerialize, optionsDeserialize, indent);
+				Console.WriteLine($"{result}");
+		}
 
-        [TestMethod()]
+		[TestMethod()]
         public void GetListFromObjectTest() {
 
-            var result = JsonAppHelper<FSCatalogModel, FSCatalog>.GetListFromObject(list, optionsSerialize, optionsDeserialize, indent);
-        }
+            var result = JsonHelper<FSCatalogModel>.ConvertToList(list, optionsSerialize, optionsDeserialize, indent);
+			foreach (var item in result) {
+				Console.WriteLine($"{item}");
+			}
 
-        [TestMethod()]
+		}
+
+		[TestMethod()]
         public void GetStringV1Test() {
-            var result1 = JsonAppHelper<FSCatalogModel>.GetString(model, optionsSerialize, indent);
+            var result = JsonHelper<FSCatalogModel>.Serialize(model, optionsSerialize, indent);
         }
 
         [TestMethod()]
         public void GetEntityFromObjectV1Test() {
-            var result1 = JsonAppHelper<FSCatalogModel>.GetString(model, optionsSerialize, indent);
-        }
+            var result = JsonHelper<FSCatalogModel>.Serialize(model, optionsSerialize, indent);
+				Console.WriteLine($"{result}");
+		}
 
-        [TestMethod()]
+		[TestMethod()]
         public void GetListFromObjectV1Test() {
-            var result1 = JsonAppHelper<FSCatalogModel>.GetListFromObject(list, optionsSerialize, optionsDeserialize, indent);
-        }
+            var result = JsonHelper<FSCatalogModel>.ConvertToList(list, optionsSerialize, optionsDeserialize, indent);
+			foreach (var item in result) {
+				Console.WriteLine($"{item}");
+			}
+		}
     }
 }

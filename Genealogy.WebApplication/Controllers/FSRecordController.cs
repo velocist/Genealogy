@@ -17,7 +17,7 @@
 		public FSRecordController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView, FSRecordService baseService)
 			: base(sharedTranslations, viewTranslates, date, renderView, "FSRecord") {
 			var json = System.IO.File.ReadAllText("./Views/FSRecord/_Configure.json");
-			Views = velocist.Services.Json.JsonAppHelper<ViewModel>.ConvertJsonToObject(json, false);
+			Views = velocist.Services.Json.JsonHelper<ViewModel>.DeserializeToObject(json, false);
 		}
 
 	}

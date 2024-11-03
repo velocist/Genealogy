@@ -17,7 +17,7 @@
 		public FSImageController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView, FSImageService baseService)
 			: base(sharedTranslations, viewTranslates, date, renderView, "FSImage") {
 			var json = System.IO.File.ReadAllText("./Views/FSImage/_Configure.json");
-			Views = velocist.Services.Json.JsonAppHelper<ViewModel>.ConvertJsonToObject(json, false);
+			Views = velocist.Services.Json.JsonHelper<ViewModel>.DeserializeToObject(json, false);
 		}
 
 	}

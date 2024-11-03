@@ -12,7 +12,7 @@
 		public FileViewerController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView, FSCatalogService baseService)
 			: base(sharedTranslations, viewTranslates, date, renderView, "FileViewer") {
 			var json = System.IO.File.ReadAllText("./Views/FileViewer/_Configure.json");
-			Views = velocist.Services.Json.JsonAppHelper<ViewModel>.ConvertJsonToObject(json, false);
+			Views = velocist.Services.Json.JsonHelper<ViewModel>.DeserializeToObject(json, false);
 		}
 
 		[HttpGet]
@@ -67,6 +67,54 @@
 						ModelState.AddModelError(string.Empty, WebStrings.ERROR_BAD_REQUEST);
 						return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
 					}
+				} else {
+					ModelState.AddModelError(string.Empty, WebStrings.ERROR_BAD_REQUEST);
+					return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
+				}
+			} catch (Exception ex) {
+				_logger.LogError(ex.Message);
+				ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
+				return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
+			}
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Save(FileViewerModel model) {
+			PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.View && x.ActionName == nameof(Index) && x.ControllerName == ControllerName);
+			//var model = new FileViewerModel();
+			try {
+				if (model != null) {
+					////Check format file
+					//if (!file.FileName.EndsWith(".csv") && !file.FileName.EndsWith(".xsl") && !file.FileName.EndsWith(".xlsx")) {
+					//	ModelState.AddModelError(string.Empty, _sharedTranslations["Selecciona un archivo .csv, .xls o .xlsx"]);
+					//	return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
+					//}
+
+					//var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", "files", file.FileName);
+					//if (System.IO.File.Exists(path)) {
+					//	System.IO.File.Delete(path);
+					//}
+
+					////Copy file to import
+					//var pathCopy = FilesHelper.CopyFile(file, path);
+
+					//model.Add(new FileViewerModel());
+					//if (pathCopy != null && pathCopy.Length > 0) {
+					//model = ExportExcel<FileViewerModel>.Import(pathCopy, row);
+					
+					//Genealogy.Business.Services.RecursoService.SaveRegisters();
+					
+					if (model != null) {
+							ViewData.Model = model;
+							return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, model, statusCode: StatusCodes.Status200OK);
+						} else {
+							ModelState.AddModelError(string.Empty, "Error al importar el archivo.");
+							return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
+						}
+					//} else {
+					//	ModelState.AddModelError(string.Empty, WebStrings.ERROR_BAD_REQUEST);
+					//	return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
+					//}
 				} else {
 					ModelState.AddModelError(string.Empty, WebStrings.ERROR_BAD_REQUEST);
 					return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);

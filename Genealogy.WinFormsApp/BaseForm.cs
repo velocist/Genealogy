@@ -16,7 +16,7 @@ namespace Genealogy.WinFormsApp {
         ///// Gets the object.
         ///// </summary>
         ///// <returns></returns>
-        //private TModel GetObject() => JsonAppHelper<TModel>.GetEntityFromObject(LoadModel());
+        //private TModel GetObject() => JsonHelper<TModel>.ConverToObject(LoadModel());
 
     }
 }

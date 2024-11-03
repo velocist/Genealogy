@@ -13,7 +13,7 @@
 		public InvestigacionController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView, InvestigacionService baseService)
 			: base(sharedTranslations, viewTranslates, date, renderView, "Investigacion") {
 			var json = System.IO.File.ReadAllText("./Views/Investigacion/_Configure.json");
-			Views = velocist.Services.Json.JsonAppHelper<ViewModel>.ConvertJsonToObject(json, false);
+			Views = velocist.Services.Json.JsonHelper<ViewModel>.DeserializeToObject(json, false);
 		}
 
 	}
