@@ -82,67 +82,7 @@
 	  <None Update="Settings\log4net.config">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
-	  <None Update="Technicals\Logger\LogSettings\Console\logSettingsConsole-Warning.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\LogSettings\Debug\logSettingsDebug-Warning.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\LogSettings\Debug\logSettingsDebug-Trace.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\LogSettings\Debug\logSettingsDebug-Information.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\LogSettings\Debug\logSettingsDebug-Error.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\LogSettings\LogLevel\logSettingsLogLevel-Debug.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\LogSettings\LogLevel\logSettingsLogLevel-Error.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\LogSettings\LogLevel\logSettingsLogLevel-Information.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\LogSettings\LogLevel\logSettingsLogLevel-Trace.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\LogSettings\LogLevel\logSettingsLogLevel-Warning.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\Settings\log4netWithConsoleAppender-Trace.config">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\Settings\log4netWithConsoleAppender-Debug.config">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\Settings\log4netWithAll.config">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\Settings\log4netWithRollingFileAppender.config">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
 	  <None Update="Settings\logSettings.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\LogSettings\Console\logSettingsConsole-Error.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\LogSettings\Console\logSettingsConsole-Information.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\LogSettings\Console\logSettingsConsole-Debug.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\LogSettings\Console\logSettingsConsole-Trace.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\LogSettings\Debug\logSettingsDebug-Debug.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Technicals\Logger\LogSettings\logSettings-LogLevel.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
