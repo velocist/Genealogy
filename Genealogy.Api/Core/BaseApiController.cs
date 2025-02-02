@@ -65,7 +65,7 @@ namespace Genealogy.Api.Core {
 			try {
 				var model = _baseService.Edit(value);
 
-				if (model == null)
+				if (model == false)
 					return NoContent();
 
 				return Ok(model);
@@ -81,7 +81,7 @@ namespace Genealogy.Api.Core {
 			try {
 				var model = _baseService.RemoveById(id);
 
-				if (model == null)
+				if (model == false)
 					return NoContent();
 
 				return Ok(model);

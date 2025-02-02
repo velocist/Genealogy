@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using velocist.WinForms.FormControl;
+using System.ComponentModel;
 
 namespace Genealogy.WinFormsApp.Forms.Login {
 
@@ -10,12 +11,17 @@ namespace Genealogy.WinFormsApp.Forms.Login {
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger _logger;
 
-        //[BindProperty]
-        public InputModel Input { get; set; }
+		//[BindProperty]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 
-        public IList<AuthenticationScheme> ExternalLogins { get; set; }
+		//[BindProperty]
+		public InputModel Input { get; set; }
 
-        public string ReturnUrl { get; set; }
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public IList<AuthenticationScheme> ExternalLogins { get; set; }
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public string ReturnUrl { get; set; }
 
         //[TempData]
         //public string ErrorMessage { get; set; }

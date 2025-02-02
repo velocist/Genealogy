@@ -1,13 +1,13 @@
 ﻿using velocist.WinForms.FormControl;
 
 namespace Genealogy.WinFormsApp.Forms {
-    public partial class MDIParent : Form {
+    public partial class MDIParent : BaseForm {
 
         private int childFormNumber = 0;
 
         //private readonly UserManager<User> _userManager;
         //private readonly SignInManager<User> _signInManager;
-        private readonly ILogger _logger;
+        //private readonly ILogger Logger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MDIParent"/> class.
@@ -16,7 +16,7 @@ namespace Genealogy.WinFormsApp.Forms {
             InitializeComponent();
             //_userManager = (UserManager<User>)serviceProvider.GetService(typeof(UserManager<User>));
             //_signInManager = (SignInManager<User>)serviceProvider.GetService(typeof(SignInManager<User>)); ;
-            _logger = GetStaticLogger<MDIParent>();
+            Logger = GetStaticLogger<MDIParent>();
             this.ConfigureForm("Genealogia");
         }
 
@@ -101,7 +101,7 @@ namespace Genealogy.WinFormsApp.Forms {
                     frm.Show();
                 }
             } catch (Exception ex) {
-                _logger.LogError(ex.Message);
+                Logger.LogError(ex.Message);
                 _ = MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -115,7 +115,7 @@ namespace Genealogy.WinFormsApp.Forms {
                     frm.Show();
                 }
             } catch (Exception ex) {
-                _logger.LogError(ex.Message);
+                Logger.LogError(ex.Message);
                 _ = MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -129,7 +129,7 @@ namespace Genealogy.WinFormsApp.Forms {
                     frm.Show();
                 }
             } catch (Exception ex) {
-                _logger.LogError(ex.Message);
+                Logger.LogError(ex.Message);
                 _ = MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -142,7 +142,7 @@ namespace Genealogy.WinFormsApp.Forms {
                 //    frm.Show();
                 //}
             } catch (Exception ex) {
-                _logger.LogError(ex.Message);
+                Logger.LogError(ex.Message);
                 _ = MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -156,7 +156,7 @@ namespace Genealogy.WinFormsApp.Forms {
                     frm.Show();
                 }
             } catch (Exception ex) {
-                _logger.LogError(ex.Message);
+                Logger.LogError(ex.Message);
                 _ = MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -170,7 +170,7 @@ namespace Genealogy.WinFormsApp.Forms {
                     frm.Show();
                 }
             } catch (Exception ex) {
-                _logger.LogError(ex.Message);
+                Logger.LogError(ex.Message);
                 _ = MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -185,7 +185,7 @@ namespace Genealogy.WinFormsApp.Forms {
                 //}
                 throw new NotImplementedException();
             } catch (Exception ex) {
-                _logger.LogError(ex.Message);
+                Logger.LogError(ex.Message);
                 _ = MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -200,7 +200,7 @@ namespace Genealogy.WinFormsApp.Forms {
                 //}
                 throw new NotImplementedException();
             } catch (Exception ex) {
-                _logger.LogError(ex.Message);
+                Logger.LogError(ex.Message);
                 _ = MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 
@@ -43,6 +43,14 @@
 	<ItemGroup>
 	  <Compile Include="Core\GenealogyBaseModel.cs" />
 	  <Compile Include="Core\IGenealogyServices.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.1" />
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.1" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="8.0.0" />
+	  <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.1" />
+	  <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.1" />
 	</ItemGroup>
 
 	<!--<ItemGroup>

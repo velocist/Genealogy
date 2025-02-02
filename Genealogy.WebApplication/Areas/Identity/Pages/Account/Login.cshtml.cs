@@ -3,7 +3,7 @@
 	public class LoginModel : PageModel {
 		private readonly UserManager<User> _userManager;
 		private readonly SignInManager<User> _signInManager;
-		private readonly ILogger<LoginModel> _logger;
+		private readonly ILogger _logger;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="LoginModel"/> class.
@@ -16,7 +16,7 @@
 			UserManager<User> userManager) {
 			_userManager = userManager;
 			_signInManager = signInManager;
-			_logger = LogServiceContainer.GetLog<LoginModel>();
+			_logger = GetStaticLogger<LoginModel>();
 		}
 
 		/// <summary>

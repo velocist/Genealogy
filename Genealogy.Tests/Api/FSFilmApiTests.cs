@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Net.Http.Json;
+using Genealogy.Tests.Services;
 using velocist.Services.Import;
 
 namespace Genealogy.Tests.Api {
@@ -7,7 +8,7 @@ namespace Genealogy.Tests.Api {
 	/// <summary>
 	/// Tests for FSFilm services. <see cref="FSFilmService"/>
 	/// </summary>
-	/// <seealso cref="Genealogy.Tests.Core.ServiceTest&lt;Genealogy.Business.Models.App.FSFilmModel, Genealogy.Objects.Entities.FSFilm, Genealogy.Business.Services.FSFilmService&gt;" />
+	/// <seealso cref="Core.ServiceTest&lt;Business.Models.App.FSFilmModel, Objects.Entities.FSFilm, Business.Services.FSFilmService&gt;" />
 	[TestClass()]
 	public class FSFilmApiTests : BaseApiTest<FSFilmModel> {
 

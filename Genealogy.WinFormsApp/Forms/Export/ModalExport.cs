@@ -1,6 +1,7 @@
 ﻿using velocist.WinForms.FormControl;
 using velocist.WinFormsControlLibrary.Models;
 using velocist.WinFormsControlLibrary.Types;
+using System.ComponentModel;
 
 namespace Genealogy.WinFormsApp.Forms.Export {
 
@@ -12,7 +13,8 @@ namespace Genealogy.WinFormsApp.Forms.Export {
 
         private readonly ILogger _logger;
 
-        public ExportModel ExportModel { get; set; }
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public ExportModel ExportModel { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ModalExport"/> class.

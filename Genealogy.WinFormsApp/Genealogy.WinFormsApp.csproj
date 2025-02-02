@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net9.0-windows7.0</TargetFramework>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<UseWindowsForms>true</UseWindowsForms>
 		<OutputType>WinExe</OutputType>
@@ -68,15 +68,20 @@
 
 	<ItemGroup>
 		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
+		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.1">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.1">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="8.0.0" />
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.1" />
+		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>

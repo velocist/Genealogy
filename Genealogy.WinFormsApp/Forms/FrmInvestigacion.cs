@@ -259,13 +259,12 @@ namespace Genealogy.WinFormsApp.Forms {
         /// Loads the details.
         /// </summary>
         private void LoadDetails() {
-            CommonDataControl.Id = CustomTable.TableData.SelectedRows[0].Cells[CustomTable.TableData.Columns[MappingsDB.Columna_Id].Index].Value?.ToString();
-            CommonDataControl.AddDate = CustomTable.TableData.SelectedRows[0].Cells[CustomTable.TableData.Columns["AddDate"].Index].Value?.ToString();
-            CommonDataControl.LastChange = CustomTable.TableData.SelectedRows[0].Cells[CustomTable.TableData.Columns["LastChange"].Index].Value?.ToString();
-            CommonDataControl.Observations = CustomTable.TableData.SelectedRows[0].Cells[CustomTable.TableData.Columns[MappingsDB.Columna_Observaciones].Index].Value?.ToString();
-            CommonDataControl.Url = CustomTable.TableData.SelectedRows[0].Cells[CustomTable.TableData.Columns[MappingsDB.Columna_Url].Index].Value?.ToString();
-
-        }
+			CommonDataControl.Id = CustomTable.GetSelectedCellValue("Id")?.ToString();
+			CommonDataControl.AddDate = CustomTable.GetSelectedCellValue("AddDate")?.ToString();
+			CommonDataControl.LastChange = CustomTable.GetSelectedCellValue("LastChange")?.ToString();
+			CommonDataControl.Observations = CustomTable.GetSelectedCellValue(MappingsDB.Columna_Observaciones)?.ToString();
+			CommonDataControl.Url = CustomTable.GetSelectedCellValue(MappingsDB.Columna_Url)?.ToString();
+		}
 
         /// <summary>
         /// Loads the model.

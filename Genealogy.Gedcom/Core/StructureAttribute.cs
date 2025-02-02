@@ -14,9 +14,8 @@
         }
 
         public string GetStructure(string name) {
-            if (name is null)
-                throw new ArgumentNullException(nameof(name));
-            try {
+			ArgumentNullException.ThrowIfNull(name);
+			try {
                 return string.Empty;
             } catch (Exception) {
                 return null;
