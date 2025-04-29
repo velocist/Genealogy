@@ -25,8 +25,9 @@
 			try {
 				return Get(x => x.Number == number);
 			} catch (Exception ex) {
-				Logger.LogError("{errorMessage}", ex.Message);
-				throw new Exception(ex.Message);
+				Trace.WriteLine(ex);
+				Logger.LogError(ex, "{errorMessage}", ex.Message);
+				throw;
 			}
 		}
 
@@ -43,9 +44,10 @@
 				UnitOfWork.Commit();
 				return true;
 			} catch (Exception ex) {
-				Logger.LogError("{errorMessage}", ex.Message);
+				Trace.WriteLine(ex);
+				Logger.LogError(ex, "{errorMessage}", ex.Message);
 				UnitOfWork.Rollback();
-				throw new Exception(ex.Message);
+				throw;
 			}
 		}
 	}

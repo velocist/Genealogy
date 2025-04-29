@@ -35,14 +35,14 @@
 
 	<ItemGroup>
 		<PackageReference Include="EntityFramework" Version="6.5.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.1" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.4" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="8.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.1" />
-		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.1" />
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.4" />
+		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>

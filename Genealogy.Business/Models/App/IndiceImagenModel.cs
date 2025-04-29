@@ -1,6 +1,4 @@
-﻿using Genealogy.Business.Core;
-
-namespace Genealogy.Business.Models.App {
+﻿namespace Genealogy.Business.Models.App {
 
 	/// <summary>
 	/// The family search index of images model. <see cref="IndiceImagen"/>

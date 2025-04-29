@@ -46,9 +46,10 @@
 
 				return true;
 			} catch (Exception ex) {
-				Logger.LogError("{errorMessage}", ex.Message);
+				Logger.LogError(ex, "{errorMessage}", ex.Message);
 				UnitOfWork.Rollback();
-				throw new Exception(ex.Message);
+				Trace.WriteLine(ex);
+				throw;
 			}
 		}
 	}

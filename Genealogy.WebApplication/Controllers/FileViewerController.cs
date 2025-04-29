@@ -23,6 +23,7 @@
 
 				return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.View);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex.Message);
 				ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
 				return await Task.FromResult(View(nameof(HomeController.Index)));
@@ -72,6 +73,7 @@
 					return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
 				}
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex.Message);
 				ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
 				return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
@@ -101,16 +103,16 @@
 					//model.Add(new FileViewerModel());
 					//if (pathCopy != null && pathCopy.Length > 0) {
 					//model = ExportExcel<FileViewerModel>.Import(pathCopy, row);
-					
+
 					//Genealogy.Business.Services.RecursoService.SaveRegisters();
-					
+
 					if (model != null) {
-							ViewData.Model = model;
-							return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, model, statusCode: StatusCodes.Status200OK);
-						} else {
-							ModelState.AddModelError(string.Empty, "Error al importar el archivo.");
-							return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
-						}
+						ViewData.Model = model;
+						return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, model, statusCode: StatusCodes.Status200OK);
+					} else {
+						ModelState.AddModelError(string.Empty, "Error al importar el archivo.");
+						return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
+					}
 					//} else {
 					//	ModelState.AddModelError(string.Empty, WebStrings.ERROR_BAD_REQUEST);
 					//	return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
@@ -120,6 +122,7 @@
 					return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
 				}
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex.Message);
 				ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
 				return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
@@ -156,6 +159,7 @@
 					return await Task.FromResult(RedirectToAction(nameof(HomeController.Index)));
 				}
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex.Message);
 				TempData["Message"] = WebStrings.ERROR_SERVER;// ModelState.AddModelError(string.Empty, Strings.ERROR_SERVER);
 				return await Task.FromResult(RedirectToAction(nameof(HomeController.Index)));

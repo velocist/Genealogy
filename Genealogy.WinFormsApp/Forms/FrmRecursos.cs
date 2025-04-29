@@ -78,6 +78,7 @@ namespace Genealogy.WinFormsApp.Forms {
 				InitTable();
 				LoadTable();
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex, "{message}", ex.Message);
 				_ = MessageBox.Show(ex.Message);
 			}
@@ -96,6 +97,7 @@ namespace Genealogy.WinFormsApp.Forms {
 					LoadDetails();
 				}
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex, "{message}", ex.Message);
 				_ = MessageBox.Show(ex.Message);
 			}
@@ -116,6 +118,7 @@ namespace Genealogy.WinFormsApp.Forms {
 				if (list != null)
 					_ = CustomTable.TableData.LoadTable(list);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex, "{message}", ex.Message);
 				_ = MessageBox.Show(ex.Message);
 			}
@@ -136,6 +139,7 @@ namespace Genealogy.WinFormsApp.Forms {
 				GbxData.CleanControls();
 				GbxData.SetControlsToReadOnly(false);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex, "{message}", ex.Message);
 				_ = MessageBox.Show(ex.Message);
 			}
@@ -158,6 +162,7 @@ namespace Genealogy.WinFormsApp.Forms {
 
 				LoadTable();
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex, "{message}", ex.Message);
 				_ = MessageBox.Show(ex.Message);
 			}
@@ -173,6 +178,7 @@ namespace Genealogy.WinFormsApp.Forms {
 				//LoadDetails();
 				GbxData.SetControlsToReadOnly(false);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex, "{message}", ex.Message);
 				_ = MessageBox.Show(ex.Message);
 			}
@@ -191,6 +197,7 @@ namespace Genealogy.WinFormsApp.Forms {
 
 				LoadTable();
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex, "{message}", ex.Message);
 				_ = MessageBox.Show(ex.Message);
 			}
@@ -202,6 +209,7 @@ namespace Genealogy.WinFormsApp.Forms {
 				GbxData.CleanControls();
 				GbxData.SetControlsToReadOnly(true);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex, "{message}", ex.Message);
 				_ = MessageBox.Show(ex.Message);
 			}
@@ -228,6 +236,7 @@ namespace Genealogy.WinFormsApp.Forms {
 					_ = MessageBox.Show("Error al realizar la importación.");
 				}
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex, "{message}", ex.Message);
 				_ = MessageBox.Show(ex.Message);
 			}
@@ -248,6 +257,7 @@ namespace Genealogy.WinFormsApp.Forms {
 					_ = MessageBox.Show("Error al realizar la exportación.");
 				}
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex, "{message}", ex.Message);
 				_ = MessageBox.Show(ex.Message);
 			}
@@ -316,7 +326,8 @@ namespace Genealogy.WinFormsApp.Forms {
 				//CustomTable.TableData.ConfigureTable();
 
 			} catch (Exception ex) {
-				throw new Exception(ex.Message);
+				Trace.WriteLine(ex);
+				throw;
 			}
 		}
 

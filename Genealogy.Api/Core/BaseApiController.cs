@@ -1,5 +1,4 @@
 ﻿using Genealogy.Business.Core;
-using velocist.Services.Core;
 
 namespace Genealogy.Api.Core {
 	public class BaseApiController<TService, TModel, TEntity> : ControllerBase {
@@ -22,6 +21,7 @@ namespace Genealogy.Api.Core {
 
 				return Ok(model);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				return BadRequest(ex.Message);
 				throw;
 			}
@@ -38,6 +38,7 @@ namespace Genealogy.Api.Core {
 
 				return Ok(model);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				return BadRequest(ex.Message);
 				throw;
 			}
@@ -54,6 +55,7 @@ namespace Genealogy.Api.Core {
 
 				return Ok(model);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				return BadRequest(ex.Message);
 				throw;
 			}
@@ -70,6 +72,7 @@ namespace Genealogy.Api.Core {
 
 				return Ok(model);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				return BadRequest(ex.Message);
 				throw;
 			}
@@ -86,6 +89,7 @@ namespace Genealogy.Api.Core {
 
 				return Ok(model);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				return BadRequest(ex.Message);
 				throw;
 			}
@@ -104,6 +108,7 @@ namespace Genealogy.Api.Core {
 
 				//return Ok(model);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				return BadRequest(ex.Message);
 				throw;
 			}

@@ -12,7 +12,6 @@ global using System.Text.Json;
 global using System.Threading.Tasks;
 global using Autofac;
 global using Genealogy.Business;
-global using Genealogy.Business.Models;
 global using Genealogy.Business.Models.App;
 global using Genealogy.Business.Services;
 global using Genealogy.Common;

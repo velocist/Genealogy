@@ -1,6 +1,4 @@
-using Genealogy.Common;
 using Microsoft.AspNetCore.HttpLogging;
-using velocist.Services.Log;
 
 namespace Genealogy.Api {
 
@@ -34,7 +32,7 @@ namespace Genealogy.Api {
 			builder.Services.AddSwaggerGen();
 			builder.Services.AddAuthentication("Bearer").AddJwtBearer();
 			builder.Services.AddHttpLogging(option => new HttpLoggingOptions() {
-				
+
 			});
 
 			var configuration = Configuration.ConfigureApp();

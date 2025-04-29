@@ -22,7 +22,7 @@
 		public bool SaveWithEntities(RecursoModel model) => throw new NotImplementedException();
 
 		public void SaveRegisters() {
-			
+
 		}
 	}
 }

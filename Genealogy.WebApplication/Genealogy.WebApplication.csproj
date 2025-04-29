@@ -4,7 +4,7 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<UserSecretsId>aspnet-velocist.WebApplication-AFCDCEE9-149C-4DBC-A892-29D1E3AE218E</UserSecretsId>
-		<Description>Genealogia 2023</Description>
+		<Description>Genealogia 2024</Description>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -68,32 +68,32 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Autofac" Version="8.2.0" />
+		<PackageReference Include="Autofac" Version="8.2.1" />
 		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
 		<PackageReference Include="Grpc" Version="2.46.6" />
-		<PackageReference Include="Grpc.AspNetCore" Version="2.67.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="9.0.1" />
+		<PackageReference Include="Grpc.AspNetCore" Version="2.71.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="9.0.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.3.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.1">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.1" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.1">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.4" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Identity.Web" Version="3.6.2" />
-		<PackageReference Include="Microsoft.Identity.Web.UI" Version="3.6.2" />
+		<PackageReference Include="Microsoft.Identity.Web" Version="3.8.4" />
+		<PackageReference Include="Microsoft.Identity.Web.UI" Version="3.8.4" />
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
-		<PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.1" />
-		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.1" />
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.4" />
+		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>

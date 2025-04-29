@@ -6,7 +6,6 @@ global using Genealogy.Objects.Entities;
 global using Genealogy.Tests.Core;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.VisualStudio.TestTools.UnitTesting;
-global using velocist.LogService;
 global using velocist.Services.Core.Interfaces;
 global using velocist.Services.Json;
 global using static velocist.Services.Log.StaticLoggerFactory;

@@ -1,5 +1,4 @@
-﻿using System.Net.Http;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using Genealogy.Tests.Services;
 using velocist.Services.Import;
 
@@ -24,7 +23,7 @@ namespace Genealogy.Tests.Api {
 			ListTest.Add(ModelTest);
 
 			GenealogyApiClientEndpoint = $"{GenealogyApiClient}FSFilm";
-        }
+		}
 
 		#region Base services tests
 
@@ -35,7 +34,7 @@ namespace Genealogy.Tests.Api {
 		[Priority(4)]
 		public void GetByIdTest() {
 			try {
-				var url =$"{GenealogyApiClientEndpoint}/1";
+				var url = $"{GenealogyApiClientEndpoint}/1";
 				var result = GenealogyApiClient.GetAsync(url).GetAwaiter().GetResult();
 
 				var model = result.Content.ReadFromJsonAsAsyncEnumerable<FSFilmModel>();
@@ -45,10 +44,10 @@ namespace Genealogy.Tests.Api {
 			}
 		}
 
-        /// <summary>
-        /// Removes by identifier services test.
-        /// </summary>
-        [TestMethod()]
+		/// <summary>
+		/// Removes by identifier services test.
+		/// </summary>
+		[TestMethod()]
 		[Priority(5)]
 		public void RemoveByIdTest() {
 			try {
@@ -62,23 +61,23 @@ namespace Genealogy.Tests.Api {
 			}
 		}
 
-        /// <summary>
-        /// Gets services test.
-        /// </summary>
-        [TestMethod()]
-        public void GetTest() {
-            try {
-                //var result = ServiceTest.Get(x => x.Observaciones.Equals(ModelTest.Observaciones));
+		/// <summary>
+		/// Gets services test.
+		/// </summary>
+		[TestMethod()]
+		public void GetTest() {
+			try {
+				//var result = ServiceTest.Get(x => x.Observaciones.Equals(ModelTest.Observaciones));
 
-            } catch (Exception ex) {
-                Assert.Fail(ex.Message);
-            }
-        }
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
+		}
 
-        /// <summary>
-        /// Adds services test.
-        /// </summary>
-        [TestMethod()]
+		/// <summary>
+		/// Adds services test.
+		/// </summary>
+		[TestMethod()]
 		[Priority(2)]
 		public void AddTest() {
 			try {
@@ -124,7 +123,7 @@ namespace Genealogy.Tests.Api {
 				//var result = ServiceTest.Remove(ModelTest);
 				//Assert.IsTrue(result);
 				//LogResults(result);
-				
+
 			} catch (Exception ex) {
 				Assert.Fail(ex.Message);
 			}

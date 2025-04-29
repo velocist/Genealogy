@@ -30,7 +30,7 @@ namespace Genealogy.WebApplication.Core {
 			ModelState.AddModelError(WebStrings.ERROR, message);
 			return await ShowRenderView(viewType, ViewData.Model, statusCode);
 		}
-        
+
 		protected async Task<IActionResult> CreateResponse(ReturnViewTypeId viewType, string message, int statusCode, string url) {
 			_logger.LogError(message);
 			TempData["Error"] = message;
@@ -38,12 +38,12 @@ namespace Genealogy.WebApplication.Core {
 			return await ShowRenderView(viewType, url, statusCode);
 		}
 
-        protected async Task<IActionResult> CreateResponse(ReturnViewTypeId viewType, HttpResponseMessage message) {
-            LogResponse(message);
-            TempData["Error"] = message.ReasonPhrase;
-            ModelState.AddModelError(WebStrings.ERROR, message.ReasonPhrase);
-            return await ShowRenderView(viewType, ViewData.Model, message.StatusCode);
-        }
+		protected async Task<IActionResult> CreateResponse(ReturnViewTypeId viewType, HttpResponseMessage message) {
+			LogResponse(message);
+			TempData["Error"] = message.ReasonPhrase;
+			ModelState.AddModelError(WebStrings.ERROR, message.ReasonPhrase);
+			return await ShowRenderView(viewType, ViewData.Model, message.StatusCode);
+		}
 
 		protected void LogResponse(HttpResponseMessage messageResponse) {
 			_logger.LogDebug($"IsSuccessStatusCode: {messageResponse.IsSuccessStatusCode} " +
@@ -70,18 +70,19 @@ namespace Genealogy.WebApplication.Core {
 		/// <returns></returns>
 		[HttpGet]
 		public async Task<IActionResult> Index() {
-            //Configuracmos la vista
-            GetConfiguration(nameof(Index));
+			//Configuracmos la vista
+			GetConfiguration(nameof(Index));
 			try {
-                //Devolvemos la vista de error si lo hay
-                if (TempData.TryGetValue("Error", out var error)) {
+				//Devolvemos la vista de error si lo hay
+				if (TempData.TryGetValue("Error", out var error)) {
 					ModelState.AddModelError(string.Empty, error.ToString());
 					return await ShowRenderView<TModel>(PropertiesView.ViewType, statusCode: StatusCodes.Status400BadRequest);
 				}
 
-                //Devolvemos la vista
-                return await ShowRenderView<TModel>(PropertiesView.ViewType);
+				//Devolvemos la vista
+				return await ShowRenderView<TModel>(PropertiesView.ViewType);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex.Message);
 				ModelState.AddModelError(string.Empty, WebStrings.ERROR_SERVER);
 				return RedirectToAction(nameof(HomeController.Index), "Home");
@@ -109,6 +110,7 @@ namespace Genealogy.WebApplication.Core {
 				//Devolvemos error 
 				return await CreateResponse(ReturnViewTypeId.Json, WebStrings.ERROR_GET, StatusCodes.Status400BadRequest);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex.Message);
 				return await CreateResponse(ReturnViewTypeId.Json, ex);
 			}
@@ -127,6 +129,7 @@ namespace Genealogy.WebApplication.Core {
 				//Devolvemos la vista
 				return await ShowRenderView(PropertiesView.ViewType, new TModel(), statusCode: StatusCodes.Status200OK);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex.Message);
 				return await CreateResponse(PropertiesView.ViewType, ex);
 			}
@@ -145,17 +148,17 @@ namespace Genealogy.WebApplication.Core {
 				//Comprobamos los datos de entrada
 				if (!ModelState.IsValid)
 					return await CreateResponse(PropertiesView.ViewType, WebStrings.ERROR_MODIFY, statusCode: StatusCodes.Status400BadRequest);
-					//return await ShowRenderView(PropertiesView.ViewType, ViewData.Model, statusCode: StatusCodes.Status400BadRequest);
+				//return await ShowRenderView(PropertiesView.ViewType, ViewData.Model, statusCode: StatusCodes.Status400BadRequest);
 
 				//Hecemos la llamada a la api
 				var response = await GenealogyApiClient.PostAsJsonAsync(GenealogyApiEndpoint, model);
 
 				//Devolvemos error
 				if (!response.IsSuccessStatusCode)
-                    return await CreateResponse(PropertiesView.ViewType, response);
+					return await CreateResponse(PropertiesView.ViewType, response);
 
-                //Obtenemos los resultados
-                var result = GetObjectResult<bool>(response);
+				//Obtenemos los resultados
+				var result = GetObjectResult<bool>(response);
 
 				//Devolvemos la respuesta
 				if (result.Result)
@@ -164,6 +167,7 @@ namespace Genealogy.WebApplication.Core {
 				//Devolvemos error 
 				return await CreateResponse(PropertiesView.ViewType, WebStrings.ERROR_MODIFY, StatusCodes.Status400BadRequest);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex.Message);
 				return await CreateResponse(PropertiesView.ViewType, ex);
 			}
@@ -196,6 +200,7 @@ namespace Genealogy.WebApplication.Core {
 				//Devolvemos error 
 				return await CreateResponse(ReturnViewTypeId.Json, WebStrings.ERROR_GET, statusCode: StatusCodes.Status400BadRequest, Url.ActionLink(nameof(Index)));
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex.Message);
 				return await CreateResponse(ReturnViewTypeId.Json, ex);
 			}
@@ -228,6 +233,7 @@ namespace Genealogy.WebApplication.Core {
 				//Devolvemos error 
 				return await CreateResponse(PropertiesView.ViewType, WebStrings.ERROR_MODIFY, statusCode: StatusCodes.Status400BadRequest);
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex.Message);
 				return await CreateResponse(PropertiesView.ViewType, ex);
 			}
@@ -251,6 +257,7 @@ namespace Genealogy.WebApplication.Core {
 				//Devolvemos error 
 				return await CreateResponse(ReturnViewTypeId.Json, WebStrings.ERROR_GET, statusCode: StatusCodes.Status400BadRequest, Url.ActionLink(nameof(Index)));
 			} catch (Exception ex) {
+				Trace.WriteLine(ex);
 				_logger.LogError(ex.Message);
 				return await CreateResponse(ReturnViewTypeId.Json, ex);
 			}
@@ -350,71 +357,72 @@ namespace Genealogy.WebApplication.Core {
 					case ReturnViewTypeId.SucessModal:
 					case ReturnViewTypeId.WarningModal:
 					case ReturnViewTypeId.ErrorModal:
-						var simpleModalString = await _renderView.RenderAsync(PropertiesView.ViewName, ViewData.Model, new ViewDataDictionary(ViewData));
-						if (statusCode != 0)
-							return await Task.FromResult(new JsonResult(simpleModalString) { StatusCode = statusCode });
-						else
-							return await Task.FromResult(Json(new { modal = simpleModalString, args }));
+					var simpleModalString = await _renderView.RenderAsync(PropertiesView.ViewName, ViewData.Model, new ViewDataDictionary(ViewData));
+					if (statusCode != 0)
+						return await Task.FromResult(new JsonResult(simpleModalString) { StatusCode = statusCode });
+					else
+						return await Task.FromResult(Json(new { modal = simpleModalString, args }));
 
 
 					case ReturnViewTypeId.CustomModal:
-						var customModalString = await _renderView.RenderAsync(PropertiesView.ViewPath, ViewData.Model, new ViewDataDictionary(ViewData));
-						if (statusCode != 0)
-							return await Task.FromResult(new JsonResult(customModalString) { StatusCode = statusCode });
-						else
-							return await Task.FromResult(Json(new { modal = customModalString }));
+					var customModalString = await _renderView.RenderAsync(PropertiesView.ViewPath, ViewData.Model, new ViewDataDictionary(ViewData));
+					if (statusCode != 0)
+						return await Task.FromResult(new JsonResult(customModalString) { StatusCode = statusCode });
+					else
+						return await Task.FromResult(Json(new { modal = customModalString }));
 
 
 					case ReturnViewTypeId.StringView:
-						var viewString = await _renderView.RenderAsync(PropertiesView.ViewPath, ViewData.Model, new ViewDataDictionary(ViewData));
-						if (statusCode != 0)
-							return await Task.FromResult(new JsonResult(viewString) { StatusCode = statusCode });
-						else
-							return await Task.FromResult(Json(new { view = viewString, args }));
+					var viewString = await _renderView.RenderAsync(PropertiesView.ViewPath, ViewData.Model, new ViewDataDictionary(ViewData));
+					if (statusCode != 0)
+						return await Task.FromResult(new JsonResult(viewString) { StatusCode = statusCode });
+					else
+						return await Task.FromResult(Json(new { view = viewString, args }));
 
 
 					case ReturnViewTypeId.StringPartialView:
-						var partialViewString = string.Empty;
-						partialViewString = await _renderView.RenderAsync(PropertiesView.PartialViewPath, ViewData.Model, new ViewDataDictionary(ViewData));
-						return await Task.FromResult(new JsonResult(partialViewString) { StatusCode = statusCode });
+					var partialViewString = string.Empty;
+					partialViewString = await _renderView.RenderAsync(PropertiesView.PartialViewPath, ViewData.Model, new ViewDataDictionary(ViewData));
+					return await Task.FromResult(new JsonResult(partialViewString) { StatusCode = statusCode });
 
 					case ReturnViewTypeId.View:
-						ViewResult view = null;
-						if (ViewData.Model != null)
-							view = View(PropertiesView.ViewPath, ViewData.Model);
-						else
-							view = View(PropertiesView.ViewPath);
+					ViewResult view = null;
+					if (ViewData.Model != null)
+						view = View(PropertiesView.ViewPath, ViewData.Model);
+					else
+						view = View(PropertiesView.ViewPath);
 
-						view.ViewData = ViewData;
-						view.TempData = TempData;
-						return await Task.FromResult(view);
+					view.ViewData = ViewData;
+					view.TempData = TempData;
+					return await Task.FromResult(view);
 
 					case ReturnViewTypeId.PartialView:
-						PartialViewResult partial = null;
-						if (ViewData.Model != null)
-							partial = PartialView(PropertiesView.PartialViewPath, ViewData.Model);
-						else
-							partial = PartialView(PropertiesView.PartialViewPath);
+					PartialViewResult partial = null;
+					if (ViewData.Model != null)
+						partial = PartialView(PropertiesView.PartialViewPath, ViewData.Model);
+					else
+						partial = PartialView(PropertiesView.PartialViewPath);
 
-						partial.ViewData = ViewData;
-						partial.TempData = TempData;
-						return await Task.FromResult(partial);
+					partial.ViewData = ViewData;
+					partial.TempData = TempData;
+					return await Task.FromResult(partial);
 
 					case ReturnViewTypeId.Alert:
-						return await Task.FromResult(PartialView("~/Views/Shared/_AlertError.cshtml", ViewData.Model));
+					return await Task.FromResult(PartialView("~/Views/Shared/_AlertError.cshtml", ViewData.Model));
 
 					case ReturnViewTypeId.Json:
-						//if (ViewData.Model != null)
-						return await Task.FromResult(new JsonResult(ViewData.Model) { StatusCode = statusCode });
+					//if (ViewData.Model != null)
+					return await Task.FromResult(new JsonResult(ViewData.Model) { StatusCode = statusCode });
 					//else
 					//	return await Task.FromResult(new JsonResult() { StatusCode = statusCode });
 					default:
-						_logger.LogError("ReturnViewType sin definir.");
-						return null;
+					_logger.LogError("ReturnViewType sin definir.");
+					return null;
 				}
 			} catch (Exception ex) {
 				//Logger<TModel>.Write(ex);
-				throw new Exception(ex.Message, ex);
+				Trace.WriteLine(ex);
+				throw;
 			}
 		}
 

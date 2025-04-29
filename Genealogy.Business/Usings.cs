@@ -2,6 +2,7 @@
 global using System.Collections.Generic;
 global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;
+global using System.Diagnostics;
 global using System.Text.Json.Serialization;
 global using Genealogy.Business.Core;
 global using Genealogy.Business.Models;
@@ -14,4 +15,3 @@ global using velocist.Services.Core;
 global using velocist.Services.Core.Interfaces;
 global using velocist.Services.Core.Interfaces.SqlServer;
 global using velocist.Services.Json;
-global using static velocist.Services.Log.StaticLoggerFactory;
